@@ -3,6 +3,8 @@ package org.apache.jsp.ACUERDOS;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import modelo.Asignatura_Destino;
+import modelo.Asignatura_Origen;
 import modelo.Alumno;
 import java.util.List;
 
@@ -43,6 +45,8 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
+      out.write("\n");
+      out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("\n");
@@ -94,6 +98,8 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("            <button>Aceptar</button>\n");
+      out.write("            \n");
+      out.write("            \n");
       out.write("            <table border=\"1\" width=\"80%\">\n");
       out.write("                <thead>\n");
       out.write("                    <tr>\n");
@@ -102,51 +108,75 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                        <th>Nombre</th>\n");
       out.write("                        <th>Guia Docente</th>\n");
       out.write("                        <th>Link</th>\n");
-      out.write("                        <th>Codigo destino</th>\n");
-      out.write("                        <th>Creditos destino</th>\n");
-      out.write("                        <th>Nombre destino</th>\n");
-      out.write("                        <th>Guia Docente destino</th>\n");
+      out.write("                        <th>Codigo</th>\n");
+      out.write("                        <th>Creditos</th>\n");
+      out.write("                        <th>Nombre</th>\n");
+      out.write("                        <th>Guia Docente</th>\n");
       out.write("                        <th>Link</th>\n");
+      out.write("                        <th>Codigo destino</th>\n");
+      out.write("                        <th>Estado</th>\n");
       out.write("                    </tr>\n");
       out.write("                </thead>\n");
       out.write("\n");
       out.write("                <tbody>\n");
       out.write("                <tr>\n");
-      out.write("                   <td>");
-      out.print( request.getAttribute("codigo") );
+      out.write("                    ");
+ List<Asignatura_Origen> listaAsignaturasOrigen = (List<Asignatura_Origen>)request.getAttribute("listaAsignaturasOrigen");
+                    List<Asignatura_Destino> listaAsignaturasDestino = (List<Asignatura_Destino>)request.getAttribute("listaAsignaturasDestino");
+            if(listaAsignaturasOrigen != null && listaAsignaturasDestino!=null)
+                for(Asignatura_Origen asignaturaO : listaAsignaturasOrigen){
+                    for(Asignatura_Destino asignaturaD : listaAsignaturasDestino){
+                        if(asignaturaO.getCodigo() == asignaturaD.getCodigo_Asignatura_Origen()){
+                            
+      out.write("\n");
+      out.write("                            <tr>\n");
+      out.write("                            <td>");
+      out.print(asignaturaO.getCodigo());
       out.write("</td>\n");
-      out.write("                   <td>");
-      out.print( request.getAttribute("creditos") );
+      out.write("                            <td>");
+      out.print(asignaturaO.getCreditos());
       out.write("</td>\n");
-      out.write("                   <td>");
-      out.print( request.getAttribute("nombre") );
+      out.write("                            <td>");
+      out.print(asignaturaO.getNombre());
       out.write("</td>\n");
-      out.write("                   <td>");
-      out.print( request.getAttribute("guia_docente") );
+      out.write("                            <td>");
+      out.print(asignaturaO.getGuia_docente());
       out.write("</td>\n");
-      out.write("                   <td><a href=\"");
-      out.print( request.getAttribute("guia_docente") );
+      out.write("                            <td><a href=\"");
+      out.print(asignaturaO.getGuia_docente());
       out.write("\" > link</a></td>\n");
-      out.write("                   <td>");
-      out.print( request.getAttribute("codigo_destino") );
+      out.write("                            <td>");
+      out.print(asignaturaD.getCodigo());
       out.write("</td>\n");
-      out.write("                   <td>");
-      out.print( request.getAttribute("creditos_destino") );
+      out.write("                            <td>");
+      out.print(asignaturaD.getCreditos());
       out.write("</td>\n");
-      out.write("                   <td>");
-      out.print( request.getAttribute("nombre_destino") );
+      out.write("                            <td>");
+      out.print(asignaturaD.getNombre());
       out.write("</td>\n");
-      out.write("                   <td>");
-      out.print( request.getAttribute("guia_docente_destino") );
+      out.write("                            <td>");
+      out.print(asignaturaD.getGuia_docente());
       out.write("</td>\n");
-      out.write("                   <td><a href=\"");
-      out.print( request.getAttribute("guia_docente_destino") );
+      out.write("                            <td><a href=\"");
+      out.print(asignaturaD.getGuia_docente());
       out.write("\" > link</a></td>\n");
-      out.write("                   \n");
-      out.write("                   <td></td>\n");
-      out.write("                   \n");
-      out.write("                   <td></td>\n");
-      out.write("                </tr> \n");
+      out.write("                            <td>");
+      out.print(asignaturaD.getCodigo_Asignatura_Origen());
+      out.write("</td>\n");
+      out.write("                            <td>");
+      out.print(asignaturaD.getEstado());
+      out.write("</td>\n");
+      out.write("                            \n");
+      out.write("                            </tr>\n");
+      out.write("                            ");
+
+                        }
+                    }
+                    
+                }
+      out.write("\n");
+      out.write("                \n");
+      out.write("                 \n");
       out.write("\n");
       out.write("                </tbody>\n");
       out.write("\n");

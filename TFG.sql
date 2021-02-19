@@ -1,4 +1,4 @@
-drop table muchos_Alumno_tiene_muchos_Asignatura_origen;
+drop table muchos_Asignatura_origen_tiene_muchos_Alumno;
 drop table Alumno;
 
 drop table Profesor;
@@ -46,6 +46,7 @@ CREATE TABLE public.Asignatura_destino(
 	Nombre varchar,
 	Guia_docente varchar,
 	Codigo_Asignatura_origen integer,
+	Estado varchar,
 	CONSTRAINT Asignatura_destino_pk PRIMARY KEY (Codigo)
 
 );
@@ -104,14 +105,17 @@ INSERT INTO Alumno VALUES ('12345','Antonio', 'Matamoros','antoni','57898755L','
 
 
 INSERT INTO Asignatura_origen VALUES (1,6,'Base de datos','https://www.tutorialesprogramacionya.com/javaya/detalleconcepto.php?codigo=139&punto=&inicio=');
+INSERT INTO Asignatura_origen VALUES (2,6,'Programacion','https://www.tutorialesprogramacionya.com/javaya/detalleconcepto.php?codigo=139&punto=&inicio=');
 INSERT INTO muchos_Asignatura_origen_tiene_muchos_Alumno VALUES(1,47231972);
+INSERT INTO muchos_Asignatura_origen_tiene_muchos_Alumno VALUES(2,47231972);
+
 
 delete from Asignatura_origen;
 delete from muchos_Asignatura_origen_tiene_muchos_Alumno;
 delete from Asignatura_destino;
-INSERT INTO Asignatura_destino VALUES (1,6,'Database','www.cccccc.com',1);
-
-
+INSERT INTO Asignatura_destino VALUES (1,3,'Database','www.cccccc.com',1,'Pendiente');
+INSERT INTO Asignatura_destino VALUES (2,3,'Database2','www.ddddddd.com',1,'Pendiente');
+INSERT INTO Asignatura_destino VALUES (3,6,'Programme','www.ppppppppppp.com',2,'Pendiente');
 
 select * from Alumno;
 

@@ -4,6 +4,8 @@
     Author     : Javier
 --%>
 
+<%@page import="modelo.Asignatura_Destino"%>
+<%@page import="modelo.Asignatura_Origen"%>
 <%@page import="modelo.Alumno"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -42,6 +44,8 @@
 
 
             <button>Aceptar</button>
+            
+            
             <table border="1" width="80%">
                 <thead>
                     <tr>
@@ -50,31 +54,47 @@
                         <th>Nombre</th>
                         <th>Guia Docente</th>
                         <th>Link</th>
-                        <th>Codigo destino</th>
-                        <th>Creditos destino</th>
-                        <th>Nombre destino</th>
-                        <th>Guia Docente destino</th>
+                        <th>Codigo</th>
+                        <th>Creditos</th>
+                        <th>Nombre</th>
+                        <th>Guia Docente</th>
                         <th>Link</th>
+                        <th>Codigo destino</th>
+                        <th>Estado</th>
                     </tr>
                 </thead>
 
                 <tbody>
                 <tr>
-                   <td><%= request.getAttribute("codigo") %></td>
-                   <td><%= request.getAttribute("creditos") %></td>
-                   <td><%= request.getAttribute("nombre") %></td>
-                   <td><%= request.getAttribute("guia_docente") %></td>
-                   <td><a href="<%= request.getAttribute("guia_docente") %>" > link</a></td>
-                   <td><%= request.getAttribute("codigo_destino") %></td>
-                   <td><%= request.getAttribute("creditos_destino") %></td>
-                   <td><%= request.getAttribute("nombre_destino") %></td>
-                   <td><%= request.getAttribute("guia_docente_destino") %></td>
-                   <td><a href="<%= request.getAttribute("guia_docente_destino") %>" > link</a></td>
-                   
-                   <td></td>
-                   
-                   <td></td>
-                </tr> 
+                    <% List<Asignatura_Origen> listaAsignaturasOrigen = (List<Asignatura_Origen>)request.getAttribute("listaAsignaturasOrigen");
+                    List<Asignatura_Destino> listaAsignaturasDestino = (List<Asignatura_Destino>)request.getAttribute("listaAsignaturasDestino");
+            if(listaAsignaturasOrigen != null && listaAsignaturasDestino!=null)
+                for(Asignatura_Origen asignaturaO : listaAsignaturasOrigen){
+                    for(Asignatura_Destino asignaturaD : listaAsignaturasDestino){
+                        if(asignaturaO.getCodigo() == asignaturaD.getCodigo_Asignatura_Origen()){
+                            %>
+                            <tr>
+                            <td><%=asignaturaO.getCodigo()%></td>
+                            <td><%=asignaturaO.getCreditos()%></td>
+                            <td><%=asignaturaO.getNombre()%></td>
+                            <td><%=asignaturaO.getGuia_docente()%></td>
+                            <td><a href="<%=asignaturaO.getGuia_docente()%>" > link</a></td>
+                            <td><%=asignaturaD.getCodigo()%></td>
+                            <td><%=asignaturaD.getCreditos()%></td>
+                            <td><%=asignaturaD.getNombre()%></td>
+                            <td><%=asignaturaD.getGuia_docente()%></td>
+                            <td><a href="<%=asignaturaD.getGuia_docente()%>" > link</a></td>
+                            <td><%=asignaturaD.getCodigo_Asignatura_Origen()%></td>
+                            <td><%=asignaturaD.getEstado()%></td>
+                            
+                            </tr>
+                            <%
+                        }
+                    }
+                    
+                }%>
+                
+                 
 
                 </tbody>
 

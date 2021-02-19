@@ -156,9 +156,20 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="Guia_docente">
 		<type name="varchar" length="0"/>
 	</column>
+	<column name="Estado">
+		<type name="varchar" length="0"/>
+	</column>
 	<constraint name="Asignatura_destino_pk" type="pk-constr" table="public.&quot;Asignatura_destino&quot;">
 		<columns names="Codigo" ref-type="src-columns"/>
 	</constraint>
+
+	<customidxs object-type="column">
+		<object name="Codigo_Asignatura_origen" index="4"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="Asignatura_origen_fk" index="1"/>
+	</customidxs>
 </table>
 
 <relationship name="Asignatura_origen_tiene_muchos_Asignatura_destino" type="rel1n"

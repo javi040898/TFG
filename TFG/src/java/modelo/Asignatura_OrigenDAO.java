@@ -45,6 +45,10 @@ public class Asignatura_OrigenDAO {
                 String guia_docente = rs.getString("guia_docente");
 
                 Asignatura_Origen asignatura = new Asignatura_Origen(codigo, creditos, nombre, guia_docente);
+                System.out.println("codigo"+codigo);
+                System.out.println("creditos"+creditos);
+                System.out.println("nombre"+nombre);
+                System.out.println("guia_docente"+guia_docente);
 
                 lista.add(asignatura);
             }

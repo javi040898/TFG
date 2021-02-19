@@ -142,24 +142,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        </div>\n");
       out.write("        <a href=\"\" > Nuevo</a>\n");
       out.write("\n");
-      out.write("        <table border=\"1\" width=\"80%\">\n");
-      out.write("            <thead>\n");
-      out.write("                <tr>\n");
-      out.write("                    <th>Usuario</th>\n");
-      out.write("                    <th>Password</th>\n");
-      out.write("                    <th>Nombre</th>\n");
-      out.write("                    <th>Apellidos</th>\n");
-      out.write("                    <th></th>\n");
-      out.write("                    <th></th>\n");
-      out.write("                </tr>\n");
-      out.write("            </thead>\n");
-      out.write("            \n");
-      out.write("            <tbody>\n");
-      out.write("                \n");
-      out.write("            </tbody>\n");
       out.write("\n");
-      out.write("\n");
-      out.write("        </table>\n");
       out.write("    </body>\n");
       out.write("    ");
 /*

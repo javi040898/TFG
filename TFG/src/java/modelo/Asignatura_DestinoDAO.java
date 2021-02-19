@@ -46,8 +46,9 @@ public class Asignatura_DestinoDAO {
                 String nombre = rs.getString("nombre");
                 String guia_docente = rs.getString("guia_docente");
                 Integer codigo_origen = rs.getInt("Codigo_Asignatura_origen");
+                String estado = rs.getString("estado");
 
-                Asignatura_Destino asignatura = new Asignatura_Destino(codigo, creditos, codigo_origen, nombre, guia_docente);
+                Asignatura_Destino asignatura = new Asignatura_Destino(codigo, creditos, codigo_origen, nombre, guia_docente,estado);
 
                 lista.add(asignatura);
             }

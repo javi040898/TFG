@@ -11,14 +11,15 @@ package modelo;
  */
 public class Asignatura_Destino {
     private Integer codigo, creditos, codigo_Asignatura_Origen;
-    private String nombre, guia_docente;
+    private String nombre, guia_docente, estado;
 
-    public Asignatura_Destino(Integer codigo, Integer creditos, Integer codigo_Asignatura_Origen, String nombre, String guia_docente) {
+    public Asignatura_Destino(Integer codigo, Integer creditos, Integer codigo_Asignatura_Origen, String nombre, String guia_docente, String estado) {
         this.codigo = codigo;
         this.creditos = creditos;
         this.codigo_Asignatura_Origen = codigo_Asignatura_Origen;
         this.nombre = nombre;
         this.guia_docente = guia_docente;
+        this.estado = estado;
     }
 
     public Integer getCodigo() {
@@ -60,5 +61,14 @@ public class Asignatura_Destino {
     public void setGuia_docente(String guia_docente) {
         this.guia_docente = guia_docente;
     }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+    
     
 }
