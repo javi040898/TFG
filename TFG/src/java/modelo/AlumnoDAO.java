@@ -98,4 +98,30 @@ public class AlumnoDAO {
 
         }
     }
+    public List<Integer> listarCodigosAsignaturasAlumno(String DNI) {
+        PreparedStatement ps;
+        ResultSet rs;
+        List<Integer> lista = new ArrayList<>();
+        try {
+            ps = conexion.prepareStatement("select ad.Codigo from Asignatura_destino ad inner join Asignatura_origen on \n"
+                    + "Asignatura_origen.codigo=ad.Codigo_Asignatura_origen inner join\n"
+                    + "muchos_Asignatura_origen_tiene_muchos_Alumno on \n"
+                    + "Asignatura_origen.codigo=muchos_Asignatura_origen_tiene_muchos_Alumno.Codigo_Asignatura_origen\n"
+                    + "where muchos_Asignatura_origen_tiene_muchos_Alumno.DNI_Alumno=?;");
+            ps.setString(1, DNI);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                Integer codigo = rs.getInt("codigo");
+                lista.add(codigo);
+            }
+
+            return lista;
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+            return null;
+
+        }
+    }
 }

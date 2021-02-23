@@ -30,6 +30,7 @@ import modelo.ProfesorDAO;
 public class ProfesorController extends HttpServlet {
 
     String usuario = "";
+    String DNI_Alumno = "";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -40,6 +41,7 @@ public class ProfesorController extends HttpServlet {
         Asignatura_DestinoDAO asignatura_destinoDAO = new Asignatura_DestinoDAO();
         String accion;
         RequestDispatcher dispatcher = null;
+        
 
         accion = request.getParameter("accion");
 
@@ -55,8 +57,8 @@ public class ProfesorController extends HttpServlet {
 
             String password = request.getParameter("password");
             usuario = request.getParameter("usuario");
-            System.out.println(profesorDAO.obtenerPassword(usuario));
-            System.out.println(password);
+            //System.out.println(profesorDAO.obtenerPassword(usuario));
+            //System.out.println(password);
             if (profesorDAO.obtenerPassword(usuario) == null ? password == null : profesorDAO.obtenerPassword(usuario).equals(password)) {
                 String DNI_Profesor = profesorDAO.obtenerDNI(usuario);
                 List<Alumno> alumnos = alumnoDAO.listarAlumnos(DNI_Profesor);
@@ -76,19 +78,48 @@ public class ProfesorController extends HttpServlet {
             //String usuario = request.getParameter("usuario");
             //request.setAttribute("usuario", usuario);
         } else if ("listarAlumnos".equals(accion)) {
-            String DNI = request.getParameter("listaAlumnos");
-            System.out.println(DNI);
-            List<Asignatura_Origen> listaAsignaturas_origen = asignatura_origenDAO.listarAsignaturas(DNI);
-            List<Asignatura_Destino> listaAsignaturas_destino = asignatura_destinoDAO.listarAsignaturas(DNI);
+            
+            if(!request.getParameter("listaAlumnos").equals("Escoge un alumno")){
+                DNI_Alumno = request.getParameter("listaAlumnos");
+            }
+                
+            
+            System.out.println("DNI:"+DNI_Alumno);
+            List<Asignatura_Origen> listaAsignaturas_origen = asignatura_origenDAO.listarAsignaturas(DNI_Alumno);
+            List<Asignatura_Destino> listaAsignaturas_destino = asignatura_destinoDAO.listarAsignaturas(DNI_Alumno);
             dispatcher = request.getRequestDispatcher("ACUERDOS/profesor.jsp");
             request.setAttribute("listaAsignaturasOrigen", listaAsignaturas_origen);
             request.setAttribute("listaAsignaturasDestino", listaAsignaturas_destino);
-            System.out.println(listaAsignaturas_origen.get(0));
-            System.out.println("fdsf" + usuario);
+            //System.out.println("fdsf" + usuario);
             String DNI_Profesor = profesorDAO.obtenerDNI(usuario);
-            System.out.println("dsf" + DNI_Profesor);
+            //System.out.println("dsf" + DNI_Profesor);
             List<Alumno> alumnos = alumnoDAO.listarAlumnos(DNI_Profesor);
             request.setAttribute("listaAlumnos", alumnos);
+            String estado = request.getParameter("CambiarEstado");
+            //System.out.println(estado);
+            String codigoAsignaturaAceptar = request.getParameter("listaAsignaturasAceptar");
+            String codigoAsignaturaRechazar = request.getParameter("listaAsignaturasRechazar");
+            System.out.println("codigo:"+codigoAsignaturaAceptar);
+            System.out.println(alumnoDAO.listarCodigosAsignaturasAlumno(DNI_Alumno));
+            List<Integer> listaCodigosAsignaturasAlumno = alumnoDAO.listarCodigosAsignaturasAlumno(DNI_Alumno);
+            if(!codigoAsignaturaAceptar.equals("Escoge una asignatura")){
+                if(listaCodigosAsignaturasAlumno.contains(Integer.parseInt(codigoAsignaturaAceptar))){
+                    System.out.println("entro1234");
+                    asignatura_destinoDAO.cambiarEstado("Aceptada", Integer.parseInt(codigoAsignaturaAceptar));
+                }
+            
+                
+            }
+            
+            if(!codigoAsignaturaRechazar.equals("Escoge una asignatura")){
+                if(listaCodigosAsignaturasAlumno.contains(Integer.parseInt(codigoAsignaturaRechazar))){
+                    System.out.println("entro1234");
+                    asignatura_destinoDAO.cambiarEstado("Rechazada", Integer.parseInt(codigoAsignaturaRechazar));
+                }
+            
+                
+            }
+            
 
             //response.sendRedirect("profesor.jsp");
             //dispatcher = request.getRequestDispatcher("ACUERDOS/alumno.jsp");

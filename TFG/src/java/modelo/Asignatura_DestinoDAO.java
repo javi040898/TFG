@@ -48,11 +48,10 @@ public class Asignatura_DestinoDAO {
                 Integer codigo_origen = rs.getInt("Codigo_Asignatura_origen");
                 String estado = rs.getString("estado");
 
-                Asignatura_Destino asignatura = new Asignatura_Destino(codigo, creditos, codigo_origen, nombre, guia_docente,estado);
-
+                Asignatura_Destino asignatura = new Asignatura_Destino(codigo, creditos, codigo_origen, nombre, guia_docente, estado);
+                System.out.println("estado" + estado);
                 lista.add(asignatura);
             }
-            
 
             return lista;
         } catch (SQLException ex) {
@@ -62,4 +61,22 @@ public class Asignatura_DestinoDAO {
         }
     }
 
+    
+
+    public void cambiarEstado(String estado, Integer codigo_asignatura) {
+        PreparedStatement ps;
+        ResultSet rs;
+
+        try {
+            ps = conexion.prepareStatement("UPDATE Asignatura_destino SET Estado = ? where Asignatura_destino.Codigo =?");
+            ps.setString(1, estado);
+            ps.setInt(2, codigo_asignatura);
+            rs = ps.executeQuery();
+
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+
+        }
+
+    }
 }

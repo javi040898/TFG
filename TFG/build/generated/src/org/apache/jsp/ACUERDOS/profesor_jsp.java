@@ -66,8 +66,8 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        </style>\n");
       out.write("        <h1>PROFESOR</h1>\n");
       out.write("\n");
-      out.write("            \n");
-      out.write("        \n");
+      out.write("\n");
+      out.write("\n");
       out.write("        <form action=\"ProfesorController?accion=listarAlumnos\" method=\"POST\" autocomplete=\"off\">\n");
       out.write("            <p align=\"center\"> \n");
       out.write("                <select class=\"form-control\" id=\"listaAlumnos\" name=\"listaAlumnos\">\n");
@@ -76,7 +76,7 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
 
                         List<Alumno> listaAlumnos = (List<Alumno>) request.getAttribute("listaAlumnos");
                         if (listaAlumnos != null)
-                    for (Alumno alumno : listaAlumnos) {
+                            for (Alumno alumno : listaAlumnos) {
       out.write("\n");
       out.write("                    <option value=\"");
       out.print(alumno.getDNI());
@@ -87,7 +87,7 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.print(" (" + alumno.getDNI() + " )");
       out.write("</option>\n");
       out.write("                    ");
-}
+ } 
       out.write("\n");
       out.write("\n");
       out.write("\n");
@@ -97,10 +97,10 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                </select>\n");
       out.write("\n");
       out.write("\n");
-      out.write("            <button>Aceptar</button>\n");
-      out.write("            \n");
-      out.write("            \n");
-      out.write("            <table border=\"1\" width=\"80%\">\n");
+      out.write("                <button>Aceptar</button>\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("            <table border=\"1\" width=\"80%\" cellspacing=\"12\">\n");
       out.write("                <thead>\n");
       out.write("                    <tr>\n");
       out.write("                        <th>Codigo</th>\n");
@@ -108,6 +108,7 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                        <th>Nombre</th>\n");
       out.write("                        <th>Guia Docente</th>\n");
       out.write("                        <th>Link</th>\n");
+      out.write("                        <th></th>\n");
       out.write("                        <th>Codigo</th>\n");
       out.write("                        <th>Creditos</th>\n");
       out.write("                        <th>Nombre</th>\n");
@@ -119,71 +120,134 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                </thead>\n");
       out.write("\n");
       out.write("                <tbody>\n");
-      out.write("                <tr>\n");
-      out.write("                    ");
- List<Asignatura_Origen> listaAsignaturasOrigen = (List<Asignatura_Origen>)request.getAttribute("listaAsignaturasOrigen");
-                    List<Asignatura_Destino> listaAsignaturasDestino = (List<Asignatura_Destino>)request.getAttribute("listaAsignaturasDestino");
-            if(listaAsignaturasOrigen != null && listaAsignaturasDestino!=null)
-                for(Asignatura_Origen asignaturaO : listaAsignaturasOrigen){
-                    for(Asignatura_Destino asignaturaD : listaAsignaturasDestino){
-                        if(asignaturaO.getCodigo() == asignaturaD.getCodigo_Asignatura_Origen()){
-                            
+      out.write("                    <tr>\n");
+      out.write("                        ");
+ List<Asignatura_Origen> listaAsignaturasOrigen = (List<Asignatura_Origen>) request.getAttribute("listaAsignaturasOrigen");
+                            List<Asignatura_Destino> listaAsignaturasDestino = (List<Asignatura_Destino>) request.getAttribute("listaAsignaturasDestino");
+                            if (listaAsignaturasOrigen != null && listaAsignaturasDestino != null)
+                                for (Asignatura_Origen asignaturaO : listaAsignaturasOrigen) {
+                                    for (Asignatura_Destino asignaturaD : listaAsignaturasDestino) {
+                                        if (asignaturaO.getCodigo() == asignaturaD.getCodigo_Asignatura_Origen()) {
+                        
       out.write("\n");
-      out.write("                            <tr>\n");
-      out.write("                            <td>");
+      out.write("                    <tr>\n");
+      out.write("                        <td>");
       out.print(asignaturaO.getCodigo());
       out.write("</td>\n");
-      out.write("                            <td>");
+      out.write("                        <td>");
       out.print(asignaturaO.getCreditos());
       out.write("</td>\n");
-      out.write("                            <td>");
+      out.write("                        <td>");
       out.print(asignaturaO.getNombre());
       out.write("</td>\n");
-      out.write("                            <td>");
+      out.write("                        <td>");
       out.print(asignaturaO.getGuia_docente());
       out.write("</td>\n");
-      out.write("                            <td><a href=\"");
+      out.write("                        <td><a href=\"");
       out.print(asignaturaO.getGuia_docente());
       out.write("\" > link</a></td>\n");
-      out.write("                            <td>");
+      out.write("                        <td></td>\n");
+      out.write("                        <td>");
       out.print(asignaturaD.getCodigo());
       out.write("</td>\n");
-      out.write("                            <td>");
+      out.write("                        <td>");
       out.print(asignaturaD.getCreditos());
       out.write("</td>\n");
-      out.write("                            <td>");
+      out.write("                        <td>");
       out.print(asignaturaD.getNombre());
       out.write("</td>\n");
-      out.write("                            <td>");
+      out.write("                        <td>");
       out.print(asignaturaD.getGuia_docente());
       out.write("</td>\n");
-      out.write("                            <td><a href=\"");
+      out.write("                        <td><a href=\"");
       out.print(asignaturaD.getGuia_docente());
       out.write("\" > link</a></td>\n");
-      out.write("                            <td>");
+      out.write("                        <td>");
       out.print(asignaturaD.getCodigo_Asignatura_Origen());
       out.write("</td>\n");
-      out.write("                            <td>");
+      out.write("                        <td>");
       out.print(asignaturaD.getEstado());
       out.write("</td>\n");
-      out.write("                            \n");
-      out.write("                            </tr>\n");
-      out.write("                            ");
+      out.write("\n");
+      out.write("                    </tr>\n");
+      out.write("                    ");
+
+                                }
+                            }
 
                         }
-                    }
-                    
-                }
       out.write("\n");
-      out.write("                \n");
-      out.write("                 \n");
+      out.write("\n");
+      out.write("\n");
       out.write("\n");
       out.write("                </tbody>\n");
       out.write("\n");
       out.write("\n");
       out.write("            </table>\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("            <h1>ACEPTAR ASIGNATURA</h1>\n");
+      out.write("            <select class=\"form-control\" id=\"listaAsignaturasAceptar\" name=\"listaAsignaturasAceptar\">\n");
+      out.write("                <option>Escoge una asignatura</option>\n");
+      out.write("                ");
+ if (listaAsignaturasDestino != null)
+                        for (Asignatura_Destino asignaturaD : listaAsignaturasDestino) {
+                            if (asignaturaD.getEstado().equals("Pendiente")) {
+                
+      out.write("\n");
+      out.write("                <option value=\"");
+      out.print(asignaturaD.getCodigo());
+      out.write('"');
+      out.write('>');
+      out.print(asignaturaD.getNombre());
+      out.print(" (" + asignaturaD.getCodigo() + ")");
+      out.write("</option>\n");
+      out.write("                ");
+ }
+                    }
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("            </select>\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("            <button>Rechazar</button>\n");
       out.write("            \n");
       out.write("            \n");
+      out.write("            <h1>RECHAZAR ASIGNATURA</h1>\n");
+      out.write("            <select class=\"form-control\" id=\"listaAsignaturasRechazar\" name=\"listaAsignaturasRechazar\">\n");
+      out.write("                <option>Escoge una asignatura</option>\n");
+      out.write("                ");
+ if (listaAsignaturasDestino != null)
+                        for (Asignatura_Destino asignaturaD : listaAsignaturasDestino) {
+                            if (asignaturaD.getEstado().equals("Pendiente")) {
+                
+      out.write("\n");
+      out.write("                <option value=\"");
+      out.print(asignaturaD.getCodigo());
+      out.write('"');
+      out.write('>');
+      out.print(asignaturaD.getNombre());
+      out.print(" (" + asignaturaD.getCodigo() + ")");
+      out.write("</option>\n");
+      out.write("                ");
+ }
+                    }
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("            </select>\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("            <button>Rechazar</button>\n");
+      out.write("\n");
+      out.write("\n");
       out.write("\n");
       out.write("        </form>\n");
       out.write("\n");

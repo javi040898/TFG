@@ -106,8 +106,10 @@ INSERT INTO Alumno VALUES ('12345','Antonio', 'Matamoros','antoni','57898755L','
 
 INSERT INTO Asignatura_origen VALUES (1,6,'Base de datos','https://www.tutorialesprogramacionya.com/javaya/detalleconcepto.php?codigo=139&punto=&inicio=');
 INSERT INTO Asignatura_origen VALUES (2,6,'Programacion','https://www.tutorialesprogramacionya.com/javaya/detalleconcepto.php?codigo=139&punto=&inicio=');
+INSERT INTO Asignatura_origen VALUES (3,6,'Matematicas','https://www.tutorialesprogramacionya.com/javaya/detalleconcepto.php?codigo=139&punto=&inicio=');
 INSERT INTO muchos_Asignatura_origen_tiene_muchos_Alumno VALUES(1,47231972);
 INSERT INTO muchos_Asignatura_origen_tiene_muchos_Alumno VALUES(2,47231972);
+INSERT INTO muchos_Asignatura_origen_tiene_muchos_Alumno VALUES(3,47231972);
 
 
 delete from Asignatura_origen;
@@ -116,6 +118,21 @@ delete from Asignatura_destino;
 INSERT INTO Asignatura_destino VALUES (1,3,'Database','www.cccccc.com',1,'Pendiente');
 INSERT INTO Asignatura_destino VALUES (2,3,'Database2','www.ddddddd.com',1,'Pendiente');
 INSERT INTO Asignatura_destino VALUES (3,6,'Programme','www.ppppppppppp.com',2,'Pendiente');
+INSERT INTO Asignatura_destino VALUES (4,6,'Maths','www.ppppppppppp.com',3,'Aceptada');
+
+UPDATE Asignatura_destino SET Estado = 'Pendiente' from Asignatura_destino ad inner join Asignatura_origen on 
+Asignatura_origen.codigo=ad.Codigo_Asignatura_origen inner join
+muchos_Asignatura_origen_tiene_muchos_Alumno on 
+Asignatura_origen.codigo=muchos_Asignatura_origen_tiene_muchos_Alumno.Codigo_Asignatura_origen
+where ad.Codigo = 1  and muchos_Asignatura_origen_tiene_muchos_Alumno.DNI_Alumno='47231972';
+
+UPDATE Asignatura_destino SET Estado = 'Aceptada' where Asignatura_destino.Codigo = 1
+
+select ad.Codigo from Asignatura_destino ad inner join Asignatura_origen on 
+Asignatura_origen.codigo=ad.Codigo_Asignatura_origen inner join
+muchos_Asignatura_origen_tiene_muchos_Alumno on 
+Asignatura_origen.codigo=muchos_Asignatura_origen_tiene_muchos_Alumno.Codigo_Asignatura_origen
+where muchos_Asignatura_origen_tiene_muchos_Alumno.DNI_Alumno='47231972';
 
 select * from Alumno;
 
@@ -131,6 +148,13 @@ on Asignatura_destino.Codigo_Asignatura_origen=Asignatura_origen.Codigo
 where DNI='47231972';
 
 select * from Asignatura_destino;
+select * from Asignatura_destino where Asignatura_destino.Codigo = 1 ;
+
+select * from Asignatura_destino ad inner join Asignatura_origen on 
+Asignatura_origen.codigo=ad.Codigo_Asignatura_origen inner join
+muchos_Asignatura_origen_tiene_muchos_Alumno on 
+Asignatura_origen.codigo=muchos_Asignatura_origen_tiene_muchos_Alumno.Codigo_Asignatura_origen
+where ad.Codigo = 1  and muchos_Asignatura_origen_tiene_muchos_Alumno.DNI_Alumno='47231972';
 
 select * from Usuario;
 

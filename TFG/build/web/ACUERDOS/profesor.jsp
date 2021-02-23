@@ -23,8 +23,8 @@
         </style>
         <h1>PROFESOR</h1>
 
-            
-        
+
+
         <form action="ProfesorController?accion=listarAlumnos" method="POST" autocomplete="off">
             <p align="center"> 
                 <select class="form-control" id="listaAlumnos" name="listaAlumnos">
@@ -32,9 +32,9 @@
                     <%
                         List<Alumno> listaAlumnos = (List<Alumno>) request.getAttribute("listaAlumnos");
                         if (listaAlumnos != null)
-                    for (Alumno alumno : listaAlumnos) {%>
+                            for (Alumno alumno : listaAlumnos) {%>
                     <option value="<%=alumno.getDNI()%>"><%=alumno.getNombre()%><%=" " + alumno.getApellidos()%><%=" (" + alumno.getDNI() + " )"%></option>
-                    <%}%>
+                    <% } %>
 
 
 
@@ -43,42 +43,49 @@
                 </select>
 
 
-            <button>Aceptar</button>
-            
-            
-            <table border="1" width="80%">
-                <thead>
-                    <tr>
-                        <th>Codigo</th>
-                        <th>Creditos</th>
-                        <th>Nombre</th>
-                        <th>Guia Docente</th>
-                        <th>Link</th>
-                        <th>Codigo</th>
-                        <th>Creditos</th>
-                        <th>Nombre</th>
-                        <th>Guia Docente</th>
-                        <th>Link</th>
-                        <th>Codigo destino</th>
-                        <th>Estado</th>
-                    </tr>
-                </thead>
+                <button>Aceptar</button>
 
-                <tbody>
-                <tr>
-                    <% List<Asignatura_Origen> listaAsignaturasOrigen = (List<Asignatura_Origen>)request.getAttribute("listaAsignaturasOrigen");
-                    List<Asignatura_Destino> listaAsignaturasDestino = (List<Asignatura_Destino>)request.getAttribute("listaAsignaturasDestino");
-            if(listaAsignaturasOrigen != null && listaAsignaturasDestino!=null)
-                for(Asignatura_Origen asignaturaO : listaAsignaturasOrigen){
-                    for(Asignatura_Destino asignaturaD : listaAsignaturasDestino){
-                        if(asignaturaO.getCodigo() == asignaturaD.getCodigo_Asignatura_Origen()){
+
+            <table border="1" width="80%" cellspacing="12">
+                <thead>
+
+                    <tr>
+                <div style="text-indent:15px;">ASIGNATURAS ORIGEN></div><div style="text-indent:1000px;">ASIGNATURAS DESTINO</div>
+
+                    </div>
+                    <th>Codigo</th>
+                    <th>Creditos</th>
+                    <th>Nombre</th>
+                    <th>Guia Docente</th>
+                    <th>Link</th>
+                    <th></th>
+
+                    <th>Codigo</th>
+                    <th>Creditos</th>
+                    <th>Nombre</th>
+                    <th>Guia Docente</th>
+                    <th>Link</th>
+                    <th>Codigo destino</th>
+                    <th>Estado</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <% List<Asignatura_Origen> listaAsignaturasOrigen = (List<Asignatura_Origen>) request.getAttribute("listaAsignaturasOrigen");
+                                List<Asignatura_Destino> listaAsignaturasDestino = (List<Asignatura_Destino>) request.getAttribute("listaAsignaturasDestino");
+                                if (listaAsignaturasOrigen != null && listaAsignaturasDestino != null)
+                                    for (Asignatura_Origen asignaturaO : listaAsignaturasOrigen) {
+                                        for (Asignatura_Destino asignaturaD : listaAsignaturasDestino) {
+                                            if (asignaturaO.getCodigo() == asignaturaD.getCodigo_Asignatura_Origen()) {
                             %>
-                            <tr>
+                        <tr>
                             <td><%=asignaturaO.getCodigo()%></td>
                             <td><%=asignaturaO.getCreditos()%></td>
                             <td><%=asignaturaO.getNombre()%></td>
                             <td><%=asignaturaO.getGuia_docente()%></td>
                             <td><a href="<%=asignaturaO.getGuia_docente()%>" > link</a></td>
+                            <td></td>
                             <td><%=asignaturaD.getCodigo()%></td>
                             <td><%=asignaturaD.getCreditos()%></td>
                             <td><%=asignaturaD.getNombre()%></td>
@@ -86,22 +93,64 @@
                             <td><a href="<%=asignaturaD.getGuia_docente()%>" > link</a></td>
                             <td><%=asignaturaD.getCodigo_Asignatura_Origen()%></td>
                             <td><%=asignaturaD.getEstado()%></td>
-                            
-                            </tr>
-                            <%
-                        }
-                    }
-                    
-                }%>
-                
-                 
 
-                </tbody>
+                        </tr>
+                        <%
+                                    }
+                                }
+
+                            }%>
+
+
+
+                    </tbody>
 
 
             </table>
-            
-            
+
+
+            <h1>ACEPTAR ASIGNATURA</h1>
+            <select class="form-control" id="listaAsignaturasAceptar" name="listaAsignaturasAceptar">
+                <option>Escoge una asignatura</option>
+                <% if (listaAsignaturasDestino != null)
+                        for (Asignatura_Destino asignaturaD : listaAsignaturasDestino) {
+                            if (asignaturaD.getEstado().equals("Pendiente")) {
+                %>
+                <option value="<%=asignaturaD.getCodigo()%>"><%=asignaturaD.getNombre()%><%=" (" + asignaturaD.getCodigo() + ")"%></option>
+                <% }
+                    }%>
+
+
+
+
+
+            </select>
+
+
+            <button>Rechazar</button>
+
+
+            <h1>RECHAZAR ASIGNATURA</h1>
+            <select class="form-control" id="listaAsignaturasRechazar" name="listaAsignaturasRechazar">
+                <option>Escoge una asignatura</option>
+                <% if (listaAsignaturasDestino != null)
+                        for (Asignatura_Destino asignaturaD : listaAsignaturasDestino) {
+                            if (asignaturaD.getEstado().equals("Pendiente")) {
+                %>
+                <option value="<%=asignaturaD.getCodigo()%>"><%=asignaturaD.getNombre()%><%=" (" + asignaturaD.getCodigo() + ")"%></option>
+                <% }
+                    }%>
+
+
+
+
+
+            </select>
+
+
+            <button>Rechazar</button>
+
+
 
         </form>
 

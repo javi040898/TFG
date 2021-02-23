@@ -79,3 +79,18 @@
 
             </table>
 </html>
+<select class="form-control" id="listaAsignaturasD" name="listaAsignaturasD">
+                <option>Escoge una asignaturao</option>
+                <%                        for (Asignatura_Destino asignaturaD : listaAsignaturasDestino) {
+                %>
+                <option value="<%=asignaturaD.getCodigo()%>"><%=asignaturaD.getNombre()%><%=" " + asignaturaD.getCodigo()%></option>
+                <% }%>
+
+
+
+
+
+            </select>
+
+
+            <button>Aceptar</button>
