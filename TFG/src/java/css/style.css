@@ -1,0 +1,26 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+body {
+    background:#3C82B6;
+    font-family: sans-serif; }
+
+hr { 
+    border 1px solid #DDDDDD; 
+    margin: 100px 50px; 
+    
+}
+#header h1 { 
+    display:inline; 
+
+}
+
+
+#header h12 { 
+    text-indent:1000px;
+
+}
+
+.div01{
+    color: black;
+    font-size:30px;
+}

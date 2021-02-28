@@ -92,5 +92,28 @@
 
             </select>
 
-
+<img src="..\img\uah.png" id="imagenuah"/>  
+        <img src="..\img\european.png" width="166" height="83" id="imagenue" align="right" hspace=500/>
             <button>Aceptar</button>
+            
+            <br>
+            <br><br><br>
+            <h1>RECHAZAR ASIGNATURA</h1>
+            <select class="form-control" id="listaAsignaturasRechazar" name="listaAsignaturasRechazar">
+                <option>Escoge una asignatura</option>
+                <% if (listaAsignaturasDestino != null)
+                        for (Asignatura_Destino asignaturaD : listaAsignaturasDestino) {
+                            if (asignaturaD.getEstado().equals("Pendiente")) {
+                %>
+                <option value="<%=asignaturaD.getCodigo()%>"><%=asignaturaD.getNombre()%><%=" (" + asignaturaD.getCodigo() + ")"%></option>
+                <% }
+                    }%>
+
+
+
+
+
+            </select>
+
+
+            <button>Rechazar</button>

@@ -41,7 +41,7 @@ CREATE TABLE public.Asignatura_origen(
 ALTER TABLE public.Asignatura_origen OWNER TO postgres;
 
 CREATE TABLE public.Asignatura_destino(
-	Codigo integer NOT NULL,
+	Codigo integer NOT NULL, --HACER VARCHAR
 	Creditos smallint,
 	Nombre varchar,
 	Guia_docente varchar,
@@ -136,6 +136,8 @@ where muchos_Asignatura_origen_tiene_muchos_Alumno.DNI_Alumno='47231972';
 
 select * from Alumno;
 
+delete from ALumno where dni='insertarAlumno';
+
 select * from Profesor;
 
 select passw from Profesor where Nombre_usuario_Usuario='javi040898';
@@ -162,7 +164,7 @@ select * from Asignatura_origen inner join Asignatura_destino
 on Asignatura_origen.codigo=codigo_Asignatura_origen;
 
 
-
+select DNI from Profesor inner join Usuario on Nombre_usuario_Usuario=Nombre_usuario where Usuario.nombre_usuario='javi040898';
 
 select * from Profesor where usuario='javi040898'
 select * from Alumno where usuario='javimart' and passw='12345'; 

@@ -46,6 +46,8 @@ public class ProfesorDAO {
         }
         return user;
     }
+    
+    
     public String obtenerPassword(String usuario){
         
         PreparedStatement ps;

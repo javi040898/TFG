@@ -16,8 +16,7 @@
         <title>INICIAR SESION</title>
     </head>
     <body>
-        <img src="..\img\uah.png" id="imagenuah"/>  
-        <img src="..\img\european.png" width="166" height="83" id="imagenue" align="right" hspace=500/>
+        
 
 
         <style>
@@ -98,7 +97,6 @@
                 </div>
             </div>
         </div>
-        <a href="" > Nuevo</a>
 
 
     </body>

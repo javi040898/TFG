@@ -56,8 +56,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <title>INICIAR SESION</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("        <img src=\"..\\img\\uah.png\" id=\"imagenuah\"/>  \n");
-      out.write("        <img src=\"..\\img\\european.png\" width=\"166\" height=\"83\" id=\"imagenue\" align=\"right\" hspace=500/>\n");
+      out.write("        \n");
       out.write("\n");
       out.write("\n");
       out.write("        <style>\n");
@@ -140,7 +139,6 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                </div>\n");
       out.write("            </div>\n");
       out.write("        </div>\n");
-      out.write("        <a href=\"\" > Nuevo</a>\n");
       out.write("\n");
       out.write("\n");
       out.write("    </body>\n");
