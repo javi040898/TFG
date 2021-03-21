@@ -58,7 +58,7 @@ public final class altaAlumno_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <p>\n");
       out.write("                \n");
       out.write("                Contraseña:\n");
-      out.write("                <input id=\"Contraseña\" name=\"Contraseña\" type=\"password\" align=\"center\"/> \n");
+      out.write("                <input id=\"Password\" name=\"Password\" type=\"password\" align=\"center\"/> \n");
       out.write("            </p>\n");
       out.write("            <p>\n");
       out.write("                \n");

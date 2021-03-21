@@ -77,11 +77,15 @@
                 <tbody>
                     <tr>
                         <% List<Asignatura_Origen> listaAsignaturasOrigen = (List<Asignatura_Origen>) request.getAttribute("listaAsignaturasOrigen");
+                            /*for (int i = 0; i < listaAsignaturasOrigen.size(); i++) {
+                                System.out.println(listaAsignaturasOrigen.get(i).getNombre());
+                            }*/
                             List<Asignatura_Destino> listaAsignaturasDestino = (List<Asignatura_Destino>) request.getAttribute("listaAsignaturasDestino");
                             if (listaAsignaturasOrigen != null && listaAsignaturasDestino != null)
                                 for (Asignatura_Origen asignaturaO : listaAsignaturasOrigen) {
                                     for (Asignatura_Destino asignaturaD : listaAsignaturasDestino) {
-                                        if (asignaturaO.getCodigo() == asignaturaD.getCodigo_Asignatura_Origen()) {
+                                        if (String.valueOf(asignaturaO.getCodigo()).equals(String.valueOf(asignaturaD.getCodigo_Asignatura_Origen())) ) {
+                                            System.out.println(asignaturaO.getNombre());
                         %>
                     <tr>
                         <td><%=asignaturaO.getCodigo()%></td>

@@ -53,16 +53,15 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
       out.write("        <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\" integrity=\"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\" crossorigin=\"anonymous\">\n");
+      out.write("        <link rel=\"stylesheet\" href=\"C:\\Users\\Javier\\Documents\\GitHub\\TFG\\TFG\\src\\java\\css\\style.css\" type=\"text/css\"> \n");
       out.write("        <title>INICIAR SESION</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("        \n");
+      out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("        <style>\n");
-      out.write("            body{\n");
-      out.write("                background:#3C82B6;\n");
-      out.write("            }\n");
+      out.write("\n");
       out.write("        </style>\n");
       out.write("\n");
       out.write("        <h1 align = \"center\"><font face=\"Courier\" size=7>\n");
@@ -84,10 +83,20 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                            <input type=\"password\" class=\"form-control\" name=\"password\" id=\"password\" placeholder=\"\">\n");
       out.write("\n");
       out.write("                        </div>\n");
-      out.write("                        \n");
+      out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("                        <button type=\"submit\" class=\"btn btn-primary\" name=\"login\" >Login</button>\n");
+      out.write("                        ");
+
+                            String mensaje = (String) request.getAttribute("error");
+                                                    if (mensaje == "error") {
+      out.write("<script>\n");
+      out.write("                                                        alert('Credenciales introducidas incorrectas');\n");
+      out.write("                        </script>");
+}
+      out.write("\n");
+      out.write("\n");
       out.write("                    </form>\n");
       out.write("                    ");
 

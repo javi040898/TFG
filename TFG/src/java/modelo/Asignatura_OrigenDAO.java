@@ -60,6 +60,29 @@ public class Asignatura_OrigenDAO {
 
         }
     }
+    
+            public boolean insertarAsignaturaDestino(Asignatura_Origen asignatura) {
+
+        PreparedStatement ps;
+
+        try {
+            ps = conexion.prepareStatement("INSERT INTO Asignatura_origen VALUES (?,?,?,?);");
+            
+            ps.setInt(1, asignatura.getCodigo());
+            ps.setInt(2, asignatura.getCreditos());
+            ps.setString(3, asignatura.getNombre());
+            ps.setString(4, asignatura.getGuia_docente());
+            
+            
+            ps.execute();
+
+            return true;
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+            return false;
+
+        }
+    }
 
     
 

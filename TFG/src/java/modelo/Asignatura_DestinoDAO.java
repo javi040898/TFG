@@ -79,4 +79,31 @@ public class Asignatura_DestinoDAO {
         }
 
     }
+    
+        public boolean insertarAsignaturaDestino(Asignatura_Destino asignatura) {
+
+        PreparedStatement ps;
+
+        try {
+            ps = conexion.prepareStatement("INSERT INTO Asignatura_destino VALUES (?,?,?,?,?,'Pendiente');");
+            
+            ps.setInt(1, asignatura.getCodigo());
+            ps.setInt(2, asignatura.getCreditos());
+            ps.setString(3, asignatura.getNombre());
+            ps.setString(4, asignatura.getGuia_docente());
+            ps.setInt(5, asignatura.getCodigo_Asignatura_Origen());
+            
+            ps.execute();
+
+            return true;
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+            return false;
+
+        }
+    }
+        
+
+        
+    
 }

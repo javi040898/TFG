@@ -9,15 +9,22 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="C:\Users\Javier\Documents\GitHub\TFG\TFG\src\java\css\style.css" type="text/css"> 
         <title>JSP Page</title>
     </head>
     <body>
-       <style>
-            body{
-                background:#3C82B6;
-            }
-        </style>
+       
         <h1>ALUMNO</h1>
+        <form action="ProfesorController?accion=listarAsignaturas" method="POST" autocomplete="off">
+            <%
+            String DNI = request.getAttribute("DNI_A").toString();
+            
+            %>
+
+        </form>
+        
+        
+         <a href="ProfesorController?accion=nuevaConvalidacion">Nueva convalidacion</a>
         
     </body>
 </html>

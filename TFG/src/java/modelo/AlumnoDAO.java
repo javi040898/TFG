@@ -124,4 +124,23 @@ public class AlumnoDAO {
 
         }
     }
+    
+    public String obtenerDNI(String usuario){
+        PreparedStatement ps;
+        ResultSet rs;
+        String user = "";
+        
+        try {
+            ps = conexion.prepareStatement("select DNI from Alumno where Nombre_usuario_Usuario = ?");
+            ps.setString(1, usuario);
+            rs = ps.executeQuery();
+            
+            while(rs.next()){
+                user = rs.getString("DNI");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return user;
+    }
 }

@@ -105,11 +105,11 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    <tr>\n");
       out.write("                <div><h1>ASIGNATURAS ORIGEN &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp\n");
       out.write("                        &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp\n");
-      out.write("                    ASIGNATURAS DESTINO</h1></div>\n");
+      out.write("                        ASIGNATURAS DESTINO</h1></div>\n");
       out.write("\n");
       out.write("\n");
-      out.write("                \n");
-      out.write("                \n");
+      out.write("\n");
+      out.write("\n");
       out.write("\n");
       out.write("                <th>Codigo</th>\n");
       out.write("                <th>Creditos</th>\n");
@@ -132,11 +132,16 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    <tr>\n");
       out.write("                        ");
  List<Asignatura_Origen> listaAsignaturasOrigen = (List<Asignatura_Origen>) request.getAttribute("listaAsignaturasOrigen");
+                            /*for (int i = 0; i < listaAsignaturasOrigen.size(); i++) {
+                                System.out.println(listaAsignaturasOrigen.get(i).getNombre());
+                            }*/
                             List<Asignatura_Destino> listaAsignaturasDestino = (List<Asignatura_Destino>) request.getAttribute("listaAsignaturasDestino");
                             if (listaAsignaturasOrigen != null && listaAsignaturasDestino != null)
                                 for (Asignatura_Origen asignaturaO : listaAsignaturasOrigen) {
                                     for (Asignatura_Destino asignaturaD : listaAsignaturasDestino) {
-                                        if (asignaturaO.getCodigo() == asignaturaD.getCodigo_Asignatura_Origen()) {
+                                        System.out.println("AsignaturaO: " +asignaturaO.getNombre() + asignaturaO.getCodigo() + " AsignaturaD: " + asignaturaD.getNombre() + asignaturaD.getCodigo_Asignatura_Origen());
+                                        if (String.valueOf(asignaturaO.getCodigo()).equals(String.valueOf(asignaturaD.getCodigo_Asignatura_Origen())) ) {
+                                            System.out.println(asignaturaO.getNombre());
                         
       out.write("\n");
       out.write("                    <tr>\n");
@@ -196,8 +201,8 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("            <br>\n");
       out.write("            <br><br><br>\n");
-      out.write("            \n");
-      out.write("            \n");
+      out.write("\n");
+      out.write("\n");
       out.write("            <h1 >MODIFICAR ASIGNATURA</h1>\n");
       out.write("            <select class=\"form-control\" id=\"listaAsignaturasModificar\" name=\"listaAsignaturasModificar\">\n");
       out.write("                <option>Escoge una asignatura</option>\n");
@@ -224,22 +229,26 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("            </select>\n");
-      out.write("                    \n");
-      out.write("                    <select class=\"form-control\" id=\"modificarEstado\" name=\"modificarEstado\">\n");
-      out.write("                        <option>Escoge un estado</option>\n");
-      out.write("                        <option>Aceptar</option>\n");
-      out.write("                        <option>Rechazar</option>\n");
-      out.write("                    </select>\n");
+      out.write("\n");
+      out.write("            <select class=\"form-control\" id=\"modificarEstado\" name=\"modificarEstado\">\n");
+      out.write("                <option>Escoge un estado</option>\n");
+      out.write("                <option>Aceptar</option>\n");
+      out.write("                <option>Rechazar</option>\n");
+      out.write("            </select>\n");
       out.write("\n");
       out.write("\n");
       out.write("            <button>Modificar</button>\n");
       out.write("\n");
-      out.write("            \n");
+      out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("        </form>\n");
       out.write("\n");
+      out.write("        <br>\n");
+      out.write("        <br><br><br>\n");
+      out.write("\n");
+      out.write("        <a href=\"ProfesorController?accion=nuevoAlumno\">Dar de alta alumno</a>\n");
       out.write("\n");
       out.write("\n");
       out.write("\n");

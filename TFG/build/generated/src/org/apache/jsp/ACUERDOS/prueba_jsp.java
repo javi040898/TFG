@@ -4,7 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class alumno_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class prueba_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -48,27 +48,21 @@ public final class alumno_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<html>\n");
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <link rel=\"stylesheet\" href=\"C:\\Users\\Javier\\Documents\\GitHub\\TFG\\TFG\\src\\java\\css\\style.css\" type=\"text/css\"> \n");
       out.write("        <title>JSP Page</title>\n");
       out.write("    </head>\n");
-      out.write("    <body>\n");
-      out.write("       \n");
-      out.write("        <h1>ALUMNO</h1>\n");
-      out.write("        <form action=\"ProfesorController?accion=listarAsignaturas\" method=\"POST\" autocomplete=\"off\">\n");
-      out.write("            ");
-
-            String DNI = request.getAttribute("DNI_A").toString();
-            
-            
+      out.write("    <p class=\"inline\">\n");
+      out.write("        <div class=\"form-group mx-sm-3\">\n");
+      out.write("       <label for=\"inputUser\" class=\"sr-only\">User</label>\n");
+      out.write("       <input type=\"password\" class=\"form-control\" id=\"inputUser\" placeholder=\"User\">\n");
+      out.write("   </div>\n");
+      out.write("   <div class=\"form-group mx-sm-3\">\n");
+      out.write("       <label for=\"inputPass\" class=\"sr-only\">Password</label>\n");
+      out.write("       <input type=\"password\" class=\"form-control\" id=\"inputPass\" placeholder=\"Pass\">\n");
+      out.write("   </div>\n");
+      out.write("    </p>    \n");
       out.write("\n");
       out.write("\n");
-      out.write("        </form>\n");
-      out.write("        \n");
-      out.write("        \n");
-      out.write("         <a href=\"ProfesorController?accion=nuevaConvalidacion\">Nueva convalidacion</a>\n");
-      out.write("        \n");
-      out.write("    </body>\n");
-      out.write("</html>\n");
+      out.write("</html>");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;

@@ -13,16 +13,15 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="C:\Users\Javier\Documents\GitHub\TFG\TFG\src\java\css\style.css" type="text/css"> 
         <title>INICIAR SESION</title>
     </head>
     <body>
-        
+
 
 
         <style>
-            body{
-                background:#3C82B6;
-            }
+
         </style>
 
         <h1 align = "center"><font face="Courier" size=7>
@@ -44,10 +43,17 @@
                             <input type="password" class="form-control" name="password" id="password" placeholder="">
 
                         </div>
-                        
+
 
 
                         <button type="submit" class="btn btn-primary" name="login" >Login</button>
+                        <%
+                            String mensaje = (String) request.getAttribute("error");
+                            if (mensaje == "error") {%>
+                                <script>
+                                alert('Credenciales introducidas incorrectas');
+                                </script><%}%>
+
                     </form>
                     <%
                         /* Connection con = null;
