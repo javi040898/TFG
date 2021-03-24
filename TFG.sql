@@ -132,7 +132,7 @@ muchos_Asignatura_origen_tiene_muchos_Alumno on
 Asignatura_origen.codigo=muchos_Asignatura_origen_tiene_muchos_Alumno.Codigo_Asignatura_origen
 where ad.Codigo = 1  and muchos_Asignatura_origen_tiene_muchos_Alumno.DNI_Alumno='47231972';
 
-UPDATE Asignatura_destino SET Estado = 'Aceptada' where Asignatura_destino.Codigo = 1
+UPDATE Asignatura_destino SET Estado = 'Pendiente';
 
 select ad.Codigo from Asignatura_destino ad inner join Asignatura_origen on 
 Asignatura_origen.codigo=ad.Codigo_Asignatura_origen inner join

@@ -1,44 +1,60 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
 #form1,#form2,#form3{
-    
+
     float:left;
-    
+
     margin:50px;
     padding:10px;
     top:20px;
     position:relative;
     top:100px;
-    
-        
+
+
 }
 #form4 {
-  background-color: white;
-  float:left;
-  border: black 1px solid;
-  display:block;
-  position:absolute;
-  bottom: 10px;
+    background-color: white;
+    float:left;
+    border: black 1px solid;
+    display:block;
+    position:absolute;
+    bottom: 10px;
 }
 #butConvalidacion{
-    
+
     position:absolute;
 
-        display:block;
+    display:block;
 
-        
 
-        left:750px;
-        top:550px;
 
-        background:#0CF;
+    left:750px;
+    top:550px;
+
+    background:#0CF;
 
 }
-    
+
+
+#table1 table {
+   width: 100%;
+   
+}
+#table1 th, td {
+
+   text-align: left;
+   vertical-align: top;
+   border: 1px solid #000;
+   border-collapse: collapse;
+   padding: 0.3em;
+   caption-side: bottom;
+}
 
 
 
-        
+
+
+
 body {
     background:#3C82B6;
     font-family: sans-serif; }
@@ -46,7 +62,7 @@ body {
 hr { 
     border 1px solid #DDDDDD; 
     margin: 100px 50px; 
-    
+
 }
 #header h1 { 
     display:inline; 
@@ -67,10 +83,10 @@ hr {
 .div02{
     position:absolute;
 
-        display:block;
+    display:block;
 
-        font-size:70px;
+    font-size:70px;
 
-        left:500px;
-        
+    left:500px;
+
 }

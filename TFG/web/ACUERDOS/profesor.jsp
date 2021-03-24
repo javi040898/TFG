@@ -29,6 +29,7 @@
                 <select class="form-control" id="listaAlumnos" name="listaAlumnos">
                     <option>Escoge un alumno</option>
                     <%
+                        
                         List<Alumno> listaAlumnos = (List<Alumno>) request.getAttribute("listaAlumnos");
                         if (listaAlumnos != null)
                             for (Alumno alumno : listaAlumnos) {%>
@@ -44,77 +45,84 @@
 
                 <button>Aceptar</button>
 
+            <div id="table1">
+                <table>
+                    <thead>
 
-            <table border="1" width="80%" cellspacing="12">
-                <thead>
-
-                    <tr>
-                <div><h1>ASIGNATURAS ORIGEN &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-                        &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-                        ASIGNATURAS DESTINO</h1></div>
-
+                        <tr>
+                    <div><h1>ASIGNATURAS ORIGEN 
+                            ASIGNATURAS DESTINO</h1></div>
 
 
 
 
-                <th>Codigo</th>
-                <th>Creditos</th>
-                <th>Nombre</th>
-                <th>Guia Docente</th>
-                <th>Link</th>
-                <th></th>
 
-                <th>Codigo</th>
-                <th>Creditos</th>
-                <th>Nombre</th>
-                <th>Guia Docente</th>
-                <th>Link</th>
-                <th>Codigo destino</th>
-                <th>Estado</th>
-                </tr>
-                </thead>
+                    <th>Codigo</th>
+                    <th>Creditos</th>
+                    <th>Nombre</th>
+                    <th>Guia Docente</th>
+                    <th>Link</th>
 
-                <tbody>
-                    <tr>
-                        <% List<Asignatura_Origen> listaAsignaturasOrigen = (List<Asignatura_Origen>) request.getAttribute("listaAsignaturasOrigen");
-                            /*for (int i = 0; i < listaAsignaturasOrigen.size(); i++) {
-                                System.out.println(listaAsignaturasOrigen.get(i).getNombre());
-                            }*/
-                            List<Asignatura_Destino> listaAsignaturasDestino = (List<Asignatura_Destino>) request.getAttribute("listaAsignaturasDestino");
-                            if (listaAsignaturasOrigen != null && listaAsignaturasDestino != null)
-                                for (Asignatura_Origen asignaturaO : listaAsignaturasOrigen) {
-                                    for (Asignatura_Destino asignaturaD : listaAsignaturasDestino) {
-                                        if (String.valueOf(asignaturaO.getCodigo()).equals(String.valueOf(asignaturaD.getCodigo_Asignatura_Origen())) ) {
-                                            System.out.println(asignaturaO.getNombre());
-                        %>
-                    <tr>
-                        <td><%=asignaturaO.getCodigo()%></td>
-                        <td><%=asignaturaO.getCreditos()%></td>
-                        <td><%=asignaturaO.getNombre()%></td>
-                        <td><%=asignaturaO.getGuia_docente()%></td>
-                        <td><a href="<%=asignaturaO.getGuia_docente()%>" > link</a></td>
-                        <td></td>
-                        <td><%=asignaturaD.getCodigo()%></td>
-                        <td><%=asignaturaD.getCreditos()%></td>
-                        <td><%=asignaturaD.getNombre()%></td>
-                        <td><%=asignaturaD.getGuia_docente()%></td>
-                        <td><a href="<%=asignaturaD.getGuia_docente()%>" > link</a></td>
-                        <td><%=asignaturaD.getCodigo_Asignatura_Origen()%></td>
-                        <td><%=asignaturaD.getEstado()%></td>
+                    <th style="border: hidden"></th>
 
+                    <th>Codigo</th>
+                    <th>Creditos</th>
+                    <th>Nombre</th>
+                    <th>Guia Docente</th>
+                    <th>Link</th>
+                    <th>Codigo destino</th>
+                    <th>Estado</th>
                     </tr>
-                    <%
+                    </thead>
+
+                    <tbody>
+                        
+                            <% List<Asignatura_Origen> listaAsignaturasOrigen = (List<Asignatura_Origen>) request.getAttribute("listaAsignaturasOrigen");
+                                /*for (int i = 0; i < listaAsignaturasOrigen.size(); i++) {
+                                    System.out.println(listaAsignaturasOrigen.get(i).getNombre());
+                                }*/
+
+                                List<Asignatura_Destino> listaAsignaturasDestino = (List<Asignatura_Destino>) request.getAttribute("listaAsignaturasDestino");
+                                if (listaAsignaturasOrigen != null && listaAsignaturasDestino != null)
+                                    for (Asignatura_Origen asignaturaO : listaAsignaturasOrigen) {
+                                        for (Asignatura_Destino asignaturaD : listaAsignaturasDestino) {
+                                            if (String.valueOf(asignaturaO.getCodigo()).equals(String.valueOf(asignaturaD.getCodigo_Asignatura_Origen()))) {
+                                                System.out.println(asignaturaO.getNombre());
+                            %>
+                        <tr>
+
+                            <td><%=asignaturaO.getCodigo()%></td>
+                            <td><%=asignaturaO.getCreditos()%></td>
+                            <td><%=asignaturaO.getNombre()%></td>
+                            <td><%=asignaturaO.getGuia_docente()%></td>
+                            <td><a href="<%=asignaturaO.getGuia_docente()%>" > link</a></td>
+                            <
+
+                            <td style="border: hidden">---></td>
+                            <td><%=asignaturaD.getCodigo()%></td>
+                            <td><%=asignaturaD.getCreditos()%></td>
+                            <td><%=asignaturaD.getNombre()%></td>
+                            <td><%=asignaturaD.getGuia_docente()%></td>
+                            <td><a href="<%=asignaturaD.getGuia_docente()%>" > link</a></td>
+                            <td><%=asignaturaD.getCodigo_Asignatura_Origen()%></td>
+                            <td><%=asignaturaD.getEstado()%></td>
+
+
+
+                        </tr>
+                        <%
+                                    }
                                 }
-                            }
 
-                        }%>
-
+                            }%>
 
 
-                </tbody>
+
+                    </tbody>
 
 
-            </table>
+                </table>
+            </div>
 
             <br>
             <br><br><br>

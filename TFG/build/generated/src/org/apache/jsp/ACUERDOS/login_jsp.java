@@ -90,10 +90,11 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                        ");
 
                             String mensaje = (String) request.getAttribute("error");
-                                                    if (mensaje == "error") {
-      out.write("<script>\n");
-      out.write("                                                        alert('Credenciales introducidas incorrectas');\n");
-      out.write("                        </script>");
+                            if (mensaje == "error") {
+      out.write("\n");
+      out.write("                                <script>\n");
+      out.write("                                alert('Credenciales introducidas incorrectas');\n");
+      out.write("                                </script>");
 }
       out.write("\n");
       out.write("\n");
