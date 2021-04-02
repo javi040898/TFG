@@ -66,7 +66,8 @@ public final class alumno_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        \n");
       out.write("        \n");
       out.write("         <a href=\"ProfesorController?accion=nuevaConvalidacion\">Nueva convalidacion</a>\n");
-      out.write("        \n");
+      out.write("         <br>\n");
+      out.write("         <a href=\"ProfesorController?accion=buscarConvalidacion\">Buscar antiguas convalidaciones</a>\n");
       out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {

@@ -4,11 +4,13 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Javier/Documents/GitHub/TFG/TFG/web/ACUERDOS/profesor.jsp</file>
+            <file>file:/C:/Users/Javier/Documents/GitHub/TFG/TFG/web/ACUERDOS/buscador.jsp</file>
             <file>file:/C:/Users/Javier/Documents/GitHub/TFG/TFG/src/java/css/style.css</file>
             <file>file:/C:/Users/Javier/Documents/GitHub/TFG/TFG/src/java/modelo/Asignatura_OrigenDAO.java</file>
             <file>file:/C:/Users/Javier/Documents/GitHub/TFG/TFG/web/ACUERDOS/login.jsp</file>
             <file>file:/C:/Users/Javier/Documents/GitHub/TFG/TFG/web/ACUERDOS/prueba.jsp</file>
             <file>file:/C:/Users/Javier/Documents/GitHub/TFG/TFG/src/java/modelo/AlumnoDAO.java</file>
+            <file>file:/C:/Users/Javier/Documents/GitHub/TFG/TFG/web/ACUERDOS/alumno.jsp</file>
             <file>file:/C:/Users/Javier/Documents/GitHub/TFG/TFG/src/java/modelo/Asignatura_Destino.java</file>
             <file>file:/C:/Users/Javier/Documents/GitHub/TFG/TFG/src/java/controlador/ProfesorController.java</file>
             <file>file:/C:/Users/Javier/Documents/GitHub/TFG/TFG/src/java/modelo/Asignatura_DestinoDAO.java</file>

@@ -134,6 +134,12 @@ where ad.Codigo = 1  and muchos_Asignatura_origen_tiene_muchos_Alumno.DNI_Alumno
 
 UPDATE Asignatura_destino SET Estado = 'Pendiente';
 
+select Asignatura_origen.* from Asignatura_origen inner join Asignatura_destino on Asignatura_origen.codigo=Asignatura_destino.Codigo_Asignatura_origen
+where Asignatura_origen.codigo = '1' and estado = 'Aceptada' ;
+
+select Asignatura_destino.* from Asignatura_origen inner join Asignatura_destino on Asignatura_origen.codigo=Asignatura_destino.Codigo_Asignatura_origen
+where Asignatura_origen.codigo = '1' and estado = 'Aceptada' ;
+
 select ad.Codigo from Asignatura_destino ad inner join Asignatura_origen on 
 Asignatura_origen.codigo=ad.Codigo_Asignatura_origen inner join
 muchos_Asignatura_origen_tiene_muchos_Alumno on 

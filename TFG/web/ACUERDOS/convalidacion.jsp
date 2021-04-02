@@ -16,7 +16,7 @@
                 background:#3C82B6;
             }
        </style>
-        <title>JSP Page</title>
+        <title>CONVALIDACION</title>
     </head>
     <body>
         <div class="div02"> CONVALIDACIONES</div>

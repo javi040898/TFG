@@ -60,20 +60,54 @@ public class Asignatura_OrigenDAO {
 
         }
     }
-    
-            public boolean insertarAsignaturaDestino(Asignatura_Origen asignatura) {
+
+    public List<Asignatura_Origen> listarAsignaturasBuscador(Integer codigo) {
+        PreparedStatement ps;
+        ResultSet rs;
+        List<Asignatura_Origen> lista = new ArrayList<>();
+        try {
+            ps = conexion.prepareStatement("select Asignatura_origen.* from Asignatura_origen inner join Asignatura_destino on "
+                    + "Asignatura_origen.codigo=Asignatura_destino.Codigo_Asignatura_origen\n"
+                    + "where Asignatura_origen.codigo = ? and estado = 'Aceptada' ;");
+            ps.setInt(1, codigo);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+
+                Integer creditos = rs.getInt("creditos");
+                String nombre = rs.getString("nombre");
+                String guia_docente = rs.getString("guia_docente");
+
+                Asignatura_Origen asignatura = new Asignatura_Origen(codigo, creditos, nombre, guia_docente);
+                //System.out.println("codigo"+codigo);
+                //System.out.println("creditos"+creditos);
+                //System.out.println("nombre"+nombre);
+                //System.out.println("guia_docente"+guia_docente);
+
+                lista.add(asignatura);
+            }
+
+            return lista;
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+            return null;
+
+        }
+    }
+
+    public boolean insertarAsignaturaOrigen(Asignatura_Origen asignatura) {
 
         PreparedStatement ps;
 
         try {
             ps = conexion.prepareStatement("INSERT INTO Asignatura_origen VALUES (?,?,?,?);");
-            
+
             ps.setInt(1, asignatura.getCodigo());
             ps.setInt(2, asignatura.getCreditos());
             ps.setString(3, asignatura.getNombre());
             ps.setString(4, asignatura.getGuia_docente());
-            
-            
+
             ps.execute();
 
             return true;
@@ -83,7 +117,5 @@ public class Asignatura_OrigenDAO {
 
         }
     }
-
-    
 
 }
