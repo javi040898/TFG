@@ -27,5 +27,7 @@
          <a href="ProfesorController?accion=nuevaConvalidacion">Nueva convalidacion</a>
          <br>
          <a href="ProfesorController?accion=buscarConvalidacion">Buscar antiguas convalidaciones</a>
+         <br>
+         <a href="ProfesorController?accion=cambiarPassword">Cambiar contraseña</a>
     </body>
 </html>

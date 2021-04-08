@@ -179,6 +179,34 @@ public class ProfesorController extends HttpServlet {
             //System.out.println("DNI"+DNI_Alumno);
             //request.setAttribute("DNI_A", DNI_Alumno);
 
+        } else if ("cambiarPassword".equals(accion)) {
+            dispatcher = request.getRequestDispatcher("ACUERDOS/cambiarContraseña.jsp");
+            //System.out.println("DNI"+DNI_Alumno);
+            //request.setAttribute("DNI_A", DNI_Alumno);
+
+        } else if ("cambiarPassw".equals(accion)) {
+            String passA = request.getParameter("PasswA");
+            String passN1 = request.getParameter("PasswN1");
+            String passN2 = request.getParameter("PasswN2");
+            String mensaje_error = "";
+            
+            if(alumnoDAO.obtenerPassword2(DNI_Alumno).equals(passA) && passN1.equals(passN2)){
+                alumnoDAO.cambiarContraseña(DNI_Alumno, passN1);
+                mensaje_error = "correcto";
+                request.setAttribute("confirmacion", mensaje_error);
+                dispatcher = request.getRequestDispatcher("ACUERDOS/cambiarContraseña.jsp");
+            }
+            else {
+                mensaje_error = "error";
+                request.setAttribute("confirmacion", mensaje_error);
+                dispatcher = request.getRequestDispatcher("ACUERDOS/cambiarContraseña.jsp");
+            }
+            
+            
+            
+            //System.out.println("DNI"+DNI_Alumno);
+            //request.setAttribute("DNI_A", DNI_Alumno);
+
         } else if ("insertarConvalidacion".equals(accion)) {
             //dispatcher = request.getRequestDispatcher("ACUERDOS/convalidacion.jsp");
             //System.out.println("DNI"+DNI_Alumno);

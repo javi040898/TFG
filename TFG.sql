@@ -146,7 +146,11 @@ muchos_Asignatura_origen_tiene_muchos_Alumno on
 Asignatura_origen.codigo=muchos_Asignatura_origen_tiene_muchos_Alumno.Codigo_Asignatura_origen
 where muchos_Asignatura_origen_tiene_muchos_Alumno.DNI_Alumno='47231972';
 
+update Alumno set Passw='123456' where DNI = '47231972';
+
 select * from Alumno;
+
+select passw from Alumno where DNI = '47231972';
 
 delete from ALumno where dni='insertarAlumno';
 

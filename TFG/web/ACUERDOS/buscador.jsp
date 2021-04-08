@@ -16,7 +16,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <style>
             body{
-                background:#3C82B6;
+                background:#F5F5F5;
             }
         </style>
         <title>BUSCADOR DE CONVALIDACION</title>
@@ -100,7 +100,7 @@
                             <td><%=asignaturaO.getCreditos()%></td>
                             <td><%=asignaturaO.getNombre()%></td>
                             <td><%=asignaturaO.getGuia_docente()%></td>
-                            <td><a href="<%=asignaturaO.getGuia_docente()%>" > link</a></td>
+                            <td><a href="<%=asignaturaO.getGuia_docente()%>" target="_blank" > link</a></td>
 
 
                             <td style="border: hidden">---></td>
@@ -108,7 +108,7 @@
                             <td><%=asignaturaD.getCreditos()%></td>
                             <td><%=asignaturaD.getNombre()%></td>
                             <td><%=asignaturaD.getGuia_docente()%></td>
-                            <td><a href="<%=asignaturaD.getGuia_docente()%>" > link</a></td>
+                            <td><a href="<%=asignaturaD.getGuia_docente()%>" target="_blank" > link</a></td>
                             <td><%=asignaturaD.getCodigo_Asignatura_Origen()%></td>
                             <td><%=asignaturaD.getEstado()%></td>
 

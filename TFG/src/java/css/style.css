@@ -1,5 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
+
 #form1,#form2,#form3{
 
     float:left;
@@ -30,7 +31,7 @@
 #titulo2{
 
     float:left;
-    left:440px;
+    left:400px;
     margin:30px;
     padding:10px;
     top:80px;
@@ -70,13 +71,13 @@
 
     float:left;
     left:1000px;
-  
+
 
     margin:20px;
     padding:10px;
     top:180px;
     position:absolute;
- 
+
 
 
 }
@@ -130,6 +131,28 @@
 
 }
 
+#form9 {
+    float:left;
+
+    margin:25px;
+    padding:10px;
+    position:relative;
+    left:600px;
+
+
+}
+
+#form10 {
+    float:left;
+
+    margin:25px;
+    padding:10px;
+    position:relative;
+    left:600px;
+
+
+}
+
 #butConvalidacion{
 
     position:absolute;
@@ -161,32 +184,58 @@
 }
 
 #butAceptar{
+    float:left;
 
-    position:absolute;
+    margin:25px;
+    padding:10px;
+    position:relative;
 
     display:block;
 
 
 
-    left:840px;
-    top:102px;
+    left:568px;
+    top:5px;
 
-    background:#0CF;
+
 
 }
 
 #butModificar{
 
+    float:left;
+
+    margin:25px;
+    padding:10px;
+    position:relative;
+    top:175px;
+    right:600px;
+
+}
+
+#butCambiar{
+
+    float:left;
+
+    margin:25px;
+    padding:10px;
     position:absolute;
+    top:136px;
+    left:378px;
 
-    display:block;
 
+}
 
+#butAlta{
 
-    left:600px;
-    top:978px;
+    float:left;
 
-    background:#0CF;
+    margin:25px;
+    padding:10px;
+    position:relative;
+    top:500px;
+    left:370px;
+
 
 }
 
@@ -207,7 +256,7 @@
 
 
 #table1 table {
-        width: 100%;
+    width: 100%;
     border: black 1px solid;
     position: relative;
     bottom: -70px;
@@ -244,7 +293,7 @@
 
 
 body {
-    background:#3C82B6;
+    background:#F5F5F5;
     font-family: sans-serif; }
 
 hr { 
@@ -278,7 +327,16 @@ hr {
     left:500px;
 
 }
+.div03{
+    position:absolute;
 
+    display:block;
+
+    font-size:70px;
+
+    left:500px;
+
+}
 .div06{
     position:absolute;
 

@@ -61,9 +61,10 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
       out.write("        <link rel=\"stylesheet\" href=\"C:\\Users\\Javier\\Documents\\GitHub\\TFG\\TFG\\src\\java\\css\\style.css\" type=\"text/css\">        <title>PROFESOR</title>\n");
       out.write("        <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\" integrity=\"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\" crossorigin=\"anonymous\">\n");
+      out.write("        \n");
       out.write("        <style>\n");
       out.write("            body{\n");
-      out.write("                background:#3C82B6;\n");
+      out.write("                background:#F5F5F5;\n");
       out.write("            }\n");
       out.write("        </style>\n");
       out.write("    </head>\n");
@@ -271,7 +272,7 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <br>\n");
       out.write("        <br><br><br>\n");
       out.write("        <div id=\"enlaceNuevo\">\n");
-      out.write("                <a href=\"ProfesorController?accion=nuevoAlumno\">Dar de alta alumno</a>\n");
+      out.write("                <a href=\"ProfesorController?accion=nuevoAlumno\">Dar de alta a nuevo alumno</a>\n");
       out.write("            </div>\n");
       out.write("        \n");
       out.write("\n");

@@ -18,25 +18,26 @@ import java.util.List;
  * @author Javier
  */
 public class AlumnoDAO {
+
     Connection conexion;
-    
-    public AlumnoDAO(){
+
+    public AlumnoDAO() {
         Conexion conn = new Conexion();
         conexion = conn.connect();
     }
-    
-    public String obtenerPassword(String usuario){
-        
+
+    public String obtenerPassword(String usuario) {
+
         PreparedStatement ps;
         ResultSet rs;
         String passw = "";
-        
+
         try {
             ps = conexion.prepareStatement("select passw from Alumno where Nombre_usuario_Usuario = ?");
             ps.setString(1, usuario);
             rs = ps.executeQuery();
-            
-            while(rs.next()){
+
+            while (rs.next()) {
                 passw = rs.getString("passw");
             }
         } catch (SQLException ex) {
@@ -44,6 +45,27 @@ public class AlumnoDAO {
         }
         return passw;
     }
+
+    public String obtenerPassword2(String DNI) {
+
+        PreparedStatement ps;
+        ResultSet rs;
+        String passw = "";
+
+        try {
+            ps = conexion.prepareStatement("select passw from Alumno where DNI = ?");
+            ps.setString(1, DNI);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                passw = rs.getString("passw");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return passw;
+    }
+
     public List<Alumno> listarAlumnos(String DNI_Profesor) {
 
         PreparedStatement ps;
@@ -56,7 +78,7 @@ public class AlumnoDAO {
             rs = ps.executeQuery();
 
             while (rs.next()) {
-                
+
                 String contraseña = rs.getString("passw");
                 String nombre = rs.getString("nombre");
                 String apellidos = rs.getString("apellidos");
@@ -64,7 +86,7 @@ public class AlumnoDAO {
                 String DNI = rs.getString("DNI");
                 String DNI_Prof = rs.getString("DNI_Profesor");
 
-                Alumno alumno = new Alumno(contraseña, nombre, apellidos,nombre_usuario,DNI,DNI_Prof);
+                Alumno alumno = new Alumno(contraseña, nombre, apellidos, nombre_usuario, DNI, DNI_Prof);
 
                 lista.add(alumno);
             }
@@ -76,13 +98,14 @@ public class AlumnoDAO {
 
         }
     }
+
     public boolean insertar(Alumno alumno) {
 
         PreparedStatement ps;
 
         try {
             ps = conexion.prepareStatement("insert into Alumno values(?,?,?,?,?,?)");
-            
+
             ps.setString(1, alumno.getContraseña());
             ps.setString(2, alumno.getNombre());
             ps.setString(3, alumno.getApellidos());
@@ -98,6 +121,7 @@ public class AlumnoDAO {
 
         }
     }
+
     public List<Integer> listarCodigosAsignaturasAlumno(String DNI) {
         PreparedStatement ps;
         ResultSet rs;
@@ -124,23 +148,40 @@ public class AlumnoDAO {
 
         }
     }
-    
-    public String obtenerDNI(String usuario){
+
+    public String obtenerDNI(String usuario) {
         PreparedStatement ps;
         ResultSet rs;
         String user = "";
-        
+
         try {
             ps = conexion.prepareStatement("select DNI from Alumno where Nombre_usuario_Usuario = ?");
             ps.setString(1, usuario);
             rs = ps.executeQuery();
-            
-            while(rs.next()){
+
+            while (rs.next()) {
                 user = rs.getString("DNI");
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
         return user;
+    }
+
+    public boolean cambiarContraseña(String DNI, String password) {
+        PreparedStatement ps;
+        ResultSet rs;
+
+        try {
+            ps = conexion.prepareStatement("update Alumno set Passw = ? where DNI = ?;");
+            ps.setString(1, password);
+            ps.setString(2, DNI);
+            rs = ps.executeQuery();
+            return true;
+
+        } catch (SQLException ex) {
+            return false;
+        }
+
     }
 }

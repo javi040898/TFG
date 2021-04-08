@@ -14,7 +14,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="Profesor">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="480" y="320"/>
+	<position x="920" y="200"/>
 	<column name="Password">
 		<type name="varchar" length="0"/>
 	</column>
@@ -43,7 +43,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="Alumno">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="300" y="660"/>
+	<position x="280" y="160"/>
 	<column name="Password">
 		<type name="varchar" length="0"/>
 	</column>
@@ -56,15 +56,31 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="DNI" not-null="true">
 		<type name="varchar" length="0"/>
 	</column>
+	<column name="Universidad_destino">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="Pais_destino">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="Curso_academico">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="Tipo_erasmus">
+		<type name="varchar" length="0"/>
+	</column>
 	<constraint name="Alumno_pk" type="pk-constr" table="public.&quot;Alumno&quot;">
 		<columns names="DNI" ref-type="src-columns"/>
 	</constraint>
 
 	<customidxs object-type="column">
+		<object name="Codigo_Grado" index="6"/>
+		<object name="DNI_Profesor" index="5"/>
 		<object name="Nombre_usuario_Usuario" index="3"/>
 	</customidxs>
 
 	<customidxs object-type="constraint">
+		<object name="Grado_fk" index="3"/>
+		<object name="Profesor_fk" index="2"/>
 		<object name="Usuario_fk" index="0"/>
 	</customidxs>
 </table>
@@ -72,9 +88,9 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="Asignatura_origen">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="80" y="260"/>
+	<position x="120" y="540"/>
 	<column name="Codigo" not-null="true">
-		<type name="integer" length="0"/>
+		<type name="varchar" length="0"/>
 	</column>
 	<column name="Creditos">
 		<type name="smallint" length="0"/>
@@ -82,7 +98,10 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="Nombre">
 		<type name="varchar" length="0"/>
 	</column>
-	<column name="Guia_docente">
+	<column name="Informacion">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="Tipo">
 		<type name="varchar" length="0"/>
 	</column>
 	<constraint name="Asignatura_origen_pk" type="pk-constr" table="public.&quot;Asignatura_origen&quot;">
@@ -93,7 +112,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="Usuario">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="960" y="120"/>
+	<position x="640" y="40"/>
 	<column name="Nombre_usuario" not-null="true">
 		<type name="varchar" length="0"/>
 	</column>
@@ -143,9 +162,9 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="Asignatura_destino">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="440" y="80"/>
+	<position x="1000" y="500"/>
 	<column name="Codigo" not-null="true">
-		<type name="integer" length="0"/>
+		<type name="varchar" length="0"/>
 	</column>
 	<column name="Creditos">
 		<type name="smallint" length="0"/>
@@ -153,7 +172,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="Nombre">
 		<type name="varchar" length="0"/>
 	</column>
-	<column name="Guia_docente">
+	<column name="Informacion">
 		<type name="varchar" length="0"/>
 	</column>
 	<column name="Estado">
@@ -179,6 +198,33 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 custom-color="#83af1f"
 	 src-table="public.&quot;Asignatura_origen&quot;"
 	 dst-table="public.&quot;Asignatura_destino&quot;"
+	 src-required="false" dst-required="false"/>
+
+<table name="Grado">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="40" y="40"/>
+	<column name="Codigo" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="Nombre">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="Facultad">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="Grado_pk" type="pk-constr" table="public.&quot;Grado&quot;">
+		<columns names="Codigo" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="Grado_tiene_muchos_Alumno" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;Grado&quot;"
+	 dst-table="public.&quot;Alumno&quot;"
 	 src-required="false" dst-required="false"/>
 
 </dbmodel>

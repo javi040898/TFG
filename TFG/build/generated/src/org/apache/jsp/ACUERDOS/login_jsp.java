@@ -54,6 +54,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
       out.write("        <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\" integrity=\"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\" crossorigin=\"anonymous\">\n");
       out.write("        <link rel=\"stylesheet\" href=\"C:\\Users\\Javier\\Documents\\GitHub\\TFG\\TFG\\src\\java\\css\\style.css\" type=\"text/css\"> \n");
+      out.write("   \n");
       out.write("        <title>INICIAR SESION</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
@@ -61,7 +62,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("        <style>\n");
-      out.write("\n");
+      out.write("            \n");
       out.write("        </style>\n");
       out.write("\n");
       out.write("        <h1 align = \"center\"><font face=\"Courier\" size=7>\n");
