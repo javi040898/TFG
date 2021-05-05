@@ -73,7 +73,8 @@ public class AlumnoDAO {
         List<Alumno> lista = new ArrayList<>();
 
         try {
-            ps = conexion.prepareStatement("select * from Alumno where DNI_Profesor = ?;");
+            ps = conexion.prepareStatement("SELECT Alumno.* from Alumno inner join Estancia on DNI_Alumno=Alumno.DNI \n"
+                    + "inner join Coordinador on DNI_Coordinador=Coordinador.DNI where Coordinador.DNI= ?;");
             ps.setString(1, DNI_Profesor);
             rs = ps.executeQuery();
 
@@ -84,9 +85,9 @@ public class AlumnoDAO {
                 String apellidos = rs.getString("apellidos");
                 String nombre_usuario = rs.getString("Nombre_usuario_Usuario");
                 String DNI = rs.getString("DNI");
-                String DNI_Prof = rs.getString("DNI_Profesor");
+                String codigo_grado = rs.getString("codigo_grado");
 
-                Alumno alumno = new Alumno(contraseña, nombre, apellidos, nombre_usuario, DNI, DNI_Prof);
+                Alumno alumno = new Alumno(DNI,nombre, apellidos,contraseña, nombre_usuario,  codigo_grado);
 
                 lista.add(alumno);
             }
@@ -105,13 +106,13 @@ public class AlumnoDAO {
 
         try {
             ps = conexion.prepareStatement("insert into Alumno values(?,?,?,?,?,?)");
-
-            ps.setString(1, alumno.getContraseña());
-            ps.setString(2, alumno.getNombre());
-            ps.setString(3, alumno.getApellidos());
-            ps.setString(4, alumno.getNombre_usuario_Usuario());
-            ps.setString(5, alumno.getDNI());
-            ps.setString(6, alumno.getDNI_Profesor());
+            
+            ps.setString(1, alumno.getDNI());
+            ps.setString(2, alumno.getContraseña());
+            ps.setString(3, alumno.getNombre());
+            ps.setString(4, alumno.getApellidos());
+            ps.setString(5, alumno.getNombre_usuario_Usuario());
+            ps.setString(6, alumno.getCodigo_grado());
             ps.execute();
 
             return true;
@@ -166,6 +167,43 @@ public class AlumnoDAO {
             System.out.println(ex.getMessage());
         }
         return user;
+    }
+    
+     public String obtenerNombre(String DNI) {
+        PreparedStatement ps;
+        ResultSet rs;
+        String cadena = "";
+
+        try {
+            ps = conexion.prepareStatement("select Nombre from Alumno where DNI = ?");
+            ps.setString(1, DNI);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                cadena = rs.getString("Nombre");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return cadena;
+    }
+     public String obtenerApellidos(String DNI) {
+        PreparedStatement ps;
+        ResultSet rs;
+        String cadena = "";
+
+        try {
+            ps = conexion.prepareStatement("select Apellidos from Alumno where DNI = ?");
+            ps.setString(1, DNI);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                cadena = rs.getString("Apellidos");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return cadena;
     }
 
     public boolean cambiarContraseña(String DNI, String password) {

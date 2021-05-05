@@ -10,23 +10,18 @@ package modelo;
  * @author Javier
  */
 public class Asignatura_Origen {
-    private Integer codigo, creditos;
-    private String nombre, guia_docente;
+    private Integer creditos;
+    private String nombre, informacion,codigo,tipo;
 
-    public Asignatura_Origen(Integer codigo, Integer creditos, String nombre, String guia_docente) {
+    public Asignatura_Origen(String codigo, Integer creditos, String nombre, String informacion,String tipo) {
         this.codigo = codigo;
         this.creditos = creditos;
         this.nombre = nombre;
-        this.guia_docente = guia_docente;
+        this.informacion = informacion;
+        this.tipo = tipo;
     }
 
-    public Integer getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(Integer codigo) {
-        this.codigo = codigo;
-    }
+    
 
     public Integer getCreditos() {
         return creditos;
@@ -44,12 +39,30 @@ public class Asignatura_Origen {
         this.nombre = nombre;
     }
 
-    public String getGuia_docente() {
-        return guia_docente;
+    public String getInformacion() {
+        return informacion;
     }
 
-    public void setGuia_docente(String guia_docente) {
-        this.guia_docente = guia_docente;
+    public void setInformacion(String informacion) {
+        this.informacion = informacion;
     }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+
     
 }

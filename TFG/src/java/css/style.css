@@ -17,12 +17,12 @@
 #titulo1{
 
     float:left;
-
+    font-size: medium;
     margin:30px;
     padding:10px;
     top:80px;
     position:relative;
-    right:200px;
+    right:400px;
 
 
 
@@ -31,7 +31,8 @@
 #titulo2{
 
     float:left;
-    left:400px;
+    font-size: medium;
+    left:-200px;
     margin:30px;
     padding:10px;
     top:80px;
@@ -81,6 +82,9 @@
 
 
 }
+
+
+
 #form4 {
     background-color: white;
     float:left;
@@ -98,6 +102,17 @@
     position:relative;
     top:30px;
     left: 600px;
+}
+
+#comentarios {
+    float:left;
+
+    margin:15px;
+    padding:10px;
+    position:relative;
+    top:0px;
+    left: 150px;
+
 }
 
 #form6 {
@@ -233,10 +248,9 @@
     margin:25px;
     padding:10px;
     position:relative;
-    top:500px;
+    top:910px;
     left:370px;
-
-
+   
 }
 
 #enlaceNuevo{
@@ -250,7 +264,7 @@
 
     top:110px;
 
-    background:#0CF;
+    
 
 }
 
@@ -289,6 +303,24 @@
     border: hidden;
     padding: 0.3em;
 }
+
+#table3 table {
+    width: 100%;
+    border: black 1px solid;
+    position: relative;
+    bottom: -70px;
+
+}
+#table3 th, td {
+
+    text-align: left;
+    vertical-align: top;
+    border: 1px solid #000;
+    border-collapse: collapse;
+    border: hidden;
+    padding: 0.3em;
+}
+
 
 
 

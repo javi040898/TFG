@@ -3,18 +3,18 @@
 CAUTION: Do not modify this file unless you know what you are doing.
          Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="0.9.1" last-position="0,0" last-zoom="1"
+<dbmodel pgmodeler-ver="0.9.3-beta1" use-changelog="false" last-position="0,0" last-zoom="1" max-obj-count="12"
 	 default-schema="public" default-owner="postgres">
 <database name="new_database" is-template="false" allow-conns="true">
 </database>
 
-<schema name="public" fill-color="#e1e1e1" sql-disabled="true">
+<schema name="public" layer="0" fill-color="#e1e1e1" sql-disabled="true">
 </schema>
 
-<table name="Coordinador">
+<table name="Coordinador" layer="0" collapse-mode="2" max-obj-count="7" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="1460" y="520"/>
+	<position x="1540" y="500"/>
 	<column name="DNI" not-null="true">
 		<type name="varchar" length="0"/>
 	</column>
@@ -43,10 +43,10 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	</customidxs>
 </table>
 
-<table name="Alumno">
+<table name="Alumno" layer="0" collapse-mode="2" max-obj-count="7" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="340" y="680"/>
+	<position x="360" y="680"/>
 	<column name="DNI" not-null="true">
 		<type name="varchar" length="0"/>
 	</column>
@@ -65,21 +65,19 @@ CAUTION: Do not modify this file unless you know what you are doing.
 
 	<customidxs object-type="column">
 		<object name="Codigo_Grado" index="5"/>
-		<object name="Codigo_erasmus_Universidad_destino" index="6"/>
 		<object name="Nombre_usuario_Usuario" index="4"/>
 	</customidxs>
 
 	<customidxs object-type="constraint">
 		<object name="Grado_fk" index="2"/>
-		<object name="Universidad_destino_fk" index="3"/>
 		<object name="Usuario_fk" index="0"/>
 	</customidxs>
 </table>
 
-<table name="Asignatura_origen">
+<table name="Asignatura_origen" layer="0" collapse-mode="2" max-obj-count="6" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="1320" y="40"/>
+	<position x="1560" y="40"/>
 	<column name="Codigo" not-null="true">
 		<type name="varchar" length="0"/>
 	</column>
@@ -100,7 +98,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	</constraint>
 </table>
 
-<table name="Usuario">
+<table name="Usuario" layer="0" collapse-mode="2" max-obj-count="1" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
 	<position x="980" y="760"/>
@@ -112,7 +110,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	</constraint>
 </table>
 
-<relationship name="Usuario_tiene_muchos_Profesor" type="rel1n"
+<relationship name="Usuario_tiene_muchos_Profesor" type="rel1n" layer="0"
 	 src-col-pattern="{sc}_{st}"
 	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
 	 src-fk-pattern="{st}_fk"
@@ -121,7 +119,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 dst-table="public.&quot;Coordinador&quot;"
 	 src-required="false" dst-required="false"/>
 
-<relationship name="Usuario_tiene_muchos_Alumno" type="rel1n"
+<relationship name="Usuario_tiene_muchos_Alumno" type="rel1n" layer="0"
 	 src-col-pattern="{sc}_{st}"
 	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
 	 src-fk-pattern="{st}_fk"
@@ -130,7 +128,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 dst-table="public.&quot;Alumno&quot;"
 	 src-required="false" dst-required="false"/>
 
-<table name="Asignatura_destino">
+<table name="Asignatura_destino" layer="0" collapse-mode="2" max-obj-count="6" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
 	<position x="440" y="40"/>
@@ -159,10 +157,10 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	</customidxs>
 </table>
 
-<table name="Grado">
+<table name="Grado" layer="0" collapse-mode="2" max-obj-count="3" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="400" y="520"/>
+	<position x="100" y="520"/>
 	<column name="Codigo" not-null="true">
 		<type name="varchar" length="0"/>
 	</column>
@@ -177,7 +175,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	</constraint>
 </table>
 
-<relationship name="Grado_tiene_muchos_Alumno" type="rel1n"
+<relationship name="Grado_tiene_muchos_Alumno" type="rel1n" layer="0"
 	 src-col-pattern="{sc}_{st}"
 	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
 	 src-fk-pattern="{st}_fk"
@@ -186,10 +184,10 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 dst-table="public.&quot;Alumno&quot;"
 	 src-required="false" dst-required="false"/>
 
-<table name="Universidad_destino">
+<table name="Universidad_destino" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="140" y="340"/>
+	<position x="80" y="340"/>
 	<column name="Codigo_erasmus" not-null="true">
 		<type name="varchar" length="0"/>
 	</column>
@@ -207,16 +205,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	</constraint>
 </table>
 
-<relationship name="Universidad_destino_tiene_muchos_Alumno" type="rel1n"
-	 src-col-pattern="{sc}_{st}"
-	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
-	 src-fk-pattern="{st}_fk"
-	 custom-color="#83af1f"
-	 src-table="public.&quot;Universidad_destino&quot;"
-	 dst-table="public.&quot;Alumno&quot;"
-	 src-required="false" dst-required="false"/>
-
-<table name="Estancia">
+<table name="Estancia" layer="0" collapse-mode="2" max-obj-count="8" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
 	<position x="1020" y="460"/>
@@ -237,19 +226,16 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	</constraint>
 
 	<customidxs object-type="column">
-		<object name="DNI_Alumno" index="5"/>
-		<object name="DNI_Coordinador" index="4"/>
+		<object name="DNI_Alumno" index="4"/>
 	</customidxs>
 
 	<customidxs object-type="constraint">
-		<object name="Alumno_fk" index="3"/>
-		<object name="Coordinador_fk" index="1"/>
-		<object name="Estancia_uq" index="2"/>
-		<object name="Estancia_uq1" index="4"/>
+		<object name="Alumno_fk" index="2"/>
+		<object name="Estancia_uq" index="1"/>
 	</customidxs>
 </table>
 
-<relationship name="Universidad_destino_tiene_muchos_Asignatura_destino" type="rel1n"
+<relationship name="Universidad_destino_tiene_muchos_Asignatura_destino" type="rel1n" layer="0"
 	 src-col-pattern="{sc}_{st}"
 	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
 	 src-fk-pattern="{st}_fk"
@@ -258,7 +244,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 dst-table="public.&quot;Asignatura_destino&quot;"
 	 src-required="false" dst-required="false"/>
 
-<table name="Convalidacion">
+<table name="Convalidacion" layer="0" collapse-mode="2" max-obj-count="8" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
 	<position x="1060" y="200"/>
@@ -279,27 +265,15 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	</constraint>
 
 	<customidxs object-type="column">
-		<object name="Codigo_Asignatura_origen" index="3"/>
-		<object name="id_estancia_Estancia" index="5"/>
+		<object name="id_estancia_Estancia" index="4"/>
 	</customidxs>
 
 	<customidxs object-type="constraint">
-		<object name="Asignatura_origen_fk" index="0"/>
-		<object name="Convalidacion_uq" index="1"/>
-		<object name="Estancia_fk" index="3"/>
+		<object name="Estancia_fk" index="1"/>
 	</customidxs>
 </table>
 
-<relationship name="Convalidacion_tiene_uno_Asignatura_origen" type="rel11"
-	 src-col-pattern="{sc}_{st}"
-	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
-	 src-fk-pattern="{st}_fk"
-	 custom-color="#83af1f"
-	 src-table="public.&quot;Asignatura_origen&quot;"
-	 dst-table="public.&quot;Convalidacion&quot;"
-	 src-required="false" dst-required="false"/>
-
-<relationship name="Estancia_tiene_muchos_Convalidacion" type="rel1n"
+<relationship name="Estancia_tiene_muchos_Convalidacion" type="rel1n" layer="0"
 	 src-col-pattern="{sc}_{st}"
 	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
 	 src-fk-pattern="{st}_fk"
@@ -308,16 +282,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 dst-table="public.&quot;Convalidacion&quot;"
 	 src-required="false" dst-required="false"/>
 
-<relationship name="Estancia_tiene_uno_Coordinador" type="rel11"
-	 src-col-pattern="{sc}_{st}"
-	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
-	 src-fk-pattern="{st}_fk"
-	 custom-color="#83af1f"
-	 src-table="public.&quot;Coordinador&quot;"
-	 dst-table="public.&quot;Estancia&quot;"
-	 src-required="false" dst-required="false"/>
-
-<relationship name="Estancia_tiene_uno_Alumno" type="rel11"
+<relationship name="Estancia_tiene_uno_Alumno" type="rel11" layer="0"
 	 src-col-pattern="{sc}_{st}"
 	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
 	 src-fk-pattern="{st}_fk"
@@ -326,13 +291,40 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 dst-table="public.&quot;Estancia&quot;"
 	 src-required="false" dst-required="false"/>
 
-<relationship name="Convalidacion_tiene_muchos_Asignatura_destino" type="rel1n"
+<relationship name="Coordinador_has_many_Estancia" type="rel1n" layer="0"
 	 src-col-pattern="{sc}_{st}"
 	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
 	 src-fk-pattern="{st}_fk"
-	 custom-color="#83af1f"
-	 src-table="public.&quot;Convalidacion&quot;"
-	 dst-table="public.&quot;Asignatura_destino&quot;"
+	 custom-color="#46c5d1"
+	 src-table="public.&quot;Coordinador&quot;"
+	 dst-table="public.&quot;Estancia&quot;"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="Asignatura_origen_has_many_Convalidacion" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#cfac44"
+	 src-table="public.&quot;Asignatura_origen&quot;"
+	 dst-table="public.&quot;Convalidacion&quot;"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="Asignatura_destino_has_many_Convalidacion" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#0f11a9"
+	 src-table="public.&quot;Asignatura_destino&quot;"
+	 dst-table="public.&quot;Convalidacion&quot;"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="Universidad_destino_has_many_Estancia" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#2354c7"
+	 src-table="public.&quot;Universidad_destino&quot;"
+	 dst-table="public.&quot;Estancia&quot;"
 	 src-required="false" dst-required="false"/>
 
 </dbmodel>

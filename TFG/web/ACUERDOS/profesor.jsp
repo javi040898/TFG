@@ -4,6 +4,7 @@
     Author     : Javier
 --%>
 
+<%@page import="modelo.RelacionAsignaturas"%>
 <%@page import="modelo.Asignatura_Destino"%>
 <%@page import="modelo.Asignatura_Origen"%>
 <%@page import="modelo.Alumno"%>
@@ -18,7 +19,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="C:\Users\Javier\Documents\GitHub\TFG\TFG\src\java\css\style.css" type="text/css">        <title>PROFESOR</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        
+
         <style>
             body{
                 background:#F5F5F5;
@@ -37,6 +38,7 @@
                 <select class="form-control" id="listaAlumnos" name="listaAlumnos">
 
 
+
                     <option>Escoge un alumno</option>
                     <%
 
@@ -44,7 +46,7 @@
                         if (listaAlumnos != null)
                             for (Alumno alumno : listaAlumnos) {%>
                     <option value="<%=alumno.getDNI()%>"><%=alumno.getNombre()%><%=" " + alumno.getApellidos()%><%=" (" + alumno.getDNI() + " )"%></option>
-                    <% } %>
+                    <% }%>
 
 
 
@@ -52,83 +54,96 @@
 
                 </select>
 
+
             </div>
             <div id="butAceptar">
                 <button>Aceptar</button>
+            </div>
+            <div id="NombreAlumno">Nombre <%=String.valueOf(request.getAttribute("nombreAlumno"))%>
+            </div>
+
+            <div id="ApellidosAlumno">Apellidos <%=String.valueOf(request.getAttribute("apellidosAlumno"))%>
             </div>
             <div id="table1">
                 <table>
                     <thead>
 
                         <tr>
-                    <div id="titulo1"> <h1>ASIGNATURAS ORIGEN 
-                        </h1></div>
-                    <div id="titulo2"> <h1>ASIGNATURAS DESTINO 
-                        </h1></div>
+                    <div id="titulo1"> ASIGNATURAS A RECONOCER EN LA UNIVERSIDAD DE ALCALÁ
+                    </div>
+                    <div id="titulo2"> ASIGNATURAS CURSADAS  EN LA UNIVERSIDAD DE DESTINO
+                    </div>
 
 
 
 
 
                     <th>Codigo</th>
-                    <th>Creditos</th>
                     <th>Nombre</th>
-                    <th>Guia Docente</th>
-                    <th>Link</th>
+                    <th>Tipo</th>
+                    <th>Creditos</th>
+
+                    <th>Link de asignatura</th>
 
 
                     <th style="border: hidden"></th>
 
                     <th>Codigo</th>
-                    <th>Creditos</th>
                     <th>Nombre</th>
-                    <th>Guia Docente</th>
-                    <th>Link</th>
-                    <th>Codigo destino</th>
+                    <th>Creditos</th>
+                    <th>Link de asignatura</th>
+                    <th>Fecha convalidacion</th>
+                    <th>Curso academico</th>
                     <th>Estado</th>
+                    <th>Comentarios</th>
+
                     </tr>
                     </thead>
 
                     <tbody>
 
-                        <% List<Asignatura_Origen> listaAsignaturasOrigen = (List<Asignatura_Origen>) request.getAttribute("listaAsignaturasOrigen");
+                        <% List<RelacionAsignaturas> listaRA = (List<RelacionAsignaturas>) request.getAttribute("listaRA");
                             /*for (int i = 0; i < listaAsignaturasOrigen.size(); i++) {
                                 System.out.println(listaAsignaturasOrigen.get(i).getNombre());
                             }*/
 
-                            List<Asignatura_Destino> listaAsignaturasDestino = (List<Asignatura_Destino>) request.getAttribute("listaAsignaturasDestino");
-                            if (listaAsignaturasOrigen != null && listaAsignaturasDestino != null)
-                                for (Asignatura_Origen asignaturaO : listaAsignaturasOrigen) {
-                                    for (Asignatura_Destino asignaturaD : listaAsignaturasDestino) {
-                                        if (String.valueOf(asignaturaO.getCodigo()).equals(String.valueOf(asignaturaD.getCodigo_Asignatura_Origen()))) {
-                                            //System.out.println(asignaturaO.getNombre());
+                            //List<Asignatura_Destino> listaAsignaturasDestino = (List<Asignatura_Destino>) request.getAttribute("listaAsignaturasDestino");
+                            //if (listaAsignaturasOrigen != null && listaAsignaturasDestino != null)
+                            if (listaRA != null)
+                                //for (Asignatura_Origen asignaturaO : listaAsignaturasOrigen) {
+                                for (RelacionAsignaturas ra : listaRA) {
+                                    //for (Asignatura_Destino asignaturaD : listaAsignaturasDestino) {
+                                    //if (String.valueOf(asignaturaO.getCodigo()).equals(String.valueOf(asignaturaD.getCodigo_erasmus_Universidad_destino()))) {
+                                    //System.out.println(asignaturaO.getNombre());
                         %>
                         <tr>
 
-                            <td><%=asignaturaO.getCodigo()%></td>
-                            <td><%=asignaturaO.getCreditos()%></td>
-                            <td><%=asignaturaO.getNombre()%></td>
-                            <td><%=asignaturaO.getGuia_docente()%></td>
-                            <td><a href="<%=asignaturaO.getGuia_docente()%>" target="_blank" > link</a></td>
+                            <td><%=ra.getCodigo_origen()%></td>
+                            <td><%=ra.getNombre_origen()%></td>
+                            <td><%=ra.getTipo()%></td>
+                            <td><%=ra.getCreditos_origen()%></td>
+                            <td><a href="<%=ra.getInformacion_origen()%>" target="_blank" > link</a></td>
 
 
                             <td style="border: hidden">---></td>
-                            <td><%=asignaturaD.getCodigo()%></td>
-                            <td><%=asignaturaD.getCreditos()%></td>
-                            <td><%=asignaturaD.getNombre()%></td>
-                            <td><%=asignaturaD.getGuia_docente()%></td>
-                            <td><a href="<%=asignaturaD.getGuia_docente()%>" target="_blank" > link</a></td>
-                            <td><%=asignaturaD.getCodigo_Asignatura_Origen()%></td>
-                            <td><%=asignaturaD.getEstado()%></td>
+                            <td><%=ra.getCodigo_destino()%></td>
+                            <td><%=ra.getNombre_destino()%></td>
+                            <td><%=ra.getCreditos_destino()%></td>
+
+                            <td><a href="<%=ra.getInformacion_destino()%>" target="_blank" > link</a></td>
+                            <td><%=ra.getFecha()%></td>
+                            <td><%=ra.getCurso()%></td>
+                            <td><%=ra.getEstado()%></td>
+                            <td><%=ra.getComentarios()%></td>
 
 
 
                         </tr>
                         <%
-                                    }
                                 }
+                            // }
 
-                            }%>
+                            // }%>
 
 
 
@@ -138,17 +153,29 @@
                 </table>
             </div>
 
+            <div id="table3">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Total creditos: <%=String.valueOf(request.getAttribute("sumaCreditos"))%></th>
+                        </tr>
+                    </thead>
+
+                </table>
+            </div>
+
+
 
 
             <div id="tituloModificar">  <h1 >MODIFICAR ASIGNATURA</h1></div>
             <div id="form7">
                 <select class="form-control" id="listaAsignaturasModificar" name="listaAsignaturasModificar">
                     <option>Escoge una asignatura</option>
-                    <% if (listaAsignaturasDestino != null)
-                            for (Asignatura_Destino asignaturaD : listaAsignaturasDestino) {
-                                if (asignaturaD.getEstado().equals("Pendiente")) {
+                    <% if (listaRA != null)
+                            for (RelacionAsignaturas ra : listaRA) {
+                                if (ra.getEstado().equals("Pendiente")) {
                     %>
-                    <option value="<%=asignaturaD.getCodigo()%>"><%=asignaturaD.getNombre()%><%=" (" + asignaturaD.getCodigo() + ")"%></option>
+                    <option value="<%=ra.getCodigo_destino()%>"><%=ra.getNombre_destino()%><%=" (" + ra.getCodigo_destino() + ")"%></option>
                     <% }
                         }%>
 
@@ -157,6 +184,9 @@
 
 
                 </select>
+                <div id="comentarios"> <label>Comentarios</label>
+                    <input id="Comentarios" class="form-control" name="Comentarios" type="textarea" align="left" size="50"/></div>
+
             </div>
             <div id="form8">
 
@@ -180,9 +210,9 @@
         <br>
         <br><br><br>
         <div id="enlaceNuevo">
-                <a href="ProfesorController?accion=nuevoAlumno">Dar de alta a nuevo alumno</a>
-            </div>
-        
+            <a href="ProfesorController?accion=nuevaEstancia">Nueva estancia de alumno</a>
+        </div>
+
 
 
 

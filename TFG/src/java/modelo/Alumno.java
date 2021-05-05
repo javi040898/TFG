@@ -10,15 +10,15 @@ package modelo;
  * @author Javier
  */
 public class Alumno {
-    private String contraseña,nombre,apellidos, nombre_usuario_Usuario, DNI, DNI_Profesor;
+    private String DNI,contraseña,nombre,apellidos, nombre_usuario_Usuario,  codigo_grado;
 
-    public Alumno(String contraseña, String nombre, String apellidos, String nombre_usuario_Usuario, String DNI, String DNI_Profesor) {
+    public Alumno(String DNI,String nombre,String apellidos,String contraseña,   String nombre_usuario_Usuario, String codigo_grado) {
+        this.DNI = DNI;
         this.contraseña = contraseña;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.nombre_usuario_Usuario = nombre_usuario_Usuario;
-        this.DNI = DNI;
-        this.DNI_Profesor = DNI_Profesor;
+        this.codigo_grado = codigo_grado;
     }
 
     public String getContraseña() {
@@ -61,17 +61,19 @@ public class Alumno {
         this.DNI = DNI;
     }
 
-    public String getDNI_Profesor() {
-        return DNI_Profesor;
+    public String getCodigo_grado() {
+        return codigo_grado;
     }
 
-    public void setDNI_Porfesor(String DNI_Profesor) {
-        this.DNI_Profesor = DNI_Profesor;
+    public void setCodigo_grado(String codigo_grado) {
+        this.codigo_grado = codigo_grado;
     }
+
+    
 
     @Override
     public String toString() {
-        return "Alumno{" + "contrase\u00f1a=" + contraseña + ", nombre=" + nombre + ", apellidos=" + apellidos + ", nombre_usuario_Usuario=" + nombre_usuario_Usuario + ", DNI=" + DNI + ", DNI_Profesor=" + DNI_Profesor + '}';
+        return "Alumno{" + "contrase\u00f1a=" + contraseña + ", nombre=" + nombre + ", apellidos=" + apellidos + ", nombre_usuario_Usuario=" + nombre_usuario_Usuario + ", DNI=" + DNI + ", codigo_grado=" + codigo_grado + '}';
     }
     
     

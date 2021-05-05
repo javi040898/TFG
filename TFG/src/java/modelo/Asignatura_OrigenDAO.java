@@ -39,12 +39,13 @@ public class Asignatura_OrigenDAO {
 
             while (rs.next()) {
 
-                Integer codigo = rs.getInt("codigo");
+                String codigo = rs.getString("codigo");
                 Integer creditos = rs.getInt("creditos");
                 String nombre = rs.getString("nombre");
-                String guia_docente = rs.getString("guia_docente");
+                String informacion = rs.getString("informacion");
+                String tipo = rs.getString("tipo");
 
-                Asignatura_Origen asignatura = new Asignatura_Origen(codigo, creditos, nombre, guia_docente);
+                Asignatura_Origen asignatura = new Asignatura_Origen(codigo, creditos, nombre, informacion, tipo);
                 //System.out.println("codigo"+codigo);
                 //System.out.println("creditos"+creditos);
                 //System.out.println("nombre"+nombre);
@@ -61,7 +62,7 @@ public class Asignatura_OrigenDAO {
         }
     }
 
-    public List<Asignatura_Origen> listarAsignaturasBuscador(Integer codigo) {
+    public List<Asignatura_Origen> listarAsignaturasBuscador(String codigo) {
         PreparedStatement ps;
         ResultSet rs;
         List<Asignatura_Origen> lista = new ArrayList<>();
@@ -69,17 +70,17 @@ public class Asignatura_OrigenDAO {
             ps = conexion.prepareStatement("select Asignatura_origen.* from Asignatura_origen inner join Asignatura_destino on "
                     + "Asignatura_origen.codigo=Asignatura_destino.Codigo_Asignatura_origen\n"
                     + "where Asignatura_origen.codigo = ? and estado = 'Aceptada' ;");
-            ps.setInt(1, codigo);
+            ps.setString(1, codigo);
             rs = ps.executeQuery();
 
             while (rs.next()) {
 
-
                 Integer creditos = rs.getInt("creditos");
                 String nombre = rs.getString("nombre");
-                String guia_docente = rs.getString("guia_docente");
+                String informacion = rs.getString("informacion");
+                String tipo = rs.getString("tipo");
 
-                Asignatura_Origen asignatura = new Asignatura_Origen(codigo, creditos, nombre, guia_docente);
+                Asignatura_Origen asignatura = new Asignatura_Origen(codigo, creditos, nombre, informacion, tipo);
                 //System.out.println("codigo"+codigo);
                 //System.out.println("creditos"+creditos);
                 //System.out.println("nombre"+nombre);
@@ -103,10 +104,11 @@ public class Asignatura_OrigenDAO {
         try {
             ps = conexion.prepareStatement("INSERT INTO Asignatura_origen VALUES (?,?,?,?);");
 
-            ps.setInt(1, asignatura.getCodigo());
+            ps.setString(1, asignatura.getCodigo());
             ps.setInt(2, asignatura.getCreditos());
             ps.setString(3, asignatura.getNombre());
-            ps.setString(4, asignatura.getGuia_docente());
+            ps.setString(4, asignatura.getInformacion());
+            ps.setString(5, asignatura.getTipo());
 
             ps.execute();
 
@@ -116,6 +118,29 @@ public class Asignatura_OrigenDAO {
             return false;
 
         }
+    }
+
+    public Integer sumaCreditos(String DNI) {
+        PreparedStatement ps;
+        ResultSet rs;
+        Integer suma_creditos = 0;
+
+        try {
+            ps = conexion.prepareStatement("select sum(creditos) as suma_creditos from (select distinct Asignatura_origen.*\n"
+                    + "from Convalidacion inner join Estancia on id_estancia_Estancia=id_estancia\n"
+                    + "inner join Asignatura_origen on Asignatura_origen.Codigo = Codigo_Asignatura_origen \n"
+                    + "inner join Asignatura_destino on Codigo_Asignatura_destino=Asignatura_destino.Codigo where DNI_Alumno= ? ) as asignaturas_distintas;");
+            ps.setString(1, DNI);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                suma_creditos = rs.getInt("suma_creditos");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        return suma_creditos;
     }
 
 }

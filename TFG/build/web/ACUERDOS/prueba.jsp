@@ -3,7 +3,22 @@
     Created on : 16-mar-2021, 11:33:03
     Author     : Javier
 --%>
+*/<option value="<%=asignaturaD.getCodigo()%>"><%=asignaturaD.getNombre()%><%=" (" + asignaturaD.getCodigo() + ")"%></option>
+ <select class="form-control" id="listaAsignaturasModificar" name="listaAsignaturasModificar">
+                    <option>Escoge una asignatura</option>
+                    <% if (listaAsignaturasDestino != null)
+                            for (Asignatura_Destino asignaturaD : listaAsignaturasDestino) {
+                                if (asignaturaD.getEstado().equals("Pendiente")) {
+                    %>
+                    <option value="<%=asignaturaD.getCodigo()%>"><%=asignaturaD.getNombre()%><%=" (" + asignaturaD.getCodigo() + ")"%></option>
+                    <% }
+                        }%>
 
+
+
+
+
+                </select>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

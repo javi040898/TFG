@@ -9,16 +9,27 @@ package modelo;
  *
  * @author Javier
  */
-public class Profesor {
-    private String contraseña,nombre,apellidos,nombre_usuario_Usuario,DNI;
+public class Coordinador {
+    private String contraseña,nombre,apellidos,nombre_usuario_Usuario,DNI,departamento;
+
     
-    public Profesor(String contraseña, String nombre, String apellidos, String nombre_usuario_Usuario, String DNI ) {
+    
+    public Coordinador( String DNI,String contraseña, String nombre, String apellidos, String nombre_usuario_Usuario,String departamento ) {
         
         this.contraseña = contraseña;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.nombre_usuario_Usuario = nombre_usuario_Usuario;
         this.DNI = DNI;
+        this.departamento = departamento;
+    }
+
+    public String getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(String departamento) {
+        this.departamento = departamento;
     }
 
 

@@ -19,11 +19,11 @@ import java.util.logging.Logger;
  *
  * @author Javier
  */
-public class ProfesorDAO {
+public class CoordinadorDAO {
     
     Connection conexion;
     
-    public ProfesorDAO(){
+    public CoordinadorDAO(){
         Conexion conn = new Conexion();
         conexion = conn.connect();
     }
@@ -34,7 +34,7 @@ public class ProfesorDAO {
         String user = "";
         
         try {
-            ps = conexion.prepareStatement("select DNI from Profesor where Nombre_usuario_Usuario = ?");
+            ps = conexion.prepareStatement("select DNI from Coordinador where Nombre_usuario_Usuario = ?");
             ps.setString(1, usuario);
             rs = ps.executeQuery();
             
@@ -55,7 +55,7 @@ public class ProfesorDAO {
         String passw = "";
         
         try {
-            ps = conexion.prepareStatement("select passw from Profesor where Nombre_usuario_Usuario = ?");
+            ps = conexion.prepareStatement("select Passw from Coordinador where Nombre_usuario_Usuario = ?");
             ps.setString(1, usuario);
             rs = ps.executeQuery();
             
@@ -68,11 +68,11 @@ public class ProfesorDAO {
         return passw;
     }
     
-    public List<Profesor> listarProfesores() {
+    public List<Coordinador> listarProfesores() {
 
         PreparedStatement ps;
         ResultSet rs;
-        List<Profesor> lista = new ArrayList<>();
+        List<Coordinador> lista = new ArrayList<>();
 
         try {
             ps = conexion.prepareStatement("select * from Profesor;");
@@ -86,7 +86,7 @@ public class ProfesorDAO {
                 String nombre_usuario = rs.getString("Nombre_usuario_Usuario");
                 String DNI = rs.getString("DNI");
 
-                Profesor profesor = new Profesor(contraseña, nombre, apellidos,nombre_usuario,DNI);
+                Coordinador profesor = new Coordinador(contraseña, nombre, apellidos,nombre_usuario,DNI);
 
                 lista.add(profesor);
             }
@@ -98,7 +98,7 @@ public class ProfesorDAO {
 
         }
     }
-    public boolean insertar(Profesor profesor) {
+    public boolean insertar(Coordinador profesor) {
 
         PreparedStatement ps;
 

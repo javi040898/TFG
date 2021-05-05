@@ -4,7 +4,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
          Unexpected results may occur if the code is changed deliberately.
 -->
 <dbmodel pgmodeler-ver="0.9.1" last-position="0,0" last-zoom="1"
-	 default-schema="public" default-owner="postgres">
+	 default-owner="postgres">
 <database name="new_database" is-template="false" allow-conns="true">
 </database>
 
@@ -14,11 +14,11 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="Coordinador">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="1460" y="520"/>
+	<position x="1540" y="500"/>
 	<column name="DNI" not-null="true">
 		<type name="varchar" length="0"/>
 	</column>
-	<column name="Password">
+	<column name="Passw">
 		<type name="varchar" length="0"/>
 	</column>
 	<column name="Nombre">
@@ -28,7 +28,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 		<type name="varchar" length="0"/>
 	</column>
 	<column name="Departamento">
-		<type name="smallint" length="0"/>
+		<type name="varchar" length="0"/>
 	</column>
 	<constraint name="Profesor_pk" type="pk-constr" table="public.&quot;Coordinador&quot;">
 		<columns names="DNI" ref-type="src-columns"/>
@@ -46,11 +46,11 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="Alumno">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="340" y="680"/>
+	<position x="360" y="680"/>
 	<column name="DNI" not-null="true">
 		<type name="varchar" length="0"/>
 	</column>
-	<column name="Password">
+	<column name="Passw">
 		<type name="varchar" length="0"/>
 	</column>
 	<column name="Nombre">
@@ -65,21 +65,19 @@ CAUTION: Do not modify this file unless you know what you are doing.
 
 	<customidxs object-type="column">
 		<object name="Codigo_Grado" index="5"/>
-		<object name="Codigo_erasmus_Universidad_destino" index="6"/>
 		<object name="Nombre_usuario_Usuario" index="4"/>
 	</customidxs>
 
 	<customidxs object-type="constraint">
 		<object name="Grado_fk" index="2"/>
-		<object name="Universidad_destino_fk" index="3"/>
-		<object name="Usuario_fk" index="0"/>
+		<object name="Usuario_fk" index="1"/>
 	</customidxs>
 </table>
 
 <table name="Asignatura_origen">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="1320" y="40"/>
+	<position x="1560" y="40"/>
 	<column name="Codigo" not-null="true">
 		<type name="varchar" length="0"/>
 	</column>
@@ -149,20 +147,12 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<constraint name="Asignatura_destino_pk" type="pk-constr" table="public.&quot;Asignatura_destino&quot;">
 		<columns names="Codigo" ref-type="src-columns"/>
 	</constraint>
-
-	<customidxs object-type="column">
-		<object name="Codigo_erasmus_Universidad_destino" index="5"/>
-	</customidxs>
-
-	<customidxs object-type="constraint">
-		<object name="Universidad_destino_fk" index="1"/>
-	</customidxs>
 </table>
 
 <table name="Grado">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="400" y="520"/>
+	<position x="100" y="520"/>
 	<column name="Codigo" not-null="true">
 		<type name="varchar" length="0"/>
 	</column>
@@ -189,7 +179,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="Universidad_destino">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="140" y="340"/>
+	<position x="80" y="340"/>
 	<column name="Codigo_erasmus" not-null="true">
 		<type name="varchar" length="0"/>
 	</column>
@@ -207,19 +197,10 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	</constraint>
 </table>
 
-<relationship name="Universidad_destino_tiene_muchos_Alumno" type="rel1n"
-	 src-col-pattern="{sc}_{st}"
-	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
-	 src-fk-pattern="{st}_fk"
-	 custom-color="#83af1f"
-	 src-table="public.&quot;Universidad_destino&quot;"
-	 dst-table="public.&quot;Alumno&quot;"
-	 src-required="false" dst-required="false"/>
-
 <table name="Estancia">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="1020" y="460"/>
+	<position x="920" y="420"/>
 	<column name="id_estancia" not-null="true">
 		<type name="integer" length="0"/>
 	</column>
@@ -229,23 +210,27 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="Curso_academico">
 		<type name="varchar" length="0"/>
 	</column>
-	<column name="Cuatrimestre">
+	<column name="Duracion">
 		<type name="varchar" length="0"/>
+	</column>
+	<column name="Renuncia">
+		<type name="boolean" length="0"/>
 	</column>
 	<constraint name="Beca_pk" type="pk-constr" table="public.&quot;Estancia&quot;">
 		<columns names="id_estancia" ref-type="src-columns"/>
 	</constraint>
 
 	<customidxs object-type="column">
+		<object name="Codigo_erasmus_Universidad_destino" index="7"/>
 		<object name="DNI_Alumno" index="5"/>
-		<object name="DNI_Coordinador" index="4"/>
+		<object name="DNI_Coordinador" index="6"/>
 	</customidxs>
 
 	<customidxs object-type="constraint">
-		<object name="Alumno_fk" index="3"/>
-		<object name="Coordinador_fk" index="1"/>
+		<object name="Alumno_fk" index="1"/>
+		<object name="Coordinador_fk" index="3"/>
 		<object name="Estancia_uq" index="2"/>
-		<object name="Estancia_uq1" index="4"/>
+		<object name="Universidad_destino_fk" index="4"/>
 	</customidxs>
 </table>
 
@@ -279,25 +264,13 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	</constraint>
 
 	<customidxs object-type="column">
-		<object name="Codigo_Asignatura_origen" index="3"/>
-		<object name="id_estancia_Estancia" index="5"/>
+		<object name="id_estancia_Estancia" index="4"/>
 	</customidxs>
 
 	<customidxs object-type="constraint">
-		<object name="Asignatura_origen_fk" index="0"/>
-		<object name="Convalidacion_uq" index="1"/>
-		<object name="Estancia_fk" index="3"/>
+		<object name="Estancia_fk" index="1"/>
 	</customidxs>
 </table>
-
-<relationship name="Convalidacion_tiene_uno_Asignatura_origen" type="rel11"
-	 src-col-pattern="{sc}_{st}"
-	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
-	 src-fk-pattern="{st}_fk"
-	 custom-color="#83af1f"
-	 src-table="public.&quot;Asignatura_origen&quot;"
-	 dst-table="public.&quot;Convalidacion&quot;"
-	 src-required="false" dst-required="false"/>
 
 <relationship name="Estancia_tiene_muchos_Convalidacion" type="rel1n"
 	 src-col-pattern="{sc}_{st}"
@@ -306,15 +279,6 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 custom-color="#83af1f"
 	 src-table="public.&quot;Estancia&quot;"
 	 dst-table="public.&quot;Convalidacion&quot;"
-	 src-required="false" dst-required="false"/>
-
-<relationship name="Estancia_tiene_uno_Coordinador" type="rel11"
-	 src-col-pattern="{sc}_{st}"
-	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
-	 src-fk-pattern="{st}_fk"
-	 custom-color="#83af1f"
-	 src-table="public.&quot;Coordinador&quot;"
-	 dst-table="public.&quot;Estancia&quot;"
 	 src-required="false" dst-required="false"/>
 
 <relationship name="Estancia_tiene_uno_Alumno" type="rel11"
@@ -326,13 +290,40 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 dst-table="public.&quot;Estancia&quot;"
 	 src-required="false" dst-required="false"/>
 
-<relationship name="Convalidacion_tiene_muchos_Asignatura_destino" type="rel1n"
+<relationship name="Asignatura_destino_tiene_muchos_Convalidacion" type="rel1n"
 	 src-col-pattern="{sc}_{st}"
 	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
 	 src-fk-pattern="{st}_fk"
 	 custom-color="#83af1f"
-	 src-table="public.&quot;Convalidacion&quot;"
-	 dst-table="public.&quot;Asignatura_destino&quot;"
+	 src-table="public.&quot;Asignatura_destino&quot;"
+	 dst-table="public.&quot;Convalidacion&quot;"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="Coordinador_tiene_muchos_Estancia" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;Coordinador&quot;"
+	 dst-table="public.&quot;Estancia&quot;"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="Universidad_destino_tiene_muchos_Estancia" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;Universidad_destino&quot;"
+	 dst-table="public.&quot;Estancia&quot;"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="Asignatura_origen_tiene_muchos_Convalidacion" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;Asignatura_origen&quot;"
+	 dst-table="public.&quot;Convalidacion&quot;"
 	 src-required="false" dst-required="false"/>
 
 </dbmodel>

@@ -35,7 +35,7 @@
                     <input type="text" class="form-control" name="CreditosO" id="CreditosO" placeholder="">
                     <label>Nombre</label>
                     <input type="text" class="form-control" name="NombreO" id="NombreO" placeholder="">
-                    <label>Guia Docente</label>
+                    <label>Informacion</label>
                     <input type="text" class="form-control" name="GuiaO" id="GuiaO" placeholder="">
                 </div>
 
@@ -57,7 +57,7 @@
                     <input type="text" class="form-control" name="CreditosD1" id="CreditosD1" placeholder="">
                     <label>Nombre</label>
                     <input type="text" class="form-control" name="NombreD1" id="NombreD1" placeholder="">
-                    <label>Guia Docente</label>
+                    <label>Informacion</label>
                     <input type="text" class="form-control" name="GuiaD1" id="GuiaD1" placeholder="">
 
                 </div>
@@ -75,7 +75,7 @@
                     <input type="text" class="form-control" name="CreditosD2" id="CreditosD2" placeholder="">
                     <label>Nombre</label>
                     <input type="text" class="form-control" name="NombreD2" id="NombreD2" placeholder="">
-                    <label>Guia Docente</label>
+                    <label>Informacion</label>
                     <input type="text" class="form-control" name="GuiaD2" id="GuiaD2" placeholder="">
 
                 </div>

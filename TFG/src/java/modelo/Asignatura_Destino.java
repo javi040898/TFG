@@ -10,25 +10,19 @@ package modelo;
  * @author Javier
  */
 public class Asignatura_Destino {
-    private Integer codigo, creditos, codigo_Asignatura_Origen;
-    private String nombre, guia_docente, estado;
+    private Integer creditos;
+    private String nombre, informacion,codigo,Codigo_erasmus_Universidad_destino;
 
-    public Asignatura_Destino(Integer codigo, Integer creditos, Integer codigo_Asignatura_Origen, String nombre, String guia_docente, String estado) {
+    public Asignatura_Destino(String codigo, Integer creditos, String nombre, String informacion, String Codigo_erasmus_Universidad_destino) {
         this.codigo = codigo;
         this.creditos = creditos;
-        this.codigo_Asignatura_Origen = codigo_Asignatura_Origen;
+        this.Codigo_erasmus_Universidad_destino = Codigo_erasmus_Universidad_destino;
         this.nombre = nombre;
-        this.guia_docente = guia_docente;
-        this.estado = estado;
+        this.informacion = informacion;
+
     }
 
-    public Integer getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(Integer codigo) {
-        this.codigo = codigo;
-    }
+    
 
     public Integer getCreditos() {
         return creditos;
@@ -38,13 +32,7 @@ public class Asignatura_Destino {
         this.creditos = creditos;
     }
 
-    public Integer getCodigo_Asignatura_Origen() {
-        return codigo_Asignatura_Origen;
-    }
-
-    public void setCodigo_Asignatura_Origen(Integer codigo_Asignatura_Origen) {
-        this.codigo_Asignatura_Origen = codigo_Asignatura_Origen;
-    }
+   
 
     public String getNombre() {
         return nombre;
@@ -54,13 +42,7 @@ public class Asignatura_Destino {
         this.nombre = nombre;
     }
 
-    public String getGuia_docente() {
-        return guia_docente;
-    }
-
-    public void setGuia_docente(String guia_docente) {
-        this.guia_docente = guia_docente;
-    }
+    
 
     public String getEstado() {
         return estado;
@@ -68,6 +50,30 @@ public class Asignatura_Destino {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    public String getInformacion() {
+        return informacion;
+    }
+
+    public void setInformacion(String informacion) {
+        this.informacion = informacion;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getCodigo_erasmus_Universidad_destino() {
+        return Codigo_erasmus_Universidad_destino;
+    }
+
+    public void setCodigo_erasmus_Universidad_destino(String Codigo_erasmus_Universidad_destino) {
+        this.Codigo_erasmus_Universidad_destino = Codigo_erasmus_Universidad_destino;
     }
     
     
