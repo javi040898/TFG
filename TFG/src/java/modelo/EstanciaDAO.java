@@ -72,4 +72,44 @@ public class EstanciaDAO {
         }
         return id_estancia+1;
     }
+    
+    public String obtenerCodigoUniversidadDestino(String DNI) {
+
+        PreparedStatement ps;
+        ResultSet rs;
+        String codigo_erasmus_Universidad_destino = "";
+
+        try {
+            ps = conexion.prepareStatement("select Codigo_erasmus_Universidad_destino from estancia where DNI_Alumno= ?;");
+             ps.setString(1, DNI);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                codigo_erasmus_Universidad_destino = rs.getString("Codigo_erasmus_Universidad_destino");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return codigo_erasmus_Universidad_destino;
+    }
+    
+    public Integer obtenerIdEstancia(String DNI) {
+
+        PreparedStatement ps;
+        ResultSet rs;
+        Integer id_estancia = 0;
+
+        try {
+            ps = conexion.prepareStatement("select id_estancia from estancia where DNI_Alumno= ?;");
+             ps.setString(1, DNI);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                id_estancia = rs.getInt("id_estancia");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return id_estancia;
+    }
 }

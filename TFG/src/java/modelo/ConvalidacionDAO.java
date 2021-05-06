@@ -42,7 +42,7 @@ public class ConvalidacionDAO {
         }
 
     }
-    
+
     public void setComentarios(String comentarios, String codigo_asignatura) {
         PreparedStatement ps;
         ResultSet rs;
@@ -58,5 +58,48 @@ public class ConvalidacionDAO {
 
         }
 
+    }
+
+    public boolean insertarConvalidacion(Convalidacion c) {
+
+        PreparedStatement ps;
+
+        try {
+            ps = conexion.prepareStatement("INSERT INTO Convalidacion VALUES(?,?,?,?,?,?,?);");
+
+            ps.setInt(1, c.getId_convalidacion());
+            ps.setString(2, c.getEstado());
+            ps.setString(3, c.getComentarios());
+            ps.setDate(4, c.getFecha_convalidacion());
+            ps.setInt(5, c.getId_estancia_Estancia());
+            ps.setString(6, c.getCodigo_Asignatura_destino());
+            ps.setString(7, c.getCodigo_Asignatura_origen());
+            ps.execute();
+
+            return true;
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+            return false;
+
+        }
+    }
+    
+    public Integer obtenerSiguienteConvalidacion() {
+
+        PreparedStatement ps;
+        ResultSet rs;
+        Integer id_convalidacion = 0;
+
+        try {
+            ps = conexion.prepareStatement("select max(id_convalidacion) from Convalidacion");
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                id_convalidacion = rs.getInt("max");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return id_convalidacion+1;
     }
 }

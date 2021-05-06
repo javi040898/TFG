@@ -5,14 +5,17 @@
  */
 package modelo;
 
+import java.sql.Date;
+
 /**
  *
  * @author Javier
  */
 public class Convalidacion {
-    String id_convalidacion,estado,comentarios,fecha_convalidacion,id_estancia_Estancia,Codigo_Asignatura_destino,Codigo_Asignatura_origen;
-
-    public Convalidacion(String id_convalidacion, String estado, String comentarios, String fecha_convalidacion, String id_estancia_Estancia, String Codigo_Asignatura_destino, String Codigo_Asignatura_origen) {
+    String estado,comentarios,Codigo_Asignatura_destino,Codigo_Asignatura_origen;
+    Date fecha_convalidacion;
+    Integer id_convalidacion,id_estancia_Estancia;
+    public Convalidacion(Integer id_convalidacion, String estado, String comentarios, Date fecha_convalidacion, Integer id_estancia_Estancia, String Codigo_Asignatura_destino, String Codigo_Asignatura_origen) {
         this.id_convalidacion = id_convalidacion;
         this.estado = estado;
         this.comentarios = comentarios;
@@ -22,11 +25,11 @@ public class Convalidacion {
         this.Codigo_Asignatura_origen = Codigo_Asignatura_origen;
     }
 
-    public String getId_convalidacion() {
+    public Integer getId_convalidacion() {
         return id_convalidacion;
     }
 
-    public void setId_convalidacion(String id_convalidacion) {
+    public void setId_convalidacion(Integer id_convalidacion) {
         this.id_convalidacion = id_convalidacion;
     }
 
@@ -46,19 +49,19 @@ public class Convalidacion {
         this.comentarios = comentarios;
     }
 
-    public String getFecha_convalidacion() {
+    public Date getFecha_convalidacion() {
         return fecha_convalidacion;
     }
 
-    public void setFecha_convalidacion(String fecha_convalidacion) {
+    public void setFecha_convalidacion(Date fecha_convalidacion) {
         this.fecha_convalidacion = fecha_convalidacion;
     }
 
-    public String getId_estancia_Estancia() {
+    public Integer getId_estancia_Estancia() {
         return id_estancia_Estancia;
     }
 
-    public void setId_estancia_Estancia(String id_estancia_Estancia) {
+    public void setId_estancia_Estancia(Integer id_estancia_Estancia) {
         this.id_estancia_Estancia = id_estancia_Estancia;
     }
 

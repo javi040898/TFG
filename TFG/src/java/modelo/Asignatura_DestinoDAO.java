@@ -48,7 +48,7 @@ public class Asignatura_DestinoDAO {
                 Integer codigo_origen = rs.getInt("Codigo_Asignatura_origen");
                 String estado = rs.getString("estado");
 
-                Asignatura_Destino asignatura = new Asignatura_Destino(codigo, creditos, codigo_origen, nombre, guia_docente, estado);
+                Asignatura_Destino asignatura = new Asignatura_Destino(codigo, creditos, nombre, informacion, estado,codigo_erasmus_Universidad_destino);
                 System.out.println("estado" + estado);
                 lista.add(asignatura);
             }
@@ -115,13 +115,13 @@ public class Asignatura_DestinoDAO {
         PreparedStatement ps;
 
         try {
-            ps = conexion.prepareStatement("INSERT INTO Asignatura_destino VALUES (?,?,?,?,?,'Pendiente');");
+            ps = conexion.prepareStatement("INSERT INTO Asignatura_destino VALUES (?,?,?,?,?);");
 
-            ps.setInt(1, asignatura.getCodigo());
+            ps.setString(1, asignatura.getCodigo());
             ps.setInt(2, asignatura.getCreditos());
             ps.setString(3, asignatura.getNombre());
-            ps.setString(4, asignatura.getGuia_docente());
-            ps.setInt(5, asignatura.getCodigo_Asignatura_Origen());
+            ps.setString(4, asignatura.getInformacion());
+            ps.setString(5, asignatura.getCodigo_erasmus_Universidad_destino());
 
             ps.execute();
 

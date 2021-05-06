@@ -82,6 +82,7 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <select class=\"form-control\" id=\"listaAlumnos\" name=\"listaAlumnos\">\n");
       out.write("\n");
       out.write("\n");
+      out.write("\n");
       out.write("                    <option>Escoge un alumno</option>\n");
       out.write("                    ");
 
@@ -99,7 +100,7 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.print(" (" + alumno.getDNI() + " )");
       out.write("</option>\n");
       out.write("                    ");
- } 
+ }
       out.write("\n");
       out.write("\n");
       out.write("\n");
@@ -108,9 +109,19 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("                </select>\n");
       out.write("\n");
+      out.write("\n");
       out.write("            </div>\n");
       out.write("            <div id=\"butAceptar\">\n");
       out.write("                <button>Aceptar</button>\n");
+      out.write("            </div>\n");
+      out.write("            <div id=\"NombreAlumno\">Nombre ");
+      out.print(String.valueOf(request.getAttribute("nombreAlumno")));
+      out.write("\n");
+      out.write("            </div>\n");
+      out.write("\n");
+      out.write("            <div id=\"ApellidosAlumno\">Apellidos ");
+      out.print(String.valueOf(request.getAttribute("apellidosAlumno")));
+      out.write("\n");
       out.write("            </div>\n");
       out.write("            <div id=\"table1\">\n");
       out.write("                <table>\n");
@@ -118,9 +129,9 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("                        <tr>\n");
       out.write("                    <div id=\"titulo1\"> ASIGNATURAS A RECONOCER EN LA UNIVERSIDAD DE ALCALÁ\n");
-      out.write("                        </div>\n");
+      out.write("                    </div>\n");
       out.write("                    <div id=\"titulo2\"> ASIGNATURAS CURSADAS  EN LA UNIVERSIDAD DE DESTINO\n");
-      out.write("                        </div>\n");
+      out.write("                    </div>\n");
       out.write("\n");
       out.write("\n");
       out.write("\n");
@@ -164,7 +175,7 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
                                     //for (Asignatura_Destino asignaturaD : listaAsignaturasDestino) {
                                     //if (String.valueOf(asignaturaO.getCodigo()).equals(String.valueOf(asignaturaD.getCodigo_erasmus_Universidad_destino()))) {
                                     //System.out.println(asignaturaO.getNombre());
-
+                        
       out.write("\n");
       out.write("                        <tr>\n");
       out.write("\n");
@@ -230,23 +241,20 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("                </table>\n");
       out.write("            </div>\n");
-      out.write("                            ");
-
-                                System.out.println("hola: " + String.valueOf(request.getAttribute("sumaCreditos")));
       out.write("\n");
-      out.write("                            <div id=\"table3\">\n");
-      out.write("                                <table>\n");
-      out.write("                                    <thead>\n");
-      out.write("                                    <tr>\n");
-      out.write("                                    <th>Total creditos: ");
+      out.write("            <div id=\"table3\">\n");
+      out.write("                <table>\n");
+      out.write("                    <thead>\n");
+      out.write("                        <tr>\n");
+      out.write("                            <th>Total creditos: ");
       out.print(String.valueOf(request.getAttribute("sumaCreditos")));
       out.write("</th>\n");
-      out.write("                                    </tr>\n");
-      out.write("                                    </thead>\n");
+      out.write("                        </tr>\n");
+      out.write("                    </thead>\n");
       out.write("\n");
-      out.write("                                </table>\n");
-      out.write("                                </div>\n");
-      out.write("            \n");
+      out.write("                </table>\n");
+      out.write("            </div>\n");
+      out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("\n");
@@ -256,8 +264,8 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    <option>Escoge una asignatura</option>\n");
       out.write("                    ");
  if (listaRA != null)
-                        for (RelacionAsignaturas ra : listaRA) {
-                            if (ra.getEstado().equals("Pendiente")) {
+                            for (RelacionAsignaturas ra : listaRA) {
+                                if (ra.getEstado().equals("Pendiente")) {
                     
       out.write("\n");
       out.write("                    <option value=\"");
@@ -265,7 +273,7 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write('"');
       out.write('>');
       out.print(ra.getNombre_destino());
-      out.print(" (" + ra.getCodigo_destino()+ ")");
+      out.print(" (" + ra.getCodigo_destino() + ")");
       out.write("</option>\n");
       out.write("                    ");
  }
@@ -277,7 +285,7 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("                </select>\n");
-      out.write("                         <div id=\"comentarios\"> <label>Comentarios</label>\n");
+      out.write("                <div id=\"comentarios\"> <label>Comentarios</label>\n");
       out.write("                    <input id=\"Comentarios\" class=\"form-control\" name=\"Comentarios\" type=\"textarea\" align=\"left\" size=\"50\"/></div>\n");
       out.write("\n");
       out.write("            </div>\n");

@@ -6,6 +6,7 @@
 package controlador;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,6 +20,7 @@ import modelo.Asignatura_Destino;
 import modelo.Asignatura_DestinoDAO;
 import modelo.Asignatura_Origen;
 import modelo.Asignatura_OrigenDAO;
+import modelo.Convalidacion;
 import modelo.ConvalidacionDAO;
 import modelo.Coordinador;
 import modelo.CoordinadorDAO;
@@ -142,7 +144,7 @@ public class ProfesorController extends HttpServlet {
             String apellidosAlumno = alumnoDAO.obtenerApellidos(DNI_Alumno_Listar);
             System.out.println("adfjosd: " + nombreAlumno);
             System.out.println("suma: " + sumaCreditos);
-            
+
             request.setAttribute("sumaCreditos", sumaCreditos);
             request.setAttribute("nombreAlumno", nombreAlumno);
             request.setAttribute("apellidosAlumno", apellidosAlumno);
@@ -161,7 +163,7 @@ public class ProfesorController extends HttpServlet {
             }
             String comentarios = request.getParameter("Comentarios");
             convalidacionDAO.setComentarios(comentarios, codigoAsignaturaModificar);
-            
+
         } else if ("nuevaEstancia".equals(accion)) {
             dispatcher = request.getRequestDispatcher("ACUERDOS/nuevaEstancia.jsp");
             List<Grado> grados = gradoDAO.listarGrados();
@@ -248,32 +250,57 @@ public class ProfesorController extends HttpServlet {
             String codigoO = request.getParameter("CodigoO");
             String creditosO = request.getParameter("CreditosO");
             String nombreO = request.getParameter("NombreO");
-            String guiaO = request.getParameter("GuiaO");
+            String informacionO = request.getParameter("InformacionO");
+            String tipoO = request.getParameter("tipoO");
 
             String codigoD1 = request.getParameter("CodigoD1");
             String creditosD1 = request.getParameter("CreditosD1");
             String nombreD1 = request.getParameter("NombreD1");
-            String guiaD1 = request.getParameter("GuiaD1");
+            String informacionD1 = request.getParameter("InformacionD1");
 
             String codigoD2 = request.getParameter("CodigoD2");
             String creditosD2 = request.getParameter("CreditosD2");
             String nombreD2 = request.getParameter("NombreD2");
-            String guiaD2 = request.getParameter("GuiaD2");
+            String informacionD2 = request.getParameter("InformacionD2");
+
+            String codigo_universidad_destino = estanciaDAO.obtenerCodigoUniversidadDestino(DNI_Alumno);
+            Integer id_estancia = estanciaDAO.obtenerIdEstancia(DNI_Alumno);
+            System.out.println("dni: " + DNI_Alumno);
+            System.out.println("codigo:" + codigo_universidad_destino);
+            //Habra que modificarlo para que el alumno elija la estancia a la que quiere introducir la asignatura por si cambia de universidad
+
+            Asignatura_Origen asignaturaO = new Asignatura_Origen(codigoO, Integer.parseInt(creditosO), nombreO, informacionO, tipoO);
+
+            asignatura_origenDAO.insertarAsignaturaOrigen(asignaturaO);
 
             //Asignatura_Origen asignaturaO = new Asignatura_Origen(Integer.parseInt(codigoO), Integer.parseInt(creditosO), nombreO, guiaO);
             //asignatura_origenDAO.insertarAsignaturaOrigen(asignaturaO);
-            //Asignatura_Destino asignaturaD1 = new Asignatura_Destino(Integer.parseInt(codigoD1), Integer.parseInt(creditosD1), Integer.parseInt(codigoO), nombreD1, guiaD1, "Pendiente");
-            //asignatura_destinoDAO.insertarAsignaturaDestino(asignaturaD1);
-            if (!(codigoD2.equals("") || creditosD2.equals("") || nombreD2.equals("") || guiaD2.equals(""))) {
-                //Asignatura_Destino asignaturaD2 = new Asignatura_Destino(Integer.parseInt(codigoD2), Integer.parseInt(creditosD2), Integer.parseInt(codigoO), nombreD2, guiaD2, "Pendiente");
+            Asignatura_Destino asignaturaD1 = new Asignatura_Destino(codigoD1, Integer.parseInt(creditosD1), nombreD1, informacionD1, codigo_universidad_destino);
+            asignatura_destinoDAO.insertarAsignaturaDestino(asignaturaD1);
 
-                //   asignatura_destinoDAO.insertarAsignaturaDestino(asignaturaD2);
+            Date date = new Date();
+
+            long fechaActual = date.getDate();
+            java.sql.Date date1 = new java.sql.Date(fechaActual);
+
+            Integer id_convalidacion1 = convalidacionDAO.obtenerSiguienteConvalidacion();
+            Convalidacion c1 = new Convalidacion(id_convalidacion1, "Pendiente", "", date1, id_estancia, codigoD1, codigoO);
+
+            convalidacionDAO.insertarConvalidacion(c1);
+
+            if (!(codigoD2.equals("") || creditosD2.equals("") || nombreD2.equals("") || informacionD2.equals(""))) {
+                Asignatura_Destino asignaturaD2 = new Asignatura_Destino(codigoD2, Integer.parseInt(creditosD2), nombreD2, informacionD2, codigo_universidad_destino);
+
+                asignatura_destinoDAO.insertarAsignaturaDestino(asignaturaD2);
+                Integer id_convalidacion2 = convalidacionDAO.obtenerSiguienteConvalidacion();
+
+                Convalidacion c2 = new Convalidacion(id_convalidacion2, "Pendiente", "", date1, id_estancia, codigoD2, codigoO);
+
+                convalidacionDAO.insertarConvalidacion(c2);
             }
 
-            muchasAsignaturas_muchos_Alumnos mama = new muchasAsignaturas_muchos_Alumnos(Integer.parseInt(codigoO), DNI_Alumno);
-
-            mamaDAO.insertarMama(mama);
-
+            //muchasAsignaturas_muchos_Alumnos mama = new muchasAsignaturas_muchos_Alumnos(Integer.parseInt(codigoO), DNI_Alumno);
+            //mamaDAO.insertarMama(mama);
             dispatcher = request.getRequestDispatcher("ACUERDOS/convalidacion.jsp");
         } else if ("buscadorConvalidacion".equals(accion)) {
             //dispatcher = request.getRequestDispatcher("ACUERDOS/convalidacion.jsp");

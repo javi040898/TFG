@@ -102,7 +102,7 @@ public class Asignatura_OrigenDAO {
         PreparedStatement ps;
 
         try {
-            ps = conexion.prepareStatement("INSERT INTO Asignatura_origen VALUES (?,?,?,?);");
+            ps = conexion.prepareStatement("INSERT INTO Asignatura_origen VALUES (?,?,?,?,?);");
 
             ps.setString(1, asignatura.getCodigo());
             ps.setInt(2, asignatura.getCreditos());

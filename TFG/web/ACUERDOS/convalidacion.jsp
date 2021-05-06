@@ -31,12 +31,14 @@
                     <h1>ASIGNATURA ORIGEN</h1>
                     <label>Codigo</label>
                     <input id="CodigoO" class="form-control" name="CodigoO" type="text" align="left"/>
-                    <label>Creditos</label>
-                    <input type="text" class="form-control" name="CreditosO" id="CreditosO" placeholder="">
                     <label>Nombre</label>
                     <input type="text" class="form-control" name="NombreO" id="NombreO" placeholder="">
+                    <label>Creditos</label>
+                    <input type="text" class="form-control" name="CreditosO" id="CreditosO" placeholder="">
+                    <label>Tipo</label>
+                    <input type="text" class="form-control" name="TipoO" id="TipoO" placeholder="">
                     <label>Informacion</label>
-                    <input type="text" class="form-control" name="GuiaO" id="GuiaO" placeholder="">
+                    <input type="text" class="form-control" name="InformacionO" id="Informacion" placeholder="">
                 </div>
 
 
@@ -53,12 +55,12 @@
                     <h1>ASIGNATURA DESTINO 1</h1>
                     <label>Codigo</label>
                     <input id="CodigoD1" class="form-control" name="CodigoD1" type="text" align="left"/>
-                    <label>Creditos</label>
-                    <input type="text" class="form-control" name="CreditosD1" id="CreditosD1" placeholder="">
                     <label>Nombre</label>
                     <input type="text" class="form-control" name="NombreD1" id="NombreD1" placeholder="">
+                    <label>Creditos</label>
+                    <input type="text" class="form-control" name="CreditosD1" id="CreditosD1" placeholder="">
                     <label>Informacion</label>
-                    <input type="text" class="form-control" name="GuiaD1" id="GuiaD1" placeholder="">
+                    <input type="text" class="form-control" name="InformacionD1" id="InformacionD1" placeholder="">
 
                 </div>
 
@@ -71,12 +73,12 @@
                     <h1>ASIGNATURA DESTINO 2</h1>
                     <label>Codigo</label>
                     <input id="CodigoD2" class="form-control" name="CodigoD2" type="text" align="left"/>
-                    <label>Creditos</label>
-                    <input type="text" class="form-control" name="CreditosD2" id="CreditosD2" placeholder="">
                     <label>Nombre</label>
                     <input type="text" class="form-control" name="NombreD2" id="NombreD2" placeholder="">
+                    <label>Creditos</label>
+                    <input type="text" class="form-control" name="CreditosD2" id="CreditosD2" placeholder="">
                     <label>Informacion</label>
-                    <input type="text" class="form-control" name="GuiaD2" id="GuiaD2" placeholder="">
+                    <input type="text" class="form-control" name="InformacionD2" id="InformacionD2" placeholder="">
 
                 </div>
 

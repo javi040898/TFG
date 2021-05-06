@@ -267,6 +267,19 @@ select * from Universidad_destino;
 
 select codigo_erasmus from Universidad_destino where nombre = 'Universidad de Touluse';
 
+select Codigo_erasmus_Universidad_destino from estancia where DNI_Alumno='47231972T'
+
+select passw from Alumno;
+
+delete from Asignatura_origen where codigo='470';
+select * from Asignatura_origen;
+
+select id_estancia from estancia where DNI_Alumno='47231972T';
+select * from Asignatura_destino;
+delete from Asignatura_destino where codigo='930';
+
+select * from Convalidacion;
+
 
 
 

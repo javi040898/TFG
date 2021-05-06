@@ -13,10 +13,10 @@ public class Asignatura_Destino {
     private Integer creditos;
     private String nombre, informacion,codigo,Codigo_erasmus_Universidad_destino;
 
-    public Asignatura_Destino(String codigo, Integer creditos, String nombre, String informacion, String Codigo_erasmus_Universidad_destino) {
+    public Asignatura_Destino(String codigo, Integer creditos, String nombre, String informacion, String codigo_erasmus_Universidad_destino) {
         this.codigo = codigo;
         this.creditos = creditos;
-        this.Codigo_erasmus_Universidad_destino = Codigo_erasmus_Universidad_destino;
+        this.Codigo_erasmus_Universidad_destino = codigo_erasmus_Universidad_destino;
         this.nombre = nombre;
         this.informacion = informacion;
 
@@ -44,13 +44,6 @@ public class Asignatura_Destino {
 
     
 
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
 
     public String getInformacion() {
         return informacion;

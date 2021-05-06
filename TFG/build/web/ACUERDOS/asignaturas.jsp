@@ -61,17 +61,17 @@
 
                 <tbody>
                 <tr>
-                    <% List<Asignatura_Origen> listaAsignaturasOrigen = (List<Asignatura_Origen>)request.getAttribute("listaAsignaturasOrigen");
+                    <% /*List<Asignatura_Origen> listaAsignaturasOrigen = (List<Asignatura_Origen>)request.getAttribute("listaAsignaturasOrigen");
             if(listaAsignaturasOrigen != null)
-                for(Asignatura_Origen asignatura : listaAsignaturasOrigen){%>
+                for(Asignatura_Origen asignatura : listaAsignaturasOrigen){*/%>
                  <tr>
-                   <td><%=asignatura.getCodigo()%></td>
-                   <td><%=asignatura.getCreditos()%></td>
-                   <td><%=asignatura.getNombre()%></td>
-                   <td><%=asignatura.getGuia_docente()%></td>
-                   <td><a href="<%=asignatura.getGuia_docente()%>" > link</a></td>
+                   <td><%//=asignatura.getCodigo()%></td>
+                   <td><%//=asignatura.getCreditos()%></td>
+                   <td><%//=asignatura.getNombre()%></td>
+                   <td><%//=asignatura.getGuia_docente()%></td>
+                   <td><a href="<%//=asignatura.getGuia_docente()%>" > link</a></td>
                    
-                   <%}%>
+                   <%//}%>
                 </tr> 
 
                 </tbody>
@@ -83,7 +83,7 @@
                 <option>Escoge una asignaturao</option>
                 <%                        for (Asignatura_Destino asignaturaD : listaAsignaturasDestino) {
                 %>
-                <option value="<%=asignaturaD.getCodigo()%>"><%=asignaturaD.getNombre()%><%=" " + asignaturaD.getCodigo()%></option>
+                <option value="<%//=asignaturaD.getCodigo()%>"><%//=asignaturaD.getNombre()%><%=" " + //asignaturaD.getCodigo()%></option>
                 <% }%>
 
 
@@ -101,13 +101,13 @@
             <h1>RECHAZAR ASIGNATURA</h1>
             <select class="form-control" id="listaAsignaturasRechazar" name="listaAsignaturasRechazar">
                 <option>Escoge una asignatura</option>
-                <% if (listaAsignaturasDestino != null)
-                        for (Asignatura_Destino asignaturaD : listaAsignaturasDestino) {
-                            if (asignaturaD.getEstado().equals("Pendiente")) {
+                <% /*if (listaAsignaturasDestino != null)
+                       // for (Asignatura_Destino asignaturaD : listaAsignaturasDestino) {
+                           // if (asignaturaD.getEstado().equals("Pendiente")) {*/
                 %>
-                <option value="<%=asignaturaD.getCodigo()%>"><%=asignaturaD.getNombre()%><%=" (" + asignaturaD.getCodigo() + ")"%></option>
+                <option value="<%=//asignaturaD.getCodigo()%>"><%//=asignaturaD.getNombre()%><%=" (" + //asignaturaD.getCodigo() + ")"%></option>
                 <% }
-                    }%>
+                   // }%>
 
 
 
