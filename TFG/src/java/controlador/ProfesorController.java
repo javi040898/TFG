@@ -251,7 +251,7 @@ public class ProfesorController extends HttpServlet {
             String creditosO = request.getParameter("CreditosO");
             String nombreO = request.getParameter("NombreO");
             String informacionO = request.getParameter("InformacionO");
-            String tipoO = request.getParameter("tipoO");
+            String tipoO = request.getParameter("TipoO");
 
             String codigoD1 = request.getParameter("CodigoD1");
             String creditosD1 = request.getParameter("CreditosD1");
@@ -311,19 +311,19 @@ public class ProfesorController extends HttpServlet {
 
             System.out.println("Codigo buscador " + codigoBuscador);
 
-            List<Asignatura_Origen> listaAsignaturas_origenBuscador = asignatura_origenDAO.listarAsignaturasBuscador(codigoBuscador);
-            for (int i = 0; i < listaAsignaturas_origenBuscador.size(); i++) {
-                System.out.println(listaAsignaturas_origenBuscador.get(i).getNombre());
+            List<RelacionAsignaturas> listaRelacionAsignaturasOrigenBuscador = relacionAsignaturasDAO.listarConvalidacionesBuscador(codigoBuscador);
+            for (int i = 0; i < listaRelacionAsignaturasOrigenBuscador.size(); i++) {
+                System.out.println(listaRelacionAsignaturasOrigenBuscador.get(i).getNombre_origen());
             }
 
-            List<Asignatura_Destino> listaAsignaturas_destinoBuscador = asignatura_destinoDAO.listarAsignaturasBuscador(Integer.parseInt(codigoBuscador));
+            /*List<Asignatura_Destino> listaAsignaturas_destinoBuscador = asignatura_destinoDAO.listarAsignaturasBuscador(Integer.parseInt(codigoBuscador));
 
             for (int i = 0; i < listaAsignaturas_destinoBuscador.size(); i++) {
                 System.out.println(listaAsignaturas_destinoBuscador.get(i).getNombre());
-            }
+            }*/
 
-            request.setAttribute("listaAsignaturasOrigenBuscador", listaAsignaturas_origenBuscador);
-            request.setAttribute("listaAsignaturasDestinoBuscador", listaAsignaturas_destinoBuscador);
+            request.setAttribute("listaRelacionAsignaturasOrigenBuscador", listaRelacionAsignaturasOrigenBuscador);
+            //request.setAttribute("listaAsignaturasDestinoBuscador", listaAsignaturas_destinoBuscador);
 
             dispatcher = request.getRequestDispatcher("ACUERDOS/buscador.jsp");
         }

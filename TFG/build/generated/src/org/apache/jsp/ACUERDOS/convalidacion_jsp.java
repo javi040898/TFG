@@ -75,7 +75,7 @@ public final class convalidacion_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("                    <label>Creditos</label>\n");
       out.write("                    <input type=\"text\" class=\"form-control\" name=\"CreditosO\" id=\"CreditosO\" placeholder=\"\">\n");
       out.write("                    <label>Tipo</label>\n");
-      out.write("                    <input type=\"text\" class=\"form-control\" name=\"Tipo\" id=\"Tipo\" placeholder=\"\">\n");
+      out.write("                    <input type=\"text\" class=\"form-control\" name=\"TipoO\" id=\"TipoO\" placeholder=\"\">\n");
       out.write("                    <label>Informacion</label>\n");
       out.write("                    <input type=\"text\" class=\"form-control\" name=\"InformacionO\" id=\"Informacion\" placeholder=\"\">\n");
       out.write("                </div>\n");

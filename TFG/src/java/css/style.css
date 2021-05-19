@@ -58,7 +58,7 @@
 #titulo3{
 
     float:left;
-
+    background:#E3D5CD;
     margin:20px;
     padding:10px;
     top:180px;
@@ -73,7 +73,7 @@
     float:left;
     left:1000px;
 
-
+    background:#E3D5CD;
     margin:20px;
     padding:10px;
     top:180px;
@@ -301,6 +301,7 @@
     border: 1px solid #000;
     border-collapse: collapse;
     border: hidden;
+    background:#EDE6E2;
     padding: 0.3em;
 }
 

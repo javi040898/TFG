@@ -65,15 +65,15 @@ public class ConvalidacionDAO {
         PreparedStatement ps;
 
         try {
-            ps = conexion.prepareStatement("INSERT INTO Convalidacion VALUES(?,?,?,?,?,?,?);");
+            ps = conexion.prepareStatement("INSERT INTO Convalidacion VALUES(?,?,?,CURRENT_DATE,?,?,?);");
 
             ps.setInt(1, c.getId_convalidacion());
             ps.setString(2, c.getEstado());
             ps.setString(3, c.getComentarios());
-            ps.setDate(4, c.getFecha_convalidacion());
-            ps.setInt(5, c.getId_estancia_Estancia());
-            ps.setString(6, c.getCodigo_Asignatura_destino());
-            ps.setString(7, c.getCodigo_Asignatura_origen());
+            //ps.setDate(4, c.getFecha_convalidacion());
+            ps.setInt(4, c.getId_estancia_Estancia());
+            ps.setString(5, c.getCodigo_Asignatura_destino());
+            ps.setString(6, c.getCodigo_Asignatura_origen());
             ps.execute();
 
             return true;

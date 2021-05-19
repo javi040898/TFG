@@ -226,12 +226,13 @@ where Codigo = '111';
 
 select Codigo_Asignatura_origen,Asignatura_origen.nombre,Asignatura_origen.tipo,Asignatura_origen.creditos,Asignatura_origen.informacion,
 Codigo_Asignatura_destino,Asignatura_destino.nombre as nombre_destino,Asignatura_destino.creditos as creditos_destino,
-Asignatura_destino.informacion as informacion_destino,
+Asignatura_destino.informacion as informacion_destino, Universidad_destino.Nombre as nombre_universidad,
 fecha_convalidacion,curso_academico,
 estado,comentarios
 from Convalidacion inner join Estancia on id_estancia_Estancia=id_estancia
-inner join Asignatura_origen on Asignatura_origen.Codigo = Codigo_Asignatura_origen 
-inner join Asignatura_destino on Codigo_Asignatura_destino=Asignatura_destino.Codigo where DNI_Alumno='47231972T';
+inner join Asignatura_origen on Asignatura_origen.Codigo = Codigo_Asignatura_origen
+inner join Asignatura_destino on Codigo_Asignatura_destino=Asignatura_destino.Codigo inner join Universidad_destino on
+Estancia.Codigo_erasmus_Universidad_destino = Codigo_erasmus where DNI_Alumno='47231972T';
 
 
 
@@ -278,7 +279,17 @@ select id_estancia from estancia where DNI_Alumno='47231972T';
 select * from Asignatura_destino;
 delete from Asignatura_destino where codigo='930';
 
-select * from Convalidacion;
+select Codigo_Asignatura_origen,Asignatura_origen.nombre,Asignatura_origen.tipo,Asignatura_origen.creditos,Asignatura_origen.informacion,
+Codigo_Asignatura_destino,Asignatura_destino.nombre as nombre_destino,Asignatura_destino.creditos as creditos_destino,
+Asignatura_destino.informacion as informacion_destino, Universidad_destino.Nombre as nombre_universidad,
+fecha_convalidacion,curso_academico,
+estado,comentarios
+from Convalidacion inner join Estancia on id_estancia_Estancia=id_estancia
+inner join Asignatura_origen on Asignatura_origen.Codigo = Codigo_Asignatura_origen
+inner join Asignatura_destino on Codigo_Asignatura_destino=Asignatura_destino.Codigo inner join Universidad_destino on
+Estancia.Codigo_erasmus_Universidad_destino = Codigo_erasmus where Asignatura_origen.Codigo = '234';
+
+select min_val, max_val from pg_settings where name='max_connections';
 
 
 

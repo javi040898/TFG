@@ -4,6 +4,7 @@
     Author     : Javier
 --%>
 
+<%@page import="modelo.RelacionAsignaturas"%>
 <%@page import="modelo.Asignatura_Destino"%>
 <%@page import="modelo.Asignatura_Origen"%>
 <%@page import="java.util.List"%>
@@ -61,66 +62,80 @@
                         </h1></div>
 
 
+                    
 
+                        
                     <th>Codigo</th>
-                    <th>Creditos</th>
                     <th>Nombre</th>
-                    <th>Guia Docente</th>
-                    <th>Link</th>
+                    <th>Tipo</th>
+                    <th>Creditos</th>
+                    
+
+                    <th>Link de asignatura</th>
 
                     <th style="border: hidden"></th>
 
                     <th>Codigo</th>
-                    <th>Creditos</th>
                     <th>Nombre</th>
-                    <th>Guia Docente</th>
-                    <th>Link</th>
-                    <th>Codigo destino</th>
+                    <th>Creditos</th>
+                    <th>Link de asignatura</th>
+                    <th>Universidad</th>
+                    <th>Fecha convalidacion</th>
+                    <th>Curso academico</th>
                     <th>Estado</th>
+                    <th>Comentarios</th>
+                    
+                    
+
+
                     </tr>
                     </thead>
 
                     <tbody>
 
-                        <% List<Asignatura_Origen> listaAsignaturasOrigen = (List<Asignatura_Origen>) request.getAttribute("listaAsignaturasOrigenBuscador");
+                        <% List<RelacionAsignaturas> listaRA = (List<RelacionAsignaturas>) request.getAttribute("listaRelacionAsignaturasOrigenBuscador");
                             /*for (int i = 0; i < listaAsignaturasOrigen.size(); i++) {
                                 System.out.println(listaAsignaturasOrigen.get(i).getNombre());
                             }*/
 
-                            List<Asignatura_Destino> listaAsignaturasDestino = (List<Asignatura_Destino>) request.getAttribute("listaAsignaturasDestinoBuscador");
-                            if (listaAsignaturasOrigen != null && listaAsignaturasDestino != null)
-                                for (Asignatura_Origen asignaturaO : listaAsignaturasOrigen) {
-                                    for (Asignatura_Destino asignaturaD : listaAsignaturasDestino) {
-                                        if (String.valueOf(asignaturaO.getCodigo()).equals(String.valueOf(asignaturaD.getCodigo_Asignatura_Origen()))) {
-                                            //System.out.println(asignaturaO.getNombre());
-%>
+                            //List<Asignatura_Destino> listaAsignaturasDestino = (List<Asignatura_Destino>) request.getAttribute("listaAsignaturasDestinoBuscador");
+                            if (listaRA != null)
+                                for (RelacionAsignaturas ra : listaRA) {
+                                    //if (String.valueOf(asignaturaO.getCodigo()).equals(String.valueOf(asignaturaD.getCodigo_Asignatura_Origen()))) {
+                                    //System.out.println(asignaturaO.getNombre());
+                        %>
                         <tr>
+                            
+                            
 
-                            <td><%=asignaturaO.getCodigo()%></td>
-                            <td><%=asignaturaO.getCreditos()%></td>
-                            <td><%=asignaturaO.getNombre()%></td>
-                            <td><%=asignaturaO.getGuia_docente()%></td>
-                            <td><a href="<%=asignaturaO.getGuia_docente()%>" target="_blank" > link</a></td>
+                            <td><%=ra.getCodigo_origen()%></td>
+                            <td><%=ra.getNombre_origen()%></td>
+                            <td><%=ra.getTipo()%></td>
+                            <td><%=ra.getCreditos_origen()%></td>
+                            <td><a href="<%=ra.getInformacion_origen()%>" target="_blank" > link</a></td>
 
 
                             <td style="border: hidden">---></td>
-                            <td><%=asignaturaD.getCodigo()%></td>
-                            <td><%=asignaturaD.getCreditos()%></td>
-                            <td><%=asignaturaD.getNombre()%></td>
-                            <td><%=asignaturaD.getGuia_docente()%></td>
-                            <td><a href="<%=asignaturaD.getGuia_docente()%>" target="_blank" > link</a></td>
-                            <td><%=asignaturaD.getCodigo_Asignatura_Origen()%></td>
-                            <td><%=asignaturaD.getEstado()%></td>
+                            <td><%=ra.getCodigo_destino()%></td>
+                            <td><%=ra.getNombre_destino()%></td>
+                            <td><%=ra.getCreditos_destino()%></td>
+
+                            <td><a href="<%=ra.getInformacion_destino()%>" target="_blank" > link</a></td>
+                            <td><%=ra.getNombre_universidad()%></td>
+                            <td><%=ra.getFecha()%></td>
+                            <td><%=ra.getCurso()%></td>
+                            <td><%=ra.getEstado()%></td>
+                            <td><%=ra.getComentarios()%></td>
 
 
 
 
                         </tr>
                         <%
-                                   }
-                               }
+                                    }
+                            
 
-                           }%>
+                        %>
 
 
 

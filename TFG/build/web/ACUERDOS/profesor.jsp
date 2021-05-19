@@ -92,6 +92,7 @@
                     <th>Nombre</th>
                     <th>Creditos</th>
                     <th>Link de asignatura</th>
+                    <th>Universidad</th>
                     <th>Fecha convalidacion</th>
                     <th>Curso academico</th>
                     <th>Estado</th>
@@ -131,7 +132,9 @@
                             <td><%=ra.getCreditos_destino()%></td>
 
                             <td><a href="<%=ra.getInformacion_destino()%>" target="_blank" > link</a></td>
+                             <td><%=ra.getNombre_universidad()%></td>
                             <td><%=ra.getFecha()%></td>
+                            
                             <td><%=ra.getCurso()%></td>
                             <td><%=ra.getEstado()%></td>
                             <td><%=ra.getComentarios()%></td>
