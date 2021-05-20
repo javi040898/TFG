@@ -291,7 +291,7 @@ Estancia.Codigo_erasmus_Universidad_destino = Codigo_erasmus where Asignatura_or
 
 select min_val, max_val from pg_settings where name='max_connections';
 
-
+select Grado.* from Grado inner join Alumno on Codigo_Grado = Codigo where DNI = '47231972T';
 
 
 

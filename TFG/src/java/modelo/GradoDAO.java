@@ -54,4 +54,33 @@ public class GradoDAO {
 
         }
     }
+
+    public Grado gradoAlumno(String DNI) {
+
+        PreparedStatement ps;
+        ResultSet rs;
+        Grado grado = null;
+
+        try {
+            ps = conexion.prepareStatement("select Grado.* from Grado inner join Alumno on Codigo_Grado = Codigo where DNI = ?;");
+            ps.setString(1, DNI);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                String codigo = rs.getString("codigo");
+                String nombre = rs.getString("nombre");
+                String facultad = rs.getString("facultad");
+
+                grado = new Grado(codigo, nombre, facultad);
+
+            }
+
+            return grado;
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+            return null;
+
+        }
+    }
 }

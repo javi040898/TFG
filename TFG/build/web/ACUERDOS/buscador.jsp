@@ -56,29 +56,29 @@
                         <tr>
 
 
-                    <div id="titulo3"> <h1>ASIGNATURAS ORIGEN 
-                        </h1></div>
-                    <div id="titulo4"> <h1>ASIGNATURAS DESTINO 
-                        </h1></div>
+                    <div id="titulo3"> ASIGNATURAS RECONOCIDAS EN LA UNIVERSIDAD DE ALCALÁ
+                    </div>
+                    <div id="titulo4"> ASIGNATURAS CURSADAS  EN LA UNIVERSIDAD DE DESTINO
+                    </div>
 
 
                     
 
                         
                     <th>Codigo</th>
-                    <th>Nombre</th>
+                    <th>Nombre Asignatura</th>
                     <th>Tipo</th>
                     <th>Creditos</th>
                     
 
-                    <th>Link de asignatura</th>
+                    <th>Link asignatura</th>
 
                     <th style="border: hidden"></th>
 
                     <th>Codigo</th>
-                    <th>Nombre</th>
+                    <th>Nombre Asignatura</th>
                     <th>Creditos</th>
-                    <th>Link de asignatura</th>
+                    <th>Link asignatura</th>
                     <th>Universidad</th>
                     <th>Fecha convalidacion</th>
                     <th>Curso academico</th>

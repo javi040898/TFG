@@ -13,21 +13,24 @@
         <title>JSP Page</title>
     </head>
     <body>
-       
-        <h1>ALUMNO</h1>
+
+        <div class="div07">ALUMNO</div>
         <form action="ProfesorController?accion=listarAsignaturas" method="POST" autocomplete="off">
             <%
-            String DNI = request.getAttribute("DNI_A").toString();
-            
+                String DNI = request.getAttribute("DNI_A").toString();
+
             %>
 
         </form>
-        
-        
-         <a href="ProfesorController?accion=nuevaConvalidacion">Nueva convalidacion</a>
-         <br>
-         <a href="ProfesorController?accion=buscarConvalidacion">Buscar antiguas convalidaciones</a>
-         <br>
-         <a href="ProfesorController?accion=cambiarPassword">Cambiar contraseña</a>
+
+        <div id="enlacesAlumno">
+            <a href="ProfesorController?accion=nuevaConvalidacion">Nueva convalidacion</a>
+            <br>
+            <a href="ProfesorController?accion=buscarConvalidacion">Buscar antiguas convalidaciones</a>
+            <br>
+            <a href="ProfesorController?accion=verConvalidacionesActuales">Estado convalidaciones actuales</a>
+            <br>
+            <a href="ProfesorController?accion=cambiarPassword">Cambiar contraseña</a>
+        </div>
     </body>
 </html>

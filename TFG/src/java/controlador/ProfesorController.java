@@ -140,14 +140,21 @@ public class ProfesorController extends HttpServlet {
 
             String cambioEstado = request.getParameter("modificarEstado");
             String sumaCreditos = String.valueOf(asignatura_origenDAO.sumaCreditos(DNI_Alumno_Listar));
+
             String nombreAlumno = alumnoDAO.obtenerNombre(DNI_Alumno_Listar);
             String apellidosAlumno = alumnoDAO.obtenerApellidos(DNI_Alumno_Listar);
+            String codigoGrado = gradoDAO.gradoAlumno(DNI_Alumno_Listar).getCodigo();
+            String nombreGrado = gradoDAO.gradoAlumno(DNI_Alumno_Listar).getNombre();
+            String facultad = gradoDAO.gradoAlumno(DNI_Alumno_Listar).getFacultad();
             System.out.println("adfjosd: " + nombreAlumno);
             System.out.println("suma: " + sumaCreditos);
 
             request.setAttribute("sumaCreditos", sumaCreditos);
             request.setAttribute("nombreAlumno", nombreAlumno);
             request.setAttribute("apellidosAlumno", apellidosAlumno);
+            request.setAttribute("codigoGrado", codigoGrado);
+            request.setAttribute("nombreGrado", nombreGrado);
+            request.setAttribute("facultad", facultad);
             //System.out.println("codigo:" + codigoAsignaturaModificar);
             //System.out.println(alumnoDAO.listarCodigosAsignaturasAlumno(DNI_Alumno_Listar));
             //System.out.println("buenassssssss");
@@ -321,7 +328,6 @@ public class ProfesorController extends HttpServlet {
             for (int i = 0; i < listaAsignaturas_destinoBuscador.size(); i++) {
                 System.out.println(listaAsignaturas_destinoBuscador.get(i).getNombre());
             }*/
-
             request.setAttribute("listaRelacionAsignaturasOrigenBuscador", listaRelacionAsignaturasOrigenBuscador);
             //request.setAttribute("listaAsignaturasDestinoBuscador", listaAsignaturas_destinoBuscador);
 

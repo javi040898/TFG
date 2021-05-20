@@ -59,10 +59,55 @@
             <div id="butAceptar">
                 <button>Aceptar</button>
             </div>
-            <div id="NombreAlumno">Nombre <%=String.valueOf(request.getAttribute("nombreAlumno"))%>
+            <%  String nombre = "";
+                if (String.valueOf(request.getAttribute("nombreAlumno")) != "null") {
+                    System.out.println(String.valueOf(request.getAttribute("nombreAlumno")));
+                    nombre = String.valueOf(request.getAttribute("nombreAlumno"));
+                }
+
+                String apellidos = "";
+                if (String.valueOf(request.getAttribute("apellidosAlumno")) != "null") {
+                    System.out.println(String.valueOf(request.getAttribute("nombreAlumno")));
+                    apellidos = String.valueOf(request.getAttribute("apellidosAlumno"));
+                }
+            %>    
+            <%
+                String codigoGrado = "";
+                if (String.valueOf(request.getAttribute("codigoGrado")) != "null") {
+                    System.out.println(String.valueOf(request.getAttribute("codigoGrado")));
+                    codigoGrado = String.valueOf(request.getAttribute("codigoGrado"));
+                }
+            %>   
+
+            <%
+                String nombreGrado = "";
+                if (String.valueOf(request.getAttribute("nombreGrado")) != "null") {
+                    System.out.println(String.valueOf(request.getAttribute("nombreGrado")));
+                    nombreGrado = String.valueOf(request.getAttribute("nombreGrado"));
+                }
+            %>  
+
+            <%
+                String facultad = "";
+                if (String.valueOf(request.getAttribute("facultad")) != "null") {
+                    System.out.println(String.valueOf(request.getAttribute("facultad")));
+                    facultad = String.valueOf(request.getAttribute("facultad"));
+                }
+            %> 
+            
+            <div id="NombreAlumno">Nombre: <%=nombre%>
             </div>
 
-            <div id="ApellidosAlumno">Apellidos <%=String.valueOf(request.getAttribute("apellidosAlumno"))%>
+            <div id="ApellidosAlumno">Apellidos: <%=apellidos%>
+            </div>
+
+            <div id="CodigoGrado">Codigo Grado: <%=codigoGrado%>
+            </div>
+
+            <div id="NombreGrado" color="#0CF">Nombre Grado: <%=nombreGrado%>
+            </div>
+
+            <div id="Facultad">Facultad: <%=facultad%>
             </div>
             <div id="table1">
                 <table>
@@ -79,19 +124,19 @@
 
 
                     <th>Codigo</th>
-                    <th>Nombre</th>
+                    <th>Nombre Asignatura</th>
                     <th>Tipo</th>
                     <th>Creditos</th>
 
-                    <th>Link de asignatura</th>
+                    <th>Link asignatura</th>
 
 
                     <th style="border: hidden"></th>
 
                     <th>Codigo</th>
-                    <th>Nombre</th>
+                    <th>Nombre Asignatura</th>
                     <th>Creditos</th>
-                    <th>Link de asignatura</th>
+                    <th>Link asignatura</th>
                     <th>Universidad</th>
                     <th>Fecha convalidacion</th>
                     <th>Curso academico</th>
@@ -132,9 +177,9 @@
                             <td><%=ra.getCreditos_destino()%></td>
 
                             <td><a href="<%=ra.getInformacion_destino()%>" target="_blank" > link</a></td>
-                             <td><%=ra.getNombre_universidad()%></td>
+                            <td><%=ra.getNombre_universidad()%></td>
                             <td><%=ra.getFecha()%></td>
-                            
+
                             <td><%=ra.getCurso()%></td>
                             <td><%=ra.getEstado()%></td>
                             <td><%=ra.getComentarios()%></td>

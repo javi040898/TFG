@@ -26,7 +26,7 @@ public class Asignatura_DestinoDAO {
         conexion = conn.connect();
     }
 
-    public List<Asignatura_Destino> listarAsignaturas(String DNI) {
+    /*public List<Asignatura_Destino> listarAsignaturas(String DNI) {
         PreparedStatement ps;
         ResultSet rs;
         List<Asignatura_Destino> lista = new ArrayList<>();
@@ -59,9 +59,9 @@ public class Asignatura_DestinoDAO {
             return null;
 
         }
-    }
+    }*/
 
-    public List<Asignatura_Destino> listarAsignaturasBuscador(Integer codigo) {
+   /*public List<Asignatura_Destino> listarAsignaturasBuscador(Integer codigo) {
         PreparedStatement ps;
         ResultSet rs;
         List<Asignatura_Destino> lista = new ArrayList<>();
@@ -91,7 +91,7 @@ public class Asignatura_DestinoDAO {
             return null;
 
         }
-    }
+    }*/
 
     public void cambiarEstado(String estado, Integer codigo_asignatura) {
         PreparedStatement ps;

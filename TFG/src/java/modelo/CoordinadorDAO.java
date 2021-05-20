@@ -68,7 +68,7 @@ public class CoordinadorDAO {
         return passw;
     }
     
-    public List<Coordinador> listarProfesores() {
+    /*public List<Coordinador> listarProfesores() {
 
         PreparedStatement ps;
         ResultSet rs;
@@ -97,7 +97,7 @@ public class CoordinadorDAO {
             return null;
 
         }
-    }
+    }*/
     public boolean insertar(Coordinador profesor) {
 
         PreparedStatement ps;
