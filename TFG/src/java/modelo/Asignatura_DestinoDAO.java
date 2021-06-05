@@ -26,30 +26,23 @@ public class Asignatura_DestinoDAO {
         conexion = conn.connect();
     }
 
-    /*public List<Asignatura_Destino> listarAsignaturas(String DNI) {
-        PreparedStatement ps;
-        ResultSet rs;
+    public List<Asignatura_Destino> listarAsignaturas() {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
         List<Asignatura_Destino> lista = new ArrayList<>();
         try {
-            ps = conexion.prepareStatement("select Asignatura_destino.* from Asignatura_origen inner join muchos_Asignatura_origen_tiene_muchos_Alumno on \n"
-                    + "Asignatura_origen.codigo=muchos_Asignatura_origen_tiene_muchos_Alumno.Codigo_Asignatura_origen\n"
-                    + "inner join Alumno on Alumno.DNI=muchos_Asignatura_origen_tiene_muchos_Alumno.DNI_Alumno inner join Asignatura_destino\n"
-                    + "on Asignatura_destino.Codigo_Asignatura_origen=Asignatura_origen.Codigo\n"
-                    + "where DNI=?;");
-            ps.setString(1, DNI);
+            ps = conexion.prepareStatement("select * from Asignatura_destino;");
             rs = ps.executeQuery();
 
             while (rs.next()) {
 
-                Integer codigo = rs.getInt("codigo");
+                String codigo = rs.getString("codigo");
                 Integer creditos = rs.getInt("creditos");
                 String nombre = rs.getString("nombre");
-                String guia_docente = rs.getString("guia_docente");
-                Integer codigo_origen = rs.getInt("Codigo_Asignatura_origen");
-                String estado = rs.getString("estado");
+                String informacion = rs.getString("informacion");
+                String codigo_erasmus_Universidad_destino = rs.getString("codigo_erasmus_Universidad_destino");
 
-                Asignatura_Destino asignatura = new Asignatura_Destino(codigo, creditos, nombre, informacion, estado,codigo_erasmus_Universidad_destino);
-                System.out.println("estado" + estado);
+                Asignatura_Destino asignatura = new Asignatura_Destino(codigo, creditos, nombre, informacion,codigo_erasmus_Universidad_destino);
                 lista.add(asignatura);
             }
 
@@ -57,9 +50,26 @@ public class Asignatura_DestinoDAO {
         } catch (SQLException ex) {
             System.out.println(ex.toString());
             return null;
-
         }
-    }*/
+        finally {
+
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+
+            }
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
+        }
+    }
 
    /*public List<Asignatura_Destino> listarAsignaturasBuscador(Integer codigo) {
         PreparedStatement ps;
@@ -94,8 +104,8 @@ public class Asignatura_DestinoDAO {
     }*/
 
     public void cambiarEstado(String estado, Integer codigo_asignatura) {
-        PreparedStatement ps;
-        ResultSet rs;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
 
         try {
             ps = conexion.prepareStatement("UPDATE Asignatura_destino SET Estado = ? where Asignatura_destino.Codigo =?");
@@ -107,12 +117,29 @@ public class Asignatura_DestinoDAO {
             System.out.println(ex.toString());
 
         }
+        finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+
+            }
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
+        }
 
     }
 
     public boolean insertarAsignaturaDestino(Asignatura_Destino asignatura) {
 
-        PreparedStatement ps;
+        PreparedStatement ps = null;
 
         try {
             ps = conexion.prepareStatement("INSERT INTO Asignatura_destino VALUES (?,?,?,?,?);");
@@ -130,6 +157,16 @@ public class Asignatura_DestinoDAO {
             System.out.println(ex.toString());
             return false;
 
+        }
+        finally {
+
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
         }
     }
 

@@ -4,6 +4,8 @@
     Author     : Javier
 --%>
 
+<%@page import="modelo.Alumno"%>
+<%@page import="modelo.Alumno"%>
 <%@page import="modelo.Universidad_Destino"%>
 <%@page import="modelo.Grado"%>
 <%@page import="java.util.List"%>
@@ -17,63 +19,28 @@
         <style>
             body{
                 background:#F5F5F5;
-                
+
             }
         </style>
     </head>
     <body>
 
 
-        <form action="ProfesorController?accion=insertarEstanciaYAlumno" method="POST" autocomplete="off">
+        <form action="ProfesorController?accion=insertarEstancia" method="POST" autocomplete="off">
             <div id="form10">
                 <h1>NUEVA ESTANCIA</h1>
-
-                <p>
-
-
-                    <label>Nombre</label>
-                    <input id="Nombre" class="form-control" name="Nombre" type="text" align="left"/>
-                </p>
-
-                <p>
+                
+                <select class="form-control" id="listaAlumnosEstancia" name="listaAlumnosEstancia">
 
 
-                    <label>Apellidos</label>
-                    <input id="Apellidos" class="form-control" name="Apellidos" type="text" align="left"/>
-                </p>
-                <p>
 
-
-                    <label>Contraseña</label>
-                    <input id="PasswA" class="form-control" name="Password" type="Password" align="left"/>
-                </p>
-
-                <p>
-
-
-                    <label>Nombre Usuario</label>
-                    <input id="Nombre_usuario" class="form-control" name="Nombre_usuario" type="text" align="left"/>
-                </p>
-
-                <p>
-
-
-                    <label>DNI</label>
-                    <input id="DNI_Alumno" class="form-control" name="DNI_Alumno" type="text" align="left"/>
-                </p>
-
-
-                <label>Grado</label>
-                <select class="form-control" id="Grado" name="Grado">
-
-
-                    <option>Escoge un grado</option>
+                    <option>Escoge un alumno</option>
                     <%
 
-                        List<Grado> listaGrados = (List<Grado>) request.getAttribute("listaGrados");
-                        if (listaGrados != null)
-                            for (Grado grado : listaGrados) {%>
-                    <option value="<%=grado.getCodigo()%>"><%=grado.getNombre()%><%=" (" + grado.getCodigo() + " )"%></option>
+                        List<Alumno> listaAlumnos = (List<Alumno>) request.getAttribute("listaAlumnosEstancia");
+                        if (listaAlumnos != null)
+                            for (Alumno alumno : listaAlumnos) {%>
+                    <option value="<%=alumno.getDNI()%>"><%=alumno.getNombre()%><%=" " + alumno.getApellidos()%><%=" (" + alumno.getDNI() + " )"%></option>
                     <% }%>
 
 
@@ -81,55 +48,38 @@
 
 
                 </select>
-                </p>
+
+                <label>Tipo de estancia</label>
+                <select class="form-control" name="Tipo" id="Tipo">
+
+                    <option>Escoge un tipo de estancia</option>
+
+                    <option>KA103</option>
+
+                    <option>KA107</option>
 
 
-
-                <p>
-
-
-                    <label>Tipo de estancia</label>
-                    <select class="form-control" name="Tipo" id="Tipo">
-                        
-                        <option>Escoge un tipo de estancia</option>
-                        
-                        <option>Erasmus1</option>
-
-                        <option>Erasmus2</option>
-
-                        <option>Erasmus3</option>
-
-                    </select>
+                </select>
                 </p>
                 <p>
 
 
                     <label>Curso Academico</label>
-                    <select class="form-control" name="Curso" id="Curso">
-                        
-                        <option>Escoge un curso academico</option>
-                        
-                        <option>21-22</option>
-
-                        <option>22-23</option>
-
-                        <option>23-24</option>
-
-                    </select>
+                    <input id="Curso" class="form-control" name="Curso" type="text" align="left"/>
                 </p>
                 <p>
 
 
                     <label>Duracion</label>
                     <select class="form-control" name="Duracion" id="Duracion">
-                        
+
                         <option>Escoge una duracion</option>
-                        
+
                         <option>1º cuatrimestre</option>
 
                         <option>2º cuatrimestre</option>
 
-                        <option>Curso completo</option>
+                        <option>Anual</option>
 
                     </select>
 
@@ -142,24 +92,28 @@
                     <select class="form-control" id="Universidad" name="Universidad">
 
 
-                    <option>Escoge una universidad</option>
-                    <%
+                        <option>Escoge una universidad</option>
+                        <%
 
-                        List<Universidad_Destino> listaUniversidades= (List<Universidad_Destino>) request.getAttribute("listaUniversidades");
-                        if (listaGrados != null)
-                            for (Universidad_Destino universidad : listaUniversidades) {%>
-                    <option value="<%=universidad.getCodigo_erasmus()%>"><%=universidad.getNombre()%><%=" (" + universidad.getCodigo_erasmus()+ " )"%></option>
-                    <% }%>
-
-
+                            List<Universidad_Destino> listaUniversidades = (List<Universidad_Destino>) request.getAttribute("listaUniversidades");
+                            if (listaUniversidades != null)
+                                for (Universidad_Destino universidad : listaUniversidades) {%>
+                        <option value="<%=universidad.getCodigo_erasmus()%>"><%=universidad.getNombre()%><%=" (" + universidad.getCodigo_erasmus() + " )"%></option>
+                        <% }%>
 
 
 
-                </select>
+
+
+                    </select>
                 </p>
 
+
+
+
+
             </div>
-            <div id="butAlta">
+            <div id="butAltaEstancia">
                 <button  id="Alta" name="Alta" type="submit">Alta</button>
             </div>
 

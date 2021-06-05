@@ -29,8 +29,8 @@ public class CoordinadorDAO {
     }
     
     public String obtenerDNI(String usuario){
-        PreparedStatement ps;
-        ResultSet rs;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
         String user = "";
         
         try {
@@ -44,14 +44,32 @@ public class CoordinadorDAO {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+        finally {
+
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+
+            }
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
+        }
         return user;
     }
     
     
     public String obtenerPassword(String usuario){
         
-        PreparedStatement ps;
-        ResultSet rs;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
         String passw = "";
         
         try {
@@ -64,6 +82,24 @@ public class CoordinadorDAO {
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+        }
+        finally {
+
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+
+            }
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
         }
         return passw;
     }
@@ -100,7 +136,7 @@ public class CoordinadorDAO {
     }*/
     public boolean insertar(Coordinador profesor) {
 
-        PreparedStatement ps;
+        PreparedStatement ps = null;
 
         try {
             ps = conexion.prepareStatement("insert into Profesor values(?,?,?,?,?)");
@@ -116,7 +152,15 @@ public class CoordinadorDAO {
         } catch (SQLException ex) {
             System.out.println(ex.toString());
             return false;
-
+        }
+        finally {
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
         }
     }
     

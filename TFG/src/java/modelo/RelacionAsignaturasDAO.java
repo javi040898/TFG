@@ -27,8 +27,8 @@ public class RelacionAsignaturasDAO {
     }
 
     public List<RelacionAsignaturas> listarConvalidaciones(String DNI) {
-        PreparedStatement ps;
-        ResultSet rs;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
         List<RelacionAsignaturas> lista = new ArrayList<>();
         try {
             ps = conexion.prepareStatement("select Codigo_Asignatura_origen,Asignatura_origen.nombre,Asignatura_origen.tipo,Asignatura_origen.creditos,Asignatura_origen.informacion,\n"
@@ -39,7 +39,7 @@ public class RelacionAsignaturasDAO {
                     + "from Convalidacion inner join Estancia on id_estancia_Estancia=id_estancia\n"
                     + "inner join Asignatura_origen on Asignatura_origen.Codigo = Codigo_Asignatura_origen\n"
                     + "inner join Asignatura_destino on Codigo_Asignatura_destino=Asignatura_destino.Codigo inner join Universidad_destino on\n"
-                    + "Estancia.Codigo_erasmus_Universidad_destino = Codigo_erasmus where DNI_Alumno=?");
+                    + "Estancia.Codigo_erasmus_Universidad_destino = Codigo_erasmus where DNI_Alumno=? order by Codigo_Asignatura_origen");
             ps.setString(1, DNI);
             rs = ps.executeQuery();
 
@@ -72,13 +72,30 @@ public class RelacionAsignaturasDAO {
         } catch (SQLException ex) {
             System.out.println(ex.toString());
             return null;
+        }
+        finally {
 
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+
+            }
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
         }
     }
 
     public List<RelacionAsignaturas> listarConvalidacionesBuscador(String codigoO) {
-        PreparedStatement ps;
-        ResultSet rs;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
         List<RelacionAsignaturas> lista = new ArrayList<>();
         try {
             ps = conexion.prepareStatement("select Codigo_Asignatura_origen,Asignatura_origen.nombre,Asignatura_origen.tipo,Asignatura_origen.creditos,Asignatura_origen.informacion,\n"
@@ -89,7 +106,7 @@ public class RelacionAsignaturasDAO {
                     + "from Convalidacion inner join Estancia on id_estancia_Estancia=id_estancia\n"
                     + "inner join Asignatura_origen on Asignatura_origen.Codigo = Codigo_Asignatura_origen\n"
                     + "inner join Asignatura_destino on Codigo_Asignatura_destino=Asignatura_destino.Codigo inner join Universidad_destino on\n"
-                    + "Estancia.Codigo_erasmus_Universidad_destino = Codigo_erasmus where Asignatura_origen.Codigo = ?;");
+                    + "Estancia.Codigo_erasmus_Universidad_destino = Codigo_erasmus where Asignatura_origen.Codigo = ? order by Codigo_Asignatura_origen;");
             ps.setString(1, codigoO);
             rs = ps.executeQuery();
 
@@ -122,7 +139,24 @@ public class RelacionAsignaturasDAO {
         } catch (SQLException ex) {
             System.out.println(ex.toString());
             return null;
+        }
+        finally {
 
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+
+            }
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
         }
     }
 

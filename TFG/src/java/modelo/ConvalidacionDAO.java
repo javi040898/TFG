@@ -27,8 +27,8 @@ public class ConvalidacionDAO {
     }
 
     public void cambiarEstado(String estado, String codigo_asignatura) {
-        PreparedStatement ps;
-        ResultSet rs;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
 
         try {
             ps = conexion.prepareStatement("UPDATE Convalidacion SET Estado = ? where Codigo_Asignatura_destino = ?");
@@ -38,14 +38,31 @@ public class ConvalidacionDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.toString());
+        }
+        finally {
 
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+
+            }
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
         }
 
     }
 
     public void setComentarios(String comentarios, String codigo_asignatura) {
-        PreparedStatement ps;
-        ResultSet rs;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
 
         try {
             ps = conexion.prepareStatement("UPDATE Convalidacion SET Comentarios = ? where Codigo_Asignatura_destino = ?");
@@ -55,14 +72,31 @@ public class ConvalidacionDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.toString());
+        }
+        finally {
 
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+
+            }
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
         }
 
     }
 
     public boolean insertarConvalidacion(Convalidacion c) {
 
-        PreparedStatement ps;
+        PreparedStatement ps = null;
 
         try {
             ps = conexion.prepareStatement("INSERT INTO Convalidacion VALUES(?,?,?,CURRENT_DATE,?,?,?);");
@@ -71,23 +105,32 @@ public class ConvalidacionDAO {
             ps.setString(2, c.getEstado());
             ps.setString(3, c.getComentarios());
             //ps.setDate(4, c.getFecha_convalidacion());
-            ps.setInt(4, c.getId_estancia_Estancia());
-            ps.setString(5, c.getCodigo_Asignatura_destino());
-            ps.setString(6, c.getCodigo_Asignatura_origen());
+            ps.setInt(6, c.getId_estancia_Estancia());
+            ps.setString(4, c.getCodigo_Asignatura_destino());
+            ps.setString(5, c.getCodigo_Asignatura_origen());
             ps.execute();
 
             return true;
         } catch (SQLException ex) {
             System.out.println(ex.toString());
             return false;
+        }
+        finally {
 
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
         }
     }
     
     public Integer obtenerSiguienteConvalidacion() {
 
-        PreparedStatement ps;
-        ResultSet rs;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
         Integer id_convalidacion = 0;
 
         try {
@@ -99,6 +142,24 @@ public class ConvalidacionDAO {
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+        }
+        finally {
+
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+
+            }
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
         }
         return id_convalidacion+1;
     }

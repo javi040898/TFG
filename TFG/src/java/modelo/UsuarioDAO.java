@@ -25,7 +25,7 @@ public class UsuarioDAO {
     
     public boolean insertar(Usuario usuario) {
 
-        PreparedStatement ps;
+        PreparedStatement ps = null;
 
         try {
             ps = conexion.prepareStatement("insert into Usuario values(?)");
@@ -38,7 +38,17 @@ public class UsuarioDAO {
         } catch (SQLException ex) {
             System.out.println(ex.toString());
             return false;
+        }
+        finally {
 
+
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
         }
     }
     

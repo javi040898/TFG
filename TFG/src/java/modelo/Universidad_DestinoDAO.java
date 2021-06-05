@@ -18,14 +18,43 @@ import java.util.List;
  * @author Javier
  */
 public class Universidad_DestinoDAO {
-    
+
     Connection conexion;
 
     public Universidad_DestinoDAO() {
         Conexion conn = new Conexion();
         conexion = conn.connect();
     }
-    
+
+    public boolean insertar(Universidad_Destino universidad) {
+
+        PreparedStatement ps = null;
+
+        try {
+            ps = conexion.prepareStatement("insert into Universidad_Destino values(?,?,?,?)");
+
+            ps.setString(1, universidad.getCodigo_erasmus());
+            ps.setString(2, universidad.getNombre());
+            ps.setString(3, universidad.getPais());
+            ps.setString(4, universidad.getCiudad());
+            ps.execute();
+            return true;
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+            return false;
+
+        } finally {
+
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
+        }
+    }
+
     public String obtenerCodigo(String nombre) {
 
         PreparedStatement ps;
@@ -45,11 +74,48 @@ public class Universidad_DestinoDAO {
         }
         return codigo;
     }
-    
+
+    public String obtenerNombre(String codigo) {
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String nombre = "";
+
+        try {
+            ps = conexion.prepareStatement("select nombre from Universidad_destino where codigo_erasmus = ?");
+            ps.setString(1, codigo);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                nombre = rs.getString("nombre");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+
+            }
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
+        }
+        return nombre;
+    }
+
     public List<Universidad_Destino> listarUniversidades() {
 
-        PreparedStatement ps;
-        ResultSet rs;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
         List<Universidad_Destino> lista = new ArrayList<>();
 
         try {
@@ -72,7 +138,23 @@ public class Universidad_DestinoDAO {
         } catch (SQLException ex) {
             System.out.println(ex.toString());
             return null;
+        } finally {
 
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+
+            }
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
         }
     }
 }

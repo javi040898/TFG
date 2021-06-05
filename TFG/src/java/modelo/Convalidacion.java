@@ -13,13 +13,11 @@ import java.sql.Date;
  */
 public class Convalidacion {
     String estado,comentarios,Codigo_Asignatura_destino,Codigo_Asignatura_origen;
-    Date fecha_convalidacion;
     Integer id_convalidacion,id_estancia_Estancia;
-    public Convalidacion(Integer id_convalidacion, String estado, String comentarios, Date fecha_convalidacion, Integer id_estancia_Estancia, String Codigo_Asignatura_destino, String Codigo_Asignatura_origen) {
+    public Convalidacion(Integer id_convalidacion, String estado, String comentarios, String Codigo_Asignatura_destino,  String Codigo_Asignatura_origen,Integer id_estancia_Estancia) {
         this.id_convalidacion = id_convalidacion;
         this.estado = estado;
         this.comentarios = comentarios;
-        this.fecha_convalidacion = fecha_convalidacion;
         this.id_estancia_Estancia = id_estancia_Estancia;
         this.Codigo_Asignatura_destino = Codigo_Asignatura_destino;
         this.Codigo_Asignatura_origen = Codigo_Asignatura_origen;
@@ -49,13 +47,7 @@ public class Convalidacion {
         this.comentarios = comentarios;
     }
 
-    public Date getFecha_convalidacion() {
-        return fecha_convalidacion;
-    }
 
-    public void setFecha_convalidacion(Date fecha_convalidacion) {
-        this.fecha_convalidacion = fecha_convalidacion;
-    }
 
     public Integer getId_estancia_Estancia() {
         return id_estancia_Estancia;

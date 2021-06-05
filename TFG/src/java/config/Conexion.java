@@ -16,16 +16,18 @@ import java.util.logging.Logger;
  * @author Javier
  */
 public class Conexion {
-    public Connection connect(){
-        
-        try{
+
+    Connection conn = null;
+
+    public Connection connect() {
+
+        try {
             Class.forName("org.postgresql.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:postgresql:"
-                    + "//localhost:5432/TFG?serverTimezone=UTC", "postgres", "postgres");
+            conn = DriverManager.getConnection("jdbc:postgresql:"
+            + "//localhost:5432/TFG?serverTimezone=UTC", "postgres", "postgres");
             System.out.println("Conectado");
             return conn;
-        }
-        catch(SQLException ex){
+        } catch (SQLException ex) {
             System.out.println(ex.toString());
             return null;
         } catch (ClassNotFoundException ex) {
@@ -33,4 +35,19 @@ public class Conexion {
             return null;
         }
     }
+    
+    public void disconnect() {
+        try {
+            conn.close();
+            System.out.println("Desconectado!!");
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+            
+        } catch (Exception ex) {
+           System.out.println(ex.toString());
+           
+        }
+    }
+    
+
 }

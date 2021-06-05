@@ -26,15 +26,12 @@ public class Asignatura_OrigenDAO {
         conexion = conn.connect();
     }
 
-    public List<Asignatura_Origen> listarAsignaturas(String DNI) {
-        PreparedStatement ps;
-        ResultSet rs;
+    public List<Asignatura_Origen> listarAsignaturas() {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
         List<Asignatura_Origen> lista = new ArrayList<>();
         try {
-            ps = conexion.prepareStatement("select Asignatura_origen.* from Asignatura_origen inner join muchos_Asignatura_origen_tiene_muchos_Alumno on \n"
-                    + "Asignatura_origen.codigo=muchos_Asignatura_origen_tiene_muchos_Alumno.Codigo_Asignatura_origen\n"
-                    + "inner join Alumno on Alumno.DNI=muchos_Asignatura_origen_tiene_muchos_Alumno.DNI_Alumno where DNI=?;");
-            ps.setString(1, DNI);
+            ps = conexion.prepareStatement("select Asignatura_origen.* from Asignatura_origen ;");
             rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -58,13 +55,30 @@ public class Asignatura_OrigenDAO {
         } catch (SQLException ex) {
             System.out.println(ex.toString());
             return null;
+        }
+        finally {
 
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+
+            }
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
         }
     }
 
     public List<Asignatura_Origen> listarAsignaturasBuscador(String codigo) {
-        PreparedStatement ps;
-        ResultSet rs;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
         List<Asignatura_Origen> lista = new ArrayList<>();
         try {
             ps = conexion.prepareStatement("select Asignatura_origen.* from Asignatura_origen inner join Asignatura_destino on "
@@ -93,13 +107,30 @@ public class Asignatura_OrigenDAO {
         } catch (SQLException ex) {
             System.out.println(ex.toString());
             return null;
+        }
+        finally {
 
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+
+            }
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
         }
     }
 
     public boolean insertarAsignaturaOrigen(Asignatura_Origen asignatura) {
 
-        PreparedStatement ps;
+        PreparedStatement ps = null;
 
         try {
             ps = conexion.prepareStatement("INSERT INTO Asignatura_origen VALUES (?,?,?,?,?);");
@@ -116,20 +147,30 @@ public class Asignatura_OrigenDAO {
         } catch (SQLException ex) {
             System.out.println(ex.toString());
             return false;
+        }
+        finally {
 
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
         }
     }
 
-    public Integer sumaCreditos(String DNI) {
-        PreparedStatement ps;
-        ResultSet rs;
+    public Integer sumaCreditosOrigen(String DNI) {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
         Integer suma_creditos = 0;
 
         try {
             ps = conexion.prepareStatement("select sum(creditos) as suma_creditos from (select distinct Asignatura_origen.*\n"
                     + "from Convalidacion inner join Estancia on id_estancia_Estancia=id_estancia\n"
                     + "inner join Asignatura_origen on Asignatura_origen.Codigo = Codigo_Asignatura_origen \n"
-                    + "inner join Asignatura_destino on Codigo_Asignatura_destino=Asignatura_destino.Codigo where DNI_Alumno= ? ) as asignaturas_distintas;");
+                    + "inner join Asignatura_destino on Codigo_Asignatura_destino=Asignatura_destino.Codigo where DNI_Alumno= ? and Convalidacion.Estado='Aceptada'"
+                    + " ) as asignaturas_distintas;");
             ps.setString(1, DNI);
             rs = ps.executeQuery();
 
@@ -139,7 +180,67 @@ public class Asignatura_OrigenDAO {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        
+        finally {
+
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+
+            }
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
+        }
+
+        return suma_creditos;
+    }
+
+    public Integer sumaCreditosDestino(String DNI) {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Integer suma_creditos = 0;
+
+        try {
+            ps = conexion.prepareStatement("select sum(creditos) as suma_creditos from (select distinct Asignatura_destino.*\n"
+                    + "from Convalidacion inner join Estancia on id_estancia_Estancia=id_estancia\n"
+                    + "inner join Asignatura_origen on Asignatura_origen.Codigo = Codigo_Asignatura_origen \n"
+                    + "inner join Asignatura_destino on Codigo_Asignatura_destino=Asignatura_destino.Codigo where DNI_Alumno=? and Convalidacion.Estado='Aceptada'"
+                    + ") as asignaturas_distintas;");
+            ps.setString(1, DNI);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                suma_creditos = rs.getInt("suma_creditos");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        finally {
+
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+
+            }
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
+        }
+
         return suma_creditos;
     }
 

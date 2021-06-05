@@ -94,7 +94,7 @@
                     facultad = String.valueOf(request.getAttribute("facultad"));
                 }
             %> 
-            
+
             <div id="NombreAlumno">Nombre: <%=nombre%>
             </div>
 
@@ -161,7 +161,7 @@
                                     //for (Asignatura_Destino asignaturaD : listaAsignaturasDestino) {
                                     //if (String.valueOf(asignaturaO.getCodigo()).equals(String.valueOf(asignaturaD.getCodigo_erasmus_Universidad_destino()))) {
                                     //System.out.println(asignaturaO.getNombre());
-                        %>
+%>
                         <tr>
 
                             <td><%=ra.getCodigo_origen()%></td>
@@ -205,7 +205,32 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Total creditos: <%=String.valueOf(request.getAttribute("sumaCreditos"))%></th>
+                            <%
+                                String sumaCreditosOrigen = "";
+                                if (String.valueOf(request.getAttribute("sumaCreditosOrigen")) != "null") {
+                                    System.out.println(String.valueOf(request.getAttribute("sumaCreditosOrigen")));
+                                    sumaCreditosOrigen = String.valueOf(request.getAttribute("sumaCreditosOrigen"));
+                                }
+                            %> 
+                            <th>Total creditos aceptados en la Universidad de Alcalá: <%=sumaCreditosOrigen%></th>
+                        </tr>
+                    </thead>
+
+                </table>
+            </div>
+
+            <div id="table5">
+                <table>
+                    <thead>
+                        <tr>
+                            <%
+                                String sumaCreditosDestino = "";
+                                if (String.valueOf(request.getAttribute("sumaCreditosDestino")) != "null") {
+                                    System.out.println(String.valueOf(request.getAttribute("sumaCreditosDestino")));
+                                    sumaCreditosDestino = String.valueOf(request.getAttribute("sumaCreditosDestino"));
+                                }
+                            %> 
+                            <th>Total creditos aceptados en la Universidad de Destino: <%=sumaCreditosDestino%></th>
                         </tr>
                     </thead>
 
@@ -232,8 +257,8 @@
 
 
                 </select>
-                <div id="comentarios"> <label>Comentarios</label>
-                    <input id="Comentarios" class="form-control" name="Comentarios" type="textarea" align="left" size="50"/></div>
+                <div id="comentariosModificada"> <label>Comentarios</label>
+                    <input id="ComentariosModificada" class="form-control" name="ComentariosModificada" type="textarea" align="left" size="50"/></div>
 
             </div>
             <div id="form8">
@@ -248,6 +273,37 @@
                 <button>Modificar</button>
             </div>
 
+                        
+                        
+                        
+            <div id="tituloCancelar">  <h1 >CANCELAR ASIGNATURA</h1></div>
+            <div id="form11">
+                <select class="form-control" id="listaAsignaturasCancelar" name="listaAsignaturasCancelar">
+                    <option>Escoge una asignatura</option>
+                    <% if (listaRA != null)
+                            for (RelacionAsignaturas ra : listaRA) {
+                                if (ra.getEstado().equals("Aceptada")) {
+                    %>
+                    <option value="<%=ra.getCodigo_destino()%>"><%=ra.getNombre_destino()%><%=" (" + ra.getCodigo_destino() + ")"%></option>
+                    <% }
+                        }%>
+
+
+
+
+
+                </select>
+            </div>
+            <div id="comentariosCancelada">
+             <div id="label1"    <label>Comentarios</label></div>
+                <input id="comentariosCancelada" class="form-control" name="ComentariosCancelada" type="textarea" align="left" size="40"/></div>
+
+
+
+            <div id="butCancelar">
+                <button>Cancelar</button>
+            </div>
+
 
 
 
@@ -258,7 +314,13 @@
         <br>
         <br><br><br>
         <div id="enlaceNuevo">
+            <a href="ProfesorController?accion=nuevoAlumno">Dar de alta a alumno</a>
+            <br>
             <a href="ProfesorController?accion=nuevaEstancia">Nueva estancia de alumno</a>
+            <br>
+            <a href="ProfesorController?accion=nuevaUniversidad">Nueva universidad de destino</a>
+            <br>
+            <a href="ProfesorController?accion=nuevoGrado">Nuevo grado</a>
         </div>
 
 

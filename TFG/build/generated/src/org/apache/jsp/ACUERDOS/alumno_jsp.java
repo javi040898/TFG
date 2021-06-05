@@ -52,24 +52,31 @@ public final class alumno_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <title>JSP Page</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("       \n");
-      out.write("        <h1>ALUMNO</h1>\n");
+      out.write("\n");
+      out.write("        <div class=\"div07\">ALUMNO</div>\n");
       out.write("        <form action=\"ProfesorController?accion=listarAsignaturas\" method=\"POST\" autocomplete=\"off\">\n");
       out.write("            ");
 
-            String DNI = request.getAttribute("DNI_A").toString();
-            
+                String DNI = request.getAttribute("DNI_A").toString();
+
             
       out.write("\n");
       out.write("\n");
       out.write("        </form>\n");
-      out.write("        \n");
-      out.write("        \n");
-      out.write("         <a href=\"ProfesorController?accion=nuevaConvalidacion\">Nueva convalidacion</a>\n");
-      out.write("         <br>\n");
-      out.write("         <a href=\"ProfesorController?accion=buscarConvalidacion\">Buscar antiguas convalidaciones</a>\n");
-      out.write("         <br>\n");
-      out.write("         <a href=\"ProfesorController?accion=cambiarPassword\">Cambiar contraseña</a>\n");
+      out.write("\n");
+      out.write("        <div id=\"enlacesAlumno\">\n");
+      out.write("            <a href=\"ProfesorController?accion=nuevasAsignaturasOrigen\">Nueva asignatura origen</a>\n");
+      out.write("            <br>\n");
+      out.write("            <a href=\"ProfesorController?accion=nuevasAsignaturasDestino\">Nueva asignatura destino</a>\n");
+      out.write("            <br>\n");
+      out.write("            <a href=\"ProfesorController?accion=nuevaConvalidacion\">Nueva convalidacion</a>\n");
+      out.write("            <br>\n");
+      out.write("            <a href=\"ProfesorController?accion=buscarConvalidacion\">Buscar antiguas convalidaciones</a>\n");
+      out.write("            <br>\n");
+      out.write("            <a href=\"ProfesorController?accion=convalidacionesActuales\">Estado convalidaciones actuales</a>\n");
+      out.write("            <br>\n");
+      out.write("            <a href=\"ProfesorController?accion=cambiarPassword\">Cambiar contraseña</a>\n");
+      out.write("        </div>\n");
       out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {

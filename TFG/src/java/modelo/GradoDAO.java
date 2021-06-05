@@ -28,8 +28,8 @@ public class GradoDAO {
 
     public List<Grado> listarGrados() {
 
-        PreparedStatement ps;
-        ResultSet rs;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
         List<Grado> lista = new ArrayList<>();
 
         try {
@@ -51,14 +51,31 @@ public class GradoDAO {
         } catch (SQLException ex) {
             System.out.println(ex.toString());
             return null;
+        }
+        finally {
 
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+
+            }
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
         }
     }
 
     public Grado gradoAlumno(String DNI) {
 
-        PreparedStatement ps;
-        ResultSet rs;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
         Grado grado = null;
 
         try {
@@ -80,7 +97,24 @@ public class GradoDAO {
         } catch (SQLException ex) {
             System.out.println(ex.toString());
             return null;
+        }
+        finally {
 
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+
+            }
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
         }
     }
 }

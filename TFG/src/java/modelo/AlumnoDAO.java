@@ -28,12 +28,13 @@ public class AlumnoDAO {
 
     public String obtenerPassword(String usuario) {
 
-        PreparedStatement ps;
-        ResultSet rs;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
         String passw = "";
 
         try {
             ps = conexion.prepareStatement("select passw from Alumno where Nombre_usuario_Usuario = ?");
+
             ps.setString(1, usuario);
             rs = ps.executeQuery();
 
@@ -42,14 +43,30 @@ public class AlumnoDAO {
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+
+            }
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
         }
         return passw;
     }
 
     public String obtenerPassword2(String DNI) {
 
-        PreparedStatement ps;
-        ResultSet rs;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
         String passw = "";
 
         try {
@@ -62,14 +79,30 @@ public class AlumnoDAO {
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+
+            }
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
         }
         return passw;
     }
 
-    public List<Alumno> listarAlumnos(String DNI_Profesor) {
+    public List<Alumno> listarAlumnosCoordinador(String DNI_Profesor) {
 
-        PreparedStatement ps;
-        ResultSet rs;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
         List<Alumno> lista = new ArrayList<>();
 
         try {
@@ -87,7 +120,7 @@ public class AlumnoDAO {
                 String DNI = rs.getString("DNI");
                 String codigo_grado = rs.getString("codigo_grado");
 
-                Alumno alumno = new Alumno(DNI,nombre, apellidos,contraseña, nombre_usuario,  codigo_grado);
+                Alumno alumno = new Alumno(DNI, nombre, apellidos, contraseña, nombre_usuario, codigo_grado);
 
                 lista.add(alumno);
             }
@@ -97,16 +130,84 @@ public class AlumnoDAO {
             System.out.println(ex.toString());
             return null;
 
+        } finally {
+
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+
+            }
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
         }
+
+    }
+    
+    public List<Alumno> listarAlumnos() {
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        List<Alumno> lista = new ArrayList<>();
+
+        try {
+            ps = conexion.prepareStatement("SELECT * from Alumno;");
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                String contraseña = rs.getString("passw");
+                String nombre = rs.getString("nombre");
+                String apellidos = rs.getString("apellidos");
+                String nombre_usuario = rs.getString("Nombre_usuario_Usuario");
+                String DNI = rs.getString("DNI");
+                String codigo_grado = rs.getString("codigo_grado");
+
+                Alumno alumno = new Alumno(DNI, nombre, apellidos, contraseña, nombre_usuario, codigo_grado);
+
+                lista.add(alumno);
+            }
+
+            return lista;
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+            return null;
+
+        } finally {
+
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+
+            }
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
+        }
+
     }
 
     public boolean insertar(Alumno alumno) {
 
-        PreparedStatement ps;
+        PreparedStatement ps = null;
 
         try {
             ps = conexion.prepareStatement("insert into Alumno values(?,?,?,?,?,?)");
-            
+
             ps.setString(1, alumno.getDNI());
             ps.setString(2, alumno.getContraseña());
             ps.setString(3, alumno.getNombre());
@@ -114,18 +215,26 @@ public class AlumnoDAO {
             ps.setString(5, alumno.getNombre_usuario_Usuario());
             ps.setString(6, alumno.getCodigo_grado());
             ps.execute();
-
             return true;
         } catch (SQLException ex) {
             System.out.println(ex.toString());
             return false;
 
+        } finally {
+
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
         }
     }
 
     public List<Integer> listarCodigosAsignaturasAlumno(String DNI) {
-        PreparedStatement ps;
-        ResultSet rs;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
         List<Integer> lista = new ArrayList<>();
         try {
             ps = conexion.prepareStatement("select ad.Codigo from Asignatura_destino ad inner join Asignatura_origen on \n"
@@ -141,18 +250,34 @@ public class AlumnoDAO {
                 Integer codigo = rs.getInt("codigo");
                 lista.add(codigo);
             }
-
+            conexion.close();
             return lista;
         } catch (SQLException ex) {
             System.out.println(ex.toString());
             return null;
 
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+
+            }
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
         }
     }
 
     public String obtenerDNI(String usuario) {
-        PreparedStatement ps;
-        ResultSet rs;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
         String user = "";
 
         try {
@@ -165,13 +290,29 @@ public class AlumnoDAO {
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+
+            }
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
         }
         return user;
     }
-    
-     public String obtenerNombre(String DNI) {
-        PreparedStatement ps;
-        ResultSet rs;
+
+    public String obtenerNombre(String DNI) {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
         String cadena = "";
 
         try {
@@ -184,12 +325,29 @@ public class AlumnoDAO {
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+
+            }
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
         }
         return cadena;
     }
-     public String obtenerApellidos(String DNI) {
-        PreparedStatement ps;
-        ResultSet rs;
+
+    public String obtenerApellidos(String DNI) {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
         String cadena = "";
 
         try {
@@ -202,23 +360,56 @@ public class AlumnoDAO {
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+
+            }
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
         }
         return cadena;
     }
 
     public boolean cambiarContraseña(String DNI, String password) {
-        PreparedStatement ps;
-        ResultSet rs;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
 
         try {
             ps = conexion.prepareStatement("update Alumno set Passw = ? where DNI = ?;");
             ps.setString(1, password);
             ps.setString(2, DNI);
             rs = ps.executeQuery();
+            conexion.close();
             return true;
 
         } catch (SQLException ex) {
             return false;
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+
+            }
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
         }
 
     }

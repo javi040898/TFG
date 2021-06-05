@@ -24,11 +24,15 @@
         </form>
 
         <div id="enlacesAlumno">
+            <a href="ProfesorController?accion=nuevasAsignaturasOrigen">Nueva asignatura origen</a>
+            <br>
+            <a href="ProfesorController?accion=nuevasAsignaturasDestino">Nueva asignatura destino</a>
+            <br>
             <a href="ProfesorController?accion=nuevaConvalidacion">Nueva convalidacion</a>
             <br>
             <a href="ProfesorController?accion=buscarConvalidacion">Buscar antiguas convalidaciones</a>
             <br>
-            <a href="ProfesorController?accion=verConvalidacionesActuales">Estado convalidaciones actuales</a>
+            <a href="ProfesorController?accion=convalidacionesActuales">Estado convalidaciones actuales</a>
             <br>
             <a href="ProfesorController?accion=cambiarPassword">Cambiar contraseña</a>
         </div>

@@ -12,13 +12,14 @@ package modelo;
 public class Estancia {
     Integer id_estancia;
     String tipo,curso_academico,duracion,DNI_alumno,DNI_coordinador,Codigo_erasmus_Universidad_destino;
-    Boolean renuncia;
+    Boolean renuncia,cerrada;
 
-    public Estancia(Integer id_estancia, String tipo, String curso_academico, String duracion, Boolean renuncia,String DNI_alumno, String DNI_coordinador, String Codigo_erasmus_Universidad_destino) {
+    public Estancia(Integer id_estancia, String tipo, String curso_academico, String duracion, Boolean renuncia,Boolean cerrada, String Codigo_erasmus_Universidad_destino, String DNI_coordinador,String DNI_alumno) {
         this.id_estancia = id_estancia;
         this.tipo = tipo;
         this.curso_academico = curso_academico;
         this.duracion = duracion;
+        this.cerrada = cerrada;
         this.DNI_alumno = DNI_alumno;
         this.DNI_coordinador = DNI_coordinador;
         this.Codigo_erasmus_Universidad_destino = Codigo_erasmus_Universidad_destino;
@@ -88,5 +89,14 @@ public class Estancia {
     public void setRenuncia(Boolean renuncia) {
         this.renuncia = renuncia;
     }
+
+    public Boolean getCerrada() {
+        return cerrada;
+    }
+
+    public void setCerrada(Boolean cerrada) {
+        this.cerrada = cerrada;
+    }
+    
     
 }

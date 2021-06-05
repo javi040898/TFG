@@ -114,13 +114,72 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <div id=\"butAceptar\">\n");
       out.write("                <button>Aceptar</button>\n");
       out.write("            </div>\n");
-      out.write("            <div id=\"NombreAlumno\">Nombre ");
-      out.print(String.valueOf(request.getAttribute("nombreAlumno")));
+      out.write("            ");
+  String nombre = "";
+                if (String.valueOf(request.getAttribute("nombreAlumno")) != "null") {
+                    System.out.println(String.valueOf(request.getAttribute("nombreAlumno")));
+                    nombre = String.valueOf(request.getAttribute("nombreAlumno"));
+                }
+
+                String apellidos = "";
+                if (String.valueOf(request.getAttribute("apellidosAlumno")) != "null") {
+                    System.out.println(String.valueOf(request.getAttribute("nombreAlumno")));
+                    apellidos = String.valueOf(request.getAttribute("apellidosAlumno"));
+                }
+            
+      out.write("    \n");
+      out.write("            ");
+
+                String codigoGrado = "";
+                if (String.valueOf(request.getAttribute("codigoGrado")) != "null") {
+                    System.out.println(String.valueOf(request.getAttribute("codigoGrado")));
+                    codigoGrado = String.valueOf(request.getAttribute("codigoGrado"));
+                }
+            
+      out.write("   \n");
+      out.write("\n");
+      out.write("            ");
+
+                String nombreGrado = "";
+                if (String.valueOf(request.getAttribute("nombreGrado")) != "null") {
+                    System.out.println(String.valueOf(request.getAttribute("nombreGrado")));
+                    nombreGrado = String.valueOf(request.getAttribute("nombreGrado"));
+                }
+            
+      out.write("  \n");
+      out.write("\n");
+      out.write("            ");
+
+                String facultad = "";
+                if (String.valueOf(request.getAttribute("facultad")) != "null") {
+                    System.out.println(String.valueOf(request.getAttribute("facultad")));
+                    facultad = String.valueOf(request.getAttribute("facultad"));
+                }
+            
+      out.write(" \n");
+      out.write("\n");
+      out.write("            <div id=\"NombreAlumno\">Nombre: ");
+      out.print(nombre);
       out.write("\n");
       out.write("            </div>\n");
       out.write("\n");
-      out.write("            <div id=\"ApellidosAlumno\">Apellidos ");
-      out.print(String.valueOf(request.getAttribute("apellidosAlumno")));
+      out.write("            <div id=\"ApellidosAlumno\">Apellidos: ");
+      out.print(apellidos);
+      out.write("\n");
+      out.write("            </div>\n");
+      out.write("\n");
+      out.write("            <div id=\"CodigoGrado\">Codigo Grado: ");
+      out.print(codigoGrado);
+      out.write("\n");
+      out.write("            </div>\n");
+      out.write("\n");
+      out.write("            <div id=\"NombreGrado\" color=\"#0CF\">Nombre Grado: ");
+      out.print(nombreGrado);
+      out.write("\n");
+      out.write("            </div>\n");
+      out.write("\n");
+      out.write("            <div id=\"Facultad\">Facultad: ");
+      out.print(facultad);
       out.write("\n");
       out.write("            </div>\n");
       out.write("            <div id=\"table1\">\n");
@@ -138,19 +197,20 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("                    <th>Codigo</th>\n");
-      out.write("                    <th>Nombre</th>\n");
+      out.write("                    <th>Nombre Asignatura</th>\n");
       out.write("                    <th>Tipo</th>\n");
       out.write("                    <th>Creditos</th>\n");
       out.write("\n");
-      out.write("                    <th>Link de asignatura</th>\n");
+      out.write("                    <th>Link asignatura</th>\n");
       out.write("\n");
       out.write("\n");
       out.write("                    <th style=\"border: hidden\"></th>\n");
       out.write("\n");
       out.write("                    <th>Codigo</th>\n");
-      out.write("                    <th>Nombre</th>\n");
+      out.write("                    <th>Nombre Asignatura</th>\n");
       out.write("                    <th>Creditos</th>\n");
-      out.write("                    <th>Link de asignatura</th>\n");
+      out.write("                    <th>Link asignatura</th>\n");
+      out.write("                    <th>Universidad</th>\n");
       out.write("                    <th>Fecha convalidacion</th>\n");
       out.write("                    <th>Curso academico</th>\n");
       out.write("                    <th>Estado</th>\n");
@@ -175,7 +235,7 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
                                     //for (Asignatura_Destino asignaturaD : listaAsignaturasDestino) {
                                     //if (String.valueOf(asignaturaO.getCodigo()).equals(String.valueOf(asignaturaD.getCodigo_erasmus_Universidad_destino()))) {
                                     //System.out.println(asignaturaO.getNombre());
-                        
+
       out.write("\n");
       out.write("                        <tr>\n");
       out.write("\n");
@@ -211,8 +271,12 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.print(ra.getInformacion_destino());
       out.write("\" target=\"_blank\" > link</a></td>\n");
       out.write("                            <td>");
+      out.print(ra.getNombre_universidad());
+      out.write("</td>\n");
+      out.write("                            <td>");
       out.print(ra.getFecha());
       out.write("</td>\n");
+      out.write("\n");
       out.write("                            <td>");
       out.print(ra.getCurso());
       out.write("</td>\n");
@@ -246,8 +310,39 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <table>\n");
       out.write("                    <thead>\n");
       out.write("                        <tr>\n");
-      out.write("                            <th>Total creditos: ");
-      out.print(String.valueOf(request.getAttribute("sumaCreditos")));
+      out.write("                            ");
+
+                                String sumaCreditosOrigen = "";
+                                if (String.valueOf(request.getAttribute("sumaCreditosOrigen")) != "null") {
+                                    System.out.println(String.valueOf(request.getAttribute("sumaCreditosOrigen")));
+                                    sumaCreditosOrigen = String.valueOf(request.getAttribute("sumaCreditosOrigen"));
+                                }
+                            
+      out.write(" \n");
+      out.write("                            <th>Total creditos en la Universidad de Alcalá: ");
+      out.print(sumaCreditosOrigen);
+      out.write("</th>\n");
+      out.write("                        </tr>\n");
+      out.write("                    </thead>\n");
+      out.write("\n");
+      out.write("                </table>\n");
+      out.write("            </div>\n");
+      out.write("\n");
+      out.write("            <div id=\"table5\">\n");
+      out.write("                <table>\n");
+      out.write("                    <thead>\n");
+      out.write("                        <tr>\n");
+      out.write("                            ");
+
+                                String sumaCreditosDestino = "";
+                                if (String.valueOf(request.getAttribute("sumaCreditosDestino")) != "null") {
+                                    System.out.println(String.valueOf(request.getAttribute("sumaCreditosDestino")));
+                                    sumaCreditosDestino = String.valueOf(request.getAttribute("sumaCreditosDestino"));
+                                }
+                            
+      out.write(" \n");
+      out.write("                            <th>Total creditos en la Universidad de Destino: ");
+      out.print(sumaCreditosDestino);
       out.write("</th>\n");
       out.write("                        </tr>\n");
       out.write("                    </thead>\n");
@@ -285,8 +380,8 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("                </select>\n");
-      out.write("                <div id=\"comentarios\"> <label>Comentarios</label>\n");
-      out.write("                    <input id=\"Comentarios\" class=\"form-control\" name=\"Comentarios\" type=\"textarea\" align=\"left\" size=\"50\"/></div>\n");
+      out.write("                <div id=\"comentariosModificada\"> <label>Comentarios</label>\n");
+      out.write("                    <input id=\"ComentariosModificada\" class=\"form-control\" name=\"ComentariosModificada\" type=\"textarea\" align=\"left\" size=\"50\"/></div>\n");
       out.write("\n");
       out.write("            </div>\n");
       out.write("            <div id=\"form8\">\n");
@@ -301,6 +396,47 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <button>Modificar</button>\n");
       out.write("            </div>\n");
       out.write("\n");
+      out.write("                        \n");
+      out.write("                        \n");
+      out.write("                        \n");
+      out.write("            <div id=\"tituloCancelar\">  <h1 >CANCELAR ASIGNATURA</h1></div>\n");
+      out.write("            <div id=\"form11\">\n");
+      out.write("                <select class=\"form-control\" id=\"listaAsignaturasCancelar\" name=\"listaAsignaturasCancelar\">\n");
+      out.write("                    <option>Escoge una asignatura</option>\n");
+      out.write("                    ");
+ if (listaRA != null)
+                            for (RelacionAsignaturas ra : listaRA) {
+                                if (ra.getEstado().equals("Aceptada")) {
+                    
+      out.write("\n");
+      out.write("                    <option value=\"");
+      out.print(ra.getCodigo_destino());
+      out.write('"');
+      out.write('>');
+      out.print(ra.getNombre_destino());
+      out.print(" (" + ra.getCodigo_destino() + ")");
+      out.write("</option>\n");
+      out.write("                    ");
+ }
+                        }
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("                </select>\n");
+      out.write("            </div>\n");
+      out.write("            <div id=\"comentariosCancelada\">\n");
+      out.write("             <div id=\"label1\"    <label>Comentarios</label></div>\n");
+      out.write("                <input id=\"comentariosCancelada\" class=\"form-control\" name=\"ComentariosCancelada\" type=\"textarea\" align=\"left\" size=\"40\"/></div>\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("            <div id=\"butCancelar\">\n");
+      out.write("                <button>Cancelar</button>\n");
+      out.write("            </div>\n");
+      out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("\n");
@@ -311,6 +447,8 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <br>\n");
       out.write("        <br><br><br>\n");
       out.write("        <div id=\"enlaceNuevo\">\n");
+      out.write("            <a href=\"ProfesorController?accion=nuevoAlumno\">Dar de alta a alumno</a>\n");
+      out.write("            <br>\n");
       out.write("            <a href=\"ProfesorController?accion=nuevaEstancia\">Nueva estancia de alumno</a>\n");
       out.write("        </div>\n");
       out.write("\n");

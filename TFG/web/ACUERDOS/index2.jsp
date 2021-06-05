@@ -53,4 +53,63 @@
                             %>
                         </tbody>
                     </table>
+                    
+                    <label>Tipo de estancia</label>
+                    <select class="form-control" name="Tipo" id="Tipo">
+                        
+                        <option>Escoge un tipo de estancia</option>
+                        
+                        <option>KA103</option>
+
+                        <option>KA107</option>
+
+
+                    </select>
+                </p>
+                <p>
+
+
+                    <label>Curso Academico</label>
+                    <input id="Curso" class="form-control" name="Curso" type="text" align="left"/>
+                </p>
+                <p>
+
+
+                    <label>Duracion</label>
+                    <select class="form-control" name="Duracion" id="Duracion">
+                        
+                        <option>Escoge una duracion</option>
+                        
+                        <option>1º cuatrimestre</option>
+
+                        <option>2º cuatrimestre</option>
+
+                        <option>Anual</option>
+
+                    </select>
+
+                </p>
+
+                <p>
+
+
+                    <label>Universidad</label>
+                    <select class="form-control" id="Universidad" name="Universidad">
+
+
+                    <option>Escoge una universidad</option>
+                    <%
+
+                        List<Universidad_Destino> listaUniversidades= (List<Universidad_Destino>) request.getAttribute("listaUniversidades");
+                        if (listaGrados != null)
+                            for (Universidad_Destino universidad : listaUniversidades) {%>
+                    <option value="<%=universidad.getCodigo_erasmus()%>"><%=universidad.getNombre()%><%=" (" + universidad.getCodigo_erasmus()+ " )"%></option>
+                    <% }%>
+
+
+
+
+
+                </select>
+                </p>
                 </div>

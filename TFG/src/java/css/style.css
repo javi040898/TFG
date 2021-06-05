@@ -1,12 +1,12 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
 
-#form1,#form2,#form3{
+#form1,#form2{
 
     float:left;
-
+    left:560px;
     margin:50px;
-    padding:10px;
+    padding:60px;
     top:20px;
     position:relative;
     top:100px;
@@ -54,6 +54,20 @@
 
 }
 
+#tituloCancelar{
+
+    float:left;
+    left:50px;
+    margin:60px;
+    padding:10px;
+    top:-50px;
+    position:relative;
+
+
+
+}
+
+
 
 #titulo3{
 
@@ -83,6 +97,35 @@
 
 }
 
+
+#titulo5{
+
+    float:left;
+    background:#E3D5CD;
+    margin:20px;
+    padding:10px;
+    top:75px;
+    position:absolute;
+    left:20px;
+
+
+}
+
+#titulo6{
+
+    float:left;
+    left:1000px;
+
+    background:#E3D5CD;
+    margin:20px;
+    padding:10px;
+    top:75px;
+    position:absolute;
+
+
+
+}
+
 #NombreAlumno{
 
     float:left;
@@ -92,7 +135,7 @@
     padding:10px;
     top:0px;
     position:absolute;
-    color: #FF0000
+    color: #050404
 
 
 
@@ -107,7 +150,7 @@
     padding:10px;
     top:20px;
     position:absolute;
-    color: #FF0000
+    color: #050404
 
 
 
@@ -121,7 +164,7 @@
     padding:10px;
     top:40px;
     position:absolute;
-    color: #FF0000
+    color: #050404
 
 
 
@@ -135,7 +178,7 @@
     padding:10px;
     top:60px;
     position:absolute;
-    color: #FF0000;
+    color: #050404;
 
 
 
@@ -149,7 +192,7 @@
     padding:10px;
     top:80px;
     position:absolute;
-    color: #FF0000;
+    color: #050404;
 
 
 
@@ -178,16 +221,38 @@
     left: 600px;
 }
 
-#comentarios {
+#comentariosModificada {
     float:left;
 
     margin:15px;
     padding:10px;
     position:relative;
     top:0px;
-    left: 150px;
+    left: 20px;
 
 }
+
+#comentariosCancelada {
+    float:left;
+
+    margin:15px;
+    padding:10px;
+    position:relative;
+    top:-60px;
+    left: 500px;
+
+}
+#label1 {
+    float:left;
+
+    margin:15px;
+    padding:10px;
+    position:relative;
+    top:-26px;
+    left: 490px;
+
+}
+
 
 #form6 {
     float:left;
@@ -209,6 +274,88 @@
     right:550px;
 
 }
+
+#form11 {
+    float:left;
+
+    margin:25px;
+    padding:10px;
+    position:relative;
+    top:-135px;
+    right:-1275px;
+
+}
+
+#form12{
+    float:left;
+
+    margin:25px;
+    padding:10px;
+    position:relative;
+    top:200px;
+    right:-600px;
+
+}
+
+#form13{
+    float:left;
+
+    margin:25px;
+    padding:10px;
+    position:relative;
+    top:300px;
+    right:100x;
+
+}
+
+
+#form14{
+    float:left;
+
+    margin:25px;
+    padding:10px;
+    position:relative;
+    top:300px;
+    right:-50px;
+
+}
+
+#form15{
+    float:left;
+
+    margin:25px;
+    padding:10px;
+    position:relative;
+    top:100px;
+    right:-700px;
+
+}
+
+#butAceptarConvalidacion{
+
+    position:absolute;
+
+    display:block;
+
+
+
+    left:800px;
+    top:400px;
+
+}
+#butInsertarUniversidad{
+
+    position:absolute;
+
+    display:block;
+
+
+
+    left:810px;
+    top:500px;
+
+}
+
 #form8 {
     float:left;
 
@@ -242,7 +389,7 @@
 
 }
 
-#butConvalidacion{
+#butInsertarAsignaturas{
 
     position:absolute;
 
@@ -250,12 +397,15 @@
 
 
 
-    left:750px;
-    top:580px;
+    left:830px;
+    top:650px;
 
     background:#0CF;
 
 }
+
+
+
 
 #butBuscador{
 
@@ -301,6 +451,17 @@
     right:600px;
 
 }
+#butCancelar{
+
+    float:left;
+
+    margin:25px;
+    padding:10px;
+    position:relative;
+    top:-132px;
+    right:-650px;
+
+}
 
 #butCambiar{
 
@@ -315,15 +476,26 @@
 
 }
 
-#butAlta{
+#butAltaAlumno{
 
     float:left;
 
     margin:25px;
     padding:10px;
     position:relative;
-    top:910px;
-    left:370px;
+    top:580px;
+    left:350px;
+
+}
+#butAltaEstancia{
+
+    float:left;
+
+    margin:25px;
+    padding:10px;
+    position:relative;
+    top:580px;
+    left:350px;
 
 }
 
@@ -414,6 +586,79 @@
 
 
 
+#table5 table {
+    width: 100%;
+    border: black 1px solid;
+    position: relative;
+    bottom: -70px;
+
+}
+#table5 th, td {
+
+    text-align: left;
+    vertical-align: top;
+    border: 1px solid #000;
+    border-collapse: collapse;
+    border: hidden;
+    padding: 0.3em;
+}
+
+#table6 table {
+    width: 100%;
+    border: black 1px solid;
+    position: relative;
+    bottom: -150px;
+
+}
+#table6 th, td {
+
+    text-align: left;
+    vertical-align: top;
+    border: 1px solid #000;
+    border-collapse: collapse;
+    border: hidden;
+    padding: 0.3em;
+}
+
+
+
+#table7 table {
+    width: 100%;
+    border: black 1px solid;
+    position: relative;
+    bottom: -150px;
+
+}
+#table7 th, td {
+
+    text-align: left;
+    vertical-align: top;
+    border: 1px solid #000;
+    border-collapse: collapse;
+    border: hidden;
+    padding: 0.3em;
+}
+
+#table4 table {
+    width: 100%;
+    border: black 1px solid;
+    position: relative;
+    bottom: -130px;
+
+}
+#table4 th, td {
+
+    text-align: left;
+    vertical-align: top;
+    border: 1px solid #000;
+    border-collapse: collapse;
+    border: hidden;
+    background:#EDE6E2;
+    padding: 0.3em;
+}
+
+
+
 
 body {
     background:#F5F5F5;
@@ -472,6 +717,16 @@ hr {
 }
 
 .div07{
+    position:absolute;
+
+    display:block;
+
+    font-size:35px;
+
+    left:700px;
+
+}
+.div08{
     position:absolute;
 
     display:block;
