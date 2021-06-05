@@ -67,13 +67,18 @@ public final class alumno_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <div id=\"enlacesAlumno\">\n");
       out.write("            <a href=\"ProfesorController?accion=nuevasAsignaturasOrigen\">Nueva asignatura origen</a>\n");
       out.write("            <br>\n");
+      out.write("            <br>\n");
       out.write("            <a href=\"ProfesorController?accion=nuevasAsignaturasDestino\">Nueva asignatura destino</a>\n");
+      out.write("            <br>\n");
       out.write("            <br>\n");
       out.write("            <a href=\"ProfesorController?accion=nuevaConvalidacion\">Nueva convalidacion</a>\n");
       out.write("            <br>\n");
+      out.write("            <br>\n");
       out.write("            <a href=\"ProfesorController?accion=buscarConvalidacion\">Buscar antiguas convalidaciones</a>\n");
       out.write("            <br>\n");
+      out.write("            <br>\n");
       out.write("            <a href=\"ProfesorController?accion=convalidacionesActuales\">Estado convalidaciones actuales</a>\n");
+      out.write("            <br>\n");
       out.write("            <br>\n");
       out.write("            <a href=\"ProfesorController?accion=cambiarPassword\">Cambiar contraseña</a>\n");
       out.write("        </div>\n");

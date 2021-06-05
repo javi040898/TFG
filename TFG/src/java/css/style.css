@@ -330,6 +330,16 @@
     right:-700px;
 
 }
+#form16{
+    float:left;
+
+    margin:25px;
+    padding:10px;
+    position:relative;
+    top:100px;
+    right:-700px;
+
+}
 
 #butAceptarConvalidacion{
 
@@ -353,6 +363,18 @@
 
     left:810px;
     top:500px;
+
+}
+#butInsertarGrado{
+
+    position:absolute;
+
+    display:block;
+
+
+
+    left:810px;
+    top:450px;
 
 }
 
@@ -508,7 +530,7 @@
 
 
 
-    top:110px;
+    top:90px;
 
 
 

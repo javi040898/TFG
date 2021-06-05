@@ -25,6 +25,34 @@ public class GradoDAO {
         Conexion conn = new Conexion();
         conexion = conn.connect();
     }
+    
+        public boolean insertar(Grado grado) {
+
+        PreparedStatement ps = null;
+
+        try {
+            ps = conexion.prepareStatement("insert into Grado values(?,?,?)");
+
+            ps.setString(1, grado.getCodigo());
+            ps.setString(2, grado.getNombre());
+            ps.setString(3, grado.getFacultad());
+            ps.execute();
+            return true;
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+            return false;
+
+        } finally {
+
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
+        }
+    }
 
     public List<Grado> listarGrados() {
 

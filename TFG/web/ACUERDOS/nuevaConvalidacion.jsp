@@ -42,8 +42,8 @@
                             List<Estancia> listaEstancias = (List<Estancia>) request.getAttribute("listaEstancias");
                             if (listaEstancias != null)
                                 for (Estancia estancia : listaEstancias) {%>
-                        <option value="<%=estancia.getId_estancia()%>"><%=estancia.getCurso_academico()%><%=" ("
-                                + universidadDAO.obtenerNombre(estancia.getCodigo_erasmus_Universidad_destino()) + " )"%></option>
+                        <option value="<%=estancia.getId_estancia()%>"><%=estancia.getTipo()+" "%><%=universidadDAO.obtenerNombre(estancia.getCodigo_erasmus_Universidad_destino())%><%=" ("
+                                + estancia.getCurso_academico() + " )"%></option>
                             <% }%>
 
 
