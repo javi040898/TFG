@@ -68,6 +68,18 @@
 
         </div>
 
+        <%
+    String mensaje = (String) request.getAttribute("confirmacion");
+    System.out.println("mensaje: " + mensaje);
+    if (mensaje == "error") {%>
+        <script>
+            alert('No se ha podido dar de alta la asignatura');
+        </script><%}%>
+        <%if (mensaje == "correcto") {%>
+        <script>
+            alert('Asignatura insertada correctamente');
+        </script><%}%>
+
 
 
     </body>

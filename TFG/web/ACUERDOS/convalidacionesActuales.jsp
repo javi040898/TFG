@@ -38,7 +38,7 @@
                         List<Estancia> listaEstancias = (List<Estancia>) request.getAttribute("listaEstancias");
                         if (listaEstancias != null)
                             for (Estancia estancia : listaEstancias) {%>
-                        <option value="<%=estancia.getId_estancia()%>"><%=estancia.getTipo() + " "%><%=universidadDAO.obtenerNombre(estancia.getCodigo_erasmus_Universidad_destino())%><%=" ("
+                    <option value="<%=estancia.getId_estancia()%>"><%=estancia.getTipo() + " "%><%=universidadDAO.obtenerNombre(estancia.getCodigo_erasmus_Universidad_destino())%><%=" ("
                                 + estancia.getCurso_academico() + ")"%></option>
                         <% }%>
 
@@ -109,7 +109,7 @@
                                 for (RelacionAsignaturas ra : listaRA) {
                                     //if (String.valueOf(asignaturaO.getCodigo()).equals(String.valueOf(asignaturaD.getCodigo_Asignatura_Origen()))) {
                                     //System.out.println(asignaturaO.getNombre());
-                        %>
+%>
                         <tr>
 
 
@@ -192,6 +192,8 @@
             <a href="ProfesorController?accion=volverAlumno">Volver</a>
 
         </div>
+
+
 
 
 

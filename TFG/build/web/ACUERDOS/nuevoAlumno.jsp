@@ -100,5 +100,17 @@
 
 
         </form>
+
+        <%
+            String mensaje = (String) request.getAttribute("confirmacion");
+            System.out.println("mensaje: " + mensaje);
+                        if (mensaje == "error") {%>
+        <script>
+            alert('No se ha podido dar de alta el alumno');
+        </script><%}%>
+        <%if (mensaje == "correcto") {%>
+        <script>
+            alert('Alumno dado de alta correctamente');
+        </script><%}%>
     </body>
 </html>

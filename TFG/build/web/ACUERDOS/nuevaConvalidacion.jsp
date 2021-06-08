@@ -56,7 +56,7 @@
 
                 <div id="form13">
 
-                    <select class="form-control" id="listaEstancias" name="listaOrigen">
+                    <select class="form-control" id="listaOrigen" name="listaOrigen">
 
                         <option>Escoge asignatura origen</option>
                         <%
@@ -77,7 +77,7 @@
                 </div>
                 <div id="form14">
 
-                    <select class="form-control" id="listaEstancias" name="listaDestino">
+                    <select class="form-control" id="listaDestino" name="listaDestino">
 
                         <option>Escoge asignatura destino</option>
                         <%
@@ -112,7 +112,17 @@
 
         </div>
 
-
+        <%
+            String mensaje = (String) request.getAttribute("confirmacion");
+            System.out.println("mensaje: " + mensaje);
+    if (mensaje == "error") {%>
+        <script>
+            alert('No se ha podido dar de alta la convalidacion');
+        </script><%}%>
+        <%if (mensaje == "correcto") {%>
+        <script>
+            alert('Convalidacion dada de alta correctamente');
+        </script><%}%>
 
 
 

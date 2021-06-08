@@ -61,6 +61,18 @@
             <a href="ProfesorController?accion=volverProfesor">Volver</a>
 
         </div>
+        
+        <%
+            String mensaje = (String) request.getAttribute("confirmacion");
+            System.out.println("mensaje: " + mensaje);
+     if (mensaje == "error") {%>
+        <script>
+            alert('No se ha podido dar de alta la universidad');
+        </script><%}%>
+        <%if (mensaje == "correcto") {%>
+        <script>
+            alert('Universidad dada de alta correctamente');
+        </script><%}%>
 
 
 

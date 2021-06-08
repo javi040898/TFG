@@ -262,6 +262,12 @@ public class ProfesorController extends HttpServlet {
 
                 Alumno alumno = new Alumno(DNI_Alumno_Insertar, nombre, apellidos, password, nombre_usuario, grado);
                 alumnoDAO.insertar(alumno);
+                mensaje_error = "correcto";
+                request.setAttribute("confirmacion", mensaje_error);
+
+            } else {
+                mensaje_error = "error";
+                request.setAttribute("confirmacion", mensaje_error);
 
             }
 
@@ -302,6 +308,12 @@ public class ProfesorController extends HttpServlet {
                     && !duracion.equals("Escoge una duracion") && !universidad.equals("Escoge una universidad") && !curso.equals("")) {
                 Estancia estancia = new Estancia(id_estancia, tipo, curso, duracion, false, false, universidad, DNI_Coordinador, DNI_Alumno_Insertar_Estancia);
                 estanciaDAO.insertar(estancia);
+                mensaje_error = "correcto";
+                request.setAttribute("confirmacion", mensaje_error);
+
+            } else {
+                mensaje_error = "error";
+                request.setAttribute("confirmacion", mensaje_error);
 
             }
 
@@ -442,6 +454,12 @@ public class ProfesorController extends HttpServlet {
             if (!tipoO.equals("Escoge un tipo") && !codigoO.equals("") && !creditosO.equals("") && !informacionO.equals("") && !nombreO.equals("")) {
                 Asignatura_Origen asignaturaO = new Asignatura_Origen(codigoO, Integer.parseInt(creditosO), nombreO, informacionO, tipoO);
                 asignatura_origenDAO.insertarAsignaturaOrigen(asignaturaO);
+                mensaje_error = "correcto";
+                request.setAttribute("confirmacion", mensaje_error);
+
+            } else {
+                mensaje_error = "error";
+                request.setAttribute("confirmacion", mensaje_error);
 
             }
 
@@ -493,6 +511,13 @@ public class ProfesorController extends HttpServlet {
             if (!codigo_universidad_destino.equals("Escoge una universidad") && !codigoD.equals("") && !creditosD.equals("") && !informacionD.equals("") && !nombreD.equals("")) {
                 Asignatura_Destino asignaturaD1 = new Asignatura_Destino(codigoD, Integer.parseInt(creditosD), nombreD, informacionD, codigo_universidad_destino);
                 asignatura_destinoDAO.insertarAsignaturaDestino(asignaturaD1);
+                mensaje_error = "correcto";
+                request.setAttribute("confirmacion", mensaje_error);
+
+            } else {
+                mensaje_error = "error";
+                request.setAttribute("confirmacion", mensaje_error);
+
             }
 
             //Integer id_convalidacion1 = convalidacionDAO.obtenerSiguienteConvalidacion();
@@ -531,9 +556,17 @@ public class ProfesorController extends HttpServlet {
 
             Integer id_convalidacion1 = convalidacionDAO.obtenerSiguienteConvalidacion();
 
-            if (!estancia.equals("Escoge la estancia donde se va a realizar la convalidacion") && !asignaturaOrigen.equals("Escoge asinatura origen") && !asignaturaDestino.equals("Escoge asinatura destino")) {
+            if (!estancia.equals("Escoge la estancia donde se va a realizar la convalidacion") && !asignaturaOrigen.equals("Escoge asignatura origen")
+                    && !asignaturaDestino.equals("Escoge asignatura destino")) {
                 Convalidacion c1 = new Convalidacion(id_convalidacion1, "PENDIENTE", "", asignaturaDestino, asignaturaOrigen, Integer.parseInt(estancia));
                 convalidacionDAO.insertarConvalidacion(c1);
+                mensaje_error = "correcto";
+                request.setAttribute("confirmacion", mensaje_error);
+
+            } else {
+                mensaje_error = "error";
+                request.setAttribute("confirmacion", mensaje_error);
+
             }
 
             System.out.println("ede" + estancia);
@@ -579,6 +612,13 @@ public class ProfesorController extends HttpServlet {
                 Universidad_Destino universidad = new Universidad_Destino(codigoU, nombreU, pais, ciudad);
 
                 universidadDAO.insertar(universidad);
+                mensaje_error = "correcto";
+                request.setAttribute("confirmacion", mensaje_error);
+
+            } else {
+                mensaje_error = "error";
+                request.setAttribute("confirmacion", mensaje_error);
+
             }
 
             /*String codigoD2 = request.getParameter("CodigoD2");
@@ -620,6 +660,13 @@ public class ProfesorController extends HttpServlet {
             if (!codigoG.equals("") && !nombreG.equals("") && !facultad.equals("")) {
                 Grado grado = new Grado(codigoG, nombreG, facultad);
                 gradoDAO.insertar(grado);
+                mensaje_error = "correcto";
+                request.setAttribute("confirmacion", mensaje_error);
+
+            } else {
+                mensaje_error = "error";
+                request.setAttribute("confirmacion", mensaje_error);
+
             }
 
 
