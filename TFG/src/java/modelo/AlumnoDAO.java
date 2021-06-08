@@ -150,7 +150,7 @@ public class AlumnoDAO {
         }
 
     }
-    
+
     public List<Alumno> listarAlumnos() {
 
         PreparedStatement ps = null;
@@ -412,5 +412,10 @@ public class AlumnoDAO {
             }
         }
 
+    }
+
+    public void desconectar() throws SQLException {
+        conexion.close();
+        System.out.println("desconectado");
     }
 }

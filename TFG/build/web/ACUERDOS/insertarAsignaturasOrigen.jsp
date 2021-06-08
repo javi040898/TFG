@@ -40,9 +40,10 @@
                     <label>Tipo Asignatura</label>
                     <select class="form-control" id="TipoO" name="TipoO">
                         <option>Escoge un tipo</option>
-                        <option>Básica</option>
-                        <option>Obligatoria</option>
-                        <option>Optativa</option>
+                        <option>BASICA</option>
+                        <option>OBLIGATORIA</option>
+                        <option>OPTATIVA</option>
+                        <option>TRANSVERSAL</option>
                     </select>
 
                     <label>Informacion</label>
@@ -62,6 +63,10 @@
 
 
         </form>
+        <div id="volver1">
+            <a href="ProfesorController?accion=volverAlumno">Volver</a>
+
+        </div>
 
 
 

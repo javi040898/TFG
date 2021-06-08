@@ -42,7 +42,7 @@ public class Asignatura_DestinoDAO {
                 String informacion = rs.getString("informacion");
                 String codigo_erasmus_Universidad_destino = rs.getString("codigo_erasmus_Universidad_destino");
 
-                Asignatura_Destino asignatura = new Asignatura_Destino(codigo, creditos, nombre, informacion,codigo_erasmus_Universidad_destino);
+                Asignatura_Destino asignatura = new Asignatura_Destino(codigo, creditos, nombre, informacion, codigo_erasmus_Universidad_destino);
                 lista.add(asignatura);
             }
 
@@ -50,8 +50,7 @@ public class Asignatura_DestinoDAO {
         } catch (SQLException ex) {
             System.out.println(ex.toString());
             return null;
-        }
-        finally {
+        } finally {
 
             if (rs != null) {
                 try {
@@ -71,7 +70,7 @@ public class Asignatura_DestinoDAO {
         }
     }
 
-   /*public List<Asignatura_Destino> listarAsignaturasBuscador(Integer codigo) {
+    /*public List<Asignatura_Destino> listarAsignaturasBuscador(Integer codigo) {
         PreparedStatement ps;
         ResultSet rs;
         List<Asignatura_Destino> lista = new ArrayList<>();
@@ -102,7 +101,6 @@ public class Asignatura_DestinoDAO {
 
         }
     }*/
-
     public void cambiarEstado(String estado, Integer codigo_asignatura) {
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -116,8 +114,7 @@ public class Asignatura_DestinoDAO {
         } catch (SQLException ex) {
             System.out.println(ex.toString());
 
-        }
-        finally {
+        } finally {
             if (rs != null) {
                 try {
                     rs.close();
@@ -157,8 +154,7 @@ public class Asignatura_DestinoDAO {
             System.out.println(ex.toString());
             return false;
 
-        }
-        finally {
+        } finally {
 
             if (ps != null) {
                 try {
@@ -168,6 +164,11 @@ public class Asignatura_DestinoDAO {
                 }
             }
         }
+    }
+
+    public void desconectar() throws SQLException {
+        conexion.close();
+        System.out.println("desconectado");
     }
 
 }

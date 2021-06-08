@@ -15,32 +15,30 @@ import java.sql.SQLException;
  * @author Javier
  */
 public class UsuarioDAO {
-    
-     Connection conexion;
-    
-    public UsuarioDAO(){
+
+    Connection conexion;
+
+    public UsuarioDAO() {
         Conexion conn = new Conexion();
         conexion = conn.connect();
     }
-    
+
     public boolean insertar(Usuario usuario) {
 
         PreparedStatement ps = null;
 
         try {
             ps = conexion.prepareStatement("insert into Usuario values(?)");
-            
+
             ps.setString(1, usuario.getNombre_usuario());
-            
+
             ps.execute();
 
             return true;
         } catch (SQLException ex) {
             System.out.println(ex.toString());
             return false;
-        }
-        finally {
-
+        } finally {
 
             if (ps != null) {
                 try {
@@ -51,5 +49,10 @@ public class UsuarioDAO {
             }
         }
     }
-    
+
+    public void desconectar() throws SQLException {
+        conexion.close();
+        System.out.println("desconectado");
+    }
+
 }

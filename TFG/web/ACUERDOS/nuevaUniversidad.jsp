@@ -21,7 +21,6 @@
         <title>INSERTAR UNIVERSIDAD</title>
     </head>
     <body>
-        <div class="div02">INSERTAR UNIVERSIDAD</div>
 
 
         <form action="ProfesorController?accion=insertarUniversidad" method="POST" autocomplete="off">
@@ -30,8 +29,8 @@
             <div>
 
 
-                <div id="form15">
-                    <h1>UNIVERSIDAD</h1>
+            <div id="form10">
+                <h1>NUEVA UNIVERSIDAD</h1>
                     <label>Codigo Universidad</label>
                     <input id="CodigoU" class="form-control" name="CodigoU" type="text" align="left"/>
                     <label>Nombre Universidad</label>
@@ -57,6 +56,11 @@
 
 
         </form>
+
+        <div id="volver11">
+            <a href="ProfesorController?accion=volverProfesor">Volver</a>
+
+        </div>
 
 
 

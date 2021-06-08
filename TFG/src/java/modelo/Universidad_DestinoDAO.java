@@ -157,4 +157,9 @@ public class Universidad_DestinoDAO {
             }
         }
     }
+
+    public void desconectar() throws SQLException {
+        conexion.close();
+        System.out.println("desconectado");
+    }
 }

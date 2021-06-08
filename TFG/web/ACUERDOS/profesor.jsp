@@ -4,6 +4,9 @@
     Author     : Javier
 --%>
 
+<%@page import="modelo.EstanciaDAO"%>
+<%@page import="modelo.Universidad_DestinoDAO"%>
+<%@page import="modelo.Estancia"%>
 <%@page import="modelo.RelacionAsignaturas"%>
 <%@page import="modelo.Asignatura_Destino"%>
 <%@page import="modelo.Asignatura_Origen"%>
@@ -28,25 +31,50 @@
     </head>
     <body>
 
-        <div class="div01"> PROFESOR</div>
 
 
 
         <form action="ProfesorController?accion=listarAlumnos" method="POST" autocomplete="off">
             <p align="center"> 
             <div id="form6">
-                <select class="form-control" id="listaAlumnos" name="listaAlumnos">
+                <select class="form-control" id="listaEstanciasAlumnos" name="listaEstanciasAlumnos">
 
 
 
-                    <option>Escoge un alumno</option>
+                    <option>Escoge una estancia y alumno</option>
                     <%
-
+                        Universidad_DestinoDAO universidadDAO = new Universidad_DestinoDAO();
+                        EstanciaDAO estanciaDAO = new EstanciaDAO();
                         List<Alumno> listaAlumnos = (List<Alumno>) request.getAttribute("listaAlumnos");
+                        List<Estancia> listaEstancias = (List<Estancia>) request.getAttribute("listaEstancias");
+
                         if (listaAlumnos != null)
-                            for (Alumno alumno : listaAlumnos) {%>
-                    <option value="<%=alumno.getDNI()%>"><%=alumno.getNombre()%><%=" " + alumno.getApellidos()%><%=" (" + alumno.getDNI() + " )"%></option>
-                    <% }%>
+                            if (listaEstancias != null)
+                                for (Estancia estancia : listaEstancias) {
+                                    String cerrada = "EN PROGRESO";
+                                    for (Alumno alumno : listaAlumnos) {
+
+                                        System.out.println("DNI1:" + alumno.getDNI() + " DNI2:" + estancia.getDNI_alumno());
+                                        if (alumno.getDNI().equals(estancia.getDNI_alumno())) {
+                                            if (estanciaDAO.obtenerRenuncia(estancia.getId_estancia())) {
+                                                cerrada = "RENUNCIADA";
+                                            } else {
+                                                if (estanciaDAO.obtenerCerrada(estancia.getId_estancia())) {
+                                                    cerrada = "CERRADA";
+                                                }
+                                            }
+
+
+                    %>
+                    <option value="<%=estancia.getId_estancia()%>"><%=estancia.getTipo() + " "%><%=universidadDAO.obtenerNombre(estancia.getCodigo_erasmus_Universidad_destino())%><%=" ("
+                                + estancia.getCurso_academico() + ") "%><%=alumno.getNombre()%><%=" " + alumno.getApellidos()%><%=" (" + alumno.getDNI() + ") "%><%=cerrada%>
+                    </option>
+                    <%
+                                    break;
+                                }
+
+                            }
+                        }%>
 
 
 
@@ -246,7 +274,7 @@
                     <option>Escoge una asignatura</option>
                     <% if (listaRA != null)
                             for (RelacionAsignaturas ra : listaRA) {
-                                if (ra.getEstado().equals("Pendiente")) {
+                                if (ra.getEstado().equals("PENDIENTE")) {
                     %>
                     <option value="<%=ra.getCodigo_destino()%>"><%=ra.getNombre_destino()%><%=" (" + ra.getCodigo_destino() + ")"%></option>
                     <% }
@@ -265,24 +293,24 @@
 
                 <select class="form-control" id="modificarEstado" name="modificarEstado">
                     <option>Escoge un estado</option>
-                    <option>Aceptar</option>
-                    <option>Rechazar</option>
+                    <option>ACEPTAR</option>
+                    <option>RECHAZAR</option>
                 </select>
             </div>
             <div id="butModificar">
                 <button>Modificar</button>
             </div>
 
-                        
-                        
-                        
+
+
+
             <div id="tituloCancelar">  <h1 >CANCELAR ASIGNATURA</h1></div>
             <div id="form11">
                 <select class="form-control" id="listaAsignaturasCancelar" name="listaAsignaturasCancelar">
                     <option>Escoge una asignatura</option>
                     <% if (listaRA != null)
                             for (RelacionAsignaturas ra : listaRA) {
-                                if (ra.getEstado().equals("Aceptada")) {
+                                if (ra.getEstado().equals("ACEPTADA")) {
                     %>
                     <option value="<%=ra.getCodigo_destino()%>"><%=ra.getNombre_destino()%><%=" (" + ra.getCodigo_destino() + ")"%></option>
                     <% }
@@ -295,7 +323,7 @@
                 </select>
             </div>
             <div id="comentariosCancelada">
-             <div id="label1"    <label>Comentarios</label></div>
+                <div id="label1"    <label>Comentarios</label></div>
                 <input id="comentariosCancelada" class="form-control" name="ComentariosCancelada" type="textarea" align="left" size="40"/></div>
 
 
@@ -303,6 +331,8 @@
             <div id="butCancelar">
                 <button>Cancelar</button>
             </div>
+
+          
 
 
 
@@ -321,6 +351,15 @@
             <a href="ProfesorController?accion=nuevaUniversidad">Nueva universidad de destino</a>
             <br>
             <a href="ProfesorController?accion=nuevoGrado">Nuevo grado</a>
+            <br>
+            <a href="ProfesorController?accion=renunciaAlumno">Renuncia alumno</a>
+            <br>
+            <a href="ProfesorController?accion=cerrarEstancia">Cerrar estancia</a>
+        </div>
+
+        <div id="volver8">
+            <a href="ProfesorController?accion=volverLogin">Volver</a>
+
         </div>
 
 

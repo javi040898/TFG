@@ -17,7 +17,7 @@
         <style>
             body{
                 background:#F5F5F5;
-                
+
             }
         </style>
     </head>
@@ -81,15 +81,20 @@
 
 
                 </select>
-                
 
 
 
-                
+
+
 
             </div>
             <div id="butAltaAlumno">
                 <button  id="Alta" name="Alta" type="submit">Alta</button>
+            </div>
+
+            <div id="volver9">
+                <a href="ProfesorController?accion=volverProfesor">Volver</a>
+
             </div>
 
 

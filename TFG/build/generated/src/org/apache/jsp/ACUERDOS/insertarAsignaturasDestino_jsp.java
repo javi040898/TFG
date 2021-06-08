@@ -6,7 +6,7 @@ import javax.servlet.jsp.*;
 import java.util.List;
 import modelo.Universidad_Destino;
 
-public final class nuevoGrado_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class insertarAsignaturasDestino_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -52,32 +52,63 @@ public final class nuevoGrado_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<html>\n");
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <link rel=\"stylesheet\" href=\"C:\\Users\\Javier\\Documents\\GitHub\\TFG\\TFG\\src\\java\\css\\style.css\" type=\"text/css\">        <title>INSERTAR GRADO</title>\n");
+      out.write("        <link rel=\"stylesheet\" href=\"C:\\Users\\Javier\\Documents\\GitHub\\TFG\\TFG\\src\\java\\css\\style.css\" type=\"text/css\">        <title>INSERTAR ASIGNATURAS</title>\n");
       out.write("        <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\" integrity=\"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\" crossorigin=\"anonymous\">\n");
       out.write("        <style>\n");
       out.write("            body{\n");
       out.write("                background:#F5F5F5;\n");
       out.write("            }\n");
       out.write("        </style>\n");
-      out.write("        <title>INSERTAR GRADO</title>\n");
+      out.write("        <title>INSERTAR ASIGNATURAS</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
+      out.write("        <div class=\"div02\">INSERTAR ASIGNATURAS</div>\n");
       out.write("\n");
       out.write("\n");
-      out.write("        <form action=\"ProfesorController?accion=insertarGrado\" method=\"POST\" autocomplete=\"off\">\n");
+      out.write("        <form action=\"ProfesorController?accion=insertarAsignaturasDestino\" method=\"POST\" autocomplete=\"off\">\n");
       out.write("\n");
       out.write("\n");
       out.write("            <div>\n");
       out.write("\n");
-      out.write("            <div id=\"form10\">\n");
-      out.write("                <h1>NUEVO GRADO</h1>\n");
-      out.write("                    <label>Codigo Grado</label>\n");
-      out.write("                    <input id=\"CodigoG\" class=\"form-control\" name=\"CodigoG\" type=\"text\" align=\"left\"/>\n");
-      out.write("                    <label>Nombre Grado</label>\n");
-      out.write("                    <input type=\"text\" class=\"form-control\" name=\"NombreG\" id=\"NombreG\" placeholder=\"\">\n");
-      out.write("                    <label>Facultad</label>\n");
-      out.write("                    <input type=\"text\" class=\"form-control\" name=\"FacultadG\" id=\"FacultadG\" placeholder=\"\">\n");
       out.write("\n");
+      out.write("                <div id=\"form2\">\n");
+      out.write("                    <h1>ASIGNATURA DESTINO</h1>\n");
+      out.write("                    <label>Codigo Asignatura</label>\n");
+      out.write("                    <input id=\"CodigoD1\" class=\"form-control\" name=\"CodigoD\" type=\"text\" align=\"left\"/>\n");
+      out.write("                    <label>Nombre Asignatura</label>\n");
+      out.write("                    <input type=\"text\" class=\"form-control\" name=\"NombreD\" id=\"NombreD1\" placeholder=\"\">\n");
+      out.write("                    <label>Creditos</label>\n");
+      out.write("                    <input type=\"text\" class=\"form-control\" name=\"CreditosD\" id=\"CreditosD1\" placeholder=\"\">\n");
+      out.write("                    <label>Informacion</label>\n");
+      out.write("                    <input type=\"text\" class=\"form-control\" name=\"InformacionD\" id=\"InformacionD1\" placeholder=\"\">\n");
+      out.write("                    <label>Universidad</label>\n");
+      out.write("\n");
+      out.write("                    <select class=\"form-control\" id=\"listaUniversidadesDsetino\" name=\"listaUniversidadesDsetino\">\n");
+      out.write("\n");
+      out.write("                        <option>Escoge un universidad</option>\n");
+      out.write("                        ");
+
+
+                            List<Universidad_Destino> listaUniversidades = (List<Universidad_Destino>) request.getAttribute("listaUniversidades");
+                            if (listaUniversidades != null)
+                                for (Universidad_Destino universidad : listaUniversidades) {
+      out.write("\n");
+      out.write("                        <option value=\"");
+      out.print(universidad.getCodigo_erasmus());
+      out.write('"');
+      out.write('>');
+      out.print(universidad.getNombre());
+      out.print(" (" + universidad.getCiudad() + " )");
+      out.write("</option>\n");
+      out.write("                        ");
+ }
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("                    </select>\n");
       out.write("\n");
       out.write("                </div>\n");
       out.write("\n");
@@ -86,18 +117,16 @@ public final class nuevoGrado_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("                <br><br><br>\n");
       out.write("            </div>\n");
-      out.write("            <div id=\"butInsertarGrado\">\n");
+      out.write("            <div id=\"butInsertarAsignaturas\">\n");
       out.write("\n");
       out.write("\n");
-      out.write("                <button  id=\"insertarGrado\" class=\"btn btn-primary\" name=\"insertarGrado\" type=\"submit\" >Insertar</button>\n");
+      out.write("                <button  id=\"insertarAsignaturas\" class=\"btn btn-primary\" name=\"insertarAsignaturas\" type=\"submit\" >Insertar</button>\n");
       out.write("            </div>\n");
       out.write("\n");
       out.write("\n");
       out.write("        </form>\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("        <div id=\"volver12\">\n");
-      out.write("            <a href=\"ProfesorController?accion=volverProfesor\">Volver</a>\n");
+      out.write("        <div id=\"volver2\">\n");
+      out.write("            <a href=\"ProfesorController?accion=volverAlumno\">Volver</a>\n");
       out.write("\n");
       out.write("        </div>\n");
       out.write("\n");
@@ -105,7 +134,6 @@ public final class nuevoGrado_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("    </body>\n");
       out.write("</html>\n");
-      out.write("\n");
       out.write("\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){

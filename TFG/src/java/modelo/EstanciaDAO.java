@@ -50,8 +50,7 @@ public class EstanciaDAO {
             System.out.println(ex.toString());
             System.out.println("No se ha insertado");
             return false;
-        }
-        finally {
+        } finally {
 
             if (ps != null) {
                 try {
@@ -78,8 +77,7 @@ public class EstanciaDAO {
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-        }
-        finally {
+        } finally {
             if (rs != null) {
                 try {
                     rs.close();
@@ -115,8 +113,7 @@ public class EstanciaDAO {
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-        }
-        finally {
+        } finally {
             if (rs != null) {
                 try {
                     rs.close();
@@ -136,6 +133,72 @@ public class EstanciaDAO {
         return codigo_erasmus_Universidad_destino;
     }
 
+    public void cambiarRenuncia(Integer id_estancia) {
+        System.out.println("entro a cambair renuncia");
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            ps = conexion.prepareStatement("UPDATE Estancia SET renuncia = true, cerrada = true where id_estancia = ?");
+            ps.setInt(1, id_estancia);
+            rs = ps.executeQuery();
+
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+        } finally {
+
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+
+            }
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
+        }
+
+    }
+
+    public void cambiarCierre(Integer id_estancia) {
+        System.out.println("entro a cambair renuncia");
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            ps = conexion.prepareStatement("UPDATE Estancia SET cerrada = true where id_estancia = ?");
+            ps.setInt(1, id_estancia);
+            rs = ps.executeQuery();
+
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+        } finally {
+
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+
+            }
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
+        }
+
+    }
+
     public Integer obtenerIdEstancia(String DNI) {
 
         PreparedStatement ps = null;
@@ -152,8 +215,7 @@ public class EstanciaDAO {
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-        }
-        finally {
+        } finally {
             if (rs != null) {
                 try {
                     rs.close();
@@ -173,6 +235,115 @@ public class EstanciaDAO {
         return id_estancia;
     }
 
+    public Boolean obtenerRenuncia(Integer id_estancia) {
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Boolean renuncia = false;
+
+        try {
+            ps = conexion.prepareStatement("select renuncia from Estancia where id_estancia=?");
+            ps.setInt(1, id_estancia);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                renuncia = rs.getBoolean("renuncia");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+
+            }
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
+        }
+        return renuncia;
+    }
+
+    public Boolean obtenerCerrada(Integer id_estancia) {
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Boolean cerrada = false;
+
+        try {
+            ps = conexion.prepareStatement("select cerrada from Estancia where id_estancia=?");
+            ps.setInt(1, id_estancia);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                cerrada = rs.getBoolean("cerrada");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+
+            }
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
+
+        }
+        return cerrada;
+    }
+
+    public String obtenerDNIAlumno(Integer id_estancia) {
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String DNI = "";
+
+        try {
+            ps = conexion.prepareStatement("select dni_alumno from Estancia where id_estancia=?");
+            ps.setInt(1, id_estancia);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                DNI = rs.getString("dni_alumno");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+
+            }
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
+        }
+        return DNI;
+    }
+
     public List<Estancia> obtenerEstanciaYUniversidad(String DNI) {
 
         PreparedStatement ps = null;
@@ -180,7 +351,7 @@ public class EstanciaDAO {
         List<Estancia> lista = new ArrayList<>();
 
         try {
-            ps = conexion.prepareStatement("select Estancia.* from Estancia  where dni_alumno = ? and cerrada='false';");
+            ps = conexion.prepareStatement("select Estancia.* from Estancia  where dni_alumno = ? and cerrada = false and renuncia = false;");
             ps.setString(1, DNI);
             rs = ps.executeQuery();
 
@@ -204,8 +375,7 @@ public class EstanciaDAO {
         } catch (SQLException ex) {
             System.out.println(ex.toString());
             return null;
-        }
-        finally {
+        } finally {
 
             if (rs != null) {
                 try {
@@ -223,5 +393,114 @@ public class EstanciaDAO {
                 }
             }
         }
+    }
+
+    public List<Estancia> listarEstanciasCoordinador(String DNI) {
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        List<Estancia> lista = new ArrayList<>();
+
+        try {
+            ps = conexion.prepareStatement("SELECT Estancia.* from Estancia inner join Alumno on DNI_Alumno=Alumno.DNI\n"
+                    + "               inner join Coordinador on DNI_Coordinador=Coordinador.DNI where Coordinador.DNI=?;");
+            ps.setString(1, DNI);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Integer id_estancia = rs.getInt("id_estancia");
+                String tipo = rs.getString("tipo");
+                String curso_academico = rs.getString("curso_academico");
+                String duracion = rs.getString("duracion");
+                Boolean renuncia = rs.getBoolean("renuncia");
+                Boolean cerrada = rs.getBoolean("cerrada");
+                String codigo_erasmus_universidad_destino = rs.getString("codigo_erasmus_universidad_destino");
+                String dni_coordinador = rs.getString("dni_coordinador");
+                String dni_alumno = rs.getString("dni_alumno");
+
+                Estancia estancia = new Estancia(id_estancia, tipo, curso_academico, duracion, renuncia, cerrada, codigo_erasmus_universidad_destino, dni_coordinador, dni_alumno);
+
+                lista.add(estancia);
+            }
+
+            return lista;
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+            return null;
+        } finally {
+
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+
+            }
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
+        }
+    }
+
+    public List<Estancia> listarEstanciasCoordinadorNoCerradas(String DNI) {
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        List<Estancia> lista = new ArrayList<>();
+
+        try {
+            ps = conexion.prepareStatement("SELECT Estancia.* from Estancia inner join Alumno on DNI_Alumno=Alumno.DNI\n"
+                    + "               inner join Coordinador on DNI_Coordinador=Coordinador.DNI where Coordinador.DNI=? and cerrada = false and renuncia = false;");
+            ps.setString(1, DNI);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Integer id_estancia = rs.getInt("id_estancia");
+                String tipo = rs.getString("tipo");
+                String curso_academico = rs.getString("curso_academico");
+                String duracion = rs.getString("duracion");
+                Boolean renuncia = rs.getBoolean("renuncia");
+                Boolean cerrada = rs.getBoolean("cerrada");
+                String codigo_erasmus_universidad_destino = rs.getString("codigo_erasmus_universidad_destino");
+                String dni_coordinador = rs.getString("dni_coordinador");
+                String dni_alumno = rs.getString("dni_alumno");
+
+                Estancia estancia = new Estancia(id_estancia, tipo, curso_academico, duracion, renuncia, cerrada, codigo_erasmus_universidad_destino, dni_coordinador, dni_alumno);
+
+                lista.add(estancia);
+            }
+
+            return lista;
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+            return null;
+        } finally {
+
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+
+            }
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
+        }
+    }
+
+    public void desconectar() throws SQLException {
+        conexion.close();
+        System.out.println("desconectado");
     }
 }

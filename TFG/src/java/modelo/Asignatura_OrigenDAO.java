@@ -55,8 +55,7 @@ public class Asignatura_OrigenDAO {
         } catch (SQLException ex) {
             System.out.println(ex.toString());
             return null;
-        }
-        finally {
+        } finally {
 
             if (rs != null) {
                 try {
@@ -107,8 +106,7 @@ public class Asignatura_OrigenDAO {
         } catch (SQLException ex) {
             System.out.println(ex.toString());
             return null;
-        }
-        finally {
+        } finally {
 
             if (rs != null) {
                 try {
@@ -147,8 +145,7 @@ public class Asignatura_OrigenDAO {
         } catch (SQLException ex) {
             System.out.println(ex.toString());
             return false;
-        }
-        finally {
+        } finally {
 
             if (ps != null) {
                 try {
@@ -160,7 +157,7 @@ public class Asignatura_OrigenDAO {
         }
     }
 
-    public Integer sumaCreditosOrigen(String DNI) {
+    public Integer sumaCreditosOrigen(String DNI, Integer id_Estancia) {
         PreparedStatement ps = null;
         ResultSet rs = null;
         Integer suma_creditos = 0;
@@ -169,9 +166,10 @@ public class Asignatura_OrigenDAO {
             ps = conexion.prepareStatement("select sum(creditos) as suma_creditos from (select distinct Asignatura_origen.*\n"
                     + "from Convalidacion inner join Estancia on id_estancia_Estancia=id_estancia\n"
                     + "inner join Asignatura_origen on Asignatura_origen.Codigo = Codigo_Asignatura_origen \n"
-                    + "inner join Asignatura_destino on Codigo_Asignatura_destino=Asignatura_destino.Codigo where DNI_Alumno= ? and Convalidacion.Estado='Aceptada'"
+                    + "inner join Asignatura_destino on Codigo_Asignatura_destino=Asignatura_destino.Codigo where DNI_Alumno= ? and id_Estancia=? and Convalidacion.Estado='Aceptada'"
                     + " ) as asignaturas_distintas;");
             ps.setString(1, DNI);
+            ps.setInt(2, id_Estancia);
             rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -179,8 +177,7 @@ public class Asignatura_OrigenDAO {
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-        }
-        finally {
+        } finally {
 
             if (rs != null) {
                 try {
@@ -202,7 +199,7 @@ public class Asignatura_OrigenDAO {
         return suma_creditos;
     }
 
-    public Integer sumaCreditosDestino(String DNI) {
+    public Integer sumaCreditosDestino(String DNI, Integer id_Estancia) {
         PreparedStatement ps = null;
         ResultSet rs = null;
         Integer suma_creditos = 0;
@@ -211,9 +208,10 @@ public class Asignatura_OrigenDAO {
             ps = conexion.prepareStatement("select sum(creditos) as suma_creditos from (select distinct Asignatura_destino.*\n"
                     + "from Convalidacion inner join Estancia on id_estancia_Estancia=id_estancia\n"
                     + "inner join Asignatura_origen on Asignatura_origen.Codigo = Codigo_Asignatura_origen \n"
-                    + "inner join Asignatura_destino on Codigo_Asignatura_destino=Asignatura_destino.Codigo where DNI_Alumno=? and Convalidacion.Estado='Aceptada'"
+                    + "inner join Asignatura_destino on Codigo_Asignatura_destino=Asignatura_destino.Codigo where DNI_Alumno=? and id_Estancia=? and Convalidacion.Estado='Aceptada'"
                     + ") as asignaturas_distintas;");
             ps.setString(1, DNI);
+            ps.setInt(2, id_Estancia);
             rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -221,8 +219,7 @@ public class Asignatura_OrigenDAO {
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-        }
-        finally {
+        } finally {
 
             if (rs != null) {
                 try {
@@ -242,6 +239,11 @@ public class Asignatura_OrigenDAO {
         }
 
         return suma_creditos;
+    }
+
+    public void desconectar() throws SQLException {
+        conexion.close();
+        System.out.println("desconectado");
     }
 
 }

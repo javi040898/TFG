@@ -29,7 +29,7 @@
         <form action="ProfesorController?accion=insertarEstancia" method="POST" autocomplete="off">
             <div id="form10">
                 <h1>NUEVA ESTANCIA</h1>
-                
+
                 <select class="form-control" id="listaAlumnosEstancia" name="listaAlumnosEstancia">
 
 
@@ -75,9 +75,9 @@
 
                         <option>Escoge una duracion</option>
 
-                        <option>1º cuatrimestre</option>
+                        <option>Cuatrimestre 1</option>
 
-                        <option>2º cuatrimestre</option>
+                        <option>Cuatrimestre 2</option>
 
                         <option>Anual</option>
 
@@ -115,6 +115,11 @@
             </div>
             <div id="butAltaEstancia">
                 <button  id="Alta" name="Alta" type="submit">Alta</button>
+            </div>
+
+            <div id="volver10">
+                <a href="ProfesorController?accion=volverProfesor">Volver</a>
+
             </div>
 
 

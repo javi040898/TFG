@@ -3,6 +3,8 @@ package org.apache.jsp.ACUERDOS;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import modelo.Estancia;
+import modelo.Universidad_DestinoDAO;
 import modelo.RelacionAsignaturas;
 import java.util.List;
 
@@ -48,6 +50,8 @@ public final class convalidacionesActuales_jsp extends org.apache.jasper.runtime
       out.write("\n");
       out.write("\n");
       out.write("\n");
+      out.write("\n");
+      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
@@ -67,7 +71,43 @@ public final class convalidacionesActuales_jsp extends org.apache.jasper.runtime
       out.write("\n");
       out.write("        <form action=\"ProfesorController?accion=convalidacionesActuales\" method=\"POST\" autocomplete=\"off\">\n");
       out.write("\n");
+      out.write("            <div id=\"form17\">\n");
       out.write("\n");
+      out.write("                <select class=\"form-control\" id=\"listaEstancias\" name=\"listaEstancias\">\n");
+      out.write("\n");
+      out.write("                    <option>Escoge la estancia que quiere comprobar</option>\n");
+      out.write("                    ");
+
+                        Universidad_DestinoDAO universidadDAO = new Universidad_DestinoDAO();
+                        List<Estancia> listaEstancias = (List<Estancia>) request.getAttribute("listaEstancias");
+                        if (listaEstancias != null)
+                            for (Estancia estancia : listaEstancias) {
+      out.write("\n");
+      out.write("                        <option value=\"");
+      out.print(estancia.getId_estancia());
+      out.write('"');
+      out.write('>');
+      out.print(estancia.getTipo() + " ");
+      out.print(universidadDAO.obtenerNombre(estancia.getCodigo_erasmus_Universidad_destino()));
+      out.print(" ("
+                                + estancia.getCurso_academico() + ")");
+      out.write("</option>\n");
+      out.write("                        ");
+ }
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("                </select>\n");
+      out.write("\n");
+      out.write("            </div>\n");
+      out.write("            <div id=\"butConfirmarEstancia\">\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("                <button  id=\"butConfirmarEstancia\" class=\"btn btn-primary\" name=\"butConfirmarEstancia\" type=\"submit\" >Seleccionar</button>\n");
+      out.write("            </div>\n");
       out.write("\n");
       out.write("            <div id=\"table4\">\n");
       out.write("                <table>\n");
@@ -81,7 +121,7 @@ public final class convalidacionesActuales_jsp extends org.apache.jasper.runtime
       out.write("                    <div id=\"titulo6\"> ASIGNATURAS CURSADAS  EN LA UNIVERSIDAD DE DESTINO\n");
       out.write("                    </div>\n");
       out.write("\n");
-      out.write("  \n");
+      out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("\n");
@@ -124,7 +164,7 @@ public final class convalidacionesActuales_jsp extends org.apache.jasper.runtime
                                 for (RelacionAsignaturas ra : listaRA) {
                                     //if (String.valueOf(asignaturaO.getCodigo()).equals(String.valueOf(asignaturaD.getCodigo_Asignatura_Origen()))) {
                                     //System.out.println(asignaturaO.getNombre());
-
+                        
       out.write("\n");
       out.write("                        <tr>\n");
       out.write("\n");
@@ -209,7 +249,7 @@ public final class convalidacionesActuales_jsp extends org.apache.jasper.runtime
                                 }
                             
       out.write(" \n");
-      out.write("                            <th>Total creditos en la Universidad de Alcalá: ");
+      out.write("                            <th>Total creditos aceptados en la Universidad de Alcalá: ");
       out.print(sumaCreditosOrigen);
       out.write("</th>\n");
       out.write("                        </tr>\n");
@@ -231,7 +271,7 @@ public final class convalidacionesActuales_jsp extends org.apache.jasper.runtime
                                 }
                             
       out.write(" \n");
-      out.write("                            <th>Total creditos en la Universidad de Destino: ");
+      out.write("                            <th>Total creditos aceptados en la Universidad de Destino: ");
       out.print(sumaCreditosDestino);
       out.write("</th>\n");
       out.write("                        </tr>\n");
@@ -242,6 +282,11 @@ public final class convalidacionesActuales_jsp extends org.apache.jasper.runtime
       out.write("\n");
       out.write("\n");
       out.write("        </form>\n");
+      out.write("        <div id=\"volver\">\n");
+      out.write("            <a href=\"ProfesorController?accion=volverAlumno\">Cambiar contraseña</a>\n");
+      out.write("\n");
+      out.write("        </div>\n");
+      out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("\n");

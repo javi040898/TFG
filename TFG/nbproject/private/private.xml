@@ -4,14 +4,15 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Javier/Documents/GitHub/TFG/TFG/src/java/modelo/EstanciaDAO.java</file>
+            <file>file:/C:/Users/Javier/Documents/GitHub/TFG/TFG/src/java/modelo/CoordinadorDAO.java</file>
+            <file>file:/C:/Users/Javier/Documents/GitHub/TFG/TFG/web/ACUERDOS/nuevoAlumno.jsp</file>
             <file>file:/C:/Users/Javier/Documents/GitHub/TFG/TFG/web/ACUERDOS/profesor.jsp</file>
-            <file>file:/C:/Users/Javier/Documents/GitHub/TFG/TFG/src/java/modelo/GradoDAO.java</file>
             <file>file:/C:/Users/Javier/Documents/GitHub/TFG/TFG/src/java/css/style.css</file>
-            <file>file:/C:/Users/Javier/Documents/GitHub/TFG/TFG/src/java/modelo/Estancia.java</file>
-            <file>file:/C:/Users/Javier/Documents/GitHub/TFG/TFG/src/java/modelo/Universidad_DestinoDAO.java</file>
-            <file>file:/C:/Users/Javier/Documents/GitHub/TFG/TFG/web/ACUERDOS/alumno.jsp</file>
-            <file>file:/C:/Users/Javier/Documents/GitHub/TFG/TFG/web/ACUERDOS/nuevaConvalidacion.jsp</file>
-            <file>file:/C:/Users/Javier/Documents/GitHub/TFG/TFG/web/ACUERDOS/insertarAsignaturas.jsp</file>
+            <file>file:/C:/Users/Javier/Documents/GitHub/TFG/TFG/web/ACUERDOS/cerrarEstancia.jsp</file>
+            <file>file:/C:/Users/Javier/Documents/GitHub/TFG/TFG/web/ACUERDOS/nuevaUniversidad.jsp</file>
+            <file>file:/C:/Users/Javier/Documents/GitHub/TFG/TFG/src/java/modelo/AlumnoDAO.java</file>
+            <file>file:/C:/Users/Javier/Documents/GitHub/TFG/TFG/web/ACUERDOS/nuevoGrado.jsp</file>
+            <file>file:/C:/Users/Javier/Documents/GitHub/TFG/TFG/web/ACUERDOS/renunciaAlumno.jsp</file>
             <file>file:/C:/Users/Javier/Documents/GitHub/TFG/TFG/src/java/controlador/ProfesorController.java</file>
         </group>
     </open-files>

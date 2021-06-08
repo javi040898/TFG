@@ -36,10 +36,15 @@
             <a href="ProfesorController?accion=buscarConvalidacion">Buscar antiguas convalidaciones</a>
             <br>
             <br>
-            <a href="ProfesorController?accion=convalidacionesActuales">Estado convalidaciones actuales</a>
+            <a href="ProfesorController?accion=verConvalidacionesActuales">Estado convalidaciones actuales</a>
             <br>
             <br>
             <a href="ProfesorController?accion=cambiarPassword">Cambiar contraseña</a>
+        </div>
+
+        <div id="volver7">
+            <a href="ProfesorController?accion=volverLogin">Volver</a>
+
         </div>
     </body>
 </html>

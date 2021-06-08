@@ -51,9 +51,13 @@
             <script>
                 alert('Cambio de contraseña correcto');
             </script><%}%>
-            
+
 
 
         </form>
+        <div id="volver6">
+            <a href="ProfesorController?accion=volverAlumno">Volver</a>
+
+        </div>
     </body>
 </html>

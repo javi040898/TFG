@@ -44,7 +44,7 @@
 
                     <select class="form-control" id="listaUniversidadesDsetino" name="listaUniversidadesDsetino">
 
-                        <option>Escoge un universidad</option>
+                        <option>Escoge una universidad</option>
                         <%
 
                             List<Universidad_Destino> listaUniversidades = (List<Universidad_Destino>) request.getAttribute("listaUniversidades");
@@ -74,6 +74,10 @@
 
 
         </form>
+        <div id="volver2">
+            <a href="ProfesorController?accion=volverAlumno">Volver</a>
+
+        </div>
 
 
 

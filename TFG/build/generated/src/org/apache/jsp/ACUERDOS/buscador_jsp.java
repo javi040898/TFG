@@ -105,14 +105,14 @@ public final class buscador_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    </div>\n");
       out.write("\n");
       out.write("\n");
-      out.write("                    \n");
       out.write("\n");
-      out.write("                        \n");
+      out.write("\n");
+      out.write("\n");
       out.write("                    <th>Codigo</th>\n");
       out.write("                    <th>Nombre Asignatura</th>\n");
       out.write("                    <th>Tipo</th>\n");
       out.write("                    <th>Creditos</th>\n");
-      out.write("                    \n");
+      out.write("\n");
       out.write("\n");
       out.write("                    <th>Link asignatura</th>\n");
       out.write("\n");
@@ -127,8 +127,8 @@ public final class buscador_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    <th>Curso academico</th>\n");
       out.write("                    <th>Estado</th>\n");
       out.write("                    <th>Comentarios</th>\n");
-      out.write("                    \n");
-      out.write("                    \n");
+      out.write("\n");
+      out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("                    </tr>\n");
@@ -147,11 +147,11 @@ public final class buscador_jsp extends org.apache.jasper.runtime.HttpJspBase
                                 for (RelacionAsignaturas ra : listaRA) {
                                     //if (String.valueOf(asignaturaO.getCodigo()).equals(String.valueOf(asignaturaD.getCodigo_Asignatura_Origen()))) {
                                     //System.out.println(asignaturaO.getNombre());
-                        
+
       out.write("\n");
       out.write("                        <tr>\n");
-      out.write("                            \n");
-      out.write("                            \n");
+      out.write("\n");
+      out.write("\n");
       out.write("\n");
       out.write("                            <td>");
       out.print(ra.getCodigo_origen());
@@ -206,8 +206,8 @@ public final class buscador_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                        </tr>\n");
       out.write("                        ");
 
-                                    }
-                            
+                                }
+
 
                         
       out.write("\n");
@@ -222,6 +222,11 @@ public final class buscador_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("        </form>\n");
+      out.write("\n");
+      out.write("        <div id=\"volver4\">\n");
+      out.write("            <a href=\"ProfesorController?accion=volverAlumno\">Volver</a>\n");
+      out.write("\n");
+      out.write("        </div>\n");
       out.write("\n");
       out.write("\n");
       out.write("\n");

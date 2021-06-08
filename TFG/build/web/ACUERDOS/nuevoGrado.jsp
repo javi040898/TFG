@@ -21,7 +21,6 @@
         <title>INSERTAR GRADO</title>
     </head>
     <body>
-        <div class="div02">INSERTAR GRADO</div>
 
 
         <form action="ProfesorController?accion=insertarGrado" method="POST" autocomplete="off">
@@ -29,9 +28,8 @@
 
             <div>
 
-
-                <div id="form16">
-                    <h1>GRADO</h1>
+            <div id="form10">
+                <h1>NUEVO GRADO</h1>
                     <label>Codigo Grado</label>
                     <input id="CodigoG" class="form-control" name="CodigoG" type="text" align="left"/>
                     <label>Nombre Grado</label>
@@ -55,6 +53,12 @@
 
 
         </form>
+
+
+        <div id="volver12">
+            <a href="ProfesorController?accion=volverProfesor">Volver</a>
+
+        </div>
 
 
 

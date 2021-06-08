@@ -162,7 +162,7 @@ ALTER TABLE public.Estancia ADD CONSTRAINT Alumno_fk FOREIGN KEY (DNI_Alumno)
 REFERENCES public.Alumno (DNI) MATCH FULL
 ON DELETE SET NULL ON UPDATE CASCADE;
 
-ALTER TABLE public.Estancia ADD CONSTRAINT Estancia_uq UNIQUE (DNI_Alumno);
+
 
 
 INSERT INTO Usuario values('javi040898');
@@ -206,14 +206,20 @@ INSERT INTO Convalidacion VALUES('5','Pendiente',' ',CURRENT_DATE,'1','269','3')
 
 DELETE FROM Asignatura_origen WHERE Codigo='2907';
 
+select * from pg_stat_activity where datname = 'TFG';
 
 
 
 
 
 
-UPDATE Convalidacion SET Estado = 'Pendiente' where Codigo_Asignatura_destino = '111';
+UPDATE Convalidacion SET Estado = 'PENDIENTE';
 UPDATE Convalidacion SET Comentarios = '' where Codigo_Asignatura_destino = '111';
+
+UPDATE Estancia SET renuncia = false, cerrada = false;
+
+select renuncia from Estancia;
+
 
 UPDATE Asignatura_destino SET Informacion = 'http://www.forosdelweb.com/f53/cambiar-ancho-input-file-943503/#:~:text=Respuesta%3A%20Cambiar%20el%20ancho%20de,de%20la%20propia%20etiqueta%20input.' 
 where Codigo = '111';
@@ -226,7 +232,7 @@ estado,comentarios
 from Convalidacion inner join Estancia on id_estancia_Estancia=id_estancia
 inner join Asignatura_origen on Asignatura_origen.Codigo = Codigo_Asignatura_origen
 inner join Asignatura_destino on Codigo_Asignatura_destino=Asignatura_destino.Codigo inner join Universidad_destino on
-Estancia.Codigo_erasmus_Universidad_destino = Codigo_erasmus where DNI_Alumno='47231972T' order by Codigo_Asignatura_origen;
+Estancia.Codigo_erasmus_Universidad_destino = Codigo_erasmus where DNI_Alumno='47231972T' and id_Estancia=11 order by Codigo_Asignatura_origen;
 
 
 
@@ -238,11 +244,16 @@ inner join Asignatura_destino on Codigo_Asignatura_destino=Asignatura_destino.Co
 select sum(creditos) as suma_creditos from (select distinct Asignatura_destino.*
 from Convalidacion inner join Estancia on id_estancia_Estancia=id_estancia
 inner join Asignatura_origen on Asignatura_origen.Codigo = Codigo_Asignatura_origen 
-inner join Asignatura_destino on Codigo_Asignatura_destino=Asignatura_destino.Codigo where DNI_Alumno='47231972T' and Convalidacion.Estado='Aceptada') 
+inner join Asignatura_destino on Codigo_Asignatura_destino=Asignatura_destino.Codigo where DNI_Alumno='47231972T' and id_Estancia=11 and Convalidacion.Estado='Aceptada') 
 as asignaturas_distintas;
 
 SELECT Alumno.* from Alumno inner join Estancia on DNI_Alumno=Alumno.DNI 
 inner join Coordinador on DNI_Coordinador=Coordinador.DNI where Coordinador.DNI='47231977M';
+
+SELECT Estancia.* from Estancia inner join Alumno on DNI_Alumno=Alumno.DNI
+               inner join Coordinador on DNI_Coordinador=Coordinador.DNI where Coordinador.DNI='47231977M';
+			   
+select dni_alumno from Estancia where id_estancia=1;			   
 
 SELECT Nombre, Apellidos from Alumno;
 
@@ -252,9 +263,17 @@ select passw from Alumno where Nombre_usuario_Usuario='javimart';
 
 select * from Estancia;
 
+select * from Coordinador where Nombre_usuario_Usuario = '';
+
+select renuncia from Estancia;
+
+select cerrada from Estancia;
+
 select Estancia.* from Estancia  where dni_alumno = '47231972T' and cerrada='false';
 
 select * from Alumno;
+select * from Universidad_Destino;
+
 SELECT Alumno.* from Alumno inner join Estancia on DNI_Alumno=Alumno.DNI 
                     inner join Coordinador on DNI_Coordinador=Coordinador.DNI where Coordinador.DNI='47231977M';
 select * from usuario;

@@ -27,6 +27,7 @@ public class ConvalidacionDAO {
     }
 
     public void cambiarEstado(String estado, String codigo_asignatura) {
+        System.out.println("entro a cambair estado");
         PreparedStatement ps = null;
         ResultSet rs = null;
 
@@ -38,8 +39,7 @@ public class ConvalidacionDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.toString());
-        }
-        finally {
+        } finally {
 
             if (rs != null) {
                 try {
@@ -72,8 +72,7 @@ public class ConvalidacionDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.toString());
-        }
-        finally {
+        } finally {
 
             if (rs != null) {
                 try {
@@ -114,8 +113,7 @@ public class ConvalidacionDAO {
         } catch (SQLException ex) {
             System.out.println(ex.toString());
             return false;
-        }
-        finally {
+        } finally {
 
             if (ps != null) {
                 try {
@@ -126,7 +124,7 @@ public class ConvalidacionDAO {
             }
         }
     }
-    
+
     public Integer obtenerSiguienteConvalidacion() {
 
         PreparedStatement ps = null;
@@ -142,8 +140,7 @@ public class ConvalidacionDAO {
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-        }
-        finally {
+        } finally {
 
             if (rs != null) {
                 try {
@@ -161,6 +158,11 @@ public class ConvalidacionDAO {
                 }
             }
         }
-        return id_convalidacion+1;
+        return id_convalidacion + 1;
+    }
+
+    public void desconectar() throws SQLException {
+        conexion.close();
+        System.out.println("desconectado");
     }
 }

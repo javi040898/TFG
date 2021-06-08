@@ -4,6 +4,8 @@
     Author     : Javier
 --%>
 
+<%@page import="modelo.Estancia"%>
+<%@page import="modelo.Universidad_DestinoDAO"%>
 <%@page import="modelo.RelacionAsignaturas"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -26,7 +28,32 @@
 
         <form action="ProfesorController?accion=convalidacionesActuales" method="POST" autocomplete="off">
 
+            <div id="form17">
 
+                <select class="form-control" id="listaEstancias" name="listaEstancias">
+
+                    <option>Escoge la estancia que deseas comprobar</option>
+                    <%
+                        Universidad_DestinoDAO universidadDAO = new Universidad_DestinoDAO();
+                        List<Estancia> listaEstancias = (List<Estancia>) request.getAttribute("listaEstancias");
+                        if (listaEstancias != null)
+                            for (Estancia estancia : listaEstancias) {%>
+                        <option value="<%=estancia.getId_estancia()%>"><%=estancia.getTipo() + " "%><%=universidadDAO.obtenerNombre(estancia.getCodigo_erasmus_Universidad_destino())%><%=" ("
+                                + estancia.getCurso_academico() + ")"%></option>
+                        <% }%>
+
+
+
+
+
+                </select>
+
+            </div>
+            <div id="butConfirmarEstancia">
+
+
+                <button  id="butConfirmarEstancia" class="btn btn-primary" name="butConfirmarEstancia" type="submit" >Seleccionar</button>
+            </div>
 
             <div id="table4">
                 <table>
@@ -40,7 +67,7 @@
                     <div id="titulo6"> ASIGNATURAS CURSADAS  EN LA UNIVERSIDAD DE DESTINO
                     </div>
 
-  
+
 
 
 
@@ -82,7 +109,7 @@
                                 for (RelacionAsignaturas ra : listaRA) {
                                     //if (String.valueOf(asignaturaO.getCodigo()).equals(String.valueOf(asignaturaD.getCodigo_Asignatura_Origen()))) {
                                     //System.out.println(asignaturaO.getNombre());
-%>
+                        %>
                         <tr>
 
 
@@ -161,6 +188,11 @@
 
 
         </form>
+        <div id="volver5">
+            <a href="ProfesorController?accion=volverAlumno">Volver</a>
+
+        </div>
+
 
 
 

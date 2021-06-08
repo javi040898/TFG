@@ -26,7 +26,7 @@ public class RelacionAsignaturasDAO {
         conexion = conn.connect();
     }
 
-    public List<RelacionAsignaturas> listarConvalidaciones(String DNI) {
+    public List<RelacionAsignaturas> listarConvalidaciones(String DNI, Integer id_Estancia) {
         PreparedStatement ps = null;
         ResultSet rs = null;
         List<RelacionAsignaturas> lista = new ArrayList<>();
@@ -39,8 +39,9 @@ public class RelacionAsignaturasDAO {
                     + "from Convalidacion inner join Estancia on id_estancia_Estancia=id_estancia\n"
                     + "inner join Asignatura_origen on Asignatura_origen.Codigo = Codigo_Asignatura_origen\n"
                     + "inner join Asignatura_destino on Codigo_Asignatura_destino=Asignatura_destino.Codigo inner join Universidad_destino on\n"
-                    + "Estancia.Codigo_erasmus_Universidad_destino = Codigo_erasmus where DNI_Alumno=? order by Codigo_Asignatura_origen");
+                    + "Estancia.Codigo_erasmus_Universidad_destino = Codigo_erasmus where DNI_Alumno=? and id_Estancia=? order by Codigo_Asignatura_origen");
             ps.setString(1, DNI);
+            ps.setInt(2, id_Estancia);
             rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -63,7 +64,7 @@ public class RelacionAsignaturasDAO {
                 String nombre_universidad = rs.getString("nombre_universidad");
 
                 RelacionAsignaturas ra = new RelacionAsignaturas(codigo_origen, nombre_origen, tipo, informacion_origen,
-                        codigo_destino, nombre_destino, informacion_destino, fecha, curso, estado, comentarios, creditos_origen, creditos_destino,nombre_universidad);
+                        codigo_destino, nombre_destino, informacion_destino, fecha, curso, estado, comentarios, creditos_origen, creditos_destino, nombre_universidad);
 
                 lista.add(ra);
             }
@@ -72,8 +73,7 @@ public class RelacionAsignaturasDAO {
         } catch (SQLException ex) {
             System.out.println(ex.toString());
             return null;
-        }
-        finally {
+        } finally {
 
             if (rs != null) {
                 try {
@@ -139,8 +139,7 @@ public class RelacionAsignaturasDAO {
         } catch (SQLException ex) {
             System.out.println(ex.toString());
             return null;
-        }
-        finally {
+        } finally {
 
             if (rs != null) {
                 try {
@@ -158,6 +157,11 @@ public class RelacionAsignaturasDAO {
                 }
             }
         }
+    }
+
+    public void desconectar() throws SQLException {
+        conexion.close();
+        System.out.println("desconectado");
     }
 
 }

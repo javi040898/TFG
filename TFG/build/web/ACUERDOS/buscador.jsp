@@ -62,14 +62,14 @@
                     </div>
 
 
-                    
 
-                        
+
+
                     <th>Codigo</th>
                     <th>Nombre Asignatura</th>
                     <th>Tipo</th>
                     <th>Creditos</th>
-                    
+
 
                     <th>Link asignatura</th>
 
@@ -84,8 +84,8 @@
                     <th>Curso academico</th>
                     <th>Estado</th>
                     <th>Comentarios</th>
-                    
-                    
+
+
 
 
                     </tr>
@@ -103,10 +103,10 @@
                                 for (RelacionAsignaturas ra : listaRA) {
                                     //if (String.valueOf(asignaturaO.getCodigo()).equals(String.valueOf(asignaturaD.getCodigo_Asignatura_Origen()))) {
                                     //System.out.println(asignaturaO.getNombre());
-                        %>
+%>
                         <tr>
-                            
-                            
+
+
 
                             <td><%=ra.getCodigo_origen()%></td>
                             <td><%=ra.getNombre_origen()%></td>
@@ -132,8 +132,8 @@
 
                         </tr>
                         <%
-                                    }
-                            
+                                }
+
 
                         %>
 
@@ -147,6 +147,11 @@
 
 
         </form>
+
+        <div id="volver4">
+            <a href="ProfesorController?accion=volverAlumno">Volver</a>
+
+        </div>
 
 
 

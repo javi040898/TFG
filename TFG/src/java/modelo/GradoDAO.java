@@ -25,8 +25,8 @@ public class GradoDAO {
         Conexion conn = new Conexion();
         conexion = conn.connect();
     }
-    
-        public boolean insertar(Grado grado) {
+
+    public boolean insertar(Grado grado) {
 
         PreparedStatement ps = null;
 
@@ -79,8 +79,7 @@ public class GradoDAO {
         } catch (SQLException ex) {
             System.out.println(ex.toString());
             return null;
-        }
-        finally {
+        } finally {
 
             if (rs != null) {
                 try {
@@ -125,8 +124,7 @@ public class GradoDAO {
         } catch (SQLException ex) {
             System.out.println(ex.toString());
             return null;
-        }
-        finally {
+        } finally {
 
             if (rs != null) {
                 try {
@@ -144,5 +142,10 @@ public class GradoDAO {
                 }
             }
         }
+    }
+
+    public void desconectar() throws SQLException {
+        conexion.close();
+        System.out.println("desconectado");
     }
 }
