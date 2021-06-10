@@ -403,7 +403,7 @@ public class EstanciaDAO {
 
         try {
             ps = conexion.prepareStatement("SELECT Estancia.* from Estancia inner join Alumno on DNI_Alumno=Alumno.DNI\n"
-                    + "               inner join Coordinador on DNI_Coordinador=Coordinador.DNI where Coordinador.DNI=?;");
+                    + "               inner join Coordinador on DNI_Coordinador=Coordinador.DNI where Coordinador.DNI=? order by renuncia, cerrada;");
             ps.setString(1, DNI);
             rs = ps.executeQuery();
 

@@ -21,8 +21,6 @@
         <title>INSERTAR ASIGNATURAS ORIGEN</title>
     </head>
     <body>
-        <div class="div02">INSERTAR ASIGNATURAS ORIGEN</div>
-
 
         <form action="ProfesorController?accion=insertarAsignaturasOrigen" method="POST" autocomplete="off">
 
@@ -30,7 +28,7 @@
             <div>
 
                 <div id="form1">
-                    <h1>ASIGNATURA ORIGEN</h1>
+                    <h1>NUEVA ASIGNATURA ORIGEN</h1>
                     <label>Codigo Asignatura</label>
                     <input id="CodigoO" class="form-control" name="CodigoO" type="text" align="left"/>
                     <label>Nombre Asignatura</label>
@@ -55,7 +53,7 @@
 
                 <br><br><br>
             </div>
-            <div id="butInsertarAsignaturas">
+            <div id="butInsertarAsignaturasOrigen">
 
 
                 <button  id="insertarAsignaturas" class="btn btn-primary" name="insertarAsignaturas" type="submit" >Insertar</button>
@@ -63,8 +61,8 @@
 
 
         </form>
-        <div id="volver1">
-            <a href="ProfesorController?accion=volverAlumno">Volver</a>
+        <div id="volver">
+            <a href="ProfesorController?accion=volverProfesor">Volver</a>
 
         </div>
 
@@ -84,3 +82,4 @@
 
     </body>
 </html>
+

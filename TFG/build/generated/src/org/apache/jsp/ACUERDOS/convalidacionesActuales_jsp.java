@@ -66,7 +66,7 @@ public final class convalidacionesActuales_jsp extends org.apache.jasper.runtime
       out.write("        <title>CONVALIDACIONES ACTUALES</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("        <div class=\"div06\">CONVALIDACIONES ACTUALES</div>\n");
+      out.write("        <div class=\"div06\">VER CONVALIDACIONES ACTUALES</div>\n");
       out.write("\n");
       out.write("\n");
       out.write("        <form action=\"ProfesorController?accion=convalidacionesActuales\" method=\"POST\" autocomplete=\"off\">\n");
@@ -75,7 +75,7 @@ public final class convalidacionesActuales_jsp extends org.apache.jasper.runtime
       out.write("\n");
       out.write("                <select class=\"form-control\" id=\"listaEstancias\" name=\"listaEstancias\">\n");
       out.write("\n");
-      out.write("                    <option>Escoge la estancia que quiere comprobar</option>\n");
+      out.write("                    <option>Escoge la estancia que deseas comprobar</option>\n");
       out.write("                    ");
 
                         Universidad_DestinoDAO universidadDAO = new Universidad_DestinoDAO();
@@ -83,7 +83,7 @@ public final class convalidacionesActuales_jsp extends org.apache.jasper.runtime
                         if (listaEstancias != null)
                             for (Estancia estancia : listaEstancias) {
       out.write("\n");
-      out.write("                        <option value=\"");
+      out.write("                    <option value=\"");
       out.print(estancia.getId_estancia());
       out.write('"');
       out.write('>');
@@ -164,7 +164,7 @@ public final class convalidacionesActuales_jsp extends org.apache.jasper.runtime
                                 for (RelacionAsignaturas ra : listaRA) {
                                     //if (String.valueOf(asignaturaO.getCodigo()).equals(String.valueOf(asignaturaD.getCodigo_Asignatura_Origen()))) {
                                     //System.out.println(asignaturaO.getNombre());
-                        
+
       out.write("\n");
       out.write("                        <tr>\n");
       out.write("\n");
@@ -282,10 +282,12 @@ public final class convalidacionesActuales_jsp extends org.apache.jasper.runtime
       out.write("\n");
       out.write("\n");
       out.write("        </form>\n");
-      out.write("        <div id=\"volver\">\n");
-      out.write("            <a href=\"ProfesorController?accion=volverAlumno\">Cambiar contraseña</a>\n");
+      out.write("        <div id=\"volver5\">\n");
+      out.write("            <a href=\"ProfesorController?accion=volverAlumno\">Volver</a>\n");
       out.write("\n");
       out.write("        </div>\n");
+      out.write("\n");
+      out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("\n");

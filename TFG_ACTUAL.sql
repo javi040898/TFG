@@ -210,7 +210,7 @@ select * from pg_stat_activity where datname = 'TFG';
 
 
 
-
+delete from usuario where nombre_usuario = 'ivan.gonzalez';
 
 
 UPDATE Convalidacion SET Estado = 'PENDIENTE';
@@ -244,18 +244,22 @@ inner join Asignatura_destino on Codigo_Asignatura_destino=Asignatura_destino.Co
 select sum(creditos) as suma_creditos from (select distinct Asignatura_destino.*
 from Convalidacion inner join Estancia on id_estancia_Estancia=id_estancia
 inner join Asignatura_origen on Asignatura_origen.Codigo = Codigo_Asignatura_origen 
-inner join Asignatura_destino on Codigo_Asignatura_destino=Asignatura_destino.Codigo where DNI_Alumno='47231972T' and id_Estancia=11 and Convalidacion.Estado='Aceptada') 
+inner join Asignatura_destino on Codigo_Asignatura_destino=Asignatura_destino.Codigo where DNI_Alumno='47231972T' and id_Estancia=11 and Convalidacion.Estado='ACEPTADA') 
 as asignaturas_distintas;
 
 SELECT Alumno.* from Alumno inner join Estancia on DNI_Alumno=Alumno.DNI 
 inner join Coordinador on DNI_Coordinador=Coordinador.DNI where Coordinador.DNI='47231977M';
 
 SELECT Estancia.* from Estancia inner join Alumno on DNI_Alumno=Alumno.DNI
-               inner join Coordinador on DNI_Coordinador=Coordinador.DNI where Coordinador.DNI='47231977M';
+               inner join Coordinador on DNI_Coordinador=Coordinador.DNI where Coordinador.DNI='47231977M' order by renuncia, cerrada;
 			   
 select dni_alumno from Estancia where id_estancia=1;			   
 
 SELECT Nombre, Apellidos from Alumno;
+
+select * from Coordinador;
+
+select passw from Coordinador
 
 select Passw from Coordinador where Nombre_usuario_Usuario='javi040898';
 
@@ -289,6 +293,8 @@ select * from Grado;
 
 select * from Universidad_destino;
 
+select * from asignatura_destino;
+
 select codigo_erasmus from Universidad_destino where nombre = 'Universidad de Touluse';
 
 select Codigo_erasmus_Universidad_destino from estancia where DNI_Alumno='47231972T'
@@ -299,7 +305,8 @@ delete from Asignatura_origen where codigo='470';
 select * from Asignatura_origen;
 
 select id_estancia from estancia where DNI_Alumno='47231972T';
-select * from Asignatura_destino;
+select * from Asignatura_destino inner join universidad_destino 
+on Codigo_erasmus = Asignatura_destino.Codigo_erasmus_Universidad_destino;
 delete from Asignatura_destino where codigo='930';
 
 select Codigo_Asignatura_origen,Asignatura_origen.nombre,Asignatura_origen.tipo,Asignatura_origen.creditos,Asignatura_origen.informacion,
@@ -315,6 +322,11 @@ Estancia.Codigo_erasmus_Universidad_destino = Codigo_erasmus where Asignatura_or
 select min_val, max_val from pg_settings where name='max_connections';
 
 select Grado.* from Grado inner join Alumno on Codigo_Grado = Codigo where DNI = '47231972T';
+
+select distinct(asignatura_destino.*) from asignatura_destino inner join universidad_destino 
+on Codigo_erasmus = Asignatura_destino.Codigo_erasmus_Universidad_destino inner join 
+estancia on estancia.Codigo_erasmus_Universidad_destino = Codigo_erasmus inner join alumno on DNI = DNI_Alumno 
+where DNI = '63147444O' and renuncia = false and cerrada = false;
 
 
 

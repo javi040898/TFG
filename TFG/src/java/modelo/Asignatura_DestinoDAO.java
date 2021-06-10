@@ -26,12 +26,14 @@ public class Asignatura_DestinoDAO {
         conexion = conn.connect();
     }
 
-    public List<Asignatura_Destino> listarAsignaturas() {
+    public List<Asignatura_Destino> listarAsignaturas(String DNI) {
         PreparedStatement ps = null;
         ResultSet rs = null;
         List<Asignatura_Destino> lista = new ArrayList<>();
         try {
-            ps = conexion.prepareStatement("select * from Asignatura_destino;");
+            ps = conexion.prepareStatement("select distinct(asignatura_destino.*) from asignatura_destino inner join universidad_destino on Codigo_erasmus = Asignatura_destino.Codigo_erasmus_Universidad_destino inner join \n"
+                    + "estancia on estancia.Codigo_erasmus_Universidad_destino = Codigo_erasmus inner join alumno on DNI = DNI_Alumno where DNI = ? and renuncia = false and cerrada = false order by nombre;");
+            ps.setString(1, DNI);
             rs = ps.executeQuery();
 
             while (rs.next()) {

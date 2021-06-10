@@ -55,7 +55,7 @@
         </form>
 
 
-        <div id="volver12">
+        <div id="volver">
             <a href="ProfesorController?accion=volverProfesor">Volver</a>
 
         </div>

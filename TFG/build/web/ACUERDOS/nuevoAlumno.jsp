@@ -92,7 +92,7 @@
                 <button  id="Alta" name="Alta" type="submit">Alta</button>
             </div>
 
-            <div id="volver9">
+            <div id="volver">
                 <a href="ProfesorController?accion=volverProfesor">Volver</a>
 
             </div>

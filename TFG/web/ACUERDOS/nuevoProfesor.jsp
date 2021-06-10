@@ -1,6 +1,6 @@
 <%-- 
-    Document   : nuevaEstancia
-    Created on : 28-feb-2021, 17:32:32
+    Document   : nuevoProfesor
+    Created on : 10-jun-2021, 19:07:59
     Author     : Javier
 --%>
 
@@ -12,7 +12,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="C:\Users\Javier\Documents\GitHub\TFG\TFG\src\java\css\style.css" type="text/css">        <title>NUEVA ALUMNO</title>
+        <link rel="stylesheet" href="C:\Users\Javier\Documents\GitHub\TFG\TFG\src\java\css\style.css" type="text/css">        <title>NUEVO PROFESOR</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <style>
             body{
@@ -24,9 +24,9 @@
     <body>
 
 
-        <form action="ProfesorController?accion=insertarAlumno" method="POST" autocomplete="off">
+        <form action="ProfesorController?accion=insertarProfesor" method="POST" autocomplete="off">
             <div id="form10">
-                <h1>NUEVO ALUMNO</h1>
+                <h1>NUEVO PROFESOR</h1>
 
                 <p>
 
@@ -59,28 +59,18 @@
 
 
                     <label>DNI</label>
-                    <input id="DNI_Alumno" class="form-control" name="DNI_Alumno" type="text" align="left"/>
+                    <input id="DNI_Coordinador" class="form-control" name="DNI_Coordinador" type="text" align="left"/>
                 </p>
 
 
-                <label>Grado</label>
-                <select class="form-control" id="Grado" name="Grado">
+                
+                
+                <p>
 
 
-                    <option>Escoge un grado</option>
-                    <%
-
-                        List<Grado> listaGrados = (List<Grado>) request.getAttribute("listaGrados");
-                        if (listaGrados != null)
-                            for (Grado grado : listaGrados) {%>
-                    <option value="<%=grado.getCodigo()%>"><%=grado.getNombre()%><%=" (" + grado.getCodigo() + " )"%></option>
-                    <% }%>
-
-
-
-
-
-                </select>
+                    <label>Departamento</label>
+                    <input id="Departamento" class="form-control" name="Departamento" type="text" align="left"/>
+                </p>
 
 
 
@@ -88,7 +78,7 @@
 
 
             </div>
-            <div id="butAltaAlumno">
+            <div id="butAltaProfesor">
                 <button  id="Alta" name="Alta" type="submit">Alta</button>
             </div>
 
@@ -110,7 +100,8 @@
         </script><%}%>
         <%if (mensaje == "correcto") {%>
         <script>
-            alert('Alumno dado de alta correctamente');
+            alert('Coordinador dado de alta correctamente');
         </script><%}%>
     </body>
 </html>
+

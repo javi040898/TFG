@@ -272,8 +272,10 @@
             <div id="form7">
                 <select class="form-control" id="listaAsignaturasModificar" name="listaAsignaturasModificar">
                     <option>Escoge una asignatura</option>
-                    <% if (listaRA != null)
-                            for (RelacionAsignaturas ra : listaRA) {
+                   
+                    <%  List<RelacionAsignaturas> listaRAPosibles = (List<RelacionAsignaturas>) request.getAttribute("listaRAPosibles");
+                        if (listaRAPosibles != null)
+                            for (RelacionAsignaturas ra : listaRAPosibles) {
                                 if (ra.getEstado().equals("PENDIENTE")) {
                     %>
                     <option value="<%=ra.getCodigo_destino()%>"><%=ra.getNombre_destino()%><%=" (" + ra.getCodigo_destino() + ")"%></option>
@@ -308,8 +310,8 @@
             <div id="form11">
                 <select class="form-control" id="listaAsignaturasCancelar" name="listaAsignaturasCancelar">
                     <option>Escoge una asignatura</option>
-                    <% if (listaRA != null)
-                            for (RelacionAsignaturas ra : listaRA) {
+                    <% if (listaRAPosibles != null)
+                            for (RelacionAsignaturas ra : listaRAPosibles) {
                                 if (ra.getEstado().equals("ACEPTADA")) {
                     %>
                     <option value="<%=ra.getCodigo_destino()%>"><%=ra.getNombre_destino()%><%=" (" + ra.getCodigo_destino() + ")"%></option>
@@ -348,6 +350,8 @@
             <br>
             <a href="ProfesorController?accion=nuevaEstancia">Nueva estancia de alumno</a>
             <br>
+            <a href="ProfesorController?accion=nuevoProfesor">Dar de alta a profesor</a>
+            <br>
             <a href="ProfesorController?accion=nuevaUniversidad">Nueva universidad de destino</a>
             <br>
             <a href="ProfesorController?accion=nuevoGrado">Nuevo grado</a>
@@ -355,9 +359,16 @@
             <a href="ProfesorController?accion=renunciaAlumno">Renuncia alumno</a>
             <br>
             <a href="ProfesorController?accion=cerrarEstancia">Cerrar estancia</a>
+            <br>
+            <a href="ProfesorController?accion=nuevasAsignaturasOrigenProfesor">Nueva asignatura origen</a>
+            <br>
+            <a href="ProfesorController?accion=nuevasAsignaturasDestinoProfesor">Nueva asignatura destino</a>
+            <br>
+            <a href="ProfesorController?accion=cambiarPasswordProfesor">Cambiar contraseña</a>
+           
         </div>
 
-        <div id="volver8">
+        <div id="volver">
             <a href="ProfesorController?accion=volverLogin">Volver</a>
 
         </div>

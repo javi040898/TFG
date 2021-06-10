@@ -31,7 +31,7 @@ public class Asignatura_OrigenDAO {
         ResultSet rs = null;
         List<Asignatura_Origen> lista = new ArrayList<>();
         try {
-            ps = conexion.prepareStatement("select Asignatura_origen.* from Asignatura_origen ;");
+            ps = conexion.prepareStatement("select Asignatura_origen.* from Asignatura_origen order by nombre;");
             rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -166,7 +166,7 @@ public class Asignatura_OrigenDAO {
             ps = conexion.prepareStatement("select sum(creditos) as suma_creditos from (select distinct Asignatura_origen.*\n"
                     + "from Convalidacion inner join Estancia on id_estancia_Estancia=id_estancia\n"
                     + "inner join Asignatura_origen on Asignatura_origen.Codigo = Codigo_Asignatura_origen \n"
-                    + "inner join Asignatura_destino on Codigo_Asignatura_destino=Asignatura_destino.Codigo where DNI_Alumno= ? and id_Estancia=? and Convalidacion.Estado='Aceptada'"
+                    + "inner join Asignatura_destino on Codigo_Asignatura_destino=Asignatura_destino.Codigo where DNI_Alumno= ? and id_Estancia=? and Convalidacion.Estado='ACEPTADA'"
                     + " ) as asignaturas_distintas;");
             ps.setString(1, DNI);
             ps.setInt(2, id_Estancia);
@@ -208,7 +208,7 @@ public class Asignatura_OrigenDAO {
             ps = conexion.prepareStatement("select sum(creditos) as suma_creditos from (select distinct Asignatura_destino.*\n"
                     + "from Convalidacion inner join Estancia on id_estancia_Estancia=id_estancia\n"
                     + "inner join Asignatura_origen on Asignatura_origen.Codigo = Codigo_Asignatura_origen \n"
-                    + "inner join Asignatura_destino on Codigo_Asignatura_destino=Asignatura_destino.Codigo where DNI_Alumno=? and id_Estancia=? and Convalidacion.Estado='Aceptada'"
+                    + "inner join Asignatura_destino on Codigo_Asignatura_destino=Asignatura_destino.Codigo where DNI_Alumno=? and id_Estancia=? and Convalidacion.Estado='ACEPTADA'"
                     + ") as asignaturas_distintas;");
             ps.setString(1, DNI);
             ps.setInt(2, id_Estancia);

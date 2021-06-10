@@ -77,7 +77,7 @@
 
         </form>
 
-        <div id="volver13">
+        <div id="volver">
             <a href="ProfesorController?accion=volverProfesor">Volver</a>
 
         </div>

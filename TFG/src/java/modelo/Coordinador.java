@@ -14,7 +14,7 @@ public class Coordinador {
 
     
     
-    public Coordinador( String DNI,String contraseña, String nombre, String apellidos, String nombre_usuario_Usuario,String departamento ) {
+    public Coordinador(String DNI,String contraseña, String nombre, String apellidos, String nombre_usuario_Usuario,String departamento ) {
         
         this.contraseña = contraseña;
         this.nombre = nombre;

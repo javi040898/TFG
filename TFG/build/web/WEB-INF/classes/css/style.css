@@ -4,12 +4,12 @@
 #form1,#form2{
 
     float:left;
-    left:560px;
+    left:530px;
     margin:50px;
     padding:60px;
-    top:20px;
+
     position:relative;
-    top:100px;
+    top:-10px;
 
 
 }
@@ -20,7 +20,7 @@
     background:#E3D5CD;
     margin:20px;
     padding:10px;
-    top:200px;
+    top:260px;
     position:absolute;
     left:20px;
 
@@ -35,7 +35,7 @@
     background:#E3D5CD;
     margin:20px;
     padding:10px;
-    top:200px;
+    top:260px;
     position:absolute;
 
 
@@ -47,7 +47,7 @@
     left:10px;
     margin:60px;
     padding:10px;
-    top:90px;
+    top:150px;
     position:relative;
 
 
@@ -60,7 +60,7 @@
     left:50px;
     margin:60px;
     padding:10px;
-    top:-20px;
+    top:40px;
     position:relative;
 
 
@@ -238,7 +238,7 @@
     margin:15px;
     padding:10px;
     position:relative;
-    top:-60px;
+    top:-30px;
     left: 500px;
 
 }
@@ -248,7 +248,7 @@
     margin:15px;
     padding:10px;
     position:relative;
-    top:-26px;
+    top:0px;
     left: 490px;
 
 }
@@ -270,7 +270,7 @@
     margin:25px;
     padding:10px;
     position:relative;
-    top:190px;
+    top:250px;
     right:550px;
 
 }
@@ -281,7 +281,7 @@
     margin:25px;
     padding:10px;
     position:relative;
-    top:-115px;
+    top:-55px;
     right:-1275px;
 
 }
@@ -360,7 +360,7 @@
 
 
 
-    left:800px;
+    left:825px;
     top:400px;
 
 }
@@ -423,7 +423,7 @@
 
 
 
-    left:570px;
+    left:515px;
     top:42px;
 
 }
@@ -434,7 +434,7 @@
     margin:25px;
     padding:10px;
     position:relative;
-    top:190px;
+    top:250px;
     right:570px;
 
 }
@@ -461,7 +461,7 @@
 
 }
 
-#butInsertarAsignaturas{
+#butInsertarAsignaturasDestino{
 
     position:absolute;
 
@@ -469,8 +469,23 @@
 
 
 
-    left:830px;
-    top:650px;
+    left:875px;
+    top:540px;
+
+    background:#0CF;
+
+}
+
+#butInsertarAsignaturasOrigen{
+
+    position:absolute;
+
+    display:block;
+
+
+
+    left:855px;
+    top:540px;
 
     background:#0CF;
 
@@ -519,7 +534,7 @@
     margin:25px;
     padding:10px;
     position:relative;
-    top:195px;
+    top:255px;
     right:600px;
 
 }
@@ -530,7 +545,7 @@
     margin:25px;
     padding:10px;
     position:relative;
-    top:-112px;
+    top:-52px;
     right:-650px;
 
 }
@@ -559,7 +574,8 @@
     left:350px;
 
 }
-#butAltaEstancia{
+
+#butAltaProfesor{
 
     float:left;
 
@@ -567,6 +583,18 @@
     padding:10px;
     position:relative;
     top:580px;
+    left:350px;
+
+}
+
+#butAltaEstancia{
+
+    float:left;
+
+    margin:25px;
+    padding:10px;
+    position:relative;
+    top:450px;
     left:350px;
 
 }
@@ -606,7 +634,7 @@
     width: 100%;
     border: black 1px solid;
     position: relative;
-    bottom: -140px;
+    bottom: -200px;
 
 }
 #table1 th, td {
@@ -643,7 +671,7 @@
     width: 100%;
     border: black 1px solid;
     position: relative;
-    bottom: -135px;
+    bottom: -195px;
 
 }
 #table3 th, td {
@@ -662,7 +690,7 @@
     width: 100%;
     border: black 1px solid;
     position: relative;
-    bottom: -135px;
+    bottom: -195px;
 
 }
 #table5 th, td {
@@ -729,106 +757,14 @@
     padding: 0.3em;
 }
 
-#volver1{
-    float:left;
-    position:relative;
-    top:-85px;
-    left:-590px;
-}
 
-#volver2{
+#volver{
     float:left;
-    position:relative;
-    top:-85px;
-    left:-590px;
-}
-
-#volver3{
-    float:left;
-    position:relative;
-    top:13px;
-    left:-1091px;
-}
-
-#volver4{
-    float:left;
-    position:relative;
-    top:-200px;
+    position:absolute;
+    top:20px;
     left:20px;
 }
 
-#volver5{
-    float:left;
-
-    margin:25px;
-    padding:10px;
-    position:relative;
-    top:-230px;
-    left:5px;
-}
-
-#volver6{
-    float:left;
-    position:relative;
-    top:18px;
-    left:-460px;
-}
-
-#volver7{
-    float:left;
-    position:relative;
-    top:18px;
-    left:10px;
-}
-
-#volver8{
-    float:left;
-    position:relative;
-    top:-515px;
-    left:-1015px;
-}
-
-#volver9{
-    float:left;
-    position:relative;
-    top:10px;
-    left:-480px;
-}
-
-#volver10{
-    float:left;
-    position:relative;
-    top:10px;
-    left:-480px;
-}
-
-#volver11{
-    float:left;
-    position:relative;
-    top:-80px;
-    left:-440px;
-}
-
-#volver12{
-    float:left;
-    position:relative;
-    top:-80px;
-    left:-310px;
-}
-
-#volver13{
-    float:left;
-    position:relative;
-    top:10px;
-    left:-600px;
-}
-
-#volver14{
-    float:left;
-    position:relative;
-    top:10px;
-    left:-600px;
-}
 
 
 body {
@@ -904,6 +840,7 @@ hr {
 
     font-size:35px;
 
-    left:700px;
+    left:670px;
+    top:130px;
 
 }
