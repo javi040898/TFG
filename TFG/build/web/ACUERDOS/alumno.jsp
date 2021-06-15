@@ -15,6 +15,11 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <style>
+            body{
+                background:#F5F5F5;
+            }
+        </style>
 
         <div class="div07">ALUMNO</div>
         <form action="PropuestaLA?accion=listarAsignaturas" method="POST" autocomplete="off">
