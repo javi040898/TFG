@@ -42,8 +42,8 @@ import modelo.UsuarioDAO;
  *
  * @author Javier
  */
-@WebServlet(name = "ProfesorController", urlPatterns = {"/ProfesorController"})
-public class ProfesorController extends HttpServlet {
+@WebServlet(name = "PropuestaLA", urlPatterns = {"/PropuestaLA"})
+public class PropuestaLA extends HttpServlet {
 
     String usuario = "";
     String DNI_Alumno_Listar = "";
@@ -993,7 +993,7 @@ public class ProfesorController extends HttpServlet {
             convalidacionDAO.desconectar();
             universidadDAO.desconectar();
         } catch (SQLException ex) {
-            Logger.getLogger(ProfesorController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PropuestaLA.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         dispatcher.forward(request, response);

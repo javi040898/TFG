@@ -29,7 +29,7 @@
         <div class="div08">NUEVA CONVALIDACION</div>
 
 
-        <form action="ProfesorController?accion=insertarConvalidacion" method="POST" autocomplete="off">
+        <form action="PropuestaLA?accion=insertarConvalidacion" method="POST" autocomplete="off">
             <div>
 
                 <div id="form12">
@@ -108,7 +108,7 @@
 
         </form>
         <div id="volver">
-            <a href="ProfesorController?accion=volverAlumno">Volver</a>
+            <a href="PropuestaLA?accion=volverAlumno">Volver</a>
 
         </div>
 

@@ -352,6 +352,43 @@
 
 }
 
+#form18{
+    float:left;
+
+    margin:25px;
+    padding:10px;
+    position:absolute;
+    top:20px;
+    right:400px;
+    width:500px;
+
+}
+
+#form19{
+    float:left;
+
+    margin:25px;
+    padding:10px;
+    position:absolute;
+    top:120px;
+    right:400px;
+    width: 500px;
+
+}
+
+#butLogin{
+
+    position:absolute;
+
+    display:block;
+
+
+
+    left:420px;
+    top:250px;
+
+}
+
 #butAceptarConvalidacion{
 
     position:absolute;
@@ -608,7 +645,7 @@
 
 
     left:350px;
-    top:30px;
+    top:20px;
 
 
 
@@ -769,10 +806,11 @@
 
 body {
     background:#F5F5F5;
-    font-family: sans-serif; }
+    font-family: sans-serif; 
+}
 
 hr { 
-    border 1px solid #DDDDDD; 
+    border: 1px solid #DDDDDD; 
     margin: 100px 50px; 
 
 }

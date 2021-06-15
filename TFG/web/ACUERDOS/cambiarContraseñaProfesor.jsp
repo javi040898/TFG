@@ -23,7 +23,7 @@
 
 
 
-        <form action="ProfesorController?accion=cambiarPasswProfesor" method="POST" autocomplete="off">
+        <form action="PropuestaLA?accion=cambiarPasswProfesor" method="POST" autocomplete="off">
 
             <div id="form9">
                 <h1>CAMBIAR CONTRASEÑA</h1>
@@ -56,7 +56,7 @@
 
         </form>
         <div id="volver">
-            <a href="ProfesorController?accion=volverProfesor">Volver</a>
+            <a href="PropuestaLA?accion=volverProfesor">Volver</a>
 
         </div>
     </body>

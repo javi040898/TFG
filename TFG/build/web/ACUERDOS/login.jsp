@@ -13,112 +13,95 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="C:\Users\Javier\Documents\GitHub\TFG\TFG\src\java\css\style.css" type="text/css"> 
-   
+
+
         <title>INICIAR SESION</title>
     </head>
     <body>
 
-
-
         <style>
-            
+            #cuadroUsuario{
+                float:left;
+
+                margin:25px;
+                padding:10px;
+                position:absolute;
+                top:20px;
+                right:400px;
+                width:500px;
+
+            }
+
+            #cuadroPassword{
+                float:left;
+
+                margin:25px;
+                padding:10px;
+                position:absolute;
+                top:120px;
+                right:400px;
+                width: 500px;
+
+            }
+
+            #butLogin{
+
+                position:absolute;
+
+                display:block;
+
+
+
+                left:420px;
+                top:250px;
+
+            }
+            body {
+                background:#F5F5F5;
+                font-family: sans-serif; 
+            }
+
         </style>
 
-        <h1 align = "center"><font face="Courier" size=7>
-            INICIAR SESION</font></h1>
-        <p align="center"> 
+        <h1 align = "center"><font face="Courier" size=6>
+            PROPUESTA LEARNING AGREEMENT ESTUDIANTES UNIVERSIDAD DE ALCALA</font></h1>
+        <p align="center">
+
+
 
         <div class="container mt-5">
             <div class="row">
                 <div class="col-sm">
 
-                    <form method="POST" action="ProfesorController?accion=comprobarLogin" autocomplete="off" >
-                        <div class="form-group">
+                    <form method="POST" action="PropuestaLA?accion=comprobarLogin" autocomplete="off" >
+                        <div class="form-group" id="cuadroUsuario">
                             <label>Usuario</label>
-                            <input type="text" class="form-control" name="usuario" id="usuario" placeholder="">
+                            <input type="text" class="form-control" name="usuario" id="usuario" placeholder="" size="20">
 
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" id="cuadroPassword">
                             <label>Password</label>
                             <input type="password" class="form-control" name="password" id="password" placeholder="">
 
                         </div>
 
 
-
-                        <button type="submit" class="btn btn-primary" name="login" >Login</button>
+                        <div id="butLogin">
+                            <button type="submit" class="btn btn-primary" name="login" >Login</button>
+                        </div>
                         <%
                             String mensaje = (String) request.getAttribute("error");
                             if (mensaje == "error") {%>
-                                <script>
-                                alert('Credenciales introducidas incorrectas');
-                                </script><%}%>
+                        <script>
+                            alert('Credenciales introducidas incorrectas');
+                        </script><%}%>
 
                     </form>
-                    <%
-                        /* Connection con = null;
-                        Connection con2 = null;
-                        Statement st = null;
-                        Statement st2 = null;
-                        ResultSet rs = null;
-                        ResultSet rs2 = null;
-                        if (request.getParameter("login") != null) {
-                            String user = request.getParameter("usuario");
-                            String password = request.getParameter("password");
-                            HttpSession sesion = request.getSession();
-                            HttpSession sesion2 = request.getSession();
-                            try {
-                                Class.forName("org.postgresql.Driver").newInstance();
-                                con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/TFG", "postgres", "postgres");
-                                st = con.createStatement();
-                                //rs = st.executeQuery(" select * from Profesor where usuario='" + user + "' and passw='" + password + "'; ");
-                                rs = st.executeQuery(" select * from Profesor where usuario='" + user + "' and passw='" + password + "'; ");
-                                
-                                while(rs.next()){
-                                    sesion.setAttribute("usuario", rs.getString("usuario"));
-                                    sesion.setAttribute("password", rs.getString("passw"));
-                                    response.sendRedirect("profesor.jsp");
-                                }
-                                rs2 = st.executeQuery(" select * from Alumno where usuario='" + user + "' and passw='" + password + "'; ");
-                                while(rs2.next()){
-                                    sesion.setAttribute("usuario2", rs2.getString("usuario"));
-                                    sesion.setAttribute("password2", rs2.getString("passw"));
-                                    response.sendRedirect("alumno.jsp");
-                                }
-                                
-                                   out.print(" <div class=\"alert alert-danger\" role=\"alert\"> Usuario no valido </div>"); */
 
- /*while (rs.next()) {
-                                    
-                                    sesion.setAttribute("usuario", rs.getString("usuario"));
-                                    sesion.setAttribute("password", rs.getString("passw"));
-                                    response.sendRedirect("profesor.jsp");
-                                }*/
-                        //out.print(" <div class=\"alert alert-danger\" role=\"alert\"> Usuario no valido </div>");
-                        /*  } catch (Exception e) {
-                            }
-                        }*/
-                    %>
 
                 </div>
             </div>
         </div>
 
-
     </body>
-    <%/*
-        if (request.getParameter("login") != null) {
-            String user = request.getParameter("usuario");
-            String password = request.getParameter("passw");
-            HttpSession sesion = request.getSession();
-            if (user.equals("admin") && password.equals("admin")) {
-                sesion.setAttribute("logueado", "1");
-                sesion.setAttribute("user", user);
-                response.sendRedirect("index.jsp");
-            } else {
-                out.print("usuario o contraseña invalidos");
-            }
-        }*/
-    %>
 </html>

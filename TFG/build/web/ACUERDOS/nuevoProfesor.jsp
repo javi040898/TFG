@@ -24,7 +24,7 @@
     <body>
 
 
-        <form action="ProfesorController?accion=insertarProfesor" method="POST" autocomplete="off">
+        <form action="PropuestaLA?accion=insertarProfesor" method="POST" autocomplete="off">
             <div id="form10">
                 <h1>NUEVO PROFESOR</h1>
 
@@ -83,7 +83,7 @@
             </div>
 
             <div id="volver">
-                <a href="ProfesorController?accion=volverProfesor">Volver</a>
+                <a href="PropuestaLA?accion=volverProfesor">Volver</a>
 
             </div>
 

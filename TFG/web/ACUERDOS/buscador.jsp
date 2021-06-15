@@ -26,7 +26,7 @@
         <div class="div06">BUSCADOR DE CONVALIDACIONES EN CURSOS ANTERIORES</div>
 
 
-        <form action="ProfesorController?accion=buscadorConvalidacion" method="POST" autocomplete="off">
+        <form action="PropuestaLA?accion=buscadorConvalidacion" method="POST" autocomplete="off">
 
 
 
@@ -149,7 +149,7 @@
         </form>
 
         <div id="volver">
-            <a href="ProfesorController?accion=volverAlumno">Volver</a>
+            <a href="PropuestaLA?accion=volverAlumno">Volver</a>
 
         </div>
 

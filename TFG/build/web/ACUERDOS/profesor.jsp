@@ -20,7 +20,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="C:\Users\Javier\Documents\GitHub\TFG\TFG\src\java\css\style.css" type="text/css">        <title>PROFESOR</title>
+        <link rel="stylesheet" href="C:\Users\Javier\Documents\GitHub\TFG\TFG\src\java\css\style.css" type="text/css" media="all">        <title>PROFESOR</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
         <style>
@@ -34,7 +34,7 @@
 
 
 
-        <form action="ProfesorController?accion=listarAlumnos" method="POST" autocomplete="off">
+        <form action="PropuestaLA?accion=listarAlumnos" method="POST" autocomplete="off">
             <p align="center"> 
             <div id="form6">
                 <select class="form-control" id="listaEstanciasAlumnos" name="listaEstanciasAlumnos">
@@ -346,30 +346,30 @@
         <br>
         <br><br><br>
         <div id="enlaceNuevo">
-            <a href="ProfesorController?accion=nuevoAlumno">Dar de alta a alumno</a>
+            <a href="PropuestaLA?accion=nuevoAlumno">Dar de alta a alumno</a>
             <br>
-            <a href="ProfesorController?accion=nuevaEstancia">Nueva estancia de alumno</a>
+            <a href="PropuestaLA?accion=nuevaEstancia">Nueva estancia de alumno</a>
             <br>
-            <a href="ProfesorController?accion=nuevoProfesor">Dar de alta a profesor</a>
+            <a href="PropuestaLA?accion=nuevoProfesor">Dar de alta a profesor</a>
             <br>
-            <a href="ProfesorController?accion=nuevaUniversidad">Nueva universidad de destino</a>
+            <a href="PropuestaLA?accion=nuevaUniversidad">Nueva universidad de destino</a>
             <br>
-            <a href="ProfesorController?accion=nuevoGrado">Nuevo grado</a>
+            <a href="PropuestaLA?accion=nuevoGrado">Nuevo grado</a>
             <br>
-            <a href="ProfesorController?accion=renunciaAlumno">Renuncia alumno</a>
+            <a href="PropuestaLA?accion=renunciaAlumno">Renuncia alumno</a>
             <br>
-            <a href="ProfesorController?accion=cerrarEstancia">Cerrar estancia</a>
+            <a href="PropuestaLA?accion=cerrarEstancia">Cerrar estancia</a>
             <br>
-            <a href="ProfesorController?accion=nuevasAsignaturasOrigenProfesor">Nueva asignatura origen</a>
+            <a href="PropuestaLA?accion=nuevasAsignaturasOrigenProfesor">Nueva asignatura origen</a>
             <br>
-            <a href="ProfesorController?accion=nuevasAsignaturasDestinoProfesor">Nueva asignatura destino</a>
+            <a href="PropuestaLA?accion=nuevasAsignaturasDestinoProfesor">Nueva asignatura destino</a>
             <br>
-            <a href="ProfesorController?accion=cambiarPasswordProfesor">Cambiar contraseña</a>
+            <a href="PropuestaLA?accion=cambiarPasswordProfesor">Cambiar contraseña</a>
            
         </div>
 
         <div id="volver">
-            <a href="ProfesorController?accion=volverLogin">Volver</a>
+            <a href="PropuestaLA?accion=volverLogin">Volver</a>
 
         </div>
 
