@@ -67,7 +67,7 @@
 
                     %>
                     <option value="<%=estancia.getId_estancia()%>"><%=estancia.getTipo() + " "%><%=universidadDAO.obtenerNombre(estancia.getCodigo_erasmus_Universidad_destino())%><%=" ("
-                                + estancia.getCurso_academico() + ") "%><%=alumno.getNombre()%><%=" " + alumno.getApellidos()%><%=" (" + alumno.getDNI() + ") "%><%=cerrada%>
+                            + estancia.getCurso_academico() + ") "%><%=alumno.getNombre()%><%=" " + alumno.getApellidos()%><%=" (" + alumno.getDNI() + ") "%><%=cerrada%>
                     </option>
                     <%
                                     break;
@@ -84,9 +84,7 @@
 
 
             </div>
-            <div id="butAceptar">
-                <button>Aceptar</button>
-            </div>
+
             <%  String nombre = "";
                 if (String.valueOf(request.getAttribute("nombreAlumno")) != "null") {
                     System.out.println(String.valueOf(request.getAttribute("nombreAlumno")));
@@ -150,7 +148,7 @@
 
 
 
-
+                    <th>Convalidacion</th>
                     <th>Codigo</th>
                     <th>Nombre Asignatura</th>
                     <th>Tipo</th>
@@ -191,7 +189,7 @@
                                     //System.out.println(asignaturaO.getNombre());
 %>
                         <tr>
-
+                            <td><%=ra.getId_convalidacion()%></td>
                             <td><%=ra.getCodigo_origen()%></td>
                             <td><%=ra.getNombre_origen()%></td>
                             <td><%=ra.getTipo()%></td>
@@ -264,21 +262,28 @@
 
                 </table>
             </div>
+            <div id="butAceptar">
+                <button>Aceptar</button>
+            </div>
+        </form>
+
+
+        <form action="PropuestaLA?accion=modificarAsignatura" method="POST" autocomplete="off">
 
 
 
-
-            <div id="tituloModificar">  <h1 >MODIFICAR ASIGNATURA</h1></div>
+            <div id="tituloModificar">  <h1 >MODIFICAR CONVALIDACION</h1></div>
             <div id="form7">
-                <select class="form-control" id="listaAsignaturasModificar" name="listaAsignaturasModificar">
-                    <option>Escoge una asignatura</option>
-                   
+
+                <select class="form-control" id="listaAsignaturasModificar" name="listaAsignaturasModificar" action="modificar">
+                    <option>Escoge una convalidacion</option>
+
                     <%  List<RelacionAsignaturas> listaRAPosibles = (List<RelacionAsignaturas>) request.getAttribute("listaRAPosibles");
                         if (listaRAPosibles != null)
                             for (RelacionAsignaturas ra : listaRAPosibles) {
                                 if (ra.getEstado().equals("PENDIENTE")) {
                     %>
-                    <option value="<%=ra.getCodigo_destino()%>"><%=ra.getNombre_destino()%><%=" (" + ra.getCodigo_destino() + ")"%></option>
+                    <option value="<%=ra.getId_convalidacion()%>"><%=ra.getNombre_origen()%><%=" --> " + ra.getNombre_destino() + " ("%><%=ra.getId_convalidacion() + ")"%></option>
                     <% }
                         }%>
 
@@ -287,10 +292,12 @@
 
 
                 </select>
+
                 <div id="comentariosModificada"> <label>Comentarios</label>
                     <input id="ComentariosModificada" class="form-control" name="ComentariosModificada" type="textarea" align="left" size="50"/></div>
 
             </div>
+
             <div id="form8">
 
                 <select class="form-control" id="modificarEstado" name="modificarEstado">
@@ -302,19 +309,22 @@
             <div id="butModificar">
                 <button>Modificar</button>
             </div>
+        </form>
 
 
 
 
-            <div id="tituloCancelar">  <h1 >CANCELAR ASIGNATURA</h1></div>
+
+        <form action="PropuestaLA?accion=cancelarAsignatura" method="POST" autocomplete="off">
+            <div id="tituloCancelar">  <h1 >CANCELAR CONVALIDACION</h1></div>
             <div id="form11">
                 <select class="form-control" id="listaAsignaturasCancelar" name="listaAsignaturasCancelar">
-                    <option>Escoge una asignatura</option>
+                    <option>Escoge una convalidacion</option>
                     <% if (listaRAPosibles != null)
                             for (RelacionAsignaturas ra : listaRAPosibles) {
                                 if (ra.getEstado().equals("ACEPTADA")) {
                     %>
-                    <option value="<%=ra.getCodigo_destino()%>"><%=ra.getNombre_destino()%><%=" (" + ra.getCodigo_destino() + ")"%></option>
+                    <option value="<%=ra.getId_convalidacion()%>"><%=ra.getNombre_origen()%><%=" --> " + ra.getNombre_destino() + " ("%><%=ra.getId_convalidacion() + ")"%></option>
                     <% }
                         }%>
 
@@ -324,8 +334,9 @@
 
                 </select>
             </div>
+            <div id="label1"    <label>Comentarios</label></div>
             <div id="comentariosCancelada">
-                <div id="label1"    <label>Comentarios</label></div>
+
                 <input id="comentariosCancelada" class="form-control" name="ComentariosCancelada" type="textarea" align="left" size="40"/></div>
 
 
@@ -333,15 +344,18 @@
             <div id="butCancelar">
                 <button>Cancelar</button>
             </div>
-
-          
-
-
-
-
-
-
         </form>
+
+                        <div id="form20"> <br></div>
+
+
+
+
+
+
+
+
+
 
         <br>
         <br><br><br>
@@ -365,7 +379,7 @@
             <a href="PropuestaLA?accion=nuevasAsignaturasDestinoProfesor">Nueva asignatura destino</a>
             <br>
             <a href="PropuestaLA?accion=cambiarPasswordProfesor">Cambiar contraseña</a>
-           
+
         </div>
 
         <div id="volver">

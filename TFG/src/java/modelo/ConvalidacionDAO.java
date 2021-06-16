@@ -26,15 +26,15 @@ public class ConvalidacionDAO {
         conexion = conn.connect();
     }
 
-    public void cambiarEstado(String estado, String codigo_asignatura) {
+    public void cambiarEstado(String estado, Integer id_convalidacion) {
         System.out.println("entro a cambair estado");
         PreparedStatement ps = null;
         ResultSet rs = null;
 
         try {
-            ps = conexion.prepareStatement("UPDATE Convalidacion SET Estado = ? where Codigo_Asignatura_destino = ?");
+            ps = conexion.prepareStatement("UPDATE Convalidacion SET Estado = ? where id_convalidacion = ?");
             ps.setString(1, estado);
-            ps.setString(2, codigo_asignatura);
+            ps.setInt(2, id_convalidacion);
             rs = ps.executeQuery();
 
         } catch (SQLException ex) {
@@ -60,14 +60,14 @@ public class ConvalidacionDAO {
 
     }
 
-    public void setComentarios(String comentarios, String codigo_asignatura) {
+    public void setComentarios(String comentarios, Integer id_convalidacion) {
         PreparedStatement ps = null;
         ResultSet rs = null;
 
         try {
-            ps = conexion.prepareStatement("UPDATE Convalidacion SET Comentarios = ? where Codigo_Asignatura_destino = ?");
+            ps = conexion.prepareStatement("UPDATE Convalidacion SET Comentarios = ? where id_convalidacion = ?");
             ps.setString(1, comentarios);
-            ps.setString(2, codigo_asignatura);
+            ps.setInt(2, id_convalidacion);
             rs = ps.executeQuery();
 
         } catch (SQLException ex) {

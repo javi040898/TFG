@@ -12,9 +12,9 @@ package modelo;
 public class RelacionAsignaturas {
 
     String codigo_origen, nombre_origen, tipo,  informacion_origen,codigo_destino, nombre_destino,informacion_destino,fecha,curso,estado,comentarios,nombre_universidad;
-    Integer creditos_origen,creditos_destino;
+    Integer creditos_origen,creditos_destino, id_convalidacion;
 
-    public RelacionAsignaturas(String codigo_origen, String nombre_origen, String tipo, String informacion_origen, 
+    public RelacionAsignaturas(Integer id_convalidacion,String codigo_origen, String nombre_origen, String tipo, String informacion_origen, 
             String codigo_destino, String nombre_destino, String informacion_destino, String fecha, String curso, 
             String estado, String comentarios, Integer creditos_origen, Integer creditos_destino,String nombre_universidad) {
         this.codigo_origen = codigo_origen;
@@ -31,6 +31,7 @@ public class RelacionAsignaturas {
         this.creditos_origen = creditos_origen;
         this.creditos_destino = creditos_destino;
         this.nombre_universidad = nombre_universidad;
+        this.id_convalidacion = id_convalidacion;
     }
 
     public String getCodigo_origen() {
@@ -144,6 +145,16 @@ public class RelacionAsignaturas {
     public void setNombre_universidad(String nombre_universidad) {
         this.nombre_universidad = nombre_universidad;
     }
+
+    public Integer getId_convalidacion() {
+        return id_convalidacion;
+    }
+
+    public void setId_convalidacion(Integer id_convalidacion) {
+        this.id_convalidacion = id_convalidacion;
+    }
+    
+    
     
     
     

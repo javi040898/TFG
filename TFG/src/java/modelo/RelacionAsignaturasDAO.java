@@ -31,7 +31,7 @@ public class RelacionAsignaturasDAO {
         ResultSet rs = null;
         List<RelacionAsignaturas> lista = new ArrayList<>();
         try {
-            ps = conexion.prepareStatement("select Codigo_Asignatura_origen,Asignatura_origen.nombre,Asignatura_origen.tipo,Asignatura_origen.creditos,Asignatura_origen.informacion,\n"
+            ps = conexion.prepareStatement("select id_convalidacion,Codigo_Asignatura_origen,Asignatura_origen.nombre,Asignatura_origen.tipo,Asignatura_origen.creditos,Asignatura_origen.informacion,\n"
                     + "Codigo_Asignatura_destino,Asignatura_destino.nombre as nombre_destino,Asignatura_destino.creditos as creditos_destino,\n"
                     + "Asignatura_destino.informacion as informacion_destino, Universidad_destino.Nombre as nombre_universidad,\n"
                     + "fecha_convalidacion,curso_academico,\n"
@@ -39,13 +39,13 @@ public class RelacionAsignaturasDAO {
                     + "from Convalidacion inner join Estancia on id_estancia_Estancia=id_estancia\n"
                     + "inner join Asignatura_origen on Asignatura_origen.Codigo = Codigo_Asignatura_origen\n"
                     + "inner join Asignatura_destino on Codigo_Asignatura_destino=Asignatura_destino.Codigo inner join Universidad_destino on\n"
-                    + "Estancia.Codigo_erasmus_Universidad_destino = Codigo_erasmus where DNI_Alumno=? and id_Estancia=? order by Codigo_Asignatura_origen");
+                    + "Estancia.Codigo_erasmus_Universidad_destino = Codigo_erasmus where DNI_Alumno=? and id_Estancia=? order by id_convalidacion");
             ps.setString(1, DNI);
             ps.setInt(2, id_Estancia);
             rs = ps.executeQuery();
 
             while (rs.next()) {
-
+                Integer id_convalidacion = rs.getInt("id_convalidacion");
                 String codigo_origen = rs.getString("Codigo_Asignatura_origen");
                 String nombre_origen = rs.getString("nombre");
                 String tipo = rs.getString("tipo");
@@ -63,7 +63,7 @@ public class RelacionAsignaturasDAO {
                 String comentarios = rs.getString("comentarios");
                 String nombre_universidad = rs.getString("nombre_universidad");
 
-                RelacionAsignaturas ra = new RelacionAsignaturas(codigo_origen, nombre_origen, tipo, informacion_origen,
+                RelacionAsignaturas ra = new RelacionAsignaturas(id_convalidacion, codigo_origen, nombre_origen, tipo, informacion_origen,
                         codigo_destino, nombre_destino, informacion_destino, fecha, curso, estado, comentarios, creditos_origen, creditos_destino, nombre_universidad);
 
                 lista.add(ra);
@@ -98,7 +98,7 @@ public class RelacionAsignaturasDAO {
         ResultSet rs = null;
         List<RelacionAsignaturas> lista = new ArrayList<>();
         try {
-            ps = conexion.prepareStatement("select Codigo_Asignatura_origen,Asignatura_origen.nombre,Asignatura_origen.tipo,Asignatura_origen.creditos,Asignatura_origen.informacion,\n"
+            ps = conexion.prepareStatement("select id_convalidacion, Codigo_Asignatura_origen,Asignatura_origen.nombre,Asignatura_origen.tipo,Asignatura_origen.creditos,Asignatura_origen.informacion,\n"
                     + "Codigo_Asignatura_destino,Asignatura_destino.nombre as nombre_destino,Asignatura_destino.creditos as creditos_destino,\n"
                     + "Asignatura_destino.informacion as informacion_destino, Universidad_destino.Nombre as nombre_universidad,\n"
                     + "fecha_convalidacion,curso_academico,\n"
@@ -107,13 +107,13 @@ public class RelacionAsignaturasDAO {
                     + "inner join Asignatura_origen on Asignatura_origen.Codigo = Codigo_Asignatura_origen\n"
                     + "inner join Asignatura_destino on Codigo_Asignatura_destino=Asignatura_destino.Codigo inner join Universidad_destino on\n"
                     + "Estancia.Codigo_erasmus_Universidad_destino = Codigo_erasmus where DNI_Alumno=? and id_Estancia=? and renuncia = false and cerrada = false "
-                    + "order by Codigo_Asignatura_origen");
+                    + "order by id_convalidacion");
             ps.setString(1, DNI);
             ps.setInt(2, id_Estancia);
             rs = ps.executeQuery();
 
             while (rs.next()) {
-
+                Integer id_convalidacion = rs.getInt("id_convalidacion");
                 String codigo_origen = rs.getString("Codigo_Asignatura_origen");
                 String nombre_origen = rs.getString("nombre");
                 String tipo = rs.getString("tipo");
@@ -131,7 +131,7 @@ public class RelacionAsignaturasDAO {
                 String comentarios = rs.getString("comentarios");
                 String nombre_universidad = rs.getString("nombre_universidad");
 
-                RelacionAsignaturas ra = new RelacionAsignaturas(codigo_origen, nombre_origen, tipo, informacion_origen,
+                RelacionAsignaturas ra = new RelacionAsignaturas(id_convalidacion, codigo_origen, nombre_origen, tipo, informacion_origen,
                         codigo_destino, nombre_destino, informacion_destino, fecha, curso, estado, comentarios, creditos_origen, creditos_destino, nombre_universidad);
 
                 lista.add(ra);
@@ -166,7 +166,7 @@ public class RelacionAsignaturasDAO {
         ResultSet rs = null;
         List<RelacionAsignaturas> lista = new ArrayList<>();
         try {
-            ps = conexion.prepareStatement("select Codigo_Asignatura_origen,Asignatura_origen.nombre,Asignatura_origen.tipo,Asignatura_origen.creditos,Asignatura_origen.informacion,\n"
+            ps = conexion.prepareStatement("select id_convalidacion,Codigo_Asignatura_origen,Asignatura_origen.nombre,Asignatura_origen.tipo,Asignatura_origen.creditos,Asignatura_origen.informacion,\n"
                     + "Codigo_Asignatura_destino,Asignatura_destino.nombre as nombre_destino,Asignatura_destino.creditos as creditos_destino,\n"
                     + "Asignatura_destino.informacion as informacion_destino, Universidad_destino.Nombre as nombre_universidad,\n"
                     + "fecha_convalidacion,curso_academico,\n"
@@ -174,12 +174,12 @@ public class RelacionAsignaturasDAO {
                     + "from Convalidacion inner join Estancia on id_estancia_Estancia=id_estancia\n"
                     + "inner join Asignatura_origen on Asignatura_origen.Codigo = Codigo_Asignatura_origen\n"
                     + "inner join Asignatura_destino on Codigo_Asignatura_destino=Asignatura_destino.Codigo inner join Universidad_destino on\n"
-                    + "Estancia.Codigo_erasmus_Universidad_destino = Codigo_erasmus where Asignatura_origen.Codigo = ? order by Codigo_Asignatura_origen;");
+                    + "Estancia.Codigo_erasmus_Universidad_destino = Codigo_erasmus where Asignatura_origen.Codigo = ? order by id_convalidacion;");
             ps.setString(1, codigoO);
             rs = ps.executeQuery();
 
             while (rs.next()) {
-
+                Integer id_convalidacion = rs.getInt("id_convalidacion");
                 String codigo_origen = rs.getString("Codigo_Asignatura_origen");
                 String nombre_origen = rs.getString("nombre");
                 String tipo = rs.getString("tipo");
@@ -197,7 +197,7 @@ public class RelacionAsignaturasDAO {
                 String comentarios = rs.getString("comentarios");
                 String nombre_universidad = rs.getString("nombre_universidad");
 
-                RelacionAsignaturas ra = new RelacionAsignaturas(codigo_origen, nombre_origen, tipo, informacion_origen,
+                RelacionAsignaturas ra = new RelacionAsignaturas(id_convalidacion, codigo_origen, nombre_origen, tipo, informacion_origen,
                         codigo_destino, nombre_destino, informacion_destino, fecha, curso, estado, comentarios, creditos_origen, creditos_destino, nombre_universidad);
 
                 lista.add(ra);

@@ -70,7 +70,7 @@
 
 
 
-
+                    <th>Convalidacion</th>
                     <th>Codigo</th>
                     <th>Nombre Asignatura</th>
                     <th>Tipo</th>
@@ -113,7 +113,7 @@
                         <tr>
 
 
-
+                            <td><%=ra.getId_convalidacion()%></td>
                             <td><%=ra.getCodigo_origen()%></td>
                             <td><%=ra.getNombre_origen()%></td>
                             <td><%=ra.getTipo()%></td>

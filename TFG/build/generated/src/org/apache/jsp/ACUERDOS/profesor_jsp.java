@@ -122,7 +122,7 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.print(estancia.getTipo() + " ");
       out.print(universidadDAO.obtenerNombre(estancia.getCodigo_erasmus_Universidad_destino()));
       out.print(" ("
-                                + estancia.getCurso_academico() + ") ");
+                            + estancia.getCurso_academico() + ") ");
       out.print(alumno.getNombre());
       out.print(" " + alumno.getApellidos());
       out.print(" (" + alumno.getDNI() + ") ");
@@ -146,9 +146,7 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("            </div>\n");
-      out.write("            <div id=\"butAceptar\">\n");
-      out.write("                <button>Aceptar</button>\n");
-      out.write("            </div>\n");
+      out.write("\n");
       out.write("            ");
   String nombre = "";
                 if (String.valueOf(request.getAttribute("nombreAlumno")) != "null") {
@@ -270,7 +268,7 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
                                     //for (Asignatura_Destino asignaturaD : listaAsignaturasDestino) {
                                     //if (String.valueOf(asignaturaO.getCodigo()).equals(String.valueOf(asignaturaD.getCodigo_erasmus_Universidad_destino()))) {
                                     //System.out.println(asignaturaO.getNombre());
-
+                        
       out.write("\n");
       out.write("                        <tr>\n");
       out.write("\n");
@@ -384,15 +382,22 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("                </table>\n");
       out.write("            </div>\n");
+      out.write("            <div id=\"butAceptar\">\n");
+      out.write("                <button>Aceptar</button>\n");
+      out.write("            </div>\n");
+      out.write("        </form>\n");
       out.write("\n");
+      out.write("\n");
+      out.write("        <form action=\"PropuestaLA?accion=modificarAsignatura\" method=\"POST\" autocomplete=\"off\">\n");
       out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("            <div id=\"tituloModificar\">  <h1 >MODIFICAR ASIGNATURA</h1></div>\n");
       out.write("            <div id=\"form7\">\n");
-      out.write("                <select class=\"form-control\" id=\"listaAsignaturasModificar\" name=\"listaAsignaturasModificar\">\n");
+      out.write("\n");
+      out.write("                <select class=\"form-control\" id=\"listaAsignaturasModificar\" name=\"listaAsignaturasModificar\" action=\"modificar\">\n");
       out.write("                    <option>Escoge una asignatura</option>\n");
-      out.write("                   \n");
+      out.write("\n");
       out.write("                    ");
   List<RelacionAsignaturas> listaRAPosibles = (List<RelacionAsignaturas>) request.getAttribute("listaRAPosibles");
                         if (listaRAPosibles != null)
@@ -417,10 +422,12 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("                </select>\n");
+      out.write("\n");
       out.write("                <div id=\"comentariosModificada\"> <label>Comentarios</label>\n");
       out.write("                    <input id=\"ComentariosModificada\" class=\"form-control\" name=\"ComentariosModificada\" type=\"textarea\" align=\"left\" size=\"50\"/></div>\n");
       out.write("\n");
       out.write("            </div>\n");
+      out.write("\n");
       out.write("            <div id=\"form8\">\n");
       out.write("\n");
       out.write("                <select class=\"form-control\" id=\"modificarEstado\" name=\"modificarEstado\">\n");
@@ -432,10 +439,13 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <div id=\"butModificar\">\n");
       out.write("                <button>Modificar</button>\n");
       out.write("            </div>\n");
+      out.write("        </form>\n");
       out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("\n");
+      out.write("\n");
+      out.write("        <form action=\"PropuestaLA?accion=cancelarAsignatura\" method=\"POST\" autocomplete=\"off\">\n");
       out.write("            <div id=\"tituloCancelar\">  <h1 >CANCELAR ASIGNATURA</h1></div>\n");
       out.write("            <div id=\"form11\">\n");
       out.write("                <select class=\"form-control\" id=\"listaAsignaturasCancelar\" name=\"listaAsignaturasCancelar\">\n");
@@ -473,15 +483,16 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <div id=\"butCancelar\">\n");
       out.write("                <button>Cancelar</button>\n");
       out.write("            </div>\n");
-      out.write("\n");
-      out.write("          \n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
       out.write("        </form>\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
       out.write("\n");
       out.write("        <br>\n");
       out.write("        <br><br><br>\n");
@@ -505,7 +516,7 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <a href=\"PropuestaLA?accion=nuevasAsignaturasDestinoProfesor\">Nueva asignatura destino</a>\n");
       out.write("            <br>\n");
       out.write("            <a href=\"PropuestaLA?accion=cambiarPasswordProfesor\">Cambiar contraseña</a>\n");
-      out.write("           \n");
+      out.write("\n");
       out.write("        </div>\n");
       out.write("\n");
       out.write("        <div id=\"volver\">\n");
