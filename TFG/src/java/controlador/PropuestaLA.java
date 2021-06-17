@@ -64,15 +64,12 @@ public class PropuestaLA extends HttpServlet {
 
         if (accion == null || accion.isEmpty()) {
             dispatcher = request.getRequestDispatcher("ACUERDOS/login.jsp");
-            System.out.println(dispatcher);
 
             //Accion que comprueba si el usuario y la contraseña introducidos son correctos
         } else if ("comprobarLogin".equals(accion)) {
-            System.out.println("hola");
 
             String password = request.getParameter("password");
             usuario = request.getParameter("usuario");
-            System.out.println("usuario" + usuario);
             if (coordinadorDAO.obtenerPassword(usuario).equals(password) && !password.equals("")) {
                 DNI_Coordinador = coordinadorDAO.obtenerDNI(usuario);
                 
@@ -116,13 +113,6 @@ public class PropuestaLA extends HttpServlet {
             List<Alumno> alumnos = alumnoDAO.listarAlumnosCoordinador(DNI_Profesor);
             request.setAttribute("listaAlumnos", alumnos);
 
-            //String estado = request.getParameter("CambiarEstado");
-
-            //String codigoAsignaturaModificar = request.getParameter("listaAsignaturasModificar");
-
-            //String codigoAsignaturaCancelar = request.getParameter("listaAsignaturasCancelar");
-
-            //String cambioEstadoModificar = request.getParameter("modificarEstado");
             String sumaCreditosOrigen = String.valueOf(asignatura_origenDAO.sumaCreditosOrigen(DNI_Alumno_Listar, Integer.parseInt(id_Estancia_Listar)));
             String sumaCreditosDestino = String.valueOf(asignatura_origenDAO.sumaCreditosDestino(DNI_Alumno_Listar, Integer.parseInt(id_Estancia_Listar)));
 
@@ -143,7 +133,6 @@ public class PropuestaLA extends HttpServlet {
         } else if ("modificarAsignatura".equals(accion)) {
             String codigoConvalidacionModificar = request.getParameter("listaAsignaturasModificar");
             String cambioEstadoModificar = request.getParameter("modificarEstado");
-            System.out.println("codigo: " + codigoConvalidacionModificar);
 
             if (!codigoConvalidacionModificar.equals("Escoge una convalidacion")) {
                 Integer codigoConvalidacionModificar2 = Integer.parseInt(codigoConvalidacionModificar);
@@ -276,17 +265,10 @@ public class PropuestaLA extends HttpServlet {
 
             dispatcher = request.getRequestDispatcher("ACUERDOS/nuevoProfesor.jsp");
         } else if ("insertarEstancia".equals(accion)) {
-            //List<Grado> grados = gradoDAO.listarGrados();
             List<Universidad_Destino> universidades = universidadDAO.listarUniversidades();
-            //System.out.println(grados.toString());
-            //request.setAttribute("listaGrados", grados);
+
             request.setAttribute("listaUniversidades", universidades);
-            //String password = request.getParameter("Password");
-            //String nombre = request.getParameter("Nombre");
-            //String apellidos = request.getParameter("Apellidos");
-            //String nombre_usuario = request.getParameter("Nombre_usuario");
-            //String DNI_Alumno_Insertar = request.getParameter("DNI_Alumno");
-            //String grado = request.getParameter("Grado");
+
             String tipo = request.getParameter("Tipo");
             String curso = request.getParameter("Curso");
             String duracion = request.getParameter("Duracion");
@@ -294,16 +276,8 @@ public class PropuestaLA extends HttpServlet {
             Integer id_estancia = estanciaDAO.obtenerSiguienteEstancia();
             String DNI_Alumno_Insertar_Estancia = request.getParameter("listaAlumnosEstancia");
 
-            //CAMBIAR EN SQL QUE DNI_ALUMNO Y DNI_COORDINADOR NO SEAN CLAVES EN ESTANCIA
             List<Alumno> listaAlumnosEstancia = alumnoDAO.listarAlumnos();
             request.setAttribute("listaAlumnosEstancia", listaAlumnosEstancia);
-            System.out.println("id_estancia" + id_estancia);
-
-            //System.out.println(password + nombre + apellidos + nombre_usuario + DNI_Alumno_Insertar + DNI_Coordinador + grado + tipo + curso + duracion + universidad);
-            //Usuario us = new Usuario(nombre_usuario);
-            //usuarioDAO.insertar(us);
-            //Alumno alumno = new Alumno(DNI_Alumno_Insertar, password, nombre, apellidos, nombre_usuario, grado);
-            //alumnoDAO.insertar(alumno);
             if (!DNI_Alumno_Insertar_Estancia.equals("Escoge un alumno") && !tipo.equals("Escoge un tipo de estancia")
                     && !duracion.equals("Escoge una duracion") && !universidad.equals("Escoge una universidad") && !curso.equals("")) {
                 Estancia estancia = new Estancia(id_estancia, tipo, curso, duracion, false, false, universidad, DNI_Coordinador, DNI_Alumno_Insertar_Estancia);
@@ -402,7 +376,6 @@ public class PropuestaLA extends HttpServlet {
 
             if (!request.getParameter("listaEstanciasAlumnosRenuncia").equals("Escoge una estancia y alumno")) {
                 id_Estancia = request.getParameter("listaEstanciasAlumnosRenuncia");
-                System.out.println(id_Estancia);
                 DNI_Alumno_Listar = estanciaDAO.obtenerDNIAlumno(Integer.parseInt(id_Estancia));
             }
 
@@ -439,7 +412,6 @@ public class PropuestaLA extends HttpServlet {
             String tipoO = request.getParameter("TipoO");
 
             Integer id_estancia = estanciaDAO.obtenerIdEstancia(DNI_Alumno);
-            System.out.println("dni: " + DNI_Alumno);
 
             if (!tipoO.equals("Escoge un tipo") && !codigoO.equals("") && !creditosO.equals("") && !informacionO.equals("") && !nombreO.equals("")) {
                 Asignatura_Origen asignaturaO = new Asignatura_Origen(codigoO, Integer.parseInt(creditosO), nombreO, informacionO, tipoO);
@@ -528,14 +500,12 @@ public class PropuestaLA extends HttpServlet {
 
             dispatcher = request.getRequestDispatcher("ACUERDOS/insertarAsignaturasDestinoProfesor.jsp");
         } else if ("insertarConvalidacion".equals(accion)) {
-            System.out.println("entrolndjksdfk");
 
             List<Estancia> listaEstancias = estanciaDAO.obtenerEstanciaYUniversidad(DNI_Alumno);
             List<Asignatura_Origen> listaAsignaturasOrigen = asignatura_origenDAO.listarAsignaturas();
             List<Asignatura_Destino> listaAsignaturasDestino = asignatura_destinoDAO.listarAsignaturas(DNI_Alumno);
             request.setAttribute("listaAsignaturasDestino", listaAsignaturasDestino);
             request.setAttribute("listaAsignaturasOrigen", listaAsignaturasOrigen);
-            System.out.println("GOLA" + DNI_Alumno);
             request.setAttribute("listaEstancias", listaEstancias);
             String estancia = request.getParameter("listaEstancias");
             String asignaturaOrigen = request.getParameter("listaOrigen");
@@ -558,7 +528,6 @@ public class PropuestaLA extends HttpServlet {
 
             dispatcher = request.getRequestDispatcher("ACUERDOS/nuevaConvalidacion.jsp");
         } else if ("insertarUniversidad".equals(accion)) {
-            System.out.println("entrolndjksdfk");
 
             String codigoU = request.getParameter("CodigoU");
             String nombreU = request.getParameter("NombreU");
@@ -602,10 +571,6 @@ public class PropuestaLA extends HttpServlet {
             String codigoBuscador = request.getParameter("CodigoBuscador");
 
             List<RelacionAsignaturas> listaRelacionAsignaturasOrigenBuscador = relacionAsignaturasDAO.listarConvalidacionesBuscador(codigoBuscador);
-            for (int i = 0; i < listaRelacionAsignaturasOrigenBuscador.size(); i++) {
-                System.out.println(listaRelacionAsignaturasOrigenBuscador.get(i).getNombre_origen());
-            }
-
             request.setAttribute("listaRelacionAsignaturasOrigenBuscador", listaRelacionAsignaturasOrigenBuscador);
             dispatcher = request.getRequestDispatcher("ACUERDOS/buscador.jsp");
         } else if ("convalidacionesActuales".equals(accion)) {
@@ -616,9 +581,8 @@ public class PropuestaLA extends HttpServlet {
 
             if (!estancia.equals("Escoge la estancia que deseas comprobar")) {
                 String sumaCreditosOrigen = String.valueOf(asignatura_origenDAO.sumaCreditosOrigen(DNI_Alumno, Integer.parseInt(estancia)));
-                System.out.println("sumacreditos: " + sumaCreditosOrigen);
                 String sumaCreditosDestino = String.valueOf(asignatura_origenDAO.sumaCreditosDestino(DNI_Alumno, Integer.parseInt(estancia)));
-                List<RelacionAsignaturas> listaRelacionAsignaturasConvalidacionesActuales = relacionAsignaturasDAO.listarConvalidaciones(DNI_Alumno, Integer.parseInt(estancia));//////////
+                List<RelacionAsignaturas> listaRelacionAsignaturasConvalidacionesActuales = relacionAsignaturasDAO.listarConvalidaciones(DNI_Alumno, Integer.parseInt(estancia));
                 request.setAttribute("sumaCreditosOrigen", sumaCreditosOrigen);
                 request.setAttribute("sumaCreditosDestino", sumaCreditosDestino);
                 request.setAttribute("listaRelacionAsignaturasConvalidacionesActuales", listaRelacionAsignaturasConvalidacionesActuales);
@@ -639,12 +603,10 @@ public class PropuestaLA extends HttpServlet {
             dispatcher = request.getRequestDispatcher("ACUERDOS/login.jsp");
 
         } else if ("volverProfesor".equals(accion)) {
-            DNI_Coordinador = coordinadorDAO.obtenerDNI(usuario);//////////
+            DNI_Coordinador = coordinadorDAO.obtenerDNI(usuario);
             List<Estancia> estancias = estanciaDAO.listarEstanciasCoordinador(DNI_Coordinador);
             request.setAttribute("listaEstancias", estancias);
-            System.out.println("hola2");
             List<Alumno> alumnos = alumnoDAO.listarAlumnosCoordinador(DNI_Coordinador);
-            System.out.println(alumnos.toString());
             request.setAttribute("listaAlumnos", alumnos);
             dispatcher = request.getRequestDispatcher("ACUERDOS/profesor.jsp");
 
@@ -678,5 +640,5 @@ public class PropuestaLA extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 }

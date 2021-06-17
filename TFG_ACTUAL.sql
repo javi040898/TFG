@@ -214,9 +214,10 @@ delete from usuario where nombre_usuario = 'ivan.gonzalez';
 
 
 UPDATE Convalidacion SET Estado = 'PENDIENTE';
-UPDATE Convalidacion SET Comentarios = '' where Codigo_Asignatura_destino = '111';
-
+UPDATE Convalidacion SET Estado = 'PENDIENTE' where id_convalidacion = '11';
 UPDATE Estancia SET renuncia = false, cerrada = false;
+
+select * from Convalidacion;
 
 select renuncia from Estancia;
 
@@ -224,7 +225,7 @@ select renuncia from Estancia;
 UPDATE Asignatura_destino SET Informacion = 'http://www.forosdelweb.com/f53/cambiar-ancho-input-file-943503/#:~:text=Respuesta%3A%20Cambiar%20el%20ancho%20de,de%20la%20propia%20etiqueta%20input.' 
 where Codigo = '111';
 
-select Codigo_Asignatura_origen,Asignatura_origen.nombre,Asignatura_origen.tipo,Asignatura_origen.creditos,Asignatura_origen.informacion,
+select id_convalidacion,Codigo_Asignatura_origen,Asignatura_origen.nombre,Asignatura_origen.tipo,Asignatura_origen.creditos,Asignatura_origen.informacion,
 Codigo_Asignatura_destino,Asignatura_destino.nombre as nombre_destino,Asignatura_destino.creditos as creditos_destino,
 Asignatura_destino.informacion as informacion_destino, Universidad_destino.Nombre as nombre_universidad,
 fecha_convalidacion,curso_academico,
