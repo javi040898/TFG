@@ -658,7 +658,7 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                margin:25px;\n");
       out.write("                position:relative;\n");
       out.write("                top:-12px;\n");
-      out.write("                right:-650px;\n");
+      out.write("                right:-700px;\n");
       out.write("\n");
       out.write("            }\n");
       out.write("\n");
@@ -1373,7 +1373,7 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            </div>\n");
       out.write("        </form>\n");
       out.write("\n");
-      out.write("        <div id=\"form20\"> <br></div>\n");
+      out.write("        <div id=\"form20\">  <br></div>\n");
       out.write("\n");
       out.write("\n");
       out.write("\n");
