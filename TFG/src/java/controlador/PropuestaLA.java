@@ -72,7 +72,7 @@ public class PropuestaLA extends HttpServlet {
             usuario = request.getParameter("usuario");
             if (coordinadorDAO.obtenerPassword(usuario).equals(password) && !password.equals("")) {
                 DNI_Coordinador = coordinadorDAO.obtenerDNI(usuario);
-                
+
                 List<Estancia> estancias = estanciaDAO.listarEstanciasCoordinador(DNI_Coordinador);
                 request.setAttribute("listaEstancias", estancias);
 
@@ -377,32 +377,43 @@ public class PropuestaLA extends HttpServlet {
             if (!request.getParameter("listaEstanciasAlumnosRenuncia").equals("Escoge una estancia y alumno")) {
                 id_Estancia = request.getParameter("listaEstanciasAlumnosRenuncia");
                 DNI_Alumno_Listar = estanciaDAO.obtenerDNIAlumno(Integer.parseInt(id_Estancia));
+                List<Estancia> estancias = estanciaDAO.listarEstanciasCoordinadorNoCerradas(DNI_Coordinador);
+                request.setAttribute("listaEstancias", estancias);
+                List<Alumno> alumnos = alumnoDAO.listarAlumnosCoordinador(DNI_Coordinador);
+                request.setAttribute("listaAlumnos", alumnos);
+
+                estanciaDAO.cambiarRenuncia(Integer.parseInt(id_Estancia));
+                mensaje_error = "correcto";
+                request.setAttribute("confirmacion", mensaje_error);
+
+            } else {
+                mensaje_error = "error";
+                request.setAttribute("confirmacion", mensaje_error);
             }
-
-            List<Estancia> estancias = estanciaDAO.listarEstanciasCoordinadorNoCerradas(DNI_Coordinador);
-            request.setAttribute("listaEstancias", estancias);
-            List<Alumno> alumnos = alumnoDAO.listarAlumnosCoordinador(DNI_Coordinador);
-            request.setAttribute("listaAlumnos", alumnos);
-
-            estanciaDAO.cambiarRenuncia(Integer.parseInt(id_Estancia));
-
             dispatcher = request.getRequestDispatcher("ACUERDOS/renunciaAlumno.jsp");
+
         } else if ("listarAlumnosCerrar".equals(accion)) {
             String id_Estancia = "0";
 
             if (!request.getParameter("listaEstanciasAlumnosCerrar").equals("Escoge una estancia y alumno")) {
                 id_Estancia = request.getParameter("listaEstanciasAlumnosCerrar");
                 DNI_Alumno_Listar = estanciaDAO.obtenerDNIAlumno(Integer.parseInt(id_Estancia));
+                List<Estancia> estancias = estanciaDAO.listarEstanciasCoordinadorNoCerradas(DNI_Coordinador);
+                request.setAttribute("listaEstancias", estancias);
+                List<Alumno> alumnos = alumnoDAO.listarAlumnosCoordinador(DNI_Coordinador);
+                request.setAttribute("listaAlumnos", alumnos);
+
+                estanciaDAO.cambiarCierre(Integer.parseInt(id_Estancia));
+                mensaje_error = "correcto";
+                request.setAttribute("confirmacion", mensaje_error);
+
+            } else {
+                mensaje_error = "error";
+                request.setAttribute("confirmacion", mensaje_error);
             }
 
-            List<Estancia> estancias = estanciaDAO.listarEstanciasCoordinadorNoCerradas(DNI_Coordinador);
-            request.setAttribute("listaEstancias", estancias);
-            List<Alumno> alumnos = alumnoDAO.listarAlumnosCoordinador(DNI_Coordinador);
-            request.setAttribute("listaAlumnos", alumnos);
-
-            estanciaDAO.cambiarCierre(Integer.parseInt(id_Estancia));
-
             dispatcher = request.getRequestDispatcher("ACUERDOS/cerrarEstancia.jsp");
+
         } else if ("insertarAsignaturasOrigenAlumno".equals(accion)) {
 
             String codigoO = request.getParameter("CodigoO");

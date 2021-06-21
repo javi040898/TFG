@@ -261,7 +261,7 @@
                 margin:15px;
                 position:relative;
                 top:30px;
-                left: 400px;
+                left: 430px;
 
             }
             #label1 {
@@ -269,8 +269,8 @@
 
                 margin:15px;
                 position:relative;
-                top:39px;
-                left: 934px;
+                top:42px;
+                left: 995px;
 
             }
 

@@ -937,7 +937,7 @@
 
                     %>
                         <option value="<%=estancia.getId_estancia()%>"><%=estancia.getTipo() + " "%><%=universidadDAO.obtenerNombre(estancia.getCodigo_erasmus_Universidad_destino())%><%=" ("
-                                + estancia.getCurso_academico() + ") "%><%=alumno.getNombre()%><%=" " + alumno.getApellidos()%><%=" (" + alumno.getDNI() + ") "%></option>
+                            + estancia.getCurso_academico() + ") "%><%=alumno.getNombre()%><%=" " + alumno.getApellidos()%><%=" (" + alumno.getDNI() + ") "%></option>
                         <%
                                         break;
                                     }
@@ -964,6 +964,18 @@
             <a href="PropuestaLA?accion=volverProfesor">Volver</a>
 
         </div>
+
+        <%
+            String mensaje = (String) request.getAttribute("confirmacion");
+            System.out.println("mensaje: " + mensaje);
+            if (mensaje == "error") {%>
+        <script>
+            alert('No se ha podido cerrar la estancia');
+        </script><%}%>
+        <%if (mensaje == "correcto") {%>
+        <script>
+            alert('Estancia cerrada correctamente');
+        </script><%}%>
 
 
 

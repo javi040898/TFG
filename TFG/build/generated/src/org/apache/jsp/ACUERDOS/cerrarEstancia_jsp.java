@@ -3,12 +3,12 @@ package org.apache.jsp.ACUERDOS;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
-import modelo.RelacionAsignaturas;
-import modelo.Asignatura_Destino;
-import modelo.Asignatura_Origen;
+import modelo.Estancia;
+import modelo.Alumno;
 import java.util.List;
+import modelo.Universidad_DestinoDAO;
 
-public final class buscador_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class cerrarEstancia_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -55,8 +55,9 @@ public final class buscador_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
-      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">      <title>BUSCADOR DE CONVALIDACIONES</title>\n");
+      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">       <title>PROFESOR</title>\n");
       out.write("        <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\" integrity=\"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\" crossorigin=\"anonymous\">\n");
+      out.write("\n");
       out.write("        <style>\n");
       out.write("            body{\n");
       out.write("                background:#F5F5F5;\n");
@@ -946,170 +947,117 @@ public final class buscador_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("            }\n");
       out.write("        </style>\n");
-      out.write("        <title>BUSCADOR DE CONVALIDACION</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("        <div class=\"div06\">BUSCADOR DE CONVALIDACIONES EN CURSOS ANTERIORES</div>\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("        <form action=\"PropuestaLA?accion=buscadorConvalidacion\" method=\"POST\" autocomplete=\"off\">\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("            <div id=\"form5\">\n");
-      out.write("\n");
-      out.write("                <label>Introduce el código de la asignatura que deseas convalidar  </label>\n");
-      out.write("                <input id=\"CodigoBuscador\" class=\"form-control\" name=\"CodigoBuscador\" type=\"text\" align=\"left\"/>\n");
-      out.write("\n");
-      out.write("            </div>\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("            <br>\n");
-      out.write("\n");
-      out.write("            <br><br><br>\n");
-      out.write("            <div id=\"butBuscador\">\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("                <button  id=\"Buscador\" class=\"btn btn-primary\" name=\"Buscador\" type=\"submit\" >Buscar</button>\n");
-      out.write("            </div>\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("            <div id=\"table2\">\n");
-      out.write("                <table>\n");
-      out.write("                    <thead>\n");
-      out.write("\n");
-      out.write("                        <tr>\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("                    <div id=\"titulo3\"> ASIGNATURAS RECONOCIDAS EN LA UNIVERSIDAD DE ALCALÁ\n");
-      out.write("                    </div>\n");
-      out.write("                    <div id=\"titulo4\"> ASIGNATURAS CURSADAS  EN LA UNIVERSIDAD DE DESTINO\n");
-      out.write("                    </div>\n");
       out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("\n");
+      out.write("        <form action=\"PropuestaLA?accion=listarAlumnosCerrar\" method=\"POST\" autocomplete=\"off\">\n");
+      out.write("            <p align=\"center\"> \n");
+      out.write("            <div id=\"form6\">\n");
       out.write("\n");
-      out.write("                    <th>Codigo</th>\n");
-      out.write("                    <th>Nombre Asignatura</th>\n");
-      out.write("                    <th>Tipo</th>\n");
-      out.write("                    <th>Creditos</th>\n");
+      out.write("                <h1>NUEVA CIERRE DE ESTANCIA</h1>\n");
       out.write("\n");
-      out.write("\n");
-      out.write("                    <th>Link asignatura</th>\n");
-      out.write("\n");
-      out.write("                    <th style=\"border: hidden\"></th>\n");
-      out.write("\n");
-      out.write("                    <th>Codigo</th>\n");
-      out.write("                    <th>Nombre Asignatura</th>\n");
-      out.write("                    <th>Creditos</th>\n");
-      out.write("                    <th>Link asignatura</th>\n");
-      out.write("                    <th>Universidad</th>\n");
-      out.write("                    <th>Fecha convalidacion</th>\n");
-      out.write("                    <th>Curso academico</th>\n");
-      out.write("                    <th>Estado</th>\n");
-      out.write("                    <th>Comentarios</th>\n");
+      out.write("                <select class=\"form-control\" id=\"listaEstanciasAlumnosCerrar\" name=\"listaEstanciasAlumnosCerrar\">\n");
       out.write("\n");
       out.write("\n");
       out.write("\n");
-      out.write("\n");
-      out.write("                    </tr>\n");
-      out.write("                    </thead>\n");
-      out.write("\n");
-      out.write("                    <tbody>\n");
-      out.write("\n");
-      out.write("                        ");
- List<RelacionAsignaturas> listaRA = (List<RelacionAsignaturas>) request.getAttribute("listaRelacionAsignaturasOrigenBuscador");
-                            /*for (int i = 0; i < listaAsignaturasOrigen.size(); i++) {
-                                System.out.println(listaAsignaturasOrigen.get(i).getNombre());
-                            }*/
+      out.write("                    <option>Escoge una estancia y alumno</option>\n");
+      out.write("                    ");
 
-                            //List<Asignatura_Destino> listaAsignaturasDestino = (List<Asignatura_Destino>) request.getAttribute("listaAsignaturasDestinoBuscador");
-                            if (listaRA != null)
-                                for (RelacionAsignaturas ra : listaRA) {
-                                    //if (String.valueOf(asignaturaO.getCodigo()).equals(String.valueOf(asignaturaD.getCodigo_Asignatura_Origen()))) {
-                                    //System.out.println(asignaturaO.getNombre());
-                        
+                        Universidad_DestinoDAO universidadDAO = new Universidad_DestinoDAO();
+                        List<Alumno> listaAlumnos = (List<Alumno>) request.getAttribute("listaAlumnos");
+                        List<Estancia> listaEstancias = (List<Estancia>) request.getAttribute("listaEstancias");
+
+                        if (listaAlumnos != null)
+                            if (listaEstancias != null)
+                                for (Estancia estancia : listaEstancias) {
+                                    for (Alumno alumno : listaAlumnos) {
+
+                                        System.out.println("DNI1:" + alumno.getDNI() + " DNI2:" + estancia.getDNI_alumno());
+                                        if (alumno.getDNI().equals(estancia.getDNI_alumno())) {
+
+
+                    
       out.write("\n");
-      out.write("                        <tr>\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("                            <td>");
-      out.print(ra.getCodigo_origen());
-      out.write("</td>\n");
-      out.write("                            <td>");
-      out.print(ra.getNombre_origen());
-      out.write("</td>\n");
-      out.write("                            <td>");
-      out.print(ra.getTipo());
-      out.write("</td>\n");
-      out.write("                            <td>");
-      out.print(ra.getCreditos_origen());
-      out.write("</td>\n");
-      out.write("                            <td><a href=\"");
-      out.print(ra.getInformacion_origen());
-      out.write("\" target=\"_blank\" > link</a></td>\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("                            <td style=\"border: hidden\">---></td>\n");
-      out.write("                            <td>");
-      out.print(ra.getCodigo_destino());
-      out.write("</td>\n");
-      out.write("                            <td>");
-      out.print(ra.getNombre_destino());
-      out.write("</td>\n");
-      out.write("                            <td>");
-      out.print(ra.getCreditos_destino());
-      out.write("</td>\n");
-      out.write("\n");
-      out.write("                            <td><a href=\"");
-      out.print(ra.getInformacion_destino());
-      out.write("\" target=\"_blank\" > link</a></td>\n");
-      out.write("                            <td>");
-      out.print(ra.getNombre_universidad());
-      out.write("</td>\n");
-      out.write("                            <td>");
-      out.print(ra.getFecha());
-      out.write("</td>\n");
-      out.write("                            <td>");
-      out.print(ra.getCurso());
-      out.write("</td>\n");
-      out.write("                            <td>");
-      out.print(ra.getEstado());
-      out.write("</td>\n");
-      out.write("                            <td>");
-      out.print(ra.getComentarios());
-      out.write("</td>\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("                        </tr>\n");
+      out.write("                        <option value=\"");
+      out.print(estancia.getId_estancia());
+      out.write('"');
+      out.write('>');
+      out.print(estancia.getTipo() + " ");
+      out.print(universidadDAO.obtenerNombre(estancia.getCodigo_erasmus_Universidad_destino()));
+      out.print(" ("
+                            + estancia.getCurso_academico() + ") ");
+      out.print(alumno.getNombre());
+      out.print(" " + alumno.getApellidos());
+      out.print(" (" + alumno.getDNI() + ") ");
+      out.write("</option>\n");
       out.write("                        ");
+
+                                        break;
+                                    }
 
                                 }
-
-
-                        
+                            }
       out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("\n");
-      out.write("                    </tbody>\n");
       out.write("\n");
       out.write("\n");
-      out.write("                </table>\n");
+      out.write("                </select>\n");
+      out.write("\n");
+      out.write("\n");
       out.write("            </div>\n");
       out.write("\n");
+      out.write("            <div id=\"butAceptarCierre\">\n");
+      out.write("                <button>Aceptar</button>\n");
+      out.write("            </div>\n");
       out.write("\n");
       out.write("        </form>\n");
       out.write("\n");
       out.write("        <div id=\"volver\">\n");
-      out.write("            <a href=\"PropuestaLA?accion=volverAlumno\">Volver</a>\n");
+      out.write("            <a href=\"PropuestaLA?accion=volverProfesor\">Volver</a>\n");
       out.write("\n");
       out.write("        </div>\n");
+      out.write("\n");
+      out.write("        ");
+
+            String mensaje = (String) request.getAttribute("confirmacion");
+            System.out.println("mensaje: " + mensaje);
+            if (mensaje == "error") {
+      out.write("\n");
+      out.write("        <script>\n");
+      out.write("            alert('No se ha podido cerrar la estancia');\n");
+      out.write("        </script>");
+}
+      out.write("\n");
+      out.write("        ");
+if (mensaje == "correcto") {
+      out.write("\n");
+      out.write("        <script>\n");
+      out.write("            alert('Estancia cerrada correctamente');\n");
+      out.write("        </script>");
+}
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("\n");
