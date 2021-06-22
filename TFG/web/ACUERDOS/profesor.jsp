@@ -26,18 +26,7 @@
             body{
                 background:#F5F5F5;
             }
-            #form1,#form2{
 
-                float:left;
-                left:530px;
-                margin:50px;
-                padding:60px;
-
-                position:relative;
-                top:-10px;
-
-
-            }
 
             #titulo1{
 
@@ -93,62 +82,7 @@
 
 
 
-            #titulo3{
 
-                float:left;
-                background:#E3D5CD;
-                margin:20px;
-                padding:10px;
-                top:200px;
-                position:absolute;
-                left:20px;
-
-
-            }
-
-            #titulo4{
-
-                float:left;
-                left:1000px;
-
-                background:#E3D5CD;
-                margin:20px;
-                padding:10px;
-                top:200px;
-                position:absolute;
-
-
-
-            }
-
-
-            #titulo5{
-
-                float:left;
-                background:#E3D5CD;
-                margin:20px;
-                padding:10px;
-                top:175px;
-                position:absolute;
-                left:20px;
-
-
-            }
-
-            #titulo6{
-
-                float:left;
-                left:1000px;
-
-                background:#E3D5CD;
-                margin:20px;
-                padding:10px;
-                top:175px;
-                position:absolute;
-
-
-
-            }
 
             #NombreAlumno{
 
@@ -226,24 +160,7 @@
 
 
 
-            #form4 {
-                background-color: white;
-                float:left;
-                border: black 1px solid;
-                display:block;
-                position:absolute;
-                bottom: 10px;
-            }
 
-            #form5 {
-                float:left;
-
-                margin:50px;
-                padding:10px;
-                position:relative;
-                top:30px;
-                left: 600px;
-            }
 
             #comentariosModificada {
                 float:left;
@@ -275,16 +192,7 @@
             }
 
 
-            #form6 {
-                float:left;
 
-                margin:25px;
-                padding:10px;
-                position:relative;
-                top:2px;
-                left: 600px;
-
-            }
             #form7 {
                 float:left;
 
@@ -305,184 +213,8 @@
 
             }
 
-            #form12{
-                float:left;
 
-                margin:25px;
-                padding:10px;
-                position:relative;
-                top:200px;
-                right:-600px;
 
-            }
-
-            #form13{
-                float:left;
-
-                margin:25px;
-                padding:10px;
-                position:relative;
-                top:300px;
-                right:100x;
-
-            }
-
-
-            #form14{
-                float:left;
-
-                margin:25px;
-                padding:10px;
-                position:relative;
-                top:300px;
-                right:-50px;
-
-            }
-
-            #form15{
-                float:left;
-
-                margin:25px;
-                padding:10px;
-                position:relative;
-                top:100px;
-                right:-700px;
-
-            }
-            #form16{
-                float:left;
-
-                margin:25px;
-                padding:10px;
-                position:relative;
-                top:100px;
-                right:-700px;
-
-            }
-
-            #form17{
-                float:left;
-
-                margin:25px;
-                padding:10px;
-                position:relative;
-                top:50px;
-                right:-600px;
-
-            }
-
-            #form18{
-                float:left;
-
-                margin:25px;
-                padding:10px;
-                position:absolute;
-                top:20px;
-                right:400px;
-                width:500px;
-
-            }
-
-            #form19{
-                float:left;
-
-                margin:25px;
-                padding:10px;
-                position:absolute;
-                top:120px;
-                right:400px;
-                width: 500px;
-
-            }
-
-            #butLogin{
-
-                position:absolute;
-
-                display:block;
-
-
-
-                left:420px;
-                top:250px;
-
-            }
-
-            #butAceptarConvalidacion{
-
-                position:absolute;
-
-                display:block;
-
-
-
-                left:825px;
-                top:400px;
-
-            }
-            #butInsertarUniversidad{
-
-                position:absolute;
-
-                display:block;
-
-
-
-                left:780px;
-                top:390px;
-
-            }
-            #butInsertarGrado{
-
-                position:absolute;
-
-                display:block;
-
-
-
-                left:730px;
-                top:320px;
-
-            }
-
-            #butAceptarRenuncia{
-
-                position:absolute;
-
-                display:block;
-
-
-
-                left:754px;
-                top:160px;
-
-            }
-
-            #butAceptarCierre{
-
-                position:absolute;
-
-                display:block;
-
-
-
-                left:754px;
-                top:160px;
-
-            }
-
-            #butConfirmarEstancia{
-
-                position:absolute;
-
-                display:block;
-
-
-
-                left:515px;
-                top:42px;
-
-            }
 
             #form8 {
                 float:left;
@@ -494,16 +226,7 @@
 
             }
 
-            #form9 {
-                float:left;
 
-                margin:25px;
-                padding:10px;
-                position:relative;
-                left:600px;
-
-
-            }
 
             #form20{
 
@@ -527,54 +250,17 @@
 
 
             }
+            #form6 {
+                float:left;
 
-            #butInsertarAsignaturasDestino{
-
-                position:absolute;
-
-                display:block;
-
-
-
-                left:875px;
-                top:540px;
-
-                background:#0CF;
+                margin:25px;
+                padding:10px;
+                position:relative;
+                top:2px;
+                left: 600px;
 
             }
 
-            #butInsertarAsignaturasOrigen{
-
-                position:absolute;
-
-                display:block;
-
-
-
-                left:855px;
-                top:540px;
-
-                background:#0CF;
-
-            }
-
-
-
-
-            #butBuscador{
-
-                position:absolute;
-
-                display:block;
-
-
-
-                left:825px;
-                top:175px;
-
-                background:#0CF;
-
-            }
 
             #butAceptar{
                 float:left;
@@ -611,58 +297,10 @@
                 margin:25px;
                 position:relative;
                 top:-12px;
-                right:-700px;
+                right:-720px;
 
             }
 
-            #butCambiar{
-
-                float:left;
-
-                margin:25px;
-                padding:10px;
-                position:absolute;
-                top:136px;
-                left:378px;
-
-
-            }
-
-            #butAltaAlumno{
-
-                float:left;
-
-                margin:25px;
-                padding:10px;
-                position:relative;
-                top:580px;
-                left:350px;
-
-            }
-
-            #butAltaProfesor{
-
-                float:left;
-
-                margin:25px;
-                padding:10px;
-                position:relative;
-                top:580px;
-                left:350px;
-
-            }
-
-            #butAltaEstancia{
-
-                float:left;
-
-                margin:25px;
-                padding:10px;
-                position:relative;
-                top:450px;
-                left:350px;
-
-            }
 
             #enlaceNuevo{
 
@@ -679,20 +317,7 @@
 
             }
 
-            #enlacesAlumno{
 
-                position:absolute;
-
-                display:block;
-
-
-
-                left:700px;
-                top:110px;
-
-
-
-            }
 
 
             #table1 table {
@@ -713,24 +338,6 @@
                 padding: 0.3em;
             }
 
-            #table2 table {
-                width: 100%;
-                border: black 1px solid;
-                position: relative;
-                bottom: -70px;
-
-
-            }
-            #table2 th, td {
-
-                text-align: left;
-                vertical-align: top;
-                border: 1px solid #000;
-                border-collapse: collapse;
-                border: hidden;
-                background:#EDE6E2;
-                padding: 0.3em;
-            }
 
             #table3 table {
                 width: 100%;
@@ -768,59 +375,7 @@
                 padding: 0.3em;
             }
 
-            #table6 table {
-                width: 100%;
-                border: black 1px solid;
-                position: relative;
-                bottom: -150px;
 
-            }
-            #table6 th, td {
-
-                text-align: left;
-                vertical-align: top;
-                border: 1px solid #000;
-                border-collapse: collapse;
-                border: hidden;
-                padding: 0.3em;
-            }
-
-
-
-            #table7 table {
-                width: 100%;
-                border: black 1px solid;
-                position: relative;
-                bottom: -150px;
-
-            }
-            #table7 th, td {
-
-                text-align: left;
-                vertical-align: top;
-                border: 1px solid #000;
-                border-collapse: collapse;
-                border: hidden;
-                padding: 0.3em;
-            }
-
-            #table4 table {
-                width: 100%;
-                border: black 1px solid;
-                position: relative;
-                bottom: -130px;
-
-            }
-            #table4 th, td {
-
-                text-align: left;
-                vertical-align: top;
-                border: 1px solid #000;
-                border-collapse: collapse;
-                border: hidden;
-                background:#EDE6E2;
-                padding: 0.3em;
-            }
 
 
             #volver{
@@ -832,84 +387,7 @@
 
 
 
-            body {
-                background:#F5F5F5;
-                font-family: sans-serif; 
-            }
 
-            hr { 
-                border: 1px solid #DDDDDD; 
-                margin: 100px 50px; 
-
-            }
-            #header h1 { 
-                display:inline; 
-
-            }
-
-
-            #header h12 { 
-                text-indent:1000px;
-
-            }
-
-            .div01{
-                color: black;
-                font-size:30px;
-            }
-
-            .div02{
-                position:absolute;
-
-                display:block;
-
-                font-size:70px;
-
-                left:500px;
-
-            }
-            .div03{
-                position:absolute;
-
-                display:block;
-
-                font-size:70px;
-
-                left:500px;
-
-            }
-            .div06{
-                position:absolute;
-
-                display:block;
-
-                font-size:35px;
-
-                left:500px;
-
-            }
-
-            .div07{
-                position:absolute;
-
-                display:block;
-
-                font-size:35px;
-
-                left:700px;
-
-            }
-            .div08{
-                position:absolute;
-
-                display:block;
-
-                font-size:35px;
-
-                left:670px;
-                top:130px;
-
-            }
         </style>
     </head>
     <body>
@@ -937,7 +415,6 @@
                                     String cerrada = "EN PROGRESO";
                                     for (Alumno alumno : listaAlumnos) {
 
-                                        System.out.println("DNI1:" + alumno.getDNI() + " DNI2:" + estancia.getDNI_alumno());
                                         if (alumno.getDNI().equals(estancia.getDNI_alumno())) {
                                             if (estanciaDAO.obtenerRenuncia(estancia.getId_estancia())) {
                                                 cerrada = "RENUNCIADA";
@@ -970,20 +447,17 @@
 
             <%  String nombre = "";
                 if (String.valueOf(request.getAttribute("nombreAlumno")) != "null") {
-                    System.out.println(String.valueOf(request.getAttribute("nombreAlumno")));
                     nombre = String.valueOf(request.getAttribute("nombreAlumno"));
                 }
 
                 String apellidos = "";
                 if (String.valueOf(request.getAttribute("apellidosAlumno")) != "null") {
-                    System.out.println(String.valueOf(request.getAttribute("nombreAlumno")));
                     apellidos = String.valueOf(request.getAttribute("apellidosAlumno"));
                 }
             %>    
             <%
                 String codigoGrado = "";
                 if (String.valueOf(request.getAttribute("codigoGrado")) != "null") {
-                    System.out.println(String.valueOf(request.getAttribute("codigoGrado")));
                     codigoGrado = String.valueOf(request.getAttribute("codigoGrado"));
                 }
             %>   
@@ -991,7 +465,6 @@
             <%
                 String nombreGrado = "";
                 if (String.valueOf(request.getAttribute("nombreGrado")) != "null") {
-                    System.out.println(String.valueOf(request.getAttribute("nombreGrado")));
                     nombreGrado = String.valueOf(request.getAttribute("nombreGrado"));
                 }
             %>  
@@ -999,7 +472,6 @@
             <%
                 String facultad = "";
                 if (String.valueOf(request.getAttribute("facultad")) != "null") {
-                    System.out.println(String.valueOf(request.getAttribute("facultad")));
                     facultad = String.valueOf(request.getAttribute("facultad"));
                 }
             %> 
@@ -1058,18 +530,9 @@
                     <tbody>
 
                         <% List<RelacionAsignaturas> listaRA = (List<RelacionAsignaturas>) request.getAttribute("listaRA");
-                            /*for (int i = 0; i < listaAsignaturasOrigen.size(); i++) {
-                                System.out.println(listaAsignaturasOrigen.get(i).getNombre());
-                            }*/
 
-                            //List<Asignatura_Destino> listaAsignaturasDestino = (List<Asignatura_Destino>) request.getAttribute("listaAsignaturasDestino");
-                            //if (listaAsignaturasOrigen != null && listaAsignaturasDestino != null)
                             if (listaRA != null)
-                                //for (Asignatura_Origen asignaturaO : listaAsignaturasOrigen) {
                                 for (RelacionAsignaturas ra : listaRA) {
-                                    //for (Asignatura_Destino asignaturaD : listaAsignaturasDestino) {
-                                    //if (String.valueOf(asignaturaO.getCodigo()).equals(String.valueOf(asignaturaD.getCodigo_erasmus_Universidad_destino()))) {
-                                    //System.out.println(asignaturaO.getNombre());
                         %>
                         <tr>
                             <td><%=ra.getId_convalidacion()%></td>
@@ -1117,7 +580,6 @@
                             <%
                                 String sumaCreditosOrigen = "";
                                 if (String.valueOf(request.getAttribute("sumaCreditosOrigen")) != "null") {
-                                    System.out.println(String.valueOf(request.getAttribute("sumaCreditosOrigen")));
                                     sumaCreditosOrigen = String.valueOf(request.getAttribute("sumaCreditosOrigen"));
                                 }
                             %> 
@@ -1135,7 +597,6 @@
                             <%
                                 String sumaCreditosDestino = "";
                                 if (String.valueOf(request.getAttribute("sumaCreditosDestino")) != "null") {
-                                    System.out.println(String.valueOf(request.getAttribute("sumaCreditosDestino")));
                                     sumaCreditosDestino = String.valueOf(request.getAttribute("sumaCreditosDestino"));
                                 }
                             %> 

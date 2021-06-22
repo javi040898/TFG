@@ -94,41 +94,51 @@ public class PropuestaLA extends HttpServlet {
 
         } else if ("listarAlumnos".equals(accion)) {
             String id_Estancia_Listar = "0";
+            System.out.println(request.getParameter("listaEstanciasAlumnos"));
 
             if (!request.getParameter("listaEstanciasAlumnos").equals("Escoge una estancia y alumno")) {
                 id_Estancia_Listar = request.getParameter("listaEstanciasAlumnos");
                 DNI_Alumno_Listar = estanciaDAO.obtenerDNIAlumno(Integer.parseInt(id_Estancia_Listar));
+                List<RelacionAsignaturas> listaRA = relacionAsignaturasDAO.listarConvalidaciones(DNI_Alumno_Listar, Integer.parseInt(id_Estancia_Listar));
+                List<RelacionAsignaturas> listaRAPosibles = relacionAsignaturasDAO.listarConvalidacionesPosibles(DNI_Alumno_Listar, Integer.parseInt(id_Estancia_Listar));
+
+                dispatcher = request.getRequestDispatcher("ACUERDOS/profesor.jsp");
+                request.setAttribute("listaRA", listaRA);
+                request.setAttribute("listaRAPosibles", listaRAPosibles);
+
+                String DNI_Profesor = coordinadorDAO.obtenerDNI(usuario);
+                List<Estancia> estancias = estanciaDAO.listarEstanciasCoordinador(DNI_Coordinador);
+                request.setAttribute("listaEstancias", estancias);
+
+                List<Alumno> alumnos = alumnoDAO.listarAlumnosCoordinador(DNI_Profesor);
+                request.setAttribute("listaAlumnos", alumnos);
+
+                String sumaCreditosOrigen = String.valueOf(asignatura_origenDAO.sumaCreditosOrigen(DNI_Alumno_Listar, Integer.parseInt(id_Estancia_Listar)));
+                String sumaCreditosDestino = String.valueOf(asignatura_origenDAO.sumaCreditosDestino(DNI_Alumno_Listar, Integer.parseInt(id_Estancia_Listar)));
+
+                String nombreAlumno = alumnoDAO.obtenerNombre(DNI_Alumno_Listar);
+                String apellidosAlumno = alumnoDAO.obtenerApellidos(DNI_Alumno_Listar);
+                String codigoGrado = gradoDAO.gradoAlumno(DNI_Alumno_Listar).getCodigo();
+                String nombreGrado = gradoDAO.gradoAlumno(DNI_Alumno_Listar).getNombre();
+                String facultad = gradoDAO.gradoAlumno(DNI_Alumno_Listar).getFacultad();
+
+                request.setAttribute("sumaCreditosOrigen", sumaCreditosOrigen);
+                request.setAttribute("sumaCreditosDestino", sumaCreditosDestino);
+                request.setAttribute("nombreAlumno", nombreAlumno);
+                request.setAttribute("apellidosAlumno", apellidosAlumno);
+                request.setAttribute("codigoGrado", codigoGrado);
+                request.setAttribute("nombreGrado", nombreGrado);
+                request.setAttribute("facultad", facultad);
+            } else {
+                String DNI_Profesor = coordinadorDAO.obtenerDNI(usuario);
+                List<Estancia> estancias = estanciaDAO.listarEstanciasCoordinador(DNI_Coordinador);
+                request.setAttribute("listaEstancias", estancias);
+
+                List<Alumno> alumnos = alumnoDAO.listarAlumnosCoordinador(DNI_Profesor);
+                request.setAttribute("listaAlumnos", alumnos);
+                dispatcher = request.getRequestDispatcher("ACUERDOS/profesor.jsp");
+
             }
-            List<RelacionAsignaturas> listaRA = relacionAsignaturasDAO.listarConvalidaciones(DNI_Alumno_Listar, Integer.parseInt(id_Estancia_Listar));
-            List<RelacionAsignaturas> listaRAPosibles = relacionAsignaturasDAO.listarConvalidacionesPosibles(DNI_Alumno_Listar, Integer.parseInt(id_Estancia_Listar));
-
-            dispatcher = request.getRequestDispatcher("ACUERDOS/profesor.jsp");
-            request.setAttribute("listaRA", listaRA);
-            request.setAttribute("listaRAPosibles", listaRAPosibles);
-
-            String DNI_Profesor = coordinadorDAO.obtenerDNI(usuario);
-            List<Estancia> estancias = estanciaDAO.listarEstanciasCoordinador(DNI_Coordinador);
-            request.setAttribute("listaEstancias", estancias);
-
-            List<Alumno> alumnos = alumnoDAO.listarAlumnosCoordinador(DNI_Profesor);
-            request.setAttribute("listaAlumnos", alumnos);
-
-            String sumaCreditosOrigen = String.valueOf(asignatura_origenDAO.sumaCreditosOrigen(DNI_Alumno_Listar, Integer.parseInt(id_Estancia_Listar)));
-            String sumaCreditosDestino = String.valueOf(asignatura_origenDAO.sumaCreditosDestino(DNI_Alumno_Listar, Integer.parseInt(id_Estancia_Listar)));
-
-            String nombreAlumno = alumnoDAO.obtenerNombre(DNI_Alumno_Listar);
-            String apellidosAlumno = alumnoDAO.obtenerApellidos(DNI_Alumno_Listar);
-            String codigoGrado = gradoDAO.gradoAlumno(DNI_Alumno_Listar).getCodigo();
-            String nombreGrado = gradoDAO.gradoAlumno(DNI_Alumno_Listar).getNombre();
-            String facultad = gradoDAO.gradoAlumno(DNI_Alumno_Listar).getFacultad();
-
-            request.setAttribute("sumaCreditosOrigen", sumaCreditosOrigen);
-            request.setAttribute("sumaCreditosDestino", sumaCreditosDestino);
-            request.setAttribute("nombreAlumno", nombreAlumno);
-            request.setAttribute("apellidosAlumno", apellidosAlumno);
-            request.setAttribute("codigoGrado", codigoGrado);
-            request.setAttribute("nombreGrado", nombreGrado);
-            request.setAttribute("facultad", facultad);
 
         } else if ("modificarAsignatura".equals(accion)) {
             String codigoConvalidacionModificar = request.getParameter("listaAsignaturasModificar");

@@ -48,7 +48,6 @@ public class EstanciaDAO {
             return true;
         } catch (SQLException ex) {
             System.out.println(ex.toString());
-            System.out.println("No se ha insertado");
             return false;
         } finally {
 
@@ -134,7 +133,6 @@ public class EstanciaDAO {
     }
 
     public void cambiarRenuncia(Integer id_estancia) {
-        System.out.println("entro a cambair renuncia");
         PreparedStatement ps = null;
         ResultSet rs = null;
 
@@ -167,7 +165,6 @@ public class EstanciaDAO {
     }
 
     public void cambiarCierre(Integer id_estancia) {
-        System.out.println("entro a cambair renuncia");
         PreparedStatement ps = null;
         ResultSet rs = null;
 

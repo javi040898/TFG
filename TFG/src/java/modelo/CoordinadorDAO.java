@@ -171,36 +171,6 @@ public class CoordinadorDAO {
 
     }
 
-    /*public List<Coordinador> listarProfesores() {
-
-        PreparedStatement ps;
-        ResultSet rs;
-        List<Coordinador> lista = new ArrayList<>();
-
-        try {
-            ps = conexion.prepareStatement("select * from Profesor;");
-            rs = ps.executeQuery();
-
-            while (rs.next()) {
-                
-                String contraseña = rs.getString("passw");
-                String nombre = rs.getString("nombre");
-                String apellidos = rs.getString("apellidos");
-                String nombre_usuario = rs.getString("Nombre_usuario_Usuario");
-                String DNI = rs.getString("DNI");
-
-                Coordinador profesor = new Coordinador(contraseña, nombre, apellidos,nombre_usuario,DNI);
-
-                lista.add(profesor);
-            }
-
-            return lista;
-        } catch (SQLException ex) {
-            System.out.println(ex.toString());
-            return null;
-
-        }
-    }*/
     public boolean insertar(Coordinador profesor) {
 
         PreparedStatement ps = null;

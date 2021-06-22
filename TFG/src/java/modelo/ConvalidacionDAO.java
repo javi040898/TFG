@@ -27,7 +27,6 @@ public class ConvalidacionDAO {
     }
 
     public void cambiarEstado(String estado, Integer id_convalidacion) {
-        System.out.println("entro a cambair estado");
         PreparedStatement ps = null;
         ResultSet rs = null;
 
@@ -103,7 +102,6 @@ public class ConvalidacionDAO {
             ps.setInt(1, c.getId_convalidacion());
             ps.setString(2, c.getEstado());
             ps.setString(3, c.getComentarios());
-            //ps.setDate(4, c.getFecha_convalidacion());
             ps.setInt(6, c.getId_estancia_Estancia());
             ps.setString(4, c.getCodigo_Asignatura_destino());
             ps.setString(5, c.getCodigo_Asignatura_origen());
