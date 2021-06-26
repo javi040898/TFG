@@ -60,8 +60,9 @@ public class PropuestaLA extends HttpServlet {
         String accion;
         RequestDispatcher dispatcher = null;
 
-        accion = request.getParameter("accion");
+        accion = request.getParameter("accion"); //Se recibe la variable accion de las vistas
 
+        //Al iniciar el programa, se abre la ventana de login
         if (accion == null || accion.isEmpty()) {
             dispatcher = request.getRequestDispatcher("ACUERDOS/login.jsp");
 
