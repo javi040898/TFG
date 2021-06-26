@@ -107,7 +107,7 @@
                         List<Grado> listaGrados = (List<Grado>) request.getAttribute("listaGrados");
                         if (listaGrados != null)
                             for (Grado grado : listaGrados) {%>
-                    <option value="<%=grado.getCodigo()%>"><%=grado.getNombre()%><%=" (" + grado.getCodigo() + " )"%></option>
+                    <option value="<%=grado.getCodigo()%>"><%=grado.getNombre()%><%=" (" + grado.getCodigo() + ")"%></option>
                     <% }%>
 
 

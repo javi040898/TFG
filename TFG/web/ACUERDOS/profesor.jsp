@@ -16,6 +16,7 @@
 
 
 
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -693,14 +694,6 @@
         <div id="form20">  <br></div>
 
 
-
-
-
-
-
-
-
-
         <br>
         <br><br><br>
         <div id="enlaceNuevo">
@@ -730,21 +723,6 @@
             <a href="PropuestaLA?accion=volverLogin">Volver</a>
 
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

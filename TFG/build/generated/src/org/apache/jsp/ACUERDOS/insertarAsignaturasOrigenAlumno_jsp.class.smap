@@ -1,0 +1,16 @@
+SMAP
+insertarAsignaturasOrigenAlumno_jsp.java
+JSP
+*S JSP
+*F
++ 0 insertarAsignaturasOrigenAlumno.jsp
+ACUERDOS/insertarAsignaturasOrigenAlumno.jsp
+*L
+5,107:46
+112,2:154
+113,3:156
+116,2:159,3
+118,2:165
+120:167,3
+121,6:170
+*E
