@@ -45,7 +45,7 @@
             #titulo2{
 
                 float:left;
-                left:1000px;
+                left:750px;
 
                 background:#E3D5CD;
                 margin:20px;
@@ -88,7 +88,7 @@
             #NombreAlumno{
 
                 float:left;
-                left:1570px;
+                left:1370px;
 
                 margin:20px;
                 padding:10px;
@@ -103,7 +103,7 @@
             #ApellidosAlumno{
 
                 float:left;
-                left:1570px;
+                left:1370px;
 
                 margin:20px;
                 padding:10px;
@@ -117,7 +117,7 @@
             #CodigoGrado{
 
                 float:left;
-                left:1570px;
+                left:1370px;
 
                 margin:20px;
                 padding:10px;
@@ -131,7 +131,7 @@
             #NombreGrado{
 
                 float:left;
-                left:1570px;
+                left:1370px;
 
                 margin:20px;
                 padding:10px;
@@ -145,7 +145,7 @@
             #Facultad{
 
                 float:left;
-                left:1570px;
+                left:1370px;
 
                 margin:20px;
                 padding:10px;
@@ -178,8 +178,8 @@
 
                 margin:15px;
                 position:relative;
-                top:30px;
-                left: 430px;
+                top:0px;
+                left: -15px;
 
             }
             #label1 {
@@ -188,7 +188,7 @@
                 margin:15px;
                 position:relative;
                 top:42px;
-                left: 995px;
+                left: 925px;
 
             }
 
@@ -202,6 +202,7 @@
                 top:250px;
                 right:580px;
 
+
             }
 
             #form11 {
@@ -210,7 +211,7 @@
                 margin:25px;
                 position:relative;
                 top:-15px;
-                right:-1266px;
+                right:-1196px;
 
             }
 
@@ -274,7 +275,7 @@
 
 
 
-                left:1380px;
+                left:1280px;
                 top:20px;
 
 
@@ -298,7 +299,7 @@
                 margin:25px;
                 position:relative;
                 top:-12px;
-                right:-720px;
+                right:-1190px;
 
             }
 
@@ -513,7 +514,7 @@
                     <th>Link asignatura</th>
 
 
-                    <th style="border: hidden"></th>
+
 
                     <th>Codigo</th>
                     <th>Nombre Asignatura</th>
@@ -544,7 +545,6 @@
                             <td><a href="<%=ra.getInformacion_origen()%>" target="_blank" > link</a></td>
 
 
-                            <td style="border: hidden">---></td>
                             <td><%=ra.getCodigo_destino()%></td>
                             <td><%=ra.getNombre_destino()%></td>
                             <td><%=ra.getCreditos_destino()%></td>
@@ -620,7 +620,8 @@
             <div id="tituloModificar">  <h1 >MODIFICAR CONVALIDACION</h1></div>
             <div id="form7">
 
-                <select class="form-control" id="listaAsignaturasModificar" name="listaAsignaturasModificar" action="modificar">
+                <select class="form-control" id="listaAsignaturasModificar" name="listaAsignaturasModificar" action="modificar" >
+                    
                     <option>Escoge una convalidacion</option>
 
                     <%  List<RelacionAsignaturas> listaRAPosibles = (List<RelacionAsignaturas>) request.getAttribute("listaRAPosibles");
@@ -628,7 +629,7 @@
                             for (RelacionAsignaturas ra : listaRAPosibles) {
                                 if (ra.getEstado().equals("PENDIENTE")) {
                     %>
-                    <option value="<%=ra.getId_convalidacion()%>"><%=ra.getNombre_origen()%><%=" --> " + ra.getNombre_destino() + " ("%><%=ra.getId_convalidacion() + ")"%></option>
+                    <option value="<%=ra.getId_convalidacion()%>"><%="Convalidacion Nº " %><%=ra.getId_convalidacion()%></option>
                     <% }
                         }%>
 
@@ -669,20 +670,18 @@
                             for (RelacionAsignaturas ra : listaRAPosibles) {
                                 if (ra.getEstado().equals("ACEPTADA")) {
                     %>
-                    <option value="<%=ra.getId_convalidacion()%>"><%=ra.getNombre_origen()%><%=" --> " + ra.getNombre_destino() + " ("%><%=ra.getId_convalidacion() + ")"%></option>
+                    <option value="<%=ra.getId_convalidacion()%>"><%="Convalidacion Nº " %><%=ra.getId_convalidacion()%></option>
                     <% }
                         }%>
 
-
-
-
-
                 </select>
-            </div>
-            <div id="label1"    <label>Comentarios</label></div>
-            <div id="comentariosCancelada">
 
-                <input id="comentariosCancelada" class="form-control" name="ComentariosCancelada" type="textarea" align="left" size="40"/></div>
+                <div id="comentariosCancelada">
+                    <label>Comentarios</label>
+                    <input id="comentariosCancelada" class="form-control" name="ComentariosCancelada" type="textarea" align="left" size="40"/></div>
+            </div>
+
+
 
 
 

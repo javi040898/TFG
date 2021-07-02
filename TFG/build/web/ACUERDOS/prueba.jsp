@@ -365,3 +365,34 @@
                 ASIGNATURA DESTINO 2</h1></div>
 </html>
 <img src="C:\Users\Javier\Documents\GitHub\TFG\TFG\web\img\flecha.png"
+     
+             <form action="PropuestaLA?accion=cancelarAsignatura" method="POST" autocomplete="off">
+            <div id="tituloCancelar">  <h1 >CANCELAR CONVALIDACION</h1></div>
+            <div id="form11">
+                <select class="form-control" id="listaAsignaturasCancelar" name="listaAsignaturasCancelar">
+                    <option>Escoge una convalidacion</option>
+                    <% if (listaRAPosibles != null)
+                            for (RelacionAsignaturas ra : listaRAPosibles) {
+                                if (ra.getEstado().equals("ACEPTADA")) {
+                    %>
+                    <option value="<%=ra.getId_convalidacion()%>"><%=ra.getNombre_origen()%><%=" --> " + ra.getNombre_destino() + " ("%><%=ra.getId_convalidacion() + ")"%></option>
+                    <% }
+                        }%>
+
+
+
+
+
+                </select>
+            </div>
+            <div id="label1"    <label>Comentarios</label></div>
+            <div id="comentariosCancelada">
+
+                <input id="comentariosCancelada" class="form-control" name="ComentariosCancelada" type="textarea" align="left" size="40"/></div>
+
+
+
+            <div id="butCancelar">
+                <button>Cancelar</button>
+            </div>
+        </form>

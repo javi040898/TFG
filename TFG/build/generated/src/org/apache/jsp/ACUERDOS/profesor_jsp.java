@@ -63,6 +63,7 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
+      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
@@ -134,7 +135,7 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            #NombreAlumno{\n");
       out.write("\n");
       out.write("                float:left;\n");
-      out.write("                left:1570px;\n");
+      out.write("                left:1370px;\n");
       out.write("\n");
       out.write("                margin:20px;\n");
       out.write("                padding:10px;\n");
@@ -149,7 +150,7 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            #ApellidosAlumno{\n");
       out.write("\n");
       out.write("                float:left;\n");
-      out.write("                left:1570px;\n");
+      out.write("                left:1370px;\n");
       out.write("\n");
       out.write("                margin:20px;\n");
       out.write("                padding:10px;\n");
@@ -163,7 +164,7 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            #CodigoGrado{\n");
       out.write("\n");
       out.write("                float:left;\n");
-      out.write("                left:1570px;\n");
+      out.write("                left:1370px;\n");
       out.write("\n");
       out.write("                margin:20px;\n");
       out.write("                padding:10px;\n");
@@ -177,7 +178,7 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            #NombreGrado{\n");
       out.write("\n");
       out.write("                float:left;\n");
-      out.write("                left:1570px;\n");
+      out.write("                left:1370px;\n");
       out.write("\n");
       out.write("                margin:20px;\n");
       out.write("                padding:10px;\n");
@@ -191,7 +192,7 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            #Facultad{\n");
       out.write("\n");
       out.write("                float:left;\n");
-      out.write("                left:1570px;\n");
+      out.write("                left:1370px;\n");
       out.write("\n");
       out.write("                margin:20px;\n");
       out.write("                padding:10px;\n");
@@ -224,8 +225,8 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("                margin:15px;\n");
       out.write("                position:relative;\n");
-      out.write("                top:30px;\n");
-      out.write("                left: 430px;\n");
+      out.write("                top:0px;\n");
+      out.write("                left: -15px;\n");
       out.write("\n");
       out.write("            }\n");
       out.write("            #label1 {\n");
@@ -234,7 +235,7 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                margin:15px;\n");
       out.write("                position:relative;\n");
       out.write("                top:42px;\n");
-      out.write("                left: 995px;\n");
+      out.write("                left: 925px;\n");
       out.write("\n");
       out.write("            }\n");
       out.write("\n");
@@ -256,7 +257,7 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                margin:25px;\n");
       out.write("                position:relative;\n");
       out.write("                top:-15px;\n");
-      out.write("                right:-1266px;\n");
+      out.write("                right:-1196px;\n");
       out.write("\n");
       out.write("            }\n");
       out.write("\n");
@@ -320,7 +321,7 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
-      out.write("                left:1380px;\n");
+      out.write("                left:1220px;\n");
       out.write("                top:20px;\n");
       out.write("\n");
       out.write("\n");
@@ -344,7 +345,7 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                margin:25px;\n");
       out.write("                position:relative;\n");
       out.write("                top:-12px;\n");
-      out.write("                right:-720px;\n");
+      out.write("                right:-1190px;\n");
       out.write("\n");
       out.write("            }\n");
       out.write("\n");
@@ -592,7 +593,7 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    <th>Link asignatura</th>\n");
       out.write("\n");
       out.write("\n");
-      out.write("                    <th style=\"border: hidden\"></th>\n");
+      out.write("\n");
       out.write("\n");
       out.write("                    <th>Codigo</th>\n");
       out.write("                    <th>Nombre Asignatura</th>\n");
@@ -637,7 +638,6 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\" target=\"_blank\" > link</a></td>\n");
       out.write("\n");
       out.write("\n");
-      out.write("                            <td style=\"border: hidden\">---></td>\n");
       out.write("                            <td>");
       out.print(ra.getCodigo_destino());
       out.write("</td>\n");
@@ -816,16 +816,14 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
                         }
       out.write("\n");
       out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
       out.write("                </select>\n");
-      out.write("            </div>\n");
-      out.write("            <div id=\"label1\"    <label>Comentarios</label></div>\n");
-      out.write("            <div id=\"comentariosCancelada\">\n");
       out.write("\n");
-      out.write("                <input id=\"comentariosCancelada\" class=\"form-control\" name=\"ComentariosCancelada\" type=\"textarea\" align=\"left\" size=\"40\"/></div>\n");
+      out.write("                <div id=\"comentariosCancelada\">\n");
+      out.write("                    <label>Comentarios</label>\n");
+      out.write("                    <input id=\"comentariosCancelada\" class=\"form-control\" name=\"ComentariosCancelada\" type=\"textarea\" align=\"left\" size=\"40\"/></div>\n");
+      out.write("            </div>\n");
+      out.write("\n");
+      out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("\n");
@@ -835,14 +833,6 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        </form>\n");
       out.write("\n");
       out.write("        <div id=\"form20\">  <br></div>\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("        <br>\n");
@@ -874,21 +864,6 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <a href=\"PropuestaLA?accion=volverLogin\">Volver</a>\n");
       out.write("\n");
       out.write("        </div>\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("\n");

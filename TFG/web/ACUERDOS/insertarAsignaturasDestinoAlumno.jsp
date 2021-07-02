@@ -85,7 +85,7 @@
                             List<Universidad_Destino> listaUniversidades = (List<Universidad_Destino>) request.getAttribute("listaUniversidades");
                             if (listaUniversidades != null)
                                 for (Universidad_Destino universidad : listaUniversidades) {%>
-                        <option value="<%=universidad.getCodigo_erasmus()%>"><%=universidad.getNombre()%><%=" (" + universidad.getCiudad() + " )"%></option>
+                        <option value="<%=universidad.getCodigo_erasmus()%>"><%=universidad.getNombre()%><%=" (" + universidad.getCiudad() + ")"%></option>
                         <% }%>
 
 

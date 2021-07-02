@@ -169,4 +169,3 @@ INSERT INTO Usuario values('ivan.gonzalez');
 INSERT INTO Coordinador values('11111111M','12345','Ivan','Gonzalez','ivan.gonzalez','Ciencias de la computacion');
 
 
-

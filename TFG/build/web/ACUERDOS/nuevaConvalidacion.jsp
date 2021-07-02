@@ -137,7 +137,7 @@
                             if (listaAsignaturasOrigen != null)
                                 for (Asignatura_Origen asignatura_origen : listaAsignaturasOrigen) {%>
                         <option value="<%=asignatura_origen.getCodigo()%>"><%=asignatura_origen.getNombre()%><%=" ("
-                                + asignatura_origen.getCodigo() + " )"%></option>
+                                + asignatura_origen.getCodigo() + ")"%></option>
                             <% }%>
 
 

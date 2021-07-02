@@ -75,7 +75,7 @@
                         List<Alumno> listaAlumnos = (List<Alumno>) request.getAttribute("listaAlumnosEstancia");
                         if (listaAlumnos != null)
                             for (Alumno alumno : listaAlumnos) {%>
-                    <option value="<%=alumno.getDNI()%>"><%=alumno.getNombre()%><%=" " + alumno.getApellidos()%><%=" (" + alumno.getDNI() + " )"%></option>
+                    <option value="<%=alumno.getDNI()%>"><%=alumno.getNombre()%><%=" " + alumno.getApellidos()%><%=" (" + alumno.getDNI() + ")"%></option>
                     <% }%>
 
 
@@ -133,7 +133,7 @@
                             List<Universidad_Destino> listaUniversidades = (List<Universidad_Destino>) request.getAttribute("listaUniversidades");
                             if (listaUniversidades != null)
                                 for (Universidad_Destino universidad : listaUniversidades) {%>
-                        <option value="<%=universidad.getCodigo_erasmus()%>"><%=universidad.getNombre()%><%=" (" + universidad.getCodigo_erasmus() + " )"%></option>
+                        <option value="<%=universidad.getCodigo_erasmus()%>"><%=universidad.getNombre()%><%=" (" + universidad.getCodigo_erasmus() + ")"%></option>
                         <% }%>
 
 
