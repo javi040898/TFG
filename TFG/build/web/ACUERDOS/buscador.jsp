@@ -135,7 +135,7 @@
             #titulo4{
 
                 float:left;
-                left:1000px;
+                left:750px;
 
                 background:#E3D5CD;
                 margin:20px;
@@ -200,7 +200,6 @@
 
                     <th>Link asignatura</th>
 
-                    <th style="border: hidden"></th>
 
                     <th>Codigo</th>
                     <th>Nombre Asignatura</th>
@@ -237,7 +236,6 @@
                             <td><a href="<%=ra.getInformacion_origen()%>" target="_blank" > link</a></td>
 
 
-                            <td style="border: hidden">---></td>
                             <td><%=ra.getCodigo_destino()%></td>
                             <td><%=ra.getNombre_destino()%></td>
                             <td><%=ra.getCreditos_destino()%></td>
