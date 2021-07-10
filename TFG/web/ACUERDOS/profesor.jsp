@@ -259,7 +259,7 @@
                 padding:10px;
                 position:relative;
                 top:2px;
-                left: 600px;
+                left: 475px;
 
             }
 
@@ -275,7 +275,7 @@
 
 
 
-                left:1280px;
+                left:1250px;
                 top:20px;
 
 
@@ -312,7 +312,7 @@
 
 
 
-                left:350px;
+                left:250px;
                 top:20px;
 
 

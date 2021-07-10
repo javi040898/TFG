@@ -92,7 +92,7 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            #titulo2{\n");
       out.write("\n");
       out.write("                float:left;\n");
-      out.write("                left:1000px;\n");
+      out.write("                left:750px;\n");
       out.write("\n");
       out.write("                background:#E3D5CD;\n");
       out.write("                margin:20px;\n");
@@ -249,6 +249,7 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                top:250px;\n");
       out.write("                right:580px;\n");
       out.write("\n");
+      out.write("\n");
       out.write("            }\n");
       out.write("\n");
       out.write("            #form11 {\n");
@@ -321,7 +322,7 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
-      out.write("                left:1220px;\n");
+      out.write("                left:1280px;\n");
       out.write("                top:20px;\n");
       out.write("\n");
       out.write("\n");
@@ -741,7 +742,8 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <div id=\"tituloModificar\">  <h1 >MODIFICAR CONVALIDACION</h1></div>\n");
       out.write("            <div id=\"form7\">\n");
       out.write("\n");
-      out.write("                <select class=\"form-control\" id=\"listaAsignaturasModificar\" name=\"listaAsignaturasModificar\" action=\"modificar\">\n");
+      out.write("                <select class=\"form-control\" id=\"listaAsignaturasModificar\" name=\"listaAsignaturasModificar\" action=\"modificar\" >\n");
+      out.write("                    \n");
       out.write("                    <option>Escoge una convalidacion</option>\n");
       out.write("\n");
       out.write("                    ");
@@ -755,9 +757,8 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.print(ra.getId_convalidacion());
       out.write('"');
       out.write('>');
-      out.print(ra.getNombre_origen());
-      out.print(" --> " + ra.getNombre_destino() + " (");
-      out.print(ra.getId_convalidacion() + ")");
+      out.print("Convalidacion Nº " );
+      out.print(ra.getId_convalidacion());
       out.write("</option>\n");
       out.write("                    ");
  }
@@ -807,9 +808,8 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.print(ra.getId_convalidacion());
       out.write('"');
       out.write('>');
-      out.print(ra.getNombre_origen());
-      out.print(" --> " + ra.getNombre_destino() + " (");
-      out.print(ra.getId_convalidacion() + ")");
+      out.print("Convalidacion Nº " );
+      out.print(ra.getId_convalidacion());
       out.write("</option>\n");
       out.write("                    ");
  }
