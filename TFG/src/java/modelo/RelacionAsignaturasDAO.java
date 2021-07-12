@@ -174,7 +174,7 @@ public class RelacionAsignaturasDAO {
                     + "from Convalidacion inner join Estancia on id_estancia_Estancia=id_estancia\n"
                     + "inner join Asignatura_origen on Asignatura_origen.Codigo = Codigo_Asignatura_origen\n"
                     + "inner join Asignatura_destino on Codigo_Asignatura_destino=Asignatura_destino.Codigo inner join Universidad_destino on\n"
-                    + "Estancia.Codigo_erasmus_Universidad_destino = Codigo_erasmus where Asignatura_origen.Codigo = ? order by id_convalidacion;");
+                    + "Estancia.Codigo_erasmus_Universidad_destino = Codigo_erasmus where Asignatura_origen.Codigo = ? and estado = 'ACEPTADA' order by id_convalidacion;");
             ps.setString(1, codigoO);
             rs = ps.executeQuery();
 

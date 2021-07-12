@@ -403,42 +403,39 @@
                 <select class="form-control" id="listaEstanciasAlumnos" name="listaEstanciasAlumnos">
 
 
+                        <option>Escoge una estancia y alumno</option>
+                        <%
+                            Universidad_DestinoDAO universidadDAO = new Universidad_DestinoDAO();
+                            EstanciaDAO estanciaDAO = new EstanciaDAO();
+                            List<Alumno> listaAlumnos = (List<Alumno>) request.getAttribute("listaAlumnos");
+                            List<Estancia> listaEstancias = (List<Estancia>) request.getAttribute("listaEstancias");
 
-                    <option>Escoge una estancia y alumno</option>
-                    <%
-                        Universidad_DestinoDAO universidadDAO = new Universidad_DestinoDAO();
-                        EstanciaDAO estanciaDAO = new EstanciaDAO();
-                        List<Alumno> listaAlumnos = (List<Alumno>) request.getAttribute("listaAlumnos");
-                        List<Estancia> listaEstancias = (List<Estancia>) request.getAttribute("listaEstancias");
+                            if (listaAlumnos != null)
+                                if (listaEstancias != null)
+                                    for (Estancia estancia : listaEstancias) {
+                                        String cerrada = "EN PROGRESO";
+                                        for (Alumno alumno : listaAlumnos) {
 
-                        if (listaAlumnos != null)
-                            if (listaEstancias != null)
-                                for (Estancia estancia : listaEstancias) {
-                                    String cerrada = "EN PROGRESO";
-                                    for (Alumno alumno : listaAlumnos) {
-
-                                        if (alumno.getDNI().equals(estancia.getDNI_alumno())) {
-                                            if (estanciaDAO.obtenerRenuncia(estancia.getId_estancia())) {
-                                                cerrada = "RENUNCIADA";
-                                            } else {
-                                                if (estanciaDAO.obtenerCerrada(estancia.getId_estancia())) {
-                                                    cerrada = "CERRADA";
+                                            if (alumno.getDNI().equals(estancia.getDNI_alumno())) {
+                                                if (estanciaDAO.obtenerRenuncia(estancia.getId_estancia())) {
+                                                    cerrada = "RENUNCIADA";
+                                                } else {
+                                                    if (estanciaDAO.obtenerCerrada(estancia.getId_estancia())) {
+                                                        cerrada = "CERRADA";
+                                                    }
                                                 }
-                                            }
 
 
-                    %>
-                    <option value="<%=estancia.getId_estancia()%>"><%=estancia.getTipo() + " "%><%=universidadDAO.obtenerNombre(estancia.getCodigo_erasmus_Universidad_destino())%><%=" ("
+                        %>
+                        <option value="<%=estancia.getId_estancia()%>"><%=estancia.getTipo() + " "%><%=universidadDAO.obtenerNombre(estancia.getCodigo_erasmus_Universidad_destino())%><%=" ("
                             + estancia.getCurso_academico() + ") "%><%=alumno.getNombre()%><%=" " + alumno.getApellidos()%><%=" (" + alumno.getDNI() + ") "%><%=cerrada%>
-                    </option>
-                    <%
-                                    break;
+                        </option>
+                        <%
+                                        break;
+                                    }
+
                                 }
-
-                            }
-                        }%>
-
-
+                            }%>
 
 
 
@@ -621,7 +618,7 @@
             <div id="form7">
 
                 <select class="form-control" id="listaAsignaturasModificar" name="listaAsignaturasModificar" action="modificar" >
-                    
+
                     <option>Escoge una convalidacion</option>
 
                     <%  List<RelacionAsignaturas> listaRAPosibles = (List<RelacionAsignaturas>) request.getAttribute("listaRAPosibles");
@@ -629,7 +626,7 @@
                             for (RelacionAsignaturas ra : listaRAPosibles) {
                                 if (ra.getEstado().equals("PENDIENTE")) {
                     %>
-                    <option value="<%=ra.getId_convalidacion()%>"><%="Convalidacion Nº " %><%=ra.getId_convalidacion()%></option>
+                    <option value="<%=ra.getId_convalidacion()%>"><%="Convalidacion Nº "%><%=ra.getId_convalidacion()%></option>
                     <% }
                         }%>
 
@@ -670,7 +667,7 @@
                             for (RelacionAsignaturas ra : listaRAPosibles) {
                                 if (ra.getEstado().equals("ACEPTADA")) {
                     %>
-                    <option value="<%=ra.getId_convalidacion()%>"><%="Convalidacion Nº " %><%=ra.getId_convalidacion()%></option>
+                    <option value="<%=ra.getId_convalidacion()%>"><%="Convalidacion Nº "%><%=ra.getId_convalidacion()%></option>
                     <% }
                         }%>
 

@@ -306,7 +306,7 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                padding:10px;\n");
       out.write("                position:relative;\n");
       out.write("                top:2px;\n");
-      out.write("                left: 600px;\n");
+      out.write("                left: 475px;\n");
       out.write("\n");
       out.write("            }\n");
       out.write("\n");
@@ -322,7 +322,7 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
-      out.write("                left:1280px;\n");
+      out.write("                left:1250px;\n");
       out.write("                top:20px;\n");
       out.write("\n");
       out.write("\n");
@@ -359,7 +359,7 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
-      out.write("                left:350px;\n");
+      out.write("                left:250px;\n");
       out.write("                top:20px;\n");
       out.write("\n");
       out.write("\n");
@@ -450,34 +450,33 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <select class=\"form-control\" id=\"listaEstanciasAlumnos\" name=\"listaEstanciasAlumnos\">\n");
       out.write("\n");
       out.write("\n");
-      out.write("\n");
-      out.write("                    <option>Escoge una estancia y alumno</option>\n");
-      out.write("                    ");
+      out.write("                        <option>Escoge una estancia y alumno</option>\n");
+      out.write("                        ");
 
-                        Universidad_DestinoDAO universidadDAO = new Universidad_DestinoDAO();
-                        EstanciaDAO estanciaDAO = new EstanciaDAO();
-                        List<Alumno> listaAlumnos = (List<Alumno>) request.getAttribute("listaAlumnos");
-                        List<Estancia> listaEstancias = (List<Estancia>) request.getAttribute("listaEstancias");
+                            Universidad_DestinoDAO universidadDAO = new Universidad_DestinoDAO();
+                            EstanciaDAO estanciaDAO = new EstanciaDAO();
+                            List<Alumno> listaAlumnos = (List<Alumno>) request.getAttribute("listaAlumnos");
+                            List<Estancia> listaEstancias = (List<Estancia>) request.getAttribute("listaEstancias");
 
-                        if (listaAlumnos != null)
-                            if (listaEstancias != null)
-                                for (Estancia estancia : listaEstancias) {
-                                    String cerrada = "EN PROGRESO";
-                                    for (Alumno alumno : listaAlumnos) {
+                            if (listaAlumnos != null)
+                                if (listaEstancias != null)
+                                    for (Estancia estancia : listaEstancias) {
+                                        String cerrada = "EN PROGRESO";
+                                        for (Alumno alumno : listaAlumnos) {
 
-                                        if (alumno.getDNI().equals(estancia.getDNI_alumno())) {
-                                            if (estanciaDAO.obtenerRenuncia(estancia.getId_estancia())) {
-                                                cerrada = "RENUNCIADA";
-                                            } else {
-                                                if (estanciaDAO.obtenerCerrada(estancia.getId_estancia())) {
-                                                    cerrada = "CERRADA";
+                                            if (alumno.getDNI().equals(estancia.getDNI_alumno())) {
+                                                if (estanciaDAO.obtenerRenuncia(estancia.getId_estancia())) {
+                                                    cerrada = "RENUNCIADA";
+                                                } else {
+                                                    if (estanciaDAO.obtenerCerrada(estancia.getId_estancia())) {
+                                                        cerrada = "CERRADA";
+                                                    }
                                                 }
-                                            }
 
 
-                    
+                        
       out.write("\n");
-      out.write("                    <option value=\"");
+      out.write("                        <option value=\"");
       out.print(estancia.getId_estancia());
       out.write('"');
       out.write('>');
@@ -490,16 +489,14 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.print(" (" + alumno.getDNI() + ") ");
       out.print(cerrada);
       out.write("\n");
-      out.write("                    </option>\n");
-      out.write("                    ");
+      out.write("                        </option>\n");
+      out.write("                        ");
 
-                                    break;
+                                        break;
+                                    }
+
                                 }
-
                             }
-                        }
-      out.write("\n");
-      out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("\n");
@@ -743,7 +740,7 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <div id=\"form7\">\n");
       out.write("\n");
       out.write("                <select class=\"form-control\" id=\"listaAsignaturasModificar\" name=\"listaAsignaturasModificar\" action=\"modificar\" >\n");
-      out.write("                    \n");
+      out.write("\n");
       out.write("                    <option>Escoge una convalidacion</option>\n");
       out.write("\n");
       out.write("                    ");
@@ -757,7 +754,7 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.print(ra.getId_convalidacion());
       out.write('"');
       out.write('>');
-      out.print("Convalidacion Nº " );
+      out.print("Convalidacion Nº ");
       out.print(ra.getId_convalidacion());
       out.write("</option>\n");
       out.write("                    ");
@@ -808,7 +805,7 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.print(ra.getId_convalidacion());
       out.write('"');
       out.write('>');
-      out.print("Convalidacion Nº " );
+      out.print("Convalidacion Nº ");
       out.print(ra.getId_convalidacion());
       out.write("</option>\n");
       out.write("                    ");
