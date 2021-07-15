@@ -839,7 +839,7 @@ public final class profesor_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <br>\n");
       out.write("            <a href=\"PropuestaLA?accion=nuevaEstancia\">Nueva estancia de alumno</a>\n");
       out.write("            <br>\n");
-      out.write("            <a href=\"PropuestaLA?accion=nuevoProfesor\">Dar de alta a profesor</a>\n");
+      out.write("            <a href=\"PropuestaLA?accion=nuevoProfesor\">Dar de alta a coordinador</a>\n");
       out.write("            <br>\n");
       out.write("            <a href=\"PropuestaLA?accion=nuevaUniversidad\">Nueva universidad de destino</a>\n");
       out.write("            <br>\n");

@@ -697,7 +697,7 @@
             <br>
             <a href="PropuestaLA?accion=nuevaEstancia">Nueva estancia de alumno</a>
             <br>
-            <a href="PropuestaLA?accion=nuevoProfesor">Dar de alta a profesor</a>
+            <a href="PropuestaLA?accion=nuevoProfesor">Dar de alta a coordinador</a>
             <br>
             <a href="PropuestaLA?accion=nuevaUniversidad">Nueva universidad de destino</a>
             <br>
